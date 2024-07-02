@@ -1,5 +1,4 @@
-<img align="left" src="./.github/images/classppiconextended.svg" alt="Class++">
-<br>
+<img src="./.github/images/classppiconextended.svg" alt="Class++">
 
 **Overload Your Classes.**
 

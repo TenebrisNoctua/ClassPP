@@ -1,1 +1,1 @@
-<img align="left" src="./docs/img/cppicon_v2.png" alt="Class++"><h>Class++</h>
+<img align="left" src="./docs/img/cppicon_v2.png" alt="Class++" style="max-width: 25%"><h>Class++</h>

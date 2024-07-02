@@ -1,6 +1,6 @@
 <img src="./.github/images/classppiconextended.svg" alt="Class++">
 
-**Overload Your Classes.**
+## Overload Your Classes.
 
 Tired of the traditional class system on Roblox?
 Tired of learning complex systems, and wish for something easier?

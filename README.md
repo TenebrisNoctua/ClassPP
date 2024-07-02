@@ -1,1 +1,1 @@
-<img align="left" src="./docs/img/cppicon_v2.png" alt="Class++"><h>Class++</h>
+<div markdown="1"><img align="left" src="./docs/img/cppicon_v2.png" alt="Class++"><h>Class++</h></div>

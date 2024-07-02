@@ -1,0 +1,1 @@
+<img align="left" src="./.github/images/classppiconextended.svg" alt="Class++">

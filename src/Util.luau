@@ -53,13 +53,11 @@ function Util.checkFriendship(class: any, methodName: string, method: (any) -> (
 end
 
 function Util.inClassScope(class: any, includeInherited: boolean, includeFriend: boolean, classes: {[string]: any}?): boolean
-	if not classes then return false end
-	
 	local level: number = 4
 	
 	while true do
 		level += 1
-				
+		
 		local method, methodName = Util.getMethodContext(level)
 		if not method then break end
 		
@@ -69,7 +67,7 @@ function Util.inClassScope(class: any, includeInherited: boolean, includeFriend:
 			return true
 		end
 		
-		local result = if includeInherited then Util.checkInheritance(class, method) else false or if includeFriend then Util.checkFriendship(class, methodName, method, classes) else false
+		local result = if includeInherited then Util.checkInheritance(class, method) else false or if includeFriend and classes then Util.checkFriendship(class, methodName, method, classes) else false
 		if result then return true end
 	end
 

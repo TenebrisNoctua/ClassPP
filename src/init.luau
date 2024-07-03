@@ -278,7 +278,7 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 				LogError("classPropertyIsPrivate", true, index)
 			elseif accessSpecifier == "Internal" and Util.getMethodContext(5) ~= class.new and Util.getMethodContext(7) ~= Type.typeof --[[ and not Util.inClassScope(class, true, true, methods, Classes)]] then
 				LogError("classPropertyIsInternal", true, index)
-			elseif accessSpecifier == "Protected" and not Util.inClassScope(class, false, false) then
+			elseif accessSpecifier == "Protected" and not Util.inClassScope(class, true, false) then
 				LogError("classPropertyIsProtected", true, index)
 			end
 		end

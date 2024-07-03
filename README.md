@@ -10,4 +10,4 @@ Then you're in the right place.
 Introducing: Class++.<br>
 Classes were never this easy to create, and advanced before on Roblox.
 
-**[Documentation](https://tenebrisnoctua.github.io/ClassPP/)** **[Download Latest]()**
+**[Documentation](https://tenebrisnoctua.github.io/ClassPP/)** **[Download Latest](https://github.com/TenebrisNoctua/ClassPP/releases/latest)**

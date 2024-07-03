@@ -22,7 +22,7 @@
 </p>
 <nav> 
 <a href="tutorials/gettingStarted" id="classppNavButton">Getting Started</a>
-<a href="" id="classppNavButton">Download</a>
+<a href="https://github.com/TenebrisNoctua/ClassPP/releases/latest" id="classppNavButton">Download</a>
 </nav>
 </section>
 </div>

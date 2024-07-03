@@ -17,7 +17,7 @@ Especially, if you already have knowledge in languages like C++ and Java, your j
 
 ## Installation
 
-Installing Class++ is pretty easy! Just head over to this [link](https://github.com/TenebrisNoctua/ClassPP) to download the `ModuleScript`.
+Installing Class++ is pretty easy! Just head over to this [link](https://github.com/TenebrisNoctua/ClassPP/releases/latest) to download the `ModuleScript`.
 
 After the download, open Roblox Studio, go into the place that you want to import Class++ to and right click on the `ReplicatedStorage` (or the location that you want to insert into), and select "Insert from File".
 

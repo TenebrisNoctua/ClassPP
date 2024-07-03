@@ -78,8 +78,8 @@ type internalClass = typeof(setmetatable({} :: {
 	extends: (className: string) -> (classData: classData) -> class,
 	overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (any)}) -> (),
 	Name: string,
-	Inherits: typeof(setmetatable({}, {__newindex = function() end, __metatable = {}, __tostring = function() end}))?,
-	Friends: typeof(setmetatable({}, {__newindex = function() end, __metatable = {}, __tostring = function() end}))?
+	Inherits: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end}))?,
+	Friends: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end}))?
 }, {
 	__index = function(t, i) return end :: ({any}, any) -> (any),
 	__newindex = function(t, i, v) end :: ({any}, any, any) -> (),
@@ -391,16 +391,16 @@ end
 
 local function createClassObject(nClassData: classData, className: string, internalFunctionsList: {(...any) -> (any)}?): internalClass
 	local class: internalClass = setmetatable({
-		Inherits = setmetatable({}, { __tostring = function() return '{}' end, __newindex = function() local f = Util.getMethodContext(5) if f ~= createClassObject and internalFunctionsList and not table.find(internalFunctionsList, f) then LogError("attemptToModifyReadOnlyTable", false) end end, __metatable = {} }),
-		Friends = setmetatable({}, { __tostring = function() return '{}' end, __newindex = function() local f = Util.getMethodContext(5) if f ~= createClassObject and internalFunctionsList and not table.find(internalFunctionsList, f) then LogError("attemptToModifyReadOnlyTable", false) end end, __metatable = {} }),
+		Inherits = setmetatable({}, { __tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5) if f ~= createClassObject and internalFunctionsList and not table.find(internalFunctionsList, f) then LogError("attemptToModifyReadOnlyTable", false) end rawset(t :: any, i :: any, v :: any) end, __metatable = {} }),
+		Friends = setmetatable({}, { __tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5) if f ~= createClassObject and internalFunctionsList and not table.find(internalFunctionsList, f) then LogError("attemptToModifyReadOnlyTable", false) end rawset(t :: any, i :: any, v :: any) end, __metatable = {} }),
 		Name = className
 	} :: {
 		new: (...any) -> any,
 		extends: (className: string) -> (classData: classData) -> class,
 		overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (any)}) -> (),
 		Name: string,
-		Inherits: typeof(setmetatable({}, {__newindex = function() end, __metatable = {}, __tostring = function() end}))?,
-		Friends: typeof(setmetatable({}, {__newindex = function() end, __metatable = {}, __tostring = function() end}))?
+		Inherits: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end}))?,
+		Friends: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end}))?
 	}, {
 		__index = function(t, i) return rawget(t, i)  end,
 		__newindex = function(t, i, v) rawset(t, i, v) end,

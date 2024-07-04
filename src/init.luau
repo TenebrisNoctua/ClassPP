@@ -465,7 +465,7 @@ local function createClassObject(nClassData: classData, className: string, inter
 	end
 	
 	function class.new(...): any
-		local newObjTbl = sortAttributes(nClassData, className)
+		local newObjTbl: internalClassData = sortAttributes(nClassData, className)
 		local newObj = newproxy(true)
 		local methods = getmetatable(newObj)
 

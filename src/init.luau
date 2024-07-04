@@ -21,8 +21,6 @@ local LogErrorNonFatal = Error.logErrorNonFatal
 
 local Classes: {[string]: class} = {}
 
---// For preventing operator functions to be called without the usage of operators. (e.g: "obj:operator_add()")
-
 local operatorFuncNames: {string} = {
 	"operator_add",
 	"operator_sub",
@@ -91,6 +89,7 @@ type internalClass = typeof(setmetatable({} :: {
 
 --////// Local Functions
 
+--// A deep copy function for tables, with support for metatables.
 local function deepCopy<T>(original: T & {[any]: any}): T & {[any]: any}
 	local copy = table.clone(original) :: T & {[any]: any}
 
@@ -104,6 +103,7 @@ local function deepCopy<T>(original: T & {[any]: any}): T & {[any]: any}
 	return copy
 end
 
+--// Sorts the classData into an objectData that can be used inside objects.
 local function sortAttributes(data: classData, className: string): internalClassData
 	local classObjTbl: internalClassData = deepCopy(data)
 
@@ -111,7 +111,10 @@ local function sortAttributes(data: classData, className: string): internalClass
 		__type = className,
 		__locked = false
 	}
-
+	
+	--[[
+	-- If any more internal functions get added, this part may get re-used again.
+	
 	local InternalFunctionNames = {"constructor", "destructor"}
 	for _, functionName in InternalFunctionNames do
 		if classObjTbl[functionName] then
@@ -119,10 +122,22 @@ local function sortAttributes(data: classData, className: string): internalClass
 			classObjTbl[functionName] = nil
 		end
 	end
+	--]]
+	
+	if classObjTbl["constructor"] then 
+		classObjTbl.Internal.constructor = classObjTbl["constructor"] 
+		classObjTbl["constructor"] = nil
+	end
+	
+	if classObjTbl["destructor"] then
+		classObjTbl.Internal.destructor = classObjTbl["destructor"]
+		classObjTbl["destructor"] = nil
+	end
 
 	return classObjTbl
 end
 
+--// Cleans the objectData (except for the Internal data) and locks the object.
 local function objectCleaner(objectTbl: {[string]: any}): {}
 	for accessSpecifier, attributesData in objectTbl do
 		if accessSpecifier == "Internal" then continue end
@@ -145,6 +160,7 @@ local function objectCleaner(objectTbl: {[string]: any}): {}
 	return objectTbl
 end
 
+--// Merges classDatas of two related classes for inheritation.
 local function mergeClassData(superClassData: classData, childClassData: classData): classData
 	local newClassData: classData = {
 		Public = {},
@@ -177,6 +193,7 @@ local function mergeClassData(superClassData: classData, childClassData: classDa
 	return newClassData
 end
 
+--// Checks if the given string is a valid access specifier.
 local function checkValidAccessSpecifier(specifierString: string): (boolean, string?)
 	local accessSpecifiers: {string} = {
 		"Public",
@@ -195,6 +212,7 @@ local function checkValidAccessSpecifier(specifierString: string): (boolean, str
 	return false
 end
 
+--// Returns the access specifier of an index.
 local function returnAccessSpecifier(index: string, classData: any): string?
 	for accessSpecifier, attributesData in classData do
 		if typeof(attributesData) == "table" and attributesData[index] ~= nil then
@@ -205,6 +223,7 @@ local function returnAccessSpecifier(index: string, classData: any): string?
 	return
 end
 
+--// Finds the property that's been set to the given index. If given a string that contains an access specifier, it tries to find the property inside that access specifier.
 local function findPropertyFromIndex(classData: internalClassData | classData, index: string, accessSpecifier: string?): any?
 	local fAccessSpecifier = accessSpecifier or returnAccessSpecifier(index, classData)
 	if typeof((classData :: any)[fAccessSpecifier]) ~= "table" then return end
@@ -214,6 +233,7 @@ local function findPropertyFromIndex(classData: internalClassData | classData, i
 	return
 end
 
+--// Calls an operator function from the given name.
 local function callOperator(functionName, obj, obj2: any?, silenceError: boolean?): boolean | any
 	if typeof(obj) == "userdata" then
 		if obj[functionName] then
@@ -232,7 +252,8 @@ local function callOperator(functionName, obj, obj2: any?, silenceError: boolean
 	return false
 end
 
-local function checkRedecleration(classData: classData, index: string?): (boolean, any?)
+--// Checks if the given index has already been set inside an access specifier.
+local function checkRedeclaration(classData: classData, index: string?): (boolean, any?)
 	if not classData then return false end
 
 	if index then
@@ -246,7 +267,7 @@ local function checkRedecleration(classData: classData, index: string?): (boolea
 		for accessSpecifier, attributesData in classData do
 			if typeof(attributesData) ~= "table" then continue end
 			for attributeKey, _ in (attributesData :: any) do
-				if checkRedecleration(classData, attributeKey) then return true, attributeKey end
+				if checkRedeclaration(classData, attributeKey) then return true, attributeKey end
 			end
 		end
 	end
@@ -254,10 +275,11 @@ local function checkRedecleration(classData: classData, index: string?): (boolea
 	return false
 end
 
+--// Checks if there are any indexes inside the classData that aren't valid access specifiers or functions.
 local function checkOutsideAccessSpecifierDecleration(classData: classData): boolean
-	for key, value in classData do
-		if typeof(key) ~= "string" then continue end
-		if not checkValidAccessSpecifier(key) and key ~= "constructor" and key ~= "destructor" then
+	for index, value in classData do
+		if typeof(index) ~= "string" then continue end
+		if not checkValidAccessSpecifier(index) and index ~= "constructor" and index ~= "destructor" then
 			return true
 		end
 	end
@@ -265,6 +287,7 @@ local function checkOutsideAccessSpecifierDecleration(classData: classData): boo
 	return false
 end
 
+--// Sets the metamethods of an object.
 local function setMetamethods(class: internalClass, classData: internalClassData, methods)
 	methods.__metatable = 'The metatable is locked.'
 
@@ -343,52 +366,17 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 		end
 	end
 
-	function methods.__add(obj, obj2)
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
-		return callOperator("operator_add", obj, obj2)
-	end
+	for _, operatorFuncName in operatorFuncNames do
+		if not (classData.Public :: {[any]: any})[operatorFuncName] then continue end
 
-	function methods.__sub(obj, obj2)
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
-		return callOperator("operator_sub", obj, obj2)
-	end
-
-	function methods.__mul(obj, obj2)
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
-		return callOperator("operator_mul", obj, obj2)
-	end
-
-	function methods.__div(obj, obj2)
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
-		return callOperator("operator_div", obj, obj2)
-	end
-
-	function methods.__idiv(obj, obj2)
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
-		return callOperator("operator_idiv", obj, obj2)
-	end
-
-	function methods.__mod(obj, obj2)
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
-		return callOperator("operator_mod", obj, obj2)
-	end
-
-	function methods.__pow(obj, obj2)
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
-		return callOperator("operator_pow", obj, obj2)
-	end
-
-	function methods:__unm()
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
-		return callOperator("operator_unm", self)
-	end
-
-	function methods.__eq(obj, obj2)
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
-		return callOperator("operator_eq", obj, obj2)
+		methods[string.gsub(operatorFuncName, "operator", "_")] = function(obj, obj2)
+			if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
+			return callOperator(operatorFuncName, obj, obj2)
+		end
 	end
 end
 
+--// Creates a new class object with the given classData, className and an additional internalFunctionsList table to allow access for functions inside it to write to Inherits and Friends tables.
 local function createClassObject(nClassData: classData, className: string, internalFunctionsList: {(...any) -> (any)}?): internalClass
 	local class: internalClass = setmetatable({
 		Inherits = setmetatable({}, { __tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5) if f ~= createClassObject and internalFunctionsList and not table.find(internalFunctionsList, f) then LogError("attemptToModifyReadOnlyTable", false) end rawset(t :: any, i :: any, v :: any) end, __metatable = {} }),
@@ -472,11 +460,12 @@ local function createClassObject(nClassData: classData, className: string, inter
 		end
 
 		nClassData[i] = v
+
 		return v
 	end
-
+	
 	function class.new(...): any
-		local newObjTbl: internalClassData = sortAttributes(nClassData, className)
+		local newObjTbl = sortAttributes(nClassData, className)
 		local newObj = newproxy(true)
 		local methods = getmetatable(newObj)
 
@@ -488,7 +477,7 @@ local function createClassObject(nClassData: classData, className: string, inter
 
 		return newObj
 	end
-
+	
 	function class.extends(className: string): (extendedClassData: classData) -> class
 		if typeof(className) ~= "string" then LogError("classNameNotString") end
 		if Classes[className] then LogError("classAlreadyExists", false, className) end
@@ -545,9 +534,8 @@ end
 
 --////// Module Functions
 
-
 --[[
-	Returns a new <code>class</code> with the given <code>classData</code>.
+	Returns a new <code>class</code> with the given <code>className</code> and <code>classData</code>.
 ]]
 function classpp.class(className: string): (classData: classData) -> class
 	if typeof(className) ~= "string" then LogError("classNameNotString") end
@@ -560,8 +548,8 @@ function classpp.class(className: string): (classData: classData) -> class
 			LogError("classDataContainsMetatable")
 		end
 
-		local isAPropertyRedeclared, redeclaredIndex = checkRedecleration(classData)
-		if isAPropertyRedeclared then LogError("classPropertyRedecleration", false, redeclaredIndex) end
+		local isAPropertyRedeclared, redeclaredIndex = checkRedeclaration(classData)
+		if isAPropertyRedeclared then LogError("classPropertyRedeclaration", false, redeclaredIndex) end
 
 		if findPropertyFromIndex(classData, "Destroy") then LogError("invalidDestructorDecleration", false) end
 		if checkOutsideAccessSpecifierDecleration(classData) then LogError("invalidAccessSpecifierError", false) end
@@ -573,6 +561,9 @@ function classpp.class(className: string): (classData: classData) -> class
 	end
 end
 
+--[[
+	Marks the given <code>class</code> as abstract.
+]]
 function classpp.abstract(class: class): class
 	if Type.typeof(class) ~= "Class" then LogError("typeofObjectIsNotClass") end
 	if class["__final"] then LogError("illegalModifierCombination", true, `abstract and final`) end 
@@ -581,6 +572,9 @@ function classpp.abstract(class: class): class
 	return class
 end
 
+--[[
+	Marks the given <code>class</code> as final.
+]]
 function classpp.final(class: class): class
 	if Type.typeof(class) ~= "Class" then LogError("typeofObjectIsNotClass") end
 	if class["__abstract"] then LogError("illegalModifierCombination", true, `final and abstract`) end 
@@ -589,6 +583,9 @@ function classpp.final(class: class): class
 	return class
 end
 
+--[[
+	Returns the <code>class</code> with the given <code>className</code>, if it exists.
+]]
 function classpp.getClass(className: string): class
 	if typeof(className) ~= "string" then LogError("classNameNotString") end
 	if not Classes[className] then LogError("classNotFound") end

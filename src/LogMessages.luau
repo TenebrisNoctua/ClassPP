@@ -24,7 +24,7 @@ return {
 	classPropertyIsPrivate = "Property \"%s\" is private in this class.",
 	classPropertyIsProtected = "Property \"%s\" is protected in this class.",
 	classPropertyIsInternal = "Property \"%s\" is internal in this class. You cannot access it.",
-	classPropertyRedecleration = "Cannot redeclare property \"%s\".",
+	classPropertyRedeclaration = "Cannot redeclare property \"%s\".",
 	expectedFunctionError = "Expected function, got: %s.",
 	invalidAccessSpecifierError = "Invalid access specifier or function found in classData table. Make sure the names are correct.",
 	invalidDestructorDecleration = "Cannot create reserved function \"Destroy\".",

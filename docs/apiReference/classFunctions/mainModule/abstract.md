@@ -2,7 +2,7 @@
 <span class="apiReferenceFunctionTitle">abstract</span> <span class="apiReferenceFunctionTypeIndicator">:</span> <a href="../../../dataTypes/class" class="apiReferenceFunctionType" style="color: lightskyblue;">class</a>
 
 ```lua
-function classpp.abstract(class: class): class
+function classpp.abstract(classTable: {class}): class
 ```
 Marks the given [`class`](../../dataTypes/class.md) or [`class`](../../dataTypes/class.md)es as abstract. If given multiple, then the first class will be returned.
 

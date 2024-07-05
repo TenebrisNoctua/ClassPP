@@ -4,28 +4,28 @@
 ```lua
 function classpp.abstract(class: class): class
 ```
-Marks the given [`class`](../../dataTypes/class.md) as abstract.
+Marks the given [`class`](../../dataTypes/class.md) or [`class`](../../dataTypes/class.md)es as abstract. If given multiple, then the first class will be returned.
 
 ## Default Syntax
 
 ```lua
-local Car = abstract ( class "Car" {
+local Car = abstract { class "Car" {
 	Public = {
         ...
 	},
     ...
-})
+}}
 ```
 
 ## Without Syntax Sugar
 
 ```lua
-local Car = abstract(class("Car")({
+local Car = abstract({class("Car")({
 	Public = {
         ...
 	},
     ...
-}))
+})})
 ```
 
 ## Parameters
@@ -34,8 +34,8 @@ local Car = abstract(class("Car")({
 <table>
 <tbody>
 <tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff">class: <a href="../../../dataTypes/class" style="color: lightskyblue;">class</a></td>
-<td style="width: 82%">The desired <code>class</code> to be set to abstract.</td>
+<td style="background-color: rgb(37, 39, 45); color: #fff">classTable: <a href="../../../dataTypes/class" style="color: lightskyblue;">{class}</a></td>
+<td style="width: 82%">The desired <code>class</code> or <code>class</code>es to be set to abstract.</td>
 </tr>
 </tbody>
 </table>

@@ -52,23 +52,21 @@ function Util.checkFriendship(class: any, methodName: string, method: (any) -> (
 	return false
 end
 
-function Util.inClassScope(class: any, includeInherited: boolean, includeFriend: boolean, classes: {[string]: any}?): boolean
-	local level: number = 4
+function Util.inClassScope(class: any, includeInherited: boolean, includeFriend: boolean, classes: {[string]: any}?, defaultLevel: number?): boolean
+	local level: number = defaultLevel or 6
 	
 	while true do
-		level += 1
-		
 		local method, methodName = Util.getMethodContext(level)
 		if not method then break end
+
+		if class[methodName] == method then return true end
+
+		local result = if includeInherited then Util.checkInheritance(class, method) else false or if includeFriend and classes then Util.checkFriendship(class, methodName, method, classes) else false
+		if result then return true end
 		
 		if method == Type.typeof then return true end
 		
-		if class[methodName] == method then
-			return true
-		end
-		
-		local result = if includeInherited then Util.checkInheritance(class, method) else false or if includeFriend and classes then Util.checkFriendship(class, methodName, method, classes) else false
-		if result then return true end
+		level += 1
 	end
 
 	return false

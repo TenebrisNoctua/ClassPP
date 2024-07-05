@@ -5,28 +5,28 @@
 function classpp.final(class: class): class
 ```
 
-Marks the given [`class`](../../dataTypes/class.md) as final.
+Marks the given [`class`](../../dataTypes/class.md) or [`class`](../../dataTypes/class.md)es as final. If given multiple, then the first class will be returned.
 
 ## Default Syntax
 
 ```lua
-local Car = final ( class "Car" {
+local Car = final { class "Car" {
 	Public = {
         ...
 	},
     ...
-})
+}}
 ```
 
 ## Without Syntax Sugar
 
 ```lua
-local Car = final(class("Car")({
+local Car = final({class("Car")({
 	Public = {
         ...
 	},
     ...
-}))
+})})
 ```
 
 ## Parameters
@@ -35,8 +35,8 @@ local Car = final(class("Car")({
 <table>
 <tbody>
 <tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff">class: <a href="../../../dataTypes/class" style="color: lightskyblue;">class</a></td>
-<td style="width: 82%">The desired <code>class</code> to be set to final.</td>
+<td style="background-color: rgb(37, 39, 45); color: #fff">classTable: <a href="../../../dataTypes/class" style="color: lightskyblue;">{class}</a></td>
+<td style="width: 82%">The desired <code>class</code> or <code>class</code>es to be set to final.</td>
 </tr>
 </tbody>
 </table>

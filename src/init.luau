@@ -36,8 +36,8 @@ local operatorFuncNames: {string} = {
 --////// Types
 
 export type classData = {
-	constructor: (any: any, ...any) -> ()?,
-	destructor: (any: any) -> ()?,
+	constructor: (self: any, ...any) -> ()?,
+	destructor: (self: any) -> ()?,
 	Public: {[any]: any}?,
 	Private: {[any]: any}?,
 	Protected: {[any]: any}?,
@@ -52,8 +52,8 @@ type internalClassData = {
 	Internal: {
 		__type: string?,
 		__locked: boolean?,
-		constructor: (any: any, ...any) -> ()?,
-		destructor: (any: any) -> ()?,
+		constructor: (self: any, ...any) -> ()?,
+		destructor: (self: any) -> ()?,
 	}
 }
 
@@ -111,7 +111,7 @@ local function sortAttributes(data: classData, className: string): internalClass
 		__type = className,
 		__locked = false
 	}
-	
+
 	--[[
 	-- If any more internal functions get added, this part may get re-used again.
 	
@@ -123,12 +123,12 @@ local function sortAttributes(data: classData, className: string): internalClass
 		end
 	end
 	--]]
-	
+
 	if classObjTbl["constructor"] then 
 		classObjTbl.Internal.constructor = classObjTbl["constructor"] 
 		classObjTbl["constructor"] = nil
 	end
-	
+
 	if classObjTbl["destructor"] then
 		classObjTbl.Internal.destructor = classObjTbl["destructor"]
 		classObjTbl["destructor"] = nil
@@ -463,7 +463,7 @@ local function createClassObject(nClassData: classData, className: string, inter
 
 		return v
 	end
-	
+
 	function class.new(...): any
 		local newObjTbl: internalClassData = sortAttributes(nClassData, className)
 		local newObj = newproxy(true)
@@ -477,7 +477,7 @@ local function createClassObject(nClassData: classData, className: string, inter
 
 		return newObj
 	end
-	
+
 	function class.extends(className: string): (extendedClassData: classData) -> class
 		if typeof(className) ~= "string" then LogError("classNameNotString") end
 		if Classes[className] then LogError("classAlreadyExists", false, className) end
@@ -562,25 +562,31 @@ function classpp.class(className: string): (classData: classData) -> class
 end
 
 --[[
-	Marks the given <code>class</code> as abstract.
+	Marks the given <code>class</code> or <code>class</code>es as abstract, if given multiple, the first class will be returned.
 ]]
-function classpp.abstract(class: class): class
-	if Type.typeof(class) ~= "Class" then LogError("typeofObjectIsNotClass") end
-	if class["__final"] then LogError("illegalModifierCombination", true, `abstract and final`) end 
+function classpp.abstract(classTable: {class}): class
+	for _, class: class in classTable do
+		if Type.typeof(class) ~= "Class" then LogError("typeofObjectIsNotClass") end
+		if class["__final"] then LogError("illegalModifierCombination", true, `abstract and final`) end 
 
-	class["__abstract"] = true
-	return class
+		class["__abstract"] = true
+	end
+	
+	return classTable[1]
 end
 
 --[[
-	Marks the given <code>class</code> as final.
+	Marks the given <code>class</code> or <code>class</code>es as final, if given multiple, the first class will be returned.
 ]]
-function classpp.final(class: class): class
-	if Type.typeof(class) ~= "Class" then LogError("typeofObjectIsNotClass") end
-	if class["__abstract"] then LogError("illegalModifierCombination", true, `final and abstract`) end 
+function classpp.final(classTable: {class}): class
+	for _, class: class in classTable do
+		if Type.typeof(class) ~= "Class" then LogError("typeofObjectIsNotClass") end
+		if class["__abstract"] then LogError("illegalModifierCombination", true, `final and abstract`) end 
 
-	class["__final"] = true
-	return class
+		class["__final"] = true
+	end
+
+	return classTable[1]
 end
 
 --[[

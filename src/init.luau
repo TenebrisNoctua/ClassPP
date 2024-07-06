@@ -61,6 +61,7 @@ export type class = typeof(setmetatable({} :: {
 	new: (...any) -> any,
 	extends: (className: string) -> (classData: classData) -> class,
 	overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (any)}) -> (),
+	static: (accessSpecifier: string, name: string, property: any) -> (),
 	Name: string
 }, {
 	__index = function(t, i) return end :: ({any}, any) -> (any),
@@ -75,9 +76,11 @@ type internalClass = typeof(setmetatable({} :: {
 	new: (...any) -> any,
 	extends: (className: string) -> (classData: classData) -> class,
 	overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (any)}) -> (),
+	static: (accessSpecifier: string, name: string, property: any) -> (),
 	Name: string,
-	Inherits: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end}))?,
-	Friends: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end}))?
+	Inherits: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end})),
+	Friends: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end})),
+	Statics: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end}))?
 }, {
 	__index = function(t, i) return end :: ({any}, any) -> (any),
 	__newindex = function(t, i, v) end :: ({any}, any, any) -> (),
@@ -226,7 +229,7 @@ end
 --// Finds the property that's been set to the given index. If given a string that contains an access specifier, it tries to find the property inside that access specifier.
 local function findPropertyFromIndex(classData: internalClassData | classData, index: string, accessSpecifier: string?): any?
 	local fAccessSpecifier = accessSpecifier or returnAccessSpecifier(index, classData)
-	if typeof((classData :: any)[fAccessSpecifier]) ~= "table" then return end
+	if not (classData :: any)[fAccessSpecifier] then return end
 	if (classData :: any)[fAccessSpecifier][index] ~= nil then
 		return (classData :: any)[fAccessSpecifier][index]
 	end
@@ -299,20 +302,20 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 		if accessSpecifier ~= "Public" then
 			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then -- Util.inClassScope(class, false, true, methods, Classes)
 				LogError("classPropertyIsPrivate", true, index)
-			elseif accessSpecifier == "Internal" and Util.getMethodContext(5) ~= class.new and Util.getMethodContext(7) ~= Type.typeof --[[ and not Util.inClassScope(class, true, true, methods, Classes)]] then
+			elseif accessSpecifier == "Internal" and Util.getMethodContext(7) ~= Type.typeof --[[ and not Util.inClassScope(class, true, true, methods, Classes)]] then
 				LogError("classPropertyIsInternal", true, index)
 			elseif accessSpecifier == "Protected" and not Util.inClassScope(class, true, false) then
 				LogError("classPropertyIsProtected", true, index)
 			end
 		end
-
+		
 		if index == "Destroy" then
 			return function() 
 				if classData.Internal.destructor then classData.Internal.destructor(self) end
 				objectCleaner(classData)
 			end
 		end
-
+		
 		-- Checking if the index is calling an operator function, this part can be removed if you want to support operator functions still being callable even without operators.
 		local sFound = string.find(index, "operator")
 		if sFound then
@@ -324,9 +327,9 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 		end
 
 		local rprop = findPropertyFromIndex(classData, index, accessSpecifier)
-		if rprop == nil and index ~= "constructor" and index ~= "destructor" and index ~= "__tostring" and not sFound then LogError("classMemberNotFound", true, index) end
-
-		return rprop
+		if rprop then return rprop elseif index ~= "constructor" and index ~= "destructor" and index ~= "__tostring" and not sFound then LogError("classMemberNotFound", true, index) end
+		
+		return
 	end
 
 	function methods:__newindex(index, value)
@@ -337,7 +340,7 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 		if accessSpecifier ~= "Public" then
 			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then
 				LogError("classPropertyIsPrivate", true, index)
-			elseif accessSpecifier == "Internal" and Util.getMethodContext(5) ~= class.new then
+			elseif accessSpecifier == "Internal" then
 				LogError("classPropertyIsInternal", true, index)
 			elseif accessSpecifier == "Protected" and not Util.inClassScope(class, false, false) then
 				LogError("classPropertyIsProtected", true, index)
@@ -386,9 +389,11 @@ local function createClassObject(nClassData: classData, className: string, inter
 		new: (...any) -> any,
 		extends: (className: string) -> (classData: classData) -> class,
 		overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (any)}) -> (),
+		static: (accessSpecifier: string, name: string, property: any) -> (),
 		Name: string,
-		Inherits: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end}))?,
-		Friends: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end}))?
+		Inherits: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end})),
+		Friends: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end})),
+		Statics: typeof(setmetatable({}, {__newindex = function(t, i, v) end, __metatable = {}, __tostring = function() end}))?
 	}, {
 		__index = function(t, i) return rawget(t, i)  end,
 		__newindex = function(t, i, v) rawset(t, i, v) end,
@@ -397,8 +402,10 @@ local function createClassObject(nClassData: classData, className: string, inter
 		__abstract = false,
 		__final = false
 	})
+	
+	class.Statics = setmetatable({}, {__tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5) if f ~= class.static then LogError("attemptToModifyReadOnlyTable", false) end rawset(t :: any, i :: any, v :: any) end, __metatable = {}})
 
-	if nClassData.Friend and class.Friends then
+	if nClassData.Friend then
 		for _, friend in nClassData.Friend do
 			class.Friends[friend] = true
 		end
@@ -425,12 +432,10 @@ local function createClassObject(nClassData: classData, className: string, inter
 		end
 
 		local result = nClassData[i] or findPropertyFromIndex(nClassData, i)
-		if not result then return end
+		if not result then return (class.Statics :: any)[i] end
 
 		local methodContext = Util.getMethodContext(5)
-		local foundmetatable = getmetatable(result)
-
-		if typeof(result) == "function" and methodContext ~= Util.inClassScope then LogError("cannotCallFunctionError") elseif typeof(result) == "table" and foundmetatable and foundmetatable["__call"] and methodContext ~= Util.inClassScope then LogError("cannotCallFunctionError") end
+		if typeof(result) == "function" and methodContext ~= Util.inClassScope then LogError("cannotCallFunctionError") elseif typeof(result) == "table" and getmetatable(result) and getmetatable(result)["__call"] and methodContext ~= Util.inClassScope then LogError("cannotCallFunctionError") end
 
 		return result
 	end
@@ -470,9 +475,9 @@ local function createClassObject(nClassData: classData, className: string, inter
 		local methods = getmetatable(newObj)
 
 		setMetamethods(class, newObjTbl, methods)
-
-		if newObj.constructor then
-			newObj:constructor(...)
+		
+		if newObjTbl.Internal.constructor then
+			newObjTbl.Internal.constructor(newObj, ...)
 		end
 
 		return newObj
@@ -524,9 +529,59 @@ local function createClassObject(nClassData: classData, className: string, inter
 
 			if not f and #args > 0 then LogErrorNonFatal("overloadfunctionArgumentMismatch", false, #args, name) end
 		end
-
+		
 		if not nClassData[specifierName] then nClassData[specifierName] = {} end
 		nClassData[specifierName][name] = setmetatable({}, methods)
+	end
+
+	function class.static(accessSpecifier: string, name: string, property: any)
+		local accessSpecifierCheck, specifierName = checkValidAccessSpecifier(accessSpecifier)
+		if not accessSpecifierCheck or specifierName and specifierName == "Internal" or specifierName and specifierName == "Protected" then LogError("invalidAccessSpecifierError", true) end
+		if not name then LogError("staticMemberNameNotSet", true) end
+		if not class.Statics then return end
+		if not nClassData[specifierName] then nClassData[specifierName] = {} end
+
+		local newObj = newproxy(true)
+		local methods = getmetatable(newObj)
+
+		function methods:__index(index): any
+			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then
+				LogError("classPropertyIsPrivate", true, name)
+			end
+			
+			return property
+		end
+
+		function methods:__newindex(index, value)
+			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then
+				LogError("classPropertyIsPrivate", true, name)
+			end
+			
+			property = value
+			return property
+		end
+		
+		function methods:__call(...)
+			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then
+				LogError("classPropertyIsPrivate", true, name)
+			end
+			
+			if typeof(property) == "function" then 
+				return property(...) 
+			else
+				return property
+			end
+		end
+		
+		function methods:__tostring()
+			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then
+				LogError("classPropertyIsPrivate", true, name)
+			end
+			
+			return tostring(property)
+		end
+		
+		class.Statics[name] = newObj
 	end
 
 	return setmetatable(class :: any, methods)
@@ -552,7 +607,7 @@ function classpp.class(className: string): (classData: classData) -> class
 		if isAPropertyRedeclared then LogError("classPropertyRedeclaration", false, redeclaredIndex) end
 
 		if findPropertyFromIndex(classData, "Destroy") then LogError("invalidDestructorDecleration", false) end
-		if checkOutsideAccessSpecifierDecleration(classData) then LogError("invalidAccessSpecifierError", false) end
+		if checkOutsideAccessSpecifierDecleration(classData) then LogError("invalidAccessSpecifierInClassDataError", false) end
 
 		local nCObj: class = createClassObject(classData, className)
 		Classes[className] = nCObj
@@ -562,7 +617,7 @@ function classpp.class(className: string): (classData: classData) -> class
 end
 
 --[[
-	Marks the given <code>class</code> or <code>class</code>es as abstract, if given multiple, the first class will be returned.
+	Marks the given <code>class</code> or <code>class</code>es as abstract. If given multiple, then the first class will be returned.
 ]]
 function classpp.abstract(classTable: {class}): class
 	for _, class: class in classTable do
@@ -571,12 +626,12 @@ function classpp.abstract(classTable: {class}): class
 
 		class["__abstract"] = true
 	end
-	
+
 	return classTable[1]
 end
 
 --[[
-	Marks the given <code>class</code> or <code>class</code>es as final, if given multiple, the first class will be returned.
+	Marks the given <code>class</code> or <code>class</code>es as final. If given multiple, then the first class will be returned.
 ]]
 function classpp.final(classTable: {class}): class
 	for _, class: class in classTable do

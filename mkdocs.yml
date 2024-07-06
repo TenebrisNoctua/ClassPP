@@ -66,6 +66,7 @@ nav:
       - tutorials/operatorOverloading.md
       - tutorials/functionOverloading.md
       - tutorials/nonAccessSpecifiers.md
+      - tutorials/staticMembers.md
       - tutorials/polymorphism.md
       - tutorials/errorHandling.md
   - API Reference: 

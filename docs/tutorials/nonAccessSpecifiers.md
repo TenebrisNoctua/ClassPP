@@ -9,11 +9,11 @@ Using this non-access specifier will make the given class final, meaning this cl
 ```lua
 local class, final = ClassPP.class, ClassPP.final
 
-local Car = final ( class "Car" {
+local Car = final { class "Car" {
 	Public = {
 		Brand = "Ford",
 	}
-})
+}}
 
 local BiggerCar = Car.extends "BiggerCar" { -- This will error!
 	Public = {
@@ -30,7 +30,7 @@ To access an abstract class, it must be inherited from another class.
 ```lua
 local class, abstract = ClassPP.class, ClassPP.abstract
 
-local BaseCar = abstract ( class "BaseCar" {
+local BaseCar = abstract { class "BaseCar" {
 	Public = {
 		Brand = "",
 		Model = "",
@@ -39,7 +39,7 @@ local BaseCar = abstract ( class "BaseCar" {
 			print("honk honk!")
 		end
 	}
-})
+}}
 
 local Car = BaseCar.extends "Car" {
 	Public = {

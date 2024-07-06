@@ -50,6 +50,8 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
 
 &nbsp;Creates an overloaded function with the given access specifier, name and the function table, and saves it to the `class`'s `classData`.
 
+----------------------
+
 &nbsp;[static](#overload) (accessSpecifier: string, name: string, property: any) : <a style="color: lightskyblue;">void</a>
 
 &nbsp;Creates a new static `class` member that can only be accessable through the `class` object. 

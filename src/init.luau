@@ -148,7 +148,12 @@ local function objectCleaner(objectTbl: {[string]: any}): {}
 			for key, value in tbl do
 				if typeof(key) == "Instance" then key:Destroy() end
 				if typeof(value) == "table" then
-					tbl[key] = recursiveClean(value)
+					for _, v in tbl do
+						if v == value then
+							return
+						end
+					end
+					recursiveClean(value)
 				elseif typeof(value) == "Instance" then
 					value:Destroy()
 				end
@@ -327,7 +332,7 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 		end
 
 		local rprop = findPropertyFromIndex(classData, index, accessSpecifier)
-		if rprop then return rprop elseif index ~= "constructor" and index ~= "destructor" and index ~= "__tostring" and not sFound then LogError("classMemberNotFound", true, index) end
+		if rprop ~= nil then return rprop elseif index ~= "constructor" and index ~= "destructor" and index ~= "__tostring" and not sFound then LogError("classMemberNotFound", true, index) end
 		
 		return
 	end

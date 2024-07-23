@@ -202,7 +202,7 @@ Creates a new static member with the given parameters, and saves it to the `clas
 </tr>
 <tr>
 <td style="background-color: rgb(37, 39, 45); color: #fff">property: <a href="https://create.roblox.com/docs/luau/type-checking#types" style="color: lightskyblue;">any</a></td>
-<td>The property that will be saved to the static member. Can be accessed through indexing the <code>class</code> like <code>class.<memberName>.property</code> (or <code>class.<memberName>.p</code>) </td>
+<td>The property that will be saved to the static member. Can be accessed through indexing the <code>class</code> like <code>class.memberName.property</code> (or <code>class.memberName.p</code>) </td>
 </tr>
 </tbody>
 </table>

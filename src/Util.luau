@@ -57,7 +57,7 @@ function Util.inClassScope(class: any, includeInherited: boolean, includeFriend:
 	
 	while true do
 		local method, methodName = Util.getMethodContext(level)
-		if not method then break end
+		if not method then return false end
 
 		if class[methodName] == method then return true end
 

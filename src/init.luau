@@ -194,6 +194,7 @@ local function mergeClassData(superClassData: classData, childClassData: classDa
 		end
 
 		for attributeName, attributeData in attributesData do
+			if typeof(newClassData[accessSpecifier][attributeName]) == "table" then local s, r = pcall(getmetatable, newClassData[accessSpecifier][attributeName]) if s and r and r.__final then LogError("attemptToOverrideAFinalMethod", false) end end
 			newClassData[accessSpecifier][attributeName] = attributeData
 		end
 	end
@@ -313,14 +314,14 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 				LogError("classPropertyIsProtected", true, index)
 			end
 		end
-		
+
 		if index == "Destroy" then
 			return function() 
 				if classData.Internal.destructor then classData.Internal.destructor(self) end
 				objectCleaner(classData)
 			end
 		end
-		
+
 		-- Checking if the index is calling an operator function, this part can be removed if you want to support operator functions still being callable even without operators.
 		local sFound = string.find(index, "operator")
 		if sFound then
@@ -333,7 +334,7 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 
 		local rprop = findPropertyFromIndex(classData, index, accessSpecifier)
 		if rprop ~= nil then return rprop elseif index ~= "constructor" and index ~= "destructor" and index ~= "__tostring" and not sFound then LogError("classMemberNotFound", true, index) end
-		
+
 		return
 	end
 
@@ -407,7 +408,7 @@ local function createClassObject(nClassData: classData, className: string, inter
 		__abstract = false,
 		__final = false
 	})
-	
+
 	class.Statics = setmetatable({}, {__tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5) if f ~= class.static then LogError("attemptToModifyReadOnlyTable", false) end rawset(t :: any, i :: any, v :: any) end, __metatable = {}})
 
 	if nClassData.Friend then
@@ -480,7 +481,7 @@ local function createClassObject(nClassData: classData, className: string, inter
 		local methods = getmetatable(newObj)
 
 		setMetamethods(class, newObjTbl, methods)
-		
+
 		if newObjTbl.Internal.constructor then
 			newObjTbl.Internal.constructor(newObj, ...)
 		end
@@ -534,7 +535,7 @@ local function createClassObject(nClassData: classData, className: string, inter
 
 			if not f and #args > 0 then LogErrorNonFatal("overloadfunctionArgumentMismatch", false, #args, name) end
 		end
-		
+
 		if not nClassData[specifierName] then nClassData[specifierName] = {} end
 		nClassData[specifierName][name] = setmetatable({}, methods)
 	end
@@ -553,7 +554,7 @@ local function createClassObject(nClassData: classData, className: string, inter
 			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then
 				LogError("classPropertyIsPrivate", true, name)
 			end
-			
+
 			return property
 		end
 
@@ -561,31 +562,31 @@ local function createClassObject(nClassData: classData, className: string, inter
 			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then
 				LogError("classPropertyIsPrivate", true, name)
 			end
-			
+
 			property = value
 			return property
 		end
-		
+
 		function methods:__call(...)
 			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then
 				LogError("classPropertyIsPrivate", true, name)
 			end
-			
+
 			if typeof(property) == "function" then 
 				return property(...) 
 			else
 				return property
 			end
 		end
-		
+
 		function methods:__tostring()
 			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then
 				LogError("classPropertyIsPrivate", true, name)
 			end
-			
+
 			return tostring(property)
 		end
-		
+
 		class.Statics[name] = newObj
 	end
 
@@ -638,15 +639,31 @@ end
 --[[
 	Marks the given <code>class</code> or <code>class</code>es as final. If given multiple, then the first class will be returned.
 ]]
-function classpp.final(classTable: {class}): class
-	for _, class: class in classTable do
-		if Type.typeof(class) ~= "Class" then LogError("typeofObjectIsNotClass") end
-		if class["__abstract"] then LogError("illegalModifierCombination", true, `final and abstract`) end 
+function classpp.final(classOrFunction: {class} | (...any) -> (any)): class
+	if typeof(classOrFunction) == "table" then
+		for _, class: class in classOrFunction do
+			if Type.typeof(class) ~= "Class" then LogError("typeofObjectIsNotClass") end
+			if class["__abstract"] then LogError("illegalModifierCombination", true, `final and abstract`) end 
 
-		class["__final"] = true
+			class["__final"] = true
+		end
+		return classOrFunction[1]
+	elseif typeof(classOrFunction) == "function" then
+		local methods = {
+			__index = function(tbl, i) return end,
+			__newindex = function(tbl, i) return end,
+			__final = true,
+		}
+
+		methods.__call = function(tbl, ...)
+			if not ... then return end
+			return classOrFunction(...)
+		end
+		
+		return setmetatable({}, methods) :: any
 	end
-
-	return classTable[1]
+	
+	return LogError("invalidModifierArgument", true) :: any
 end
 
 --[[

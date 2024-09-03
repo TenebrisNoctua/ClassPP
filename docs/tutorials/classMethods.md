@@ -59,7 +59,7 @@ local Car = class "Car" {
     Public = {
         Brand = "Lamborghini",
         getLicensePlate = function(self, number)
-            print(self.License_Plate, number) -- Prints "XXXX 1"
+            print(self.License_Plate, number) -- Prints "XXXX 1"!
         end
     },
     Private = {
@@ -91,7 +91,7 @@ local Car = class "Car" {
 }
 
 function Car.Public:getLicensePlate(number)
-    print(self.License_Plate, number) -- Prints "XXXX 1"
+    print(self.License_Plate, number) -- Prints "XXXX 1"!
 end
 
 local newCar = Car.new()
@@ -101,4 +101,4 @@ newCar:getLicensePlate(1)
 In this example, we defined a function outside of the class by specifying the class name, then the access specifier, followed by the `:` operator and the name of the function. Unlike in C++, you do not have to define the function first inside the class to use this method.
 
 !!! info
-    For better formatting of your classes, this method is recommended.
+    Outside Class Definition syntax is recommended as it allows for a better formatting style.

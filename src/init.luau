@@ -10,7 +10,7 @@
 
 --////// Variables
 
-local classpp = { class = function(className: string) end }
+local classpp = {}
 
 local Util = require(script.Util)
 local Error = require(script.Error)
@@ -21,17 +21,7 @@ local LogErrorNonFatal = Error.logErrorNonFatal
 
 local Classes: {[string]: class} = {}
 
-local operatorFuncNames: {string} = {
-	"operator_add",
-	"operator_sub",
-	"operator_mul",
-	"operator_div",
-	"operator_idiv",
-	"operator_mod",
-	"operator_pow",
-	"operator_unm",
-	"operator_eq"
-}
+local operatorFuncNames: {string} = {"operator_add", "operator_sub", "operator_mul", "operator_div", "operator_idiv", "operator_mod", "operator_pow", "operator_unm", "operator_eq"}
 
 --////// Types
 
@@ -115,18 +105,6 @@ local function sortAttributes(data: classData, className: string): internalClass
 		__locked = false
 	}
 
-	--[[
-	-- If any more internal functions get added, this part may get re-used again.
-	
-	local InternalFunctionNames = {"constructor", "destructor"}
-	for _, functionName in InternalFunctionNames do
-		if classObjTbl[functionName] then
-			classObjTbl.Internal[functionName] = classObjTbl[functionName]
-			classObjTbl[functionName] = nil
-		end
-	end
-	--]]
-
 	if classObjTbl["constructor"] then 
 		classObjTbl.Internal.constructor = classObjTbl["constructor"] 
 		classObjTbl["constructor"] = nil
@@ -140,28 +118,27 @@ local function sortAttributes(data: classData, className: string): internalClass
 	return classObjTbl
 end
 
+--// Recursively cleans the given table.
+local function recursiveClean(tbl: {[any]: any})
+	for key, value in tbl do
+		if typeof(key) == "Instance" then key:Destroy() end
+		if typeof(value) == "table" then
+			for _, v in tbl do
+				if v == value then return end
+			end
+			recursiveClean(value)
+		elseif typeof(value) == "Instance" then
+			value:Destroy()
+		end
+
+		tbl[key] = nil
+	end
+end
+
 --// Cleans the objectData (except for the Internal data) and locks the object.
 local function objectCleaner(objectTbl: {[string]: any}): {}
 	for accessSpecifier, attributesData in objectTbl do
 		if accessSpecifier == "Internal" then continue end
-		local function recursiveClean(tbl: {[any]: any})
-			for key, value in tbl do
-				if typeof(key) == "Instance" then key:Destroy() end
-				if typeof(value) == "table" then
-					for _, v in tbl do
-						if v == value then
-							return
-						end
-					end
-					recursiveClean(value)
-				elseif typeof(value) == "Instance" then
-					value:Destroy()
-				end
-
-				tbl[key] = nil
-			end
-			return
-		end
 		recursiveClean(attributesData)
 	end
 	objectTbl.Internal.__locked = true
@@ -194,7 +171,6 @@ local function mergeClassData(superClassData: classData, childClassData: classDa
 		end
 
 		for attributeName, attributeData in attributesData do
-			if typeof(newClassData[accessSpecifier][attributeName]) == "table" then local s, r = pcall(getmetatable, newClassData[accessSpecifier][attributeName]) if s and r and r.__final then LogError("attemptToOverrideAFinalMethod", false) end end
 			newClassData[accessSpecifier][attributeName] = attributeData
 		end
 	end
@@ -204,20 +180,14 @@ end
 
 --// Checks if the given string is a valid access specifier.
 local function checkValidAccessSpecifier(specifierString: string): (boolean, string?)
-	local accessSpecifiers: {string} = {
-		"Public",
-		"Private",
-		"Protected",
-		"Internal",
-		"Friend"
-	}
+	local accessSpecifiers: {string} = {"Public", "Private", "Protected", "Internal", "Friend"}
 
 	for _, accessSpecifier in accessSpecifiers do
 		if specifierString == accessSpecifier then
 			return true, accessSpecifier
 		end
 	end
-
+	
 	return false
 end
 
@@ -228,7 +198,6 @@ local function returnAccessSpecifier(index: string, classData: any): string?
 			return accessSpecifier
 		end
 	end
-
 	return
 end
 
@@ -306,9 +275,9 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 		local accessSpecifier = returnAccessSpecifier(index, classData)
 
 		if accessSpecifier ~= "Public" then
-			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then -- Util.inClassScope(class, false, true, methods, Classes)
+			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, Classes) then
 				LogError("classPropertyIsPrivate", true, index)
-			elseif accessSpecifier == "Internal" and Util.getMethodContext(7) ~= Type.typeof --[[ and not Util.inClassScope(class, true, true, methods, Classes)]] then
+			elseif accessSpecifier == "Internal" and Util.getMethodContext(7) ~= Type.typeof then
 				LogError("classPropertyIsInternal", true, index)
 			elseif accessSpecifier == "Protected" and not Util.inClassScope(class, true, false) then
 				LogError("classPropertyIsProtected", true, index)
@@ -604,12 +573,9 @@ function classpp.class(className: string): (classData: classData) -> class
 
 	return function(classData: classData): class
 		if typeof(classData) ~= "table" then LogError("classDataNotTable") end
+		if getmetatable(classData :: any) or not select(1, pcall(setmetatable, classData, {})) then LogError("classDataContainsMetatable") end
 
-		if getmetatable(classData :: any) or not select(1, pcall(function() setmetatable(classData, {}) end)) then -- Checking if the given ClassData contains a metatable.
-			LogError("classDataContainsMetatable")
-		end
-
-		local isAPropertyRedeclared, redeclaredIndex = checkRedeclaration(classData)
+		local isAPropertyRedeclared: boolean, redeclaredIndex: any? = checkRedeclaration(classData)
 		if isAPropertyRedeclared then LogError("classPropertyRedeclaration", false, redeclaredIndex) end
 
 		if findPropertyFromIndex(classData, "Destroy") then LogError("invalidDestructorDecleration", false) end
@@ -626,6 +592,8 @@ end
 	Marks the given <code>class</code> or <code>class</code>es as abstract. If given multiple, then the first class will be returned.
 ]]
 function classpp.abstract(classTable: {class}): class
+	if typeof(classTable) ~= "table" then LogError("invalidModifierArgument", true) end
+
 	for _, class: class in classTable do
 		if Type.typeof(class) ~= "Class" then LogError("typeofObjectIsNotClass") end
 		if class["__final"] then LogError("illegalModifierCombination", true, `abstract and final`) end 
@@ -639,31 +607,17 @@ end
 --[[
 	Marks the given <code>class</code> or <code>class</code>es as final. If given multiple, then the first class will be returned.
 ]]
-function classpp.final(classOrFunction: {class} | (...any) -> (any)): class
-	if typeof(classOrFunction) == "table" then
-		for _, class: class in classOrFunction do
-			if Type.typeof(class) ~= "Class" then LogError("typeofObjectIsNotClass") end
-			if class["__abstract"] then LogError("illegalModifierCombination", true, `final and abstract`) end 
+function classpp.final(classTable: {class}): class
+	if typeof(classTable) ~= "table" then LogError("invalidModifierArgument", true) end
 
-			class["__final"] = true
-		end
-		return classOrFunction[1]
-	elseif typeof(classOrFunction) == "function" then
-		local methods = {
-			__index = function(tbl, i) return end,
-			__newindex = function(tbl, i) return end,
-			__final = true,
-		}
+	for _, class: class in classTable do
+		if Type.typeof(class) ~= "Class" then LogError("typeofObjectIsNotClass") end
+		if class["__abstract"] then LogError("illegalModifierCombination", true, `final and abstract`) end 
 
-		methods.__call = function(tbl, ...)
-			if not ... then return end
-			return classOrFunction(...)
-		end
-		
-		return setmetatable({}, methods) :: any
+		class["__final"] = true
 	end
-	
-	return LogError("invalidModifierArgument", true) :: any
+
+	return classTable[1]
 end
 
 --[[

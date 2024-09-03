@@ -37,7 +37,7 @@ end
 local vector1 = Vector.new(4, 5, 2)
 local vector2 = Vector.new(1, 2, 3)
 
-print(vector1 + vector2) -- Prints (5, 7, 5)
+print(vector1 + vector2) -- Prints "(5, 7, 5)"
 ```
 
 In this example, we have created a custom Vector3 class that has a special function called `operator_add`, this special function is one of the special functions in Class++ that allows you to overload a specific operator. Here, we overloaded the operator `+` with our custom function that allows us to add two Vectors together.

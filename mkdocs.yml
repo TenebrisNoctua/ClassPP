@@ -69,6 +69,7 @@ nav:
       - tutorials/staticMembers.md
       - tutorials/polymorphism.md
       - tutorials/errorHandling.md
+      - tutorials/types.md
   - API Reference: 
       - Getting Started: apiReference/gettingStarted.md
       - Class++ Functions: 

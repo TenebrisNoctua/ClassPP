@@ -133,7 +133,7 @@ Creates and returns a new `class` that inherits the `class` it's been created fr
 <table>
 <tbody>
 <tr>
-<td class="apiReferenceMethodBox">object</td>
+<td class="apiReferenceMethodBox">class</td>
 </tr>
 <tr>
 </tbody>

@@ -26,7 +26,7 @@ local Car = Vehicle.extends "Car" { -- Derived Class
 
 local newCar = Car.new()
 newCar:honk()
-print(newCar.Brand, newCar.Model, newCar.License_Plate, newCar.Year) -- Prints Tesla S A1B2C3 2012!
+print(newCar.Brand, newCar.Model, newCar.License_Plate, newCar.Year) -- Prints "Tesla S A1B2C3 2012"!
 ```
 
 In this example, we have 2 classes: The Vehicle class (base), and the Car class (child). <br>
@@ -71,7 +71,7 @@ local Student = Child.extends "Student" { -- Derived Class from a Derived Class
 
 local newStudent = Student.new()
 print(newStudent.Name, newStudent.Age, newStudent.Gender, newStudent.Height, newStudent.Age, newStudent.Energetic, newStudent.SchoolId, newStudent.Grade, newStudent.Behaviour)
--- Prints " 9  0 9 true 0 0 Good" (Spaces represent empty strings)
+-- Prints " 9  0 9 true 0 0 Good"! (Spaces represent empty strings)
 ```
 
 ## Protected Access Specifier
@@ -98,7 +98,7 @@ local BiggerCar = Car.extends "BiggerCar" {
 }
 
 function BiggerCar.Public:printLicensePlate()
-    print(self.License_Plate) -- Will print "XXXX"
+    print(self.License_Plate) -- Will print "XXXX"!
 end
 
 local newCar = BiggerCar.new()

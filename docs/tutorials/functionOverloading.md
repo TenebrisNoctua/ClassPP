@@ -31,9 +31,9 @@ Test.overload("Public", "Set", {
 })
 
 local newTest = Test.new()
-newTest:Set(1, 2) -- Prints 1 2
-newTest:Set(3) -- Prints 3
-newTest:Set() -- Prints 3 2
+newTest:Set(1, 2) -- Prints "1 2"
+newTest:Set(3) -- Prints "3"
+newTest:Set() -- Prints "3 2"
 ```
 
 In this example, to create an overloaded function, we used the `.overload()` function with the `Public` access specifier, and `Set` for the function name. Then we gave a table with multiple functions with different arguments that each do a different thing. When we call the `:Set()` function through the object, depending on the amount of the given arguments, only the function that accepts the same amount of arguments will be ran.

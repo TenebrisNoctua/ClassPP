@@ -49,7 +49,7 @@ local Car = class "Car" {
 }
 
 local newCar = Car.new("ABCD", "Ford", "Mustang")
-print(newCar.Brand, newCar.Model, newCar.License_Plate) -- Prints ABCD, Ford, Mustang!
+print(newCar.Brand, newCar.Model, newCar.License_Plate) -- Prints "ABCD, Ford, Mustang"!
 ```
 
 ## Class Destructors
@@ -88,4 +88,4 @@ newCar = nil
     Unlike `constructor`, the `destructor` function does not take additional parameters, and the only argument will be the self pointing to the object. After the destructor is called, all the members inside the object will be set to nil (Instances inside are automatically destroyed and set to nil too), and the object will be locked, preventing any further access. At this stage, it would be best to set the object variable to nil, so the garbage collector can collect it and prevent memory leaks.
 
 !!! info
-    Constructor and Destructor functions can be written in the outside class definition style.
+    Constructor and Destructor functions can also be written in the outside class definition syntax.

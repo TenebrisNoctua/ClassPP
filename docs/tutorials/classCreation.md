@@ -37,7 +37,7 @@ local person = class "Person" {
 }
 
 local newPerson = person.new()
-print(newPerson.Age) -- Prints 0!
+print(newPerson.Age) -- Prints "0"!
 ```
 
 Objects will have the members and their default values that you've set in the class data table, so if you want to update them, you can simply index the object with the member and set it to something else!
@@ -55,7 +55,7 @@ local person = class "Person" {
 local newPerson = person.new()
 newPerson.Age = 21
 
-print(newPerson.Age) -- Prints 21!
+print(newPerson.Age) -- Prints "21"!
 ```
 
 !!! warning

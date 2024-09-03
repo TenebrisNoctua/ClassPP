@@ -37,8 +37,8 @@ local Test = class "Test" {
 
 Test.static("Public", "StaticTestValue", 1)
 
-print(Test.StaticTestValue.property) -- Prints 1!
-print(Test.StaticTestValue.p) -- Also prints 1!
+print(Test.StaticTestValue.property) -- Prints "1"!
+print(Test.StaticTestValue.p) -- Also prints "1"!
 ```
 
 

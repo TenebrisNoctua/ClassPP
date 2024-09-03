@@ -85,12 +85,16 @@ local newPerson: Person = Person.new()
 print(ctypeof(Person), ",", ctypeof(newPerson)) -- Prints "Class , Person"!
 ```
 
+### Type.typeof
+
 `Type.typeof` will return the true type of the given object. For example, if the object is a `class`, it will return "Class", as it belongs to the [`Class`](../apiReference/dataTypes/class.md) type.<br>
 And if the object is a class [`object`](../apiReference/dataTypes/object.md), it will return the name of the `class` it's been created from as its type.
 
+### Type.typeofClass
+
 In Class++, like in languages such as C++ and Java, classes are also types on their own. Their true type will always belong to the [`Class`](../apiReference/dataTypes/class.md) type, however, they can also be represented as types.
 
-So to make this possible, the [`Type`](../apiReference/classFunctions/type/typeof.md) API provides a function to get the type a `class` is, called: `Type.typeofClass`.
+So to make this possible, the [`Type`](../apiReference/classFunctions/type/typeofclass.md) API provides a function to get the type a `class` is, called: `Type.typeofClass`.
 
 Using this function, you can get the types of classes and compare and use them however you wish.
 

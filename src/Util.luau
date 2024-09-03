@@ -11,8 +11,6 @@
 local Util = {}
 local Type = require(script.Parent.Type)
 
-local ctypeof = Type.typeof
-
 --////// Util Functions
 
 function Util.getMethodContext(level: number): ((...any) -> (any), string)
@@ -38,7 +36,7 @@ end
 
 function Util.checkFriendship(class: any, methodName: string, method: (any) -> (any), classes: {[string]: any}): boolean
 	for friend, _ in class.Friends do
-		if ctypeof(friend) == "Class" and friend[methodName] then
+		if Type.typeof(friend) == "Class" and friend[methodName] then
 			return true
 		elseif typeof(friend) == "string" then
 			if classes[friend] and classes[friend][methodName] then

@@ -99,4 +99,4 @@ So to make this possible, the [`Type`](../apiReference/classFunctions/type/typeo
 Using this function, you can get the types of classes and compare and use them however you wish.
 
 !!! warning
-    Using `class.Name` property may create bugs in certain places as the Type API makes sure the given object is an actual class object before returning its type. It's recommended that you use the Type API instead of the `.Name` property.
+    Using the `class.Name` property may create bugs in certain places as the Type API makes sure the given object is an actual class object before returning its type. It's recommended that you use the Type API instead of the `.Name` property.

@@ -1,9 +1,9 @@
-# Types for Class++
+# Types
 
-Currently, Class++ does not support automatic type completion, and requires custom types to be created to use type completion.
-In this tutorial, you will see how to easily create custom types for your classes, and use the [Type](../apiReference/classFunctions/type/typeof.md) module functions to typecheck classes and objects!
+Currently, Class++ does not support automatic type completion, and requires custom types to be created to use type completion.<br>
+In this tutorial, you will learn how to easily create custom types for your classes, and will even learn to use the [`Type`](../apiReference/classFunctions/type/typeof.md) module functions to typecheck classes and objects!
 
-## A Basic Class Type
+## Creating A Basic Custom Class Type
 
 ```lua
 local class = ClassPP.class

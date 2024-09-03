@@ -86,12 +86,13 @@ print(ctypeof(Person), ",", ctypeof(newPerson)) -- Prints "Class , Person"!
 ```
 
 `Type.typeof` will return the true type of the given object. For example, if the object is a `class`, it will return "Class", as it belongs to the [`Class`](../apiReference/dataTypes/class.md) type.<br>
-And if the object is a class object, it will return the name of the class it's been created from as its type.
+And if the object is a class [`object`](../apiReference/dataTypes/object.md), it will return the name of the `class` it's been created from as its type.
 
-Since `Type.typeof` returns the true type of the given object, to find out the type of a `class`, you have to use the `Type.typeofClass` function. Calling this function with a `class` will return its name as its type.
+In Class++, like in languages such as C++ and Java, classes are also types on their own. Their true type will always belong to the [`Class`](../apiReference/dataTypes/class.md) type, however, they can also be represented as types.
 
-!!! info
-    In Class++, just like in languages such as C++ and Java, a `class`'s type will always be signified by its name.
+So to make this possible, the [`Type`](../apiReference/classFunctions/type/typeof.md) API provides a function to get the type a `class` is, called: `Type.typeofClass`.
+
+Using this function, you can get the types of classes and compare and use them however you wish.
 
 !!! warning
     Using `class.Name` property may create bugs in certain places as the Type API makes sure the given object is an actual class object before returning its type. It's recommended that you use the Type API instead of the `.Name` property.

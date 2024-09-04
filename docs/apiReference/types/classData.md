@@ -2,8 +2,8 @@
 
 ```lua
 export type classData = {
-	constructor: (any: any, ...any) -> ()?,
-	destructor: (any: any) -> ()?,
+	constructor: (self: any, ...any) -> ()?,
+	destructor: (self: any) -> ()?,
 	Public: {[any]: any}?,
 	Private: {[any]: any}?,
 	Protected: {[any]: any}?,

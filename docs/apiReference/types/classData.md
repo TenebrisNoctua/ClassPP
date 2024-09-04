@@ -18,12 +18,12 @@ The `classData` table that is given to the [`class()`](../classFunctions/mainMod
 ## Properties
 
 ### constructor
-<a style="color: lightskyblue;">(any: any, ...any) -> ()?</a>
+<a style="color: lightskyblue;">(self: any, ...any) -> ()?</a>
 
 The `constructor` function that will be called when an `object` gets created.
 
 ### destructor
-<a style="color: lightskyblue;">(any: any) -> ()?</a>
+<a style="color: lightskyblue;">(self: any) -> ()?</a>
 
 The `destructor` function that will be called when an `object` gets destroyed.
 

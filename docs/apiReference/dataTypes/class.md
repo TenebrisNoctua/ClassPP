@@ -36,7 +36,7 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
 
 &nbsp;[new](#new) (...) : <a style="color: lightskyblue;">any</a>
 
-&nbsp;Returns a new [object](object.md) that contains all of the members given from the `class`.
+&nbsp;Returns a new [`object`](object.md) that contains all of the members given from the `class`.
 
 ----------------------
 
@@ -61,7 +61,7 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
 ### Name 
 <a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a>
 
-This is an unique identifier of the `class`. Using the [getClass](../classFunctions/mainModule/getClass.md) function with this property will retrieve the desired `class`. Since names are unique, for every class, you have to use a different name.
+This is an unique identifier of the `class`. Using the [`getClass()`](../classFunctions/mainModule/getClass.md) function with this property will retrieve the desired `class`. Since names are unique, for every class, you have to use a different name.
 
 
 ### Inherits

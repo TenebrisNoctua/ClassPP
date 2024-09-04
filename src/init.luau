@@ -99,7 +99,8 @@ end
 --// Sorts the classData into an objectData that can be used inside objects.
 local function sortAttributes(data: classData, className: string): internalClassData
 	local classObjTbl: internalClassData = deepCopy(data)
-
+	
+	classObjTbl.Friend = nil
 	classObjTbl.Internal = {
 		__type = className,
 		__locked = false

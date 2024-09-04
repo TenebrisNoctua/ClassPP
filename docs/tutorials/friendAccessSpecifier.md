@@ -3,7 +3,7 @@
 Friend access specifier allows anyone defined in that access specifier to access the private members of a class.
 
 !!! warning
-    This access specifier is not generally meant to store members in, but rather serve as something that allows classes or functions outside of a specific class to access that class's private members.
+    Members of this access specifier will not be replicated to objects, rather, these members are stored in the class itself, and they can only be used to access the members in other access specifiers through objects.
 
 ```lua
 local function getLicensePlate(object: any)

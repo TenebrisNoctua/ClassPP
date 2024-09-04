@@ -60,7 +60,7 @@ Indicates if an `object` has been locked. If set to true, the `object`'s metamet
 <a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a>
 <div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
 
-Indicates the `class` type of the `object`. Can be used to determine which `class` the `object` belongs to by using the [typeof()](../classFunctions/typeof.md) function.
+Indicates the `class` type of the `object`. Can be used to determine which `class` the `object` belongs to by using the [`Type.typeof()`](../classFunctions/type/typeof.md) function.
 
 
 ### objectData 

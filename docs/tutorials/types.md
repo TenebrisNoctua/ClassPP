@@ -24,7 +24,7 @@ local newPerson = Person.new()
 -- This only supports auto-completion of the members in the Public access specifier!
 ```
 
-If you want to create a class which supports all of the features of type completion features in Luau, you have to create a custom type and assign it to the created objects. In the tutorial below, you will learn how to create a basic `Person` type and assign it to the created object to enable the support.
+If you want to create a class which supports all of the features of type completion in Luau, you have to create a custom type and assign it to the created objects. In the tutorial below, you will learn how to create a basic `Person` type and assign it to the created object to enable the support.
 
 ## Creating a Basic Custom Class Type
 

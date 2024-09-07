@@ -25,14 +25,8 @@ local operatorFuncNames: {string} = {"operator_add", "operator_sub", "operator_m
 
 --////// Types
 
-export type classData = {
-	constructor: (self: any, ...any) -> ()?,
-	destructor: (self: any) -> ()?,
-	Public: {[any]: any}?,
-	Private: {[any]: any}?,
-	Protected: {[any]: any}?,
-	Friend: {any}?
-}
+export type classData = Type.classData
+export type class<AccessSpecifier = any?> = Type.class<AccessSpecifier>
 
 type internalClassData = {
 	Public: {[any]: any}?,
@@ -46,25 +40,9 @@ type internalClassData = {
 		destructor: (self: any) -> ()?,
 	}
 }
-
-export type class = typeof(setmetatable({} :: {
-	new: (...any) -> any,
-	extends: (className: string) -> (classData: classData) -> class,
-	overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (any)}) -> (),
-	static: (accessSpecifier: string, name: string, property: any) -> (),
-	Name: string
-}, {
-	__index = function(t, i) return end :: ({any}, any) -> (any),
-	__newindex = function(t, i, v) end :: ({any}, any, any) -> (),
-	__type = "",
-	__classtype = "",
-	__abstract = false,
-	__final = false
-}))
-
-type internalClass = typeof(setmetatable({} :: {
-	new: (...any) -> any,
-	extends: (className: string) -> (classData: classData) -> class,
+type internalClass<AccessSpecifier = any?> = typeof(setmetatable({} :: {
+	new: (...any) -> AccessSpecifier,
+	extends: (className: string) -> (classData: classData) -> class<AccessSpecifier>,
 	overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (any)}) -> (),
 	static: (accessSpecifier: string, name: string, property: any) -> (),
 	Name: string,
@@ -356,13 +334,13 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 end
 
 --// Creates a new class object with the given classData, className and an additional internalFunctionsList table to allow access for functions inside it to write to Inherits and Friends tables.
-local function createClassObject(nClassData: classData, className: string, internalFunctionsList: {(...any) -> (any)}?): internalClass
+local function createClassObject<AccessSpecifier>(nClassData: classData, className: string, internalFunctionsList: {(...any) -> (any)}?): internalClass<AccessSpecifier>
 	local class: internalClass = setmetatable({
 		Inherits = setmetatable({}, { __tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5) if f ~= createClassObject and internalFunctionsList and not table.find(internalFunctionsList, f) then LogError("attemptToModifyReadOnlyTable", false) end rawset(t :: any, i :: any, v :: any) end, __metatable = {} }),
 		Friends = setmetatable({}, { __tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5) if f ~= createClassObject and internalFunctionsList and not table.find(internalFunctionsList, f) then LogError("attemptToModifyReadOnlyTable", false) end rawset(t :: any, i :: any, v :: any) end, __metatable = {} }),
 		Name = className
 	} :: {
-		new: (...any) -> any,
+		new: (...any) -> AccessSpecifier,
 		extends: (className: string) -> (classData: classData) -> class,
 		overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (any)}) -> (),
 		static: (accessSpecifier: string, name: string, property: any) -> (),
@@ -568,11 +546,11 @@ end
 --[[
 	Returns a new <code>class</code> with the given <code>className</code> and <code>classData</code>.
 ]]
-function classpp.class(className: string): (classData: classData) -> class
+function classpp.class(className: string): <T>(classData: {Public: T?} & classData) -> class<T>
 	if typeof(className) ~= "string" then LogError("classNameNotString") end
 	if Classes[className] then LogError("classAlreadyExists", false, className or "Unknown") end
 
-	return function(classData: classData): class
+	return function<T>(classData: classData & {Public: T?}): class<T>
 		if typeof(classData) ~= "table" then LogError("classDataNotTable") end
 		if getmetatable(classData :: any) or not select(1, pcall(setmetatable, classData, {})) then LogError("classDataContainsMetatable") end
 
@@ -582,7 +560,7 @@ function classpp.class(className: string): (classData: classData) -> class
 		if findPropertyFromIndex(classData, "Destroy") then LogError("invalidDestructorDecleration", false) end
 		if checkOutsideAccessSpecifierDecleration(classData) then LogError("invalidAccessSpecifierInClassDataError", false) end
 
-		local nCObj: class = createClassObject(classData, className)
+		local nCObj: internalClass<T> = createClassObject(classData, className)
 		Classes[className] = nCObj
 
 		return nCObj

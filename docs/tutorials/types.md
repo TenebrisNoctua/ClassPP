@@ -1,7 +1,30 @@
 # Types
 
-Currently, Class++ does not support automatic type completion, and requires custom types to be created to use type completion.<br>
-In this tutorial, you will learn how to easily create custom types for your classes, and will even learn to use the [`Type`](../apiReference/classFunctions/type/typeof.md) API to typecheck classes and objects!
+Currently, Class++ only supports automatic type completion in a limited extent, and requires custom types to be created to use all of the type completion features of Luau.<br>
+
+```lua
+local Person = class "Person" {
+	Public = {
+		Age = 0,
+		Name = "",
+		Personality = "",
+		Likes = {},
+		Dislikes = {},
+		Job = "",
+		getSecrets = function(self: Person)
+			return self.Secrets
+		end,
+	},
+	Private = {
+		Secrets = {}
+	}
+}
+
+local newPerson = Person.new()
+-- This only supports auto-completion of the members in the Public access specifier, and in functions, the typechecking will not work to its full extent.
+```
+
+If you want to create a class which supports all of the features of type completion features in Luau, you have to create a custom type and assign it to the created objects. In the tutorial below, you will learn how to create a basic `Person` type and assign it to the created object to enable the support.
 
 ## Creating a Basic Custom Class Type
 
@@ -37,10 +60,10 @@ local Person = class "Person" {
 }
 
 local newPerson: Person = Person.new()
--- This object now supports automatic type completion!
+-- This object now fully supports auto-completion!
 ```
 
-In the example above, we created a custom type called "Person" for the Person class, and inserted the types of all the members inside it, and declared the new created member as of the Person type. This allows us to use automatic type completion with our class objects.
+In the example above, we created a custom type called `Person` for the Person class, and inserted the types of all the members inside it, and declared the new created object as of the Person type. This now allows us to use automatic type completion with our class objects.
 
 !!! info
     Since class objects belong to the base type `userdata`, you can type cast them to either your custom types, or any other existing type you wish.

@@ -11,6 +11,10 @@
 local Util = {}
 local Type = require(script.Parent.Type)
 
+--////// Types
+
+type class = Type.class
+
 --////// Util Functions
 
 function Util.getMethodContext(level: number): ((...any) -> (any), string)
@@ -24,7 +28,7 @@ function Util.getMethodContext(level: number): ((...any) -> (any), string)
 	return f, n
 end
 
-function Util.checkInheritance(class: any, classOrMethod: any | () -> ()): boolean
+function Util.checkInheritance(class: class, classOrMethod: any | () -> ()): boolean
 	for inherited, _ in class.Inherits do
 		if typeof(classOrMethod) == "table" and inherited == classOrMethod or inherited[classOrMethod] then
 			return true
@@ -34,7 +38,7 @@ function Util.checkInheritance(class: any, classOrMethod: any | () -> ()): boole
 	return false
 end
 
-function Util.checkFriendship(class: any, methodName: string, method: (any) -> (any), classes: {[string]: any}): boolean
+function Util.checkFriendship(class: class, methodName: string, method: (any) -> (any), classes: {[string]: any}): boolean
 	for friend, _ in class.Friends do
 		if Type.typeof(friend) == "Class" and friend[methodName] then
 			return true
@@ -50,7 +54,7 @@ function Util.checkFriendship(class: any, methodName: string, method: (any) -> (
 	return false
 end
 
-function Util.inClassScope(class: any, includeInherited: boolean, includeFriend: boolean, classes: {[string]: any}?, defaultLevel: number?): boolean
+function Util.inClassScope(class: class, includeInherited: boolean, includeFriend: boolean, classes: {[string]: any}?, defaultLevel: number?): boolean
 	local level: number = defaultLevel or 6
 	
 	while true do

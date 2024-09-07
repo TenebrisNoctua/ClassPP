@@ -13,7 +13,31 @@
 local Type = {}
 local LogError = require(script.Parent.Error).logError
 
---////// Local Functions
+--////// Types
+
+export type classData = {
+	constructor: (self: any, ...any) -> ()?,
+	destructor: (self: any) -> ()?,
+	Public: {[any]: any}?,
+	Private: {[any]: any}?,
+	Protected: {[any]: any}?,
+	Friend: {any}?
+}
+
+export type class<AccessSpecifier = any?> = typeof(setmetatable({} :: {
+	new: (...any) -> AccessSpecifier,
+	extends: (className: string) -> (classData: classData) -> class<AccessSpecifier>,
+	overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (any)}) -> (),
+	static: (accessSpecifier: string, name: string, property: any) -> (),
+	Name: string
+}, {
+	__index = function(t, i) return end :: ({any}, any) -> (any),
+	__newindex = function(t, i, v) end :: ({any}, any, any) -> (),
+	__type = "",
+	__classtype = "",
+	__abstract = false,
+	__final = false
+}))
 
 --////// Module Functions
 
@@ -32,7 +56,7 @@ function Type.typeof(object: any): string?
 	return LogError("typeofObjectNotFound")
 end
 
-function Type.typeofClass(classObj: any): string?
+function Type.typeofClass(classObj: class): string?
 	if Type.typeof(classObj) ~= "Class" then LogError("typeofObjectIsNotClass") end
 	
 	local metatable = getmetatable(classObj)

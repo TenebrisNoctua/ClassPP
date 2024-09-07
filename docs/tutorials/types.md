@@ -1,6 +1,6 @@
 # Types
 
-Currently, Class++ only supports automatic type completion in a limited extent, and requires custom types to be created to use all of the type completion features of Luau.<br>
+Currently, Class++ only supports automatic type completion to a limited extent, and requires custom types to be created to use all of the type completion features of Luau.<br>
 
 ```lua
 local Person = class "Person" {

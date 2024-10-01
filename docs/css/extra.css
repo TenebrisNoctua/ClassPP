@@ -1,10 +1,11 @@
 :root {
+    --default-text-color: #7064fd; /*#c46fd3*/
     --title-text-color-white: #fff;
     --title-text-color-dark: #36303f;
     --button-bg-color-white: #fff;
-    --button-bg-color-dark: #5b386b;
+    --button-bg-color-dark: #362f62;
     --button-text-color-white: #fff;
-    --button-text-color-dark: #5b386b;
+    --button-text-color-dark: #362f62;
     --footer-fg-color-dark: #36303f;
     --footer-fg-color-white: #fff;
     --background-color-dark: #161044;
@@ -17,6 +18,7 @@
     --button-text-color: var(--button-text-color-dark);
     --footer-fg-color: var(--footer-fg-color-white);
     --md-primary-fg-color: var(--background-color-dark);
+    --md-typeset-a-color: var(--default-text-color);
 }
 
 [data-md-color-scheme="default"] {
@@ -25,6 +27,7 @@
     --button-text-color: var(--button-text-color-white);
     --footer-fg-color: var(--footer-fg-color-dark);
     --md-primary-fg-color: var(--background-color-white);
+    --md-typeset-a-color: var(--default-text-color);
 }
 
 [dir=ltr] .md-header__title {

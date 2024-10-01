@@ -6,7 +6,9 @@
     --button-text-color-white: #fff;
     --button-text-color-dark: #5b386b;
     --footer-fg-color-dark: #36303f;
-    --footer-fg-color-white: #fff
+    --footer-fg-color-white: #fff;
+    --background-color-dark: #161044;
+    --background-color-white: #5744e3; /*#ab47bd*/
 }
 
 [data-md-color-scheme="slate"] {
@@ -14,6 +16,7 @@
     --button-background-color: var(--button-bg-color-white);
     --button-text-color: var(--button-text-color-dark);
     --footer-fg-color: var(--footer-fg-color-white);
+    --md-primary-fg-color: var(--background-color-white);
 }
 
 [data-md-color-scheme="default"] {
@@ -21,6 +24,7 @@
     --button-background-color: var(--button-bg-color-dark);
     --button-text-color: var(--button-text-color-white);
     --footer-fg-color: var(--footer-fg-color-dark);
+    --md-primary-fg-color: var(--background-color-dark);
 }
 
 [dir=ltr] .md-header__title {

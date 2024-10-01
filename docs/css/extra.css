@@ -35,6 +35,10 @@
     --md-accent-fg-color: var(--default-text-color-open);
 }
 
+[data-md-color-scheme="slate"][data-md-color-primary="purple"] {
+    --md-typeset-a-color: #7971d7;
+}
+
 [dir=ltr] .md-header__title {
     margin-left: 0.5rem;
     margin-right: .4rem;

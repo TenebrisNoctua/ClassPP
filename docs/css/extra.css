@@ -1,5 +1,5 @@
 :root {
-    --default-text-color: #7064fd;
+    --default-text-color: #6d61fd;
     /*#c46fd3*/
     --default-text-color-open: #534ab7;
     --title-text-color-white: #fff;
@@ -55,6 +55,10 @@
 
 .md-nav__item .md-nav__link--active,
 .md-nav__item .md-nav__link--active code {
+    color: var(--default-text-color);
+}
+
+.md-typeset code, .md-typeset kbd, .md-typeset pre {
     color: var(--default-text-color);
 }
 

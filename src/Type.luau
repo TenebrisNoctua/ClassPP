@@ -42,13 +42,14 @@ export type class<AccessSpecifier = any?> = typeof(setmetatable({} :: {
 --////// Module Functions
 
 function Type.typeof(object: any): string?
-	if typeof(object) ~= "table" and typeof(object) ~= "userdata" then return typeof(object) end
+	local objType = typeof(object)
+	if objType ~= "table" and objType ~= "userdata" then return objType end
 	
 	local metatable = getmetatable(object)
 	if not metatable then LogError("typeofMetatableError") end
 	if metatable["__type"] then return metatable["__type"] end
 	
-	if typeof(object) == "userdata" then 
+	if objType == "userdata" then 
 		local _, rType = select(1, pcall(function() return object.__type end))
 		if rType then return rType end
 	end 

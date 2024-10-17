@@ -77,7 +77,7 @@ end
 --// Sorts the classData into an objectData that can be used inside objects.
 local function sortAttributes(data: classData, className: string): internalClassData
 	local classObjTbl: internalClassData = deepCopy(data)
-	
+
 	classObjTbl.Friend = nil
 	classObjTbl.Internal = {
 		__type = className,
@@ -134,11 +134,13 @@ local function mergeClassData(superClassData: classData, childClassData: classDa
 
 	for accessSpecifier, attributesData in superClassData do
 		if accessSpecifier == "Private" then continue end
+		if typeof(attributesData) == "function" then continue end
 
 		for attributeName, attributeData in (attributesData :: any) do
 			newClassData[accessSpecifier][attributeName] = attributeData
 		end
 	end
+
 	for accessSpecifier, attributesData: any in childClassData do
 		if typeof(accessSpecifier) ~= "string" then continue end
 
@@ -166,7 +168,7 @@ local function checkValidAccessSpecifier(specifierString: string): (boolean, str
 			return true, accessSpecifier
 		end
 	end
-	
+
 	return false
 end
 
@@ -281,7 +283,7 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 		end
 
 		local rprop = findPropertyFromIndex(classData, index, accessSpecifier)
-		if rprop ~= nil then return rprop elseif index ~= "constructor" and index ~= "destructor" and index ~= "__tostring" and not sFound then LogError("classMemberNotFound", true, index) end
+		if rprop ~= nil then return rprop elseif index ~= "constructor" and index ~= "destructor" and index ~= "__tostring" and not sFound then LogErrorNonFatal("classMemberNotFound", true, index) end
 
 		return
 	end
@@ -334,7 +336,7 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 end
 
 --// Creates a new class object with the given classData, className and an additional internalFunctionsList table to allow access for functions inside it to write to Inherits and Friends tables.
-local function createClassObject<AccessSpecifier>(nClassData: classData, className: string, internalFunctionsList: {(...any) -> (any)}?): internalClass<AccessSpecifier>
+local function createClassObject<AccessSpecifier>(nClassData: classData, className: string, internalFunctionsList: {(...any) -> (any)}?, superClassConstructor: (self: any, ...any) -> ()?): internalClass<AccessSpecifier>
 	local class: internalClass = setmetatable({
 		Inherits = setmetatable({}, { __tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5) if f ~= createClassObject and internalFunctionsList and not table.find(internalFunctionsList, f) then LogError("attemptToModifyReadOnlyTable", false) end rawset(t :: any, i :: any, v :: any) end, __metatable = {} }),
 		Friends = setmetatable({}, { __tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5) if f ~= createClassObject and internalFunctionsList and not table.find(internalFunctionsList, f) then LogError("attemptToModifyReadOnlyTable", false) end rawset(t :: any, i :: any, v :: any) end, __metatable = {} }),
@@ -361,7 +363,7 @@ local function createClassObject<AccessSpecifier>(nClassData: classData, classNa
 
 	if nClassData.Friend then
 		for _, friend in nClassData.Friend do
-			class.Friends[friend] = true
+			table.insert(class.Friends :: any, friend)
 		end
 	end
 
@@ -388,7 +390,7 @@ local function createClassObject<AccessSpecifier>(nClassData: classData, classNa
 		local result = nClassData[i] or findPropertyFromIndex(nClassData, i)
 		if not result then return (class.Statics :: any)[i] end
 
-		local methodContext = Util.getMethodContext(5)
+		local methodContext, name = Util.getMethodContext(5)
 		if typeof(result) == "function" and methodContext ~= Util.inClassScope then LogError("cannotCallFunctionError") elseif typeof(result) == "table" and getmetatable(result) and getmetatable(result)["__call"] and methodContext ~= Util.inClassScope then LogError("cannotCallFunctionError") end
 
 		return result
@@ -430,6 +432,8 @@ local function createClassObject<AccessSpecifier>(nClassData: classData, classNa
 
 		setMetamethods(class, newObjTbl, methods)
 
+		if superClassConstructor then superClassConstructor(newObj, ...) end
+
 		if newObjTbl.Internal.constructor then
 			newObjTbl.Internal.constructor(newObj, ...)
 		end
@@ -443,10 +447,10 @@ local function createClassObject<AccessSpecifier>(nClassData: classData, classNa
 
 		return function(extendedClassData: classData): class
 			local newClassData = mergeClassData(nClassData, extendedClassData)
-			local newClass = createClassObject(newClassData, className, {debug.info(1, 'f')})
+			local newClass = createClassObject(newClassData, className, {debug.info(1, 'f')}, nClassData.constructor)
 			Classes[className] = newClass
 
-			if newClass.Inherits then newClass.Inherits[class] = true end
+			table.insert(newClass.Inherits :: any, class)
 
 			return newClass
 		end

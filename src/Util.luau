@@ -29,7 +29,7 @@ function Util.getMethodContext(level: number): ((...any) -> (any), string)
 end
 
 function Util.checkInheritance(class: class, classOrMethod: any | () -> ()): boolean
-	for inherited, _ in class.Inherits do
+	for _, inherited in class.Inherits do
 		if typeof(classOrMethod) == "table" and inherited == classOrMethod or inherited[classOrMethod] then
 			return true
 		end
@@ -39,7 +39,7 @@ function Util.checkInheritance(class: class, classOrMethod: any | () -> ()): boo
 end
 
 function Util.checkFriendship(class: class, methodName: string, method: (any) -> (any), classes: {[string]: any}): boolean
-	for friend, _ in class.Friends do
+	for _, friend in class.Friends do
 		if Type.typeof(friend) == "Class" and friend[methodName] then
 			return true
 		elseif typeof(friend) == "string" then

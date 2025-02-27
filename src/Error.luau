@@ -14,9 +14,9 @@ local LogMessages = require(script.Parent.LogMessages)
 
 --////// Local Functions
 
-local function logError(messageType: string, includeTraceback: boolean?, tracebackString: string?, ...)
+local function logMessage(messageType: string, includeTraceback: boolean?, tracebackString: string?, logType: string, ...)
 	local formatString: string
-	local errorString: string
+	local messageString: string
 
 	if LogMessages[messageType] ~= nil then
 		formatString = LogMessages[messageType]
@@ -26,31 +26,39 @@ local function logError(messageType: string, includeTraceback: boolean?, traceba
 
 	if ... and includeTraceback then
 		formatString = string.format(formatString, ...)
-		errorString = `\{Class++}: {formatString}\n--- Stack Trace ---\n{tracebackString or debug.traceback(nil, 4)}`
+		messageString = `\{Class++}: {formatString}\n--- Stack Trace ---\n{tracebackString or debug.traceback(nil, 4)}`
 	elseif ... and not includeTraceback then
 		formatString = string.format(formatString, ...)
-		errorString = `\{Class++}: {formatString}`
+		messageString = `\{Class++}: {formatString}`
 	elseif not ... and includeTraceback then
-		errorString = `\{Class++}: {formatString}\n--- Stack Trace ---\n{tracebackString or debug.traceback(nil, 4)}`
+		messageString = `\{Class++}: {formatString}\n--- Stack Trace ---\n{tracebackString or debug.traceback(nil, 4)}`
 	else
-		errorString = `\{Class++}: {formatString}`
+		messageString = `\{Class++}: {formatString}`
 	end
-
-	error(errorString, 0)
+	
+	if logType == "Error" then
+		error(messageString, 0)
+	elseif logType == "Warning" then
+		warn(messageString)
+	end
 end
 
 --////// Module Functions
 
 function classError.logError(messageType: string, includeTraceback: boolean?, ...)
-	return logError(messageType, includeTraceback, nil, ...)
+	return logMessage(messageType, includeTraceback, nil, "Error", ...)
 end
 
 function classError.logErrorNonFatal(messageType: string, includeTraceback: boolean?, ...)
 	local tracebackString: string = debug.traceback(nil, 4)
 	
 	task.spawn(function(...)
-		return logError(messageType, includeTraceback, tracebackString, ...)
+		return logMessage(messageType, includeTraceback, tracebackString, "Error", ...)
 	end, ...)
+end
+
+function classError.logWarning(messageType: string, includeTraceback: boolean?, ...)
+	return logMessage(messageType, includeTraceback, nil, "Warning", ...)
 end
 
 return classError

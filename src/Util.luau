@@ -62,6 +62,7 @@ function Util.inClassScope(class: class, includeInherited: boolean, includeFrien
 		if not method then return false end
 
 		if class[methodName] == method then return true end
+		if not methodName and table.find(class["__ovfunc"], method) then return true end
 
 		local result = if includeInherited then Util.checkInheritance(class, method) else false or if includeFriend and classes then Util.checkFriendship(class, methodName, method, classes) else false
 		if result then return true end

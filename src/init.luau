@@ -18,10 +18,12 @@ local Type = require(script.Type)
 
 local LogError = Error.logError
 local LogErrorNonFatal = Error.logErrorNonFatal
-
-local Classes: {[string]: class} = {}
+local LogWarning = Error.logWarning
 
 local operatorFuncNames: {string} = {"operator_add", "operator_sub", "operator_mul", "operator_div", "operator_idiv", "operator_mod", "operator_pow", "operator_unm", "operator_eq"}
+local silenceUpdateWarning: boolean = script:GetAttribute("silenceUpdateWarning") or false
+
+local Classes: {[string]: class} = {}
 
 --////// Types
 
@@ -260,7 +262,7 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 				LogError("classPropertyIsPrivate", true, index)
 			elseif accessSpecifier == "Internal" and Util.getMethodContext(7) ~= Type.typeof then
 				LogError("classPropertyIsInternal", true, index)
-			elseif accessSpecifier == "Protected" and not Util.inClassScope(class, true, false) then
+			elseif accessSpecifier == "Protected" and not Util.inClassScope(class, true, true, Classes) then
 				LogError("classPropertyIsProtected", true, index)
 			end
 		end
@@ -290,6 +292,7 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 
 	function methods:__newindex(index, value)
 		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
+		if value == nil then LogError("classMemberCannotSetToNil", true) end
 
 		local accessSpecifier = returnAccessSpecifier(index, classData)
 
@@ -298,7 +301,7 @@ local function setMetamethods(class: internalClass, classData: internalClassData
 				LogError("classPropertyIsPrivate", true, index)
 			elseif accessSpecifier == "Internal" then
 				LogError("classPropertyIsInternal", true, index)
-			elseif accessSpecifier == "Protected" and not Util.inClassScope(class, false, false) then
+			elseif accessSpecifier == "Protected" and not Util.inClassScope(class, true, true, Classes) then				
 				LogError("classPropertyIsProtected", true, index)
 			end
 		end
@@ -361,11 +364,17 @@ local function createClassObject<AccessSpecifier>(nClassData: classData, classNa
 
 	class.Statics = setmetatable({}, {__tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5) if f ~= class.static then LogError("attemptToModifyReadOnlyTable", false) end rawset(t :: any, i :: any, v :: any) end, __metatable = {}})
 
+	if not nClassData.Public then nClassData.Public = {} end
+	if not nClassData.Private then nClassData.Private = {} end
+	if not nClassData.Protected then nClassData.Protected = {} end
+	
 	if nClassData.Friend then
 		for _, friend in nClassData.Friend do
 			table.insert(class.Friends :: any, friend)
 		end
 	end
+	
+	local overloadedFunctions = {}
 
 	local methods = {
 		__type = "Class",
@@ -385,6 +394,9 @@ local function createClassObject<AccessSpecifier>(nClassData: classData, classNa
 			if classpp.final == Util.getMethodContext(5) or classpp.abstract == Util.getMethodContext(5) then
 				return methods["__final"] 
 			end
+		end
+		if i == "__ovfunc" and Util.getMethodContext(5) == Util.inClassScope then
+			return overloadedFunctions
 		end
 
 		local result = nClassData[i] or findPropertyFromIndex(nClassData, i)
@@ -444,6 +456,7 @@ local function createClassObject<AccessSpecifier>(nClassData: classData, classNa
 	function class.extends(className: string): (extendedClassData: classData) -> class
 		if typeof(className) ~= "string" then LogError("classNameNotString") end
 		if Classes[className] then LogError("classAlreadyExists", false, className) end
+		if not silenceUpdateWarning then LogWarning("compatibilityWarning", false) end
 
 		return function(extendedClassData: classData): class
 			local newClassData = mergeClassData(nClassData, extendedClassData)
@@ -461,9 +474,10 @@ local function createClassObject<AccessSpecifier>(nClassData: classData, classNa
 		if not accessSpecifierCheck or specifierName and specifierName == "Internal" then LogError("invalidAccessSpecifierError", true) end
 		if not name then LogError("overloadfunctionNameNotSet", true) end
 		if typeof(functionTable) ~= "table" or #functionTable == 0 then LogError("overloadfunctionTableNotGiven", true) end
-
+		
 		for _, func in functionTable do
 			if typeof(func) ~= "function" then LogError("expectedFunctionError", true, typeof(func)) end
+			table.insert(overloadedFunctions, func)
 		end
 
 		local methods = {
@@ -488,7 +502,6 @@ local function createClassObject<AccessSpecifier>(nClassData: classData, classNa
 			if not f and #args > 0 then LogErrorNonFatal("overloadfunctionArgumentMismatch", false, #args, name) end
 		end
 
-		if not nClassData[specifierName] then nClassData[specifierName] = {} end
 		nClassData[specifierName][name] = setmetatable({}, methods)
 	end
 
@@ -498,6 +511,8 @@ local function createClassObject<AccessSpecifier>(nClassData: classData, classNa
 		if not name then LogError("staticMemberNameNotSet", true) end
 		if not class.Statics then return end
 		if not nClassData[specifierName] then nClassData[specifierName] = {} end
+		
+		if not silenceUpdateWarning then LogWarning("compatibilityWarning", false) end
 
 		local newObj = newproxy(true)
 		local methods = getmetatable(newObj)
@@ -563,7 +578,7 @@ function classpp.class(className: string): <T>(classData: {Public: T?} & classDa
 
 		if findPropertyFromIndex(classData, "Destroy") then LogError("invalidDestructorDecleration", false) end
 		if checkOutsideAccessSpecifierDecleration(classData) then LogError("invalidAccessSpecifierInClassDataError", false) end
-
+		
 		local nCObj: internalClass<T> = createClassObject(classData, className)
 		Classes[className] = nCObj
 

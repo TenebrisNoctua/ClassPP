@@ -56,19 +56,19 @@ end
 
 function Util.inClassScope(class: class, includeInherited: boolean, includeFriend: boolean, classes: {[string]: any}?, defaultLevel: number?): boolean
 	local level: number = defaultLevel or 6
-	
+
 	while true do
 		local method, methodName = Util.getMethodContext(level)
 		if not method then return false end
 
 		if class[methodName] == method then return true end
-		if not methodName and table.find(class["__ovfunc"], method) then return true end
+		if #methodName == 0 and table.find(class["__ovfunc"], method) then return true end
 
 		local result = if includeInherited then Util.checkInheritance(class, method) else false or if includeFriend and classes then Util.checkFriendship(class, methodName, method, classes) else false
 		if result then return true end
-		
+
 		if method == Type.typeof then return true end
-		
+
 		level += 1
 	end
 

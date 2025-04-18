@@ -26,24 +26,25 @@ jobs:
       - name: Install necessary tools
       - run: pip install mkdocs-material
       - run: pip install pillow cairosvg
+      - run: pip install --upgrade setuptools
       - run: pip install mike
 
       - name: Configure the git user
-        run: |
+      - run: |
           git config user.name classppdoc
           git config user.email classppdoc@example.com
 
       - name: Fetch the gh-pages branch
-        run: git fetch origin gh-pages --depth=1
+      - run: git fetch origin gh-pages --depth=1
 
       - name: Deploy latest documentation version
-        if: env.Deploy_Type == 'release'
-        run: mike deploy $ClassPP_Version latest --update-aliases --branch gh-pages
+      - if: env.Deploy_Type == 'release'
+      - run: mike deploy $ClassPP_Version latest --update-aliases --branch gh-pages
 
       - name: Set default version to latest
-        if: env.Deploy_Type == 'release'
-        run: mike set-default latest --branch gh-pages --push
+      - if: env.Deploy_Type == 'release'
+      - run: mike set-default latest --branch gh-pages --push
 
       - name: Deploy developer documentation
-        if: env.Deploy_Type == 'indev'
-        run: mike deploy $ClassPP_Version --update-aliases --branch gh-pages --push
+      - if: env.Deploy_Type == 'indev'
+      - run: mike deploy $ClassPP_Version --update-aliases --branch gh-pages --push

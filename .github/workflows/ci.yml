@@ -2,8 +2,7 @@ name: ci
 on:
   push:
     branches:
-      - master 
-      - main
+      - new-type-solver-beta
 permissions:
   contents: write
 jobs:

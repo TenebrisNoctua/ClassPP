@@ -42,7 +42,7 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
 
 &nbsp;[extends](#extends) (className: string) : (classData: classData) : <a style="color: lightskyblue;">class</a>
 
-&nbsp;Creates a new `class` that inherits the `class` it's been created from. Contains all `Public` and `Protected` members of that base `class`.
+&nbsp;(Deprecated) Creates a new `class` that inherits the `class` it's been created from. Contains all `Public` and `Protected` members of that base `class`.
 
 ----------------------
 

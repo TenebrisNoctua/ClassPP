@@ -5,8 +5,8 @@ on:
       - new-type-solver-beta
 
 env:
-  ClassPP_Version: 1.2
-  Deploy_Type: 'release'
+  ClassPP_Version: 2.0
+  Deploy_Type: 'indev'
 
 permissions:
   contents: write

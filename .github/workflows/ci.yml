@@ -49,3 +49,7 @@ jobs:
       - name: Deploy indev documentation
         if: env.Deploy_Type == 'indev'
         run: mike deploy $ClassPP_Version --push --update-aliases --branch gh-pages 
+
+      - name: Change Title (For Beta)
+        if: env.ClassPP_Version == 2.0
+        run: mike retitle 2 2.0

@@ -46,6 +46,6 @@ jobs:
         if: env.Deploy_Type == 'release'
         run: mike set-default --push latest --branch gh-pages 
 
-      - name: Deploy developer documentation
+      - name: Deploy indev documentation
         if: env.Deploy_Type == 'indev'
         run: mike deploy $ClassPP_Version --push --update-aliases --branch gh-pages 

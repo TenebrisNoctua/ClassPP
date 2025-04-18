@@ -1,6 +1,11 @@
 site_name: Class++ Documentation
 repo_name: TenebrisNoctua/Class++
 repo_url: https://github.com/TenebrisNoctua/ClassPP
+
+extra:
+  version:
+    provider: mike
+
 theme:
   logo: img/cppicon_v2.png
   name: material
@@ -19,18 +24,20 @@ theme:
   palette:
     - scheme: slate
       toggle:
-        icon: material/toggle-switch-off-outline 
-        name: Light Mode
+        icon: octicons/light-bulb-24
+        name: Switch to Light Mode
       primary: purple
       accent: purple 
 
     - scheme: default 
       toggle:
-        icon: material/toggle-switch
-        name: Dark Mode 
+        icon: octicons/moon-24
+        name: Switch To Dark Mode
       primary: purple
       accent: purple
-extra_css: [css/extra.css]
+
+extra_css:
+  - css/extra.css
 
 markdown_extensions:
   - toc

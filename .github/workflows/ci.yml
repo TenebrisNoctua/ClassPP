@@ -24,10 +24,11 @@ jobs:
           path: .cache
       
       - name: Install necessary tools
-        run: pip install mkdocs-material
-        run: pip install pillow cairosvg
-        run: pip install --upgrade setuptools
-        run: pip install mike
+        run: | 
+          pip install mkdocs-material
+          pip install pillow cairosvg
+          pip install --upgrade setuptools
+          pip install mike
 
       - name: Configure the git user
         run: |

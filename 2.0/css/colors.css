@@ -1,0 +1,25 @@
+:root {
+    --default-text-color: #6d61fd;
+    --default-text-color-open: #534ab7;
+
+    --title-text-color-white: #fff;
+    --title-text-color-dark: #36303f;
+
+    --text-color-white: #fff;
+    --text-color-black: #111111;
+
+    --button-bg-color-white: #fff;
+    --button-bg-color-dark: #362f62;
+
+    --button-text-color-white: #fff;
+    --button-text-color-dark: #362f62;
+
+    --footer-fg-color-dark: #36303f;
+    --footer-fg-color-white: #fff;
+    
+    --top-background-color-dark: #14151C;
+    --top-background-color-white: #cccad7;
+    
+    --main-background-color-dark: #14151C;
+    --main-background-color-white: #bfbecd;
+}

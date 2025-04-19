@@ -25,7 +25,9 @@
     --button-text-color: var(--button-text-color-dark);
 
     --footer-fg-color: var(--footer-fg-color-white);
+
     --md-primary-fg-color: var(--background-color-dark);
+    --md-default-bg-color: var(--background-color-dark);
 }
 
 [data-md-color-scheme="classppdoc-light"] {
@@ -35,6 +37,8 @@
     --button-text-color: var(--button-text-color-white);
 
     --footer-fg-color: var(--footer-fg-color-dark);
+
     --md-primary-fg-color: var(--background-color-white);
+    --md-default-bg-color: var(--background-color-white);
 }
 

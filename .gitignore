@@ -41,3 +41,6 @@ luac.out
 
 # Ignore site folder
 /site/
+
+# Ignore the vscode folder
+.vscode

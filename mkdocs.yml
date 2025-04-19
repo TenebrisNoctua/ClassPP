@@ -34,9 +34,11 @@ theme:
 
 extra_css:
   - css/extra.css
+  - css/colors.css
+  - css/theme.css
+  - css/code.css
   - css/api-reference.css
   - css/home.css
-  - css/theme.css
 
 markdown_extensions:
   - toc

@@ -77,23 +77,23 @@ nav:
       - tutorials/errorHandling.md
       - tutorials/types.md
   - API Reference: 
-      - Getting Started: apiReference/gettingStarted.md
+      - Getting Started: api-reference/gettingStarted.md
       - Class++ Functions: 
-        - class: apiReference/classFunctions/mainModule/class.md
-        - final: apiReference/classFunctions/mainModule/final.md
-        - abstract: apiReference/classFunctions/mainModule/abstract.md
-        - getClass: apiReference/classFunctions/mainModule/getClass.md
+        - class: api-reference/classFunctions/mainModule/class.md
+        - final: api-reference/classFunctions/mainModule/final.md
+        - abstract: api-reference/classFunctions/mainModule/abstract.md
+        - getClass: api-reference/classFunctions/mainModule/getClass.md
         - Type: 
-          - typeof: apiReference/classFunctions/type/typeof.md
-          - typeofClass: apiReference/classFunctions/type/typeofclass.md
+          - typeof: api-reference/classFunctions/type/typeof.md
+          - typeofClass: api-reference/classFunctions/type/typeofclass.md
         - Util:
-          - inClassScope: apiReference/classFunctions/util/inClassScope.md
-          - checkInheritance: apiReference/classFunctions/util/checkInheritance.md
-          - checkFriendship: apiReference/classFunctions/util/checkFriendship.md
+          - inClassScope: api-reference/classFunctions/util/inClassScope.md
+          - checkInheritance: api-reference/classFunctions/util/checkInheritance.md
+          - checkFriendship: api-reference/classFunctions/util/checkFriendship.md
       - Data Types:
-        - apiReference/dataTypes/class.md
-        - apiReference/dataTypes/object.md
+        - api-reference/dataTypes/class.md
+        - api-reference/dataTypes/object.md
       - Types:
-        - apiReference/types/classData.md
+        - api-reference/types/classData.md
 copyright: |
   &copy; 2024 <a href="https://github.com/TenebrisNoctua"  target="_blank" rel="noopener">Tenebris Noctua</a>

@@ -17,9 +17,16 @@
     --footer-fg-color-dark: #36303f;
     --footer-fg-color-white: #fff;
     
-    --top-background-color-dark: #14151C;
+    --top-background-color-dark: #111218;
     --top-background-color-white: #cccad7;
     
-    --main-background-color-dark: #14151C;
+    --main-background-color-dark: #111218;
     --main-background-color-white: #bfbecd;
+
+    --code-bg-color-black: #1f1e2d;
+    --code-bg-color-white: #9893d9;
+    --code-fg-color-black: #36464e;
+    --code-fg-color-white: #9893d9;
+    --code-h1-variable-color-white: #d0cbdd;
+    --code-h1-variable-color-black: #27262a;
 }

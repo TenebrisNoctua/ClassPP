@@ -13,6 +13,7 @@
 
     --md-primary-fg-color: var(--top-background-color-dark);
     --md-default-bg-color: var(--main-background-color-dark);
+    --md-default-fg-color--light: var(--text-color-white);
 }
 
 [data-md-color-scheme="classppdoc-light"] {
@@ -30,5 +31,6 @@
 
     --md-primary-fg-color: var(--top-background-color-white);
     --md-default-bg-color: var(--main-background-color-white);
+    --md-default-fg-color--light: var(--text-color-black);
 }
 

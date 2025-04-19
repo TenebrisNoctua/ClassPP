@@ -5,7 +5,7 @@ on:
       - new-type-solver-beta
 
 env:
-  ClassPP_Version: 2.0
+  ClassPP_Version: '2.0'
   Deploy_Type: 'indev'
 
 permissions:
@@ -38,6 +38,9 @@ jobs:
       - name: Fetch the gh-pages branch
         run: git fetch origin gh-pages --depth=1
 
+      - name: Delete Test Version
+        run: mike delete 2
+
       - name: Deploy latest documentation version
         if: env.Deploy_Type == 'release'
         run: mike deploy $ClassPP_Version latest --update-aliases --branch gh-pages
@@ -49,7 +52,3 @@ jobs:
       - name: Deploy indev documentation
         if: env.Deploy_Type == 'indev'
         run: mike deploy $ClassPP_Version --push --update-aliases --branch gh-pages 
-
-      - name: Change Title (For Beta)
-        if: env.ClassPP_Version == 2.0
-        run: mike retitle 2 2.0

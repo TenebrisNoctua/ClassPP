@@ -38,9 +38,6 @@ jobs:
       - name: Fetch the gh-pages branch
         run: git fetch origin gh-pages --depth=1
 
-      - name: Delete Test Version
-        run: mike delete 2
-
       - name: Deploy latest documentation version
         if: env.Deploy_Type == 'release'
         run: mike deploy $ClassPP_Version latest --update-aliases --branch gh-pages

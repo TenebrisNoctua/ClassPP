@@ -5,6 +5,9 @@
     --title-text-color-white: #fff;
     --title-text-color-dark: #36303f;
 
+    --text-color-white: #fff;
+    --text-color-black: #111111;
+
     --button-bg-color-white: #fff;
     --button-bg-color-dark: #362f62;
 
@@ -14,10 +17,10 @@
     --footer-fg-color-dark: #36303f;
     --footer-fg-color-white: #fff;
     
-    --top-background-color-dark: #1b1a22;
+    --top-background-color-dark: #14151C;
     --top-background-color-white: #cccad7;
     
-    --main-background-color-dark: #161044;
+    --main-background-color-dark: #14151C;
     --main-background-color-white: #bfbecd;
 }
 
@@ -29,8 +32,10 @@
 
     --footer-fg-color: var(--footer-fg-color-white);
 
-    --md-primary-fg-color: var(--background-color-dark);
+    --md-primary-fg-color: var(--top-background-color-dark);
     --md-default-bg-color: var(--main-background-color-dark);
+
+    --md-typeset-color: var(--text-color-white);
 }
 
 [data-md-color-scheme="classppdoc-light"] {
@@ -41,7 +46,9 @@
 
     --footer-fg-color: var(--footer-fg-color-dark);
 
-    --md-primary-fg-color: var(--background-color-white);
+    --md-primary-fg-color: var(--top-background-color-white);
     --md-default-bg-color: var(--main-background-color-white);
+
+    --md-typeset-color: var(--text-color-black);
 }
 

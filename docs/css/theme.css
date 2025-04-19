@@ -14,8 +14,11 @@
     --footer-fg-color-dark: #36303f;
     --footer-fg-color-white: #fff;
     
-    --background-color-dark: #161044;
-    --background-color-white: #5744e3;
+    --top-background-color-dark: #1b1a22;
+    --top-background-color-white: #cccad7;
+    
+    --main-background-color-dark: #161044;
+    --main-background-color-white: #bfbecd;
 }
 
 [data-md-color-scheme="classppdoc-dark"] {
@@ -27,7 +30,7 @@
     --footer-fg-color: var(--footer-fg-color-white);
 
     --md-primary-fg-color: var(--background-color-dark);
-    --md-default-bg-color: var(--background-color-dark);
+    --md-default-bg-color: var(--main-background-color-dark);
 }
 
 [data-md-color-scheme="classppdoc-light"] {
@@ -39,6 +42,6 @@
     --footer-fg-color: var(--footer-fg-color-dark);
 
     --md-primary-fg-color: var(--background-color-white);
-    --md-default-bg-color: var(--background-color-white);
+    --md-default-bg-color: var(--main-background-color-white);
 }
 

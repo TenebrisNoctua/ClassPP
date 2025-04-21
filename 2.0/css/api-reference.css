@@ -6,7 +6,7 @@
 }
 
 .api-header .api-icon {
-    margin-right: 0.5em
+    margin-right: 1em
 }
 
 .api-title {
@@ -19,7 +19,7 @@
     font-size: 18px;
     font-weight: bold;
     top: -26px;
-    padding-left: 7px;
+    padding-left: 8px;
 }
 
 .apiReferenceSummaryTitle {

@@ -5,6 +5,10 @@
 	flex-wrap: wrap;
 }
 
+.api-header .api-icon {
+    margin-right: 0.5em;
+}
+
 .apiReferenceSummaryTitle {
     top: 0;
     display: block;

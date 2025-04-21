@@ -8,7 +8,7 @@
     --footer-fg-color: var(--footer-fg-color-white);
 
     --md-typeset-color: var(--text-color-white);
-    --md-typeset-a-color: var(--text-color-white);
+    --md-typeset-a-color: var(--typeset-a-color);
 
     --md-footer-fg-color: var(--footer-fg-color);
 
@@ -27,7 +27,7 @@
     --footer-fg-color: var(--footer-fg-color-dark);
     
     --md-typeset-color: var(--text-color-black);
-    --md-typeset-a-color: var(--text-color-black);
+    --md-typeset-a-color: var(--typeset-a-color);
 
     --md-footer-fg-color: var(--footer-fg-color);
 
@@ -36,3 +36,7 @@
     --md-default-fg-color--light: var(--text-color-black);
 }
 
+.md-typeset a {
+    color: var(--md-typeset-a-color);
+    word-break: break-word;
+}

@@ -37,7 +37,7 @@ local objectType = ClassPP.Type.type(object)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box">string</td>
+                    <td class="api-return-box"><a href="https://create.roblox.com/docs/luau/strings">string</a></td>
                 </tr>
             </tbody>
         </table>

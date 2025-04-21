@@ -1,0 +1,63 @@
+.api-header {
+    display: flex;
+	align-items: baseline;
+	margin: 0 !important;
+	flex-wrap: wrap;
+}
+
+.apiReferenceSummaryTitle {
+    top: 0;
+    display: block;
+    padding: 16px 12px;
+    z-index: 1;
+    position: sticky;
+    margin-bottom: 16px;
+    background-color: #4a4156;
+    border-radius: 10px;
+    color: #fff
+}
+
+.apiReferenceAccessBox {
+    font-weight: 500;
+    font-style: normal;
+    line-height: 20px;
+    font-size: 15px;
+    text-transform: none;
+    align-items: center;
+    background-color: rgb(99, 87, 87);
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: inline-flex;
+    float: right;
+    height: 24px;
+    width: auto;
+    text-align: center;
+    padding: 6px;
+}
+
+.apiReferenceMethodBox {
+    width: 1000px;
+}
+
+.apiReferenceFunctionTitle {
+    font-size: 40px;
+    font-weight: bold;
+    position: relative;
+    top: -20px
+}
+
+.apiReferenceFunctionType {
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    top: -26px;
+    padding-left: 5px;
+}
+
+.apiReferenceFunctionTypeIndicator {
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    top: -26px;
+    padding-left: 5px;
+}

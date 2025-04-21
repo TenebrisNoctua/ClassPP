@@ -1,15 +1,19 @@
 #
-<span class="apiReferenceFunctionTitle">typeof</span> <span class="apiReferenceFunctionTypeIndicator">:</span> <a href="https://create.roblox.com/docs/luau/strings" class="apiReferenceFunctionType" style="color: lightskyblue;">string</a>
+<span class="api-header">
+    <span class="api-icon" markdown>:octicons-workflow-24:</span>
+    <span class="apiReferenceFunctionTitle">typeof</span>
+    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/strings" class="api-type">string</a>
+</span>
 
 ```lua
-function Type.typeofClass(classObject: any): string
+function Type.typeof(object: any): string
 ```
 
-Returns the `__classtype` property of a `class`. This can be used to determine what is the type of the given `class`.
+Returns the type of the given `object`. Behaves the same as the built-in Roblox `typeof()` function, but with additional support for `class`es and `object`s.
 
 ## Default syntax
 ```lua
-local objectType = ClassPP.Type.typeofClass(classObject)
+local objectType = ClassPP.Type.typeof(object)
 ```
 
 ## Parameters

@@ -1,19 +1,15 @@
 #
-<span class="api-header">
-    <span class="api-icon" markdown>:octicons-workflow-24:</span>
-    <span class="apiReferenceFunctionTitle">typeof</span>
-    <span class="api-type">:</span> <a href="https://create.roblox.com/docs/luau/strings" class="api-type">string</a>
-</span>
+<span class="apiReferenceFunctionTitle">typeof</span> <span class="apiReferenceFunctionTypeIndicator">:</span> <a href="https://create.roblox.com/docs/luau/strings" class="apiReferenceFunctionType" style="color: lightskyblue;">string</a>
 
 ```lua
-function Type.typeof(object: any): string
+function Type.typeofClass(classObject: any): string
 ```
 
-Returns the `__type` property of an `object`. This can be used to determine which `class` an `object` belongs to.
+Returns the `__classtype` property of a `class`. This can be used to determine what is the type of the given `class`.
 
 ## Default syntax
 ```lua
-local objectType = ClassPP.Type.typeof(object)
+local objectType = ClassPP.Type.typeofClass(classObject)
 ```
 
 ## Parameters
@@ -22,8 +18,8 @@ local objectType = ClassPP.Type.typeof(object)
 <table>
 <tbody>
 <tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff">object: <a href="../../../dataTypes/object" style="color: lightskyblue;">object</a></td>
-<td style="width: 74%">The <code>object</code>.</td>
+<td style="background-color: rgb(37, 39, 45); color: #fff">classObject: <a href="../../../dataTypes/class" style="color: lightskyblue;">class</a></td>
+<td style="width: 74%">The <code>class</code>.</td>
 </tr>
 </tbody>
 </table>

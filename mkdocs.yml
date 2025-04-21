@@ -88,8 +88,8 @@ nav:
         - abstract: api-reference/classFunctions/mainModule/abstract.md
         - getClass: api-reference/classFunctions/mainModule/getClass.md
         - Type: 
+          - type: api-reference/classFunctions/type/type.md
           - typeof: api-reference/classFunctions/type/typeof.md
-          - typeofClass: api-reference/classFunctions/type/typeofclass.md
         - Util:
           - inClassScope: api-reference/classFunctions/util/inClassScope.md
           - checkInheritance: api-reference/classFunctions/util/checkInheritance.md

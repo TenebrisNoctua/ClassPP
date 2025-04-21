@@ -1,7 +1,7 @@
 #
 <span class="api-header">
     <span class="api-icon" markdown>:octicons-workflow-24:</span>
-    <span class="apiReferenceFunctionTitle">type</span>
+    <span class="api-title">type</span>
     <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/strings" class="api-type">string</a>
 </span>
 

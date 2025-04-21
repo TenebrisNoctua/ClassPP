@@ -1,5 +1,9 @@
 #
-<span class="apiReferenceFunctionTitle">inClassScope</span> <span class="apiReferenceFunctionTypeIndicator">:</span> <a href="https://create.roblox.com/docs/luau/booleans" class="apiReferenceFunctionType" style="color: lightskyblue;">boolean</a>
+<span class="api-header">
+    <span class="api-icon" markdown>:octicons-workflow-24:</span>
+    <span class="api-title">inClassScope</span>
+    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/booleans" class="api-type">boolean</a>
+</span>
 
 ```lua
 function Util.inClassScope(class: class, includeInherited: boolean, includeFriend: boolean, classes: {[string]: class}?, defaultLevel: number?): boolean

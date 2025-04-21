@@ -1,5 +1,9 @@
 #
-<span class="apiReferenceFunctionTitle">checkFriendship</span> <span class="apiReferenceFunctionTypeIndicator">:</span> <a href="https://create.roblox.com/docs/luau/booleans" class="apiReferenceFunctionType" style="color: lightskyblue;">boolean</a>
+<span class="api-header">
+    <span class="api-icon" markdown>:octicons-workflow-24:</span>
+    <span class="api-title">checkFriendship</span>
+    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/booleans" class="api-type">boolean</a>
+</span>
 
 ```lua
 function Util.checkFriendship(class: class, methodName: string, method: () -> (), classes: {[string]: class}): boolean

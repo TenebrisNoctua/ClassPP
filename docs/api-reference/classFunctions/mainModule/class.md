@@ -1,5 +1,9 @@
 #
-<span class="apiReferenceFunctionTitle">class</span> <span class="apiReferenceFunctionTypeIndicator">:</span> <a href="../../../dataTypes/class" class="apiReferenceFunctionType" style="color: lightskyblue;">class</a>
+<span class="api-header">
+    <span class="api-icon" markdown>:octicons-workflow-24:</span>
+    <span class="api-title">class</span>
+    <span class="api-type">:</span><a href="../../../dataTypes/class" class="api-type">class</a>
+</span>
 
 ```lua
 function classpp.class(className: string): (classData: classData) -> class

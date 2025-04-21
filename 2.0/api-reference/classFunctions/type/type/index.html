@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../typeof/">
+        <link rel="prev" href="../../mainModule/getClass/">
       
       
-        <link rel="next" href="../../util/inClassScope/">
+        <link rel="next" href="../typeof/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>typeofClass - Class++ Documentation</title>
+        <title>type - Class++ Documentation</title>
       
     
     
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              typeofClass
+              type
             
           </span>
         </div>
@@ -1089,29 +1089,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../typeof/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    typeof
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1129,7 +1106,7 @@
   
   
   <span class="md-ellipsis">
-    typeofClass
+    type
     
   </span>
   
@@ -1142,7 +1119,7 @@
   
   
   <span class="md-ellipsis">
-    typeofClass
+    type
     
   </span>
   
@@ -1186,6 +1163,29 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typeof/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    typeof
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1575,12 +1575,16 @@
 
 
 <h1 id="_1"></h1>
-<p><span class="apiReferenceFunctionTitle">typeofClass</span> <span class="apiReferenceFunctionTypeIndicator">:</span> <a href="https://create.roblox.com/docs/luau/strings" class="apiReferenceFunctionType" style="color: lightskyblue;">string</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Type</span><span class="p">.</span><span class="nf">typeofClass</span><span class="p">(</span><span class="nv">classObject</span><span class="p">:</span><span class="w"> </span><span class="py">any</span><span class="p">):</span><span class="w"> </span><span class="nv">string</span>
+<p><span class="api-header">
+    <span class="api-icon" markdown><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1 3a2 2 0 0 1 2-2h6.5a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2H7v4.063C7 16.355 7.644 17 8.438 17H12.5v-2.5a2 2 0 0 1 2-2H21a2 2 0 0 1 2 2V21a2 2 0 0 1-2 2h-6.5a2 2 0 0 1-2-2v-2.5H8.437A2.94 2.94 0 0 1 5.5 15.562V11.5H3a2 2 0 0 1-2-2Zm2-.5a.5.5 0 0 0-.5.5v6.5a.5.5 0 0 0 .5.5h6.5a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5ZM14.5 14a.5.5 0 0 0-.5.5V21a.5.5 0 0 0 .5.5H21a.5.5 0 0 0 .5-.5v-6.5a.5.5 0 0 0-.5-.5Z"/></svg></span></span>
+    <span class="apiReferenceFunctionTitle">type</span>
+    <span class="api-type">-&gt;</span> <a href="https://create.roblox.com/docs/luau/strings" class="api-type">string</a>
+</span></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Type</span><span class="p">.</span><span class="nf">type</span><span class="p">(</span><span class="nv">object</span><span class="p">:</span><span class="w"> </span><span class="py">any</span><span class="p">):</span><span class="w"> </span><span class="nv">string</span>
 </code></pre></div>
-<p>Returns the <code>__classtype</code> property of a <code>class</code>. This can be used to determine what is the type of the given <code>class</code>.</p>
+<p>Returns the true type of the given <code>object</code>. Behaves the same as the built-in <code>type()</code> function, but with additional support for <code>class</code>es and <code>object</code>s.</p>
 <h2 id="default-syntax">Default syntax</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">objectType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">Type</span><span class="p">.</span><span class="nf">typeofClass</span><span class="p">(</span><span class="nv">classObject</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">objectType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">Type</span><span class="p">.</span><span class="nf">type</span><span class="p">(</span><span class="nv">object</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="parameters">Parameters</h2>
 
@@ -1620,7 +1624,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../typeof/" class="md-footer__link md-footer__link--prev" aria-label="Previous: typeof">
+          <a href="../../mainModule/getClass/" class="md-footer__link md-footer__link--prev" aria-label="Previous: getClass">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1630,20 +1634,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                typeof
+                getClass
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../util/inClassScope/" class="md-footer__link md-footer__link--next" aria-label="Next: inClassScope">
+          <a href="../typeof/" class="md-footer__link md-footer__link--next" aria-label="Next: typeof">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                inClassScope
+                typeof
               </div>
             </div>
             <div class="md-footer__button md-icon">

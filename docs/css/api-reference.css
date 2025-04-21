@@ -68,3 +68,7 @@
     top: -26px;
     padding-left: 5px;
 }
+
+.md-typeset .emojione, .md-typeset .gemoji, .md-typeset .twemoji {
+    --md-icon-size: 2.2em;
+}

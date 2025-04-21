@@ -1,6 +1,6 @@
 [data-md-color-scheme="classppdoc-dark"] {
-    --md-code-fg-color: var(--code-fg-color-black);
-    --md-code-bg-color: var(--code-bg-color-black);
+    --md-code-fg-color: var(--code-fg-color-dark);
+    --md-code-bg-color: var(--code-bg-color-dark);
 
     --md-code-hl-color: #4287ff;
     --md-code-hl-color--light: #4287ff1a;
@@ -35,7 +35,7 @@
     --md-code-hl-punctuation-color: var(--md-default-fg-color--light);
     --md-code-hl-comment-color: var(--md-default-fg-color--light);
     --md-code-hl-generic-color: var(--md-default-fg-color--light);
-    --md-code-hl-variable-color: var(--code-h1-variable-color-black);
+    --md-code-hl-variable-color: var(--code-h1-variable-color-dark);
 }
 
 .md-typeset code {

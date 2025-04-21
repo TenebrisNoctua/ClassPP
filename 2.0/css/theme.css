@@ -15,10 +15,13 @@
     --md-primary-fg-color: var(--top-background-color-dark);
     --md-default-bg-color: var(--main-background-color-dark);
     --md-default-fg-color--light: var(--text-color-white);
+
+    --table-background-color: var(--table-background-color-dark);
+    --td-color: var(--td-color-dark);
 }
 
 [data-md-color-scheme="classppdoc-light"] {
-    --default-text-color: var(--text-color-black);
+    --default-text-color: var(--text-color-dark);
     --title-text-color: var(--title-text-color-dark);
 
     --button-background-color: var(--button-bg-color-dark);
@@ -26,17 +29,37 @@
 
     --footer-fg-color: var(--footer-fg-color-dark);
     
-    --md-typeset-color: var(--text-color-black);
+    --md-typeset-color: var(--text-color-dark);
     --md-typeset-a-color: var(--typeset-a-color);
 
     --md-footer-fg-color: var(--footer-fg-color);
 
     --md-primary-fg-color: var(--top-background-color-white);
     --md-default-bg-color: var(--main-background-color-white);
-    --md-default-fg-color--light: var(--text-color-black);
+    --md-default-fg-color--light: var(--text-color-dark);
+
+    --table-background-color: var(--table-background-color-white);
+    --td-color: var(--td-color-white);
 }
 
 .md-typeset a {
     color: var(--md-typeset-a-color);
     word-break: break-word;
+}
+
+.md-typeset__table table:not([class]) {
+    font-size: .80rem;
+    width: 100%;
+    border-radius: 0.5em;
+    background-color: var(--table-background-color);
+}
+
+.md-typeset__table {
+    width: 100%;
+    padding-left: 0.5em;
+}
+
+.td {
+    background-color: var(--td-color);
+    color: var(--default-text-color);
 }

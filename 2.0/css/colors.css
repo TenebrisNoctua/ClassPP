@@ -23,12 +23,18 @@
     --main-background-color-dark: #111218;
     --main-background-color-white: #f3eefe;
 
-    --code-bg-color-black: #1f1e2d;
+    --code-bg-color-dark: #1f1e2d;
     --code-bg-color-white: #dededf;
-    --code-fg-color-black: #36464e;
+    --code-fg-color-dark: #36464e;
     --code-fg-color-white: #9893d9;
     --code-h1-variable-color-white: #d0cbdd;
-    --code-h1-variable-color-black: #27262a;
+    --code-h1-variable-color-dark: #27262a;
 
     --typeset-a-color: #6956c8;
+
+    --table-background-color-dark: #181824;
+    --table-background-color-white: #181824;
+
+    --td-color-dark: #2a244d;
+    --td-color-white: #2a244d;
 }

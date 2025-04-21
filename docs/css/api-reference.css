@@ -22,6 +22,10 @@
     padding-left: 8px;
 }
 
+.api-return-box {
+    width: 1000px;
+}
+
 .apiReferenceSummaryTitle {
     top: 0;
     display: block;
@@ -49,10 +53,6 @@
     width: auto;
     text-align: center;
     padding: 6px;
-}
-
-.apiReferenceMethodBox {
-    width: 1000px;
 }
 
 .apiReferenceFunctionTitle {

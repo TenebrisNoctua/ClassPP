@@ -22,7 +22,7 @@ local objectType = ClassPP.Type.type(object)
         <table>
             <tbody>
                 <tr>
-                    <td style="background-color: rgb(37, 39, 45); color: #fff">object: <a href="../../../dataTypes/object" style="color:        lightskyblue;      ">object</a></td>
+                    <td>object: <a href="../../../dataTypes/object">object</a></td>
                     <td style="width: 74%">The <code>object</code>.</td>
                 </tr>
             </tbody>
@@ -31,3 +31,15 @@ local objectType = ClassPP.Type.type(object)
 </span>
 
 <h2 markdown style="font-size: 1.5625em; margin-bottom: -20px; margin-top: -30px"> Returns </h2>
+
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box">string</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

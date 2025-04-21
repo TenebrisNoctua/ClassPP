@@ -9,6 +9,17 @@
     margin-right: 0.5em
 }
 
+.api-title {
+    top: 0;
+    display: block;
+    padding: 16px 12px;
+    z-index: 1;
+    position: sticky;
+    background-color: #4a4156;
+    border-radius: 10px;
+    color: #fff
+}
+
 .apiReferenceSummaryTitle {
     top: 0;
     display: block;

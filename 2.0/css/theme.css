@@ -59,7 +59,7 @@
     padding-left: 0.5em;
 }
 
-.td {
+td {
     background-color: var(--td-color);
     color: var(--default-text-color);
 }

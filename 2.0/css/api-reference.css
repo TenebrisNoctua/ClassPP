@@ -1,6 +1,6 @@
 .api-header {
     display: flex;
-	align-items: baseline;
+	align-items: center;
 	margin: 0 !important;
 	flex-wrap: wrap;
 }

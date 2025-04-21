@@ -17,8 +17,8 @@ local objectType = ClassPP.Type.type(object)
 ```
 
 ## Parameters
-<span markdown>
-    <div class="md-typeset__scrollwrap"><div class="md-typeset__table">
+<div markdown>
+    <div class="md-typeset__table">
         <table>
             <tbody>
                 <tr>
@@ -28,19 +28,6 @@ local objectType = ClassPP.Type.type(object)
             </tbody>
         </table>
     </div>
-</span>
+</div>
 
 <h2 markdown style="font-size: 1.5625em; margin-bottom: -20px; margin-top: -30px"> Returns </h2>
-
-<span markdown>
-    <div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-        <table>
-            <tbody>
-                <tr>
-                    <td class="apiReferenceMethodBox">string</td>
-                </tr>
-                <tr>
-            </tbody>
-        </table>
-    </div>
-</span>

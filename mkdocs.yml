@@ -31,6 +31,8 @@ theme:
       toggle:
         icon: octicons/moon-24
         name: Switch To Dark Mode
+  icon:
+    repo: octicons/mark-github-16
 
 extra_css:
   - css/extra.css

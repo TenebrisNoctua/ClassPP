@@ -12,20 +12,6 @@
     width: 100%;
 }
 
-.md-nav__item .md-nav__link--active,
-.md-nav__item .md-nav__link--active code {
-    color: var(--default-text-color);
-}
-
-.md-typeset code, .md-typeset kbd, .md-typeset pre {
-    color: var(--default-text-color);
-}
-
-.md-typeset a {
-    color: var(--default-text-color);
-    word-break: break-word;
-}
-
 .operator_overloading_method {
     width: 30%;
 }

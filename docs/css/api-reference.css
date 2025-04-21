@@ -45,14 +45,19 @@
 .apiReferenceFunctionTitle {
     font-size: 40px;
     font-weight: bold;
-    position: relative;
     top: -20px
+}
+
+.api-type {
+    font-size: 18px;
+    font-weight: bold;
+    top: -26px;
+    padding-left: 5px;
 }
 
 .apiReferenceFunctionType {
     font-size: 18px;
     font-weight: bold;
-    position: relative;
     top: -26px;
     padding-left: 5px;
 }
@@ -60,7 +65,6 @@
 .apiReferenceFunctionTypeIndicator {
     font-size: 18px;
     font-weight: bold;
-    position: relative;
     top: -26px;
     padding-left: 5px;
 }

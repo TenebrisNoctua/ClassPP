@@ -2,7 +2,7 @@
 <span class="api-header">
     <span class="api-icon" markdown>:octicons-workflow-24:</span>
     <span class="apiReferenceFunctionTitle">typeof</span>
-    <span class="apiReferenceFunctionTypeIndicator">:</span> <a href="https://create.roblox.com/docs/luau/strings" class="apiReferenceFunctionType" style="color: lightskyblue;">string</a>
+    <span class="api-type">:</span> <a href="https://create.roblox.com/docs/luau/strings" class="api-type" style="color: lightskyblue;">string</a>
 </span>
 
 ```lua

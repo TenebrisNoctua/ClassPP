@@ -17,7 +17,7 @@ local objectType = ClassPP.Type.type(object)
 ```
 
 ## Parameters
-<div markdown>
+<span markdown>
     <div class="md-typeset__table">
         <table>
             <tbody>
@@ -28,6 +28,6 @@ local objectType = ClassPP.Type.type(object)
             </tbody>
         </table>
     </div>
-</div>
+</span>
 
 <h2 markdown style="font-size: 1.5625em; margin-bottom: -20px; margin-top: -30px"> Returns </h2>

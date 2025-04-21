@@ -41,3 +41,17 @@
 .md-typeset code {
 	border-radius: 0.25rem;
 }
+
+.md-nav__item .md-nav__link--active,
+.md-nav__item .md-nav__link--active code {
+    color: #6854ca;
+}
+
+.md-typeset code, .md-typeset kbd, .md-typeset pre {
+    color: var(--default-text-color);
+}
+
+.md-typeset a {
+    color: var(--default-text-color);
+    word-break: break-word;
+}

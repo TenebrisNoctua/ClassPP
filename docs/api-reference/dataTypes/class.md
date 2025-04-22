@@ -5,13 +5,30 @@
 
 A `class` object created from the [`class()`](../classFunctions/mainModule/class.md) function. Contains all of the members given from the [`classData`](../types/classData.md).
 
-## Summary
-
-<span markdown>
-    <div class="api-summary-list">
-        <h3>Summary</h3>
+<div class="api-summary-list">
+    <h3 style="api-summary-list-h3">Summary</h3>
+    <div style="api-summary-section">
+        <h3 style="api-summary-section-h3">Properties</h3>
+        <div style="api-summary-section-list">
+            <ul>
+                <li><a href="#Name">Name</a></li>
+                <li><a href="#Inherits">Inherits</a></li>
+                <li><a href="#Friends">Friends</a></li>
+                <li><a href="#Statics">Statics</a></li>
+            </ul>
+        </div>
     </div>
-</span>
+    <div style="api-summary-section">
+        <h3 style="api-summary-section-h3">Methods</h3>
+        <div style="api-summary-section-list">
+            <ul>
+                <li><a href="#new">new</a></li>
+                <li><a href="#extends">extends</a></li>
+                <li><a href="#overload">overload</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <!------------------------- PROPERTIES -------------------------!-->
 
@@ -72,6 +89,7 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
 
 This is an unique identifier of the `class`. Using the [`getClass()`](../classFunctions/mainModule/getClass.md) function with this property will retrieve the desired `class`. Since names are unique, for every class, you have to use a different name.
 
+----------------------
 
 ### Inherits
 <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a>
@@ -79,6 +97,7 @@ This is an unique identifier of the `class`. Using the [`getClass()`](../classFu
 
 This table contains all the classes that the `class` is inheriting from. Currently, multiple class inheritance is not supported, so a `class` can only inherit from one `class`, but it may be different in the future.
 
+----------------------
 
 ### Friends
 <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a>
@@ -86,11 +105,14 @@ This table contains all the classes that the `class` is inheriting from. Current
 
 This table contains all the functions and the classes that can access all of the `Public` and `Protected` members of the `class`.
 
+----------------------
+
 ### Statics
 <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a>
 <div class="apiReferenceAccessBox" style="float: none">Read Only</div>
 
-This table contains all the members that are static, meaning they only belong to the `class`. These members won't replicate to the objects, and can only be called through the `class` object.
+This table contains all the members that are static, meaning they only belong to the `class`. These members won't replicate to the 
+objects, and can only be called through the `class` object.
 
 ## Methods
 
@@ -99,137 +121,108 @@ This table contains all the members that are static, meaning they only belong to
 
 Creates and returns a new [`object`](object.md) that contains all of the members given from the `class`.
 
-<h4 style="font-size: 20px; margin-bottom: -20px"> Returns </h4>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td class="apiReferenceMethodBox">object</td>
-</tr>
-<tr>
-</tbody>
-</table>
+#### Returns
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box"><a href="object.md">object</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-</div>
+
+----------------------
 
 ### extends
 <a style="color: lightskyblue;">class</a>
 
 Creates and returns a new `class` that inherits the `class` it's been created from. Contains all the `Public` and `Protected` members of that base `class`. 
 
-<h4 style="font-size: 20px; margin-bottom: -20px"> Parameters </h4>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff">className: <a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a></td>
-<td style="width: 74%">The class name for the new <code>class</code>.</td>
-</tr>
-<tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff">classData: <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a></td>
-<td style="width: 74%">The <code>classData</code> table that contains the data about the new class.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<h4 style="font-size: 20px; margin-bottom: -20px; margin-top: -30px"> Returns </h4>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td class="apiReferenceMethodBox">class</td>
-</tr>
-<tr>
-</tbody>
-</table>
-</div>
-</div>
+----------------------
 
 ### overload
 <a style="color: lightskyblue;">void</a>
 
 Creates an overloaded function with the given parameters, and saves it to the `class`'s `classData` table.
 
-<h4 style="font-size: 20px; margin-bottom: -20px"> Parameters </h4>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff; width: 30%">accessSpecifier: <a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a></td>
-<td>The access specifier of the overloaded function.</td>
-</tr>
-<tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff">name: <a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a></td>
-<td>The name of the overloaded function.</td>
-</tr>
-<tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff">functionTable: <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a></td>
-<td>The function table that contains all the functions with different amount of arguments for the overloaded function.</td>
-</tr>
-</tbody>
-</table>
-</div>
+#### Parameters
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-param-highlight">accessSpecifier: <a href="https://create.roblox.com/docs/luau/strings">string</a></td>
+                    <td>The access specifier of the overloaded function.</td>
+                </tr>
+                <tr>
+                    <td class="api-param-highlight">name: <a href="https://create.roblox.com/docs/luau/strings">string</a></td>
+                    <td>The name of the overloaded function.</td>
+                </tr>
+                <tr>
+                    <td class="api-param-highlight">functionTable: <a href="https://create.roblox.com/docs/luau/tables">{(...any) -> (any)}</a></td>
+                    <td>The function table that contains all the functions with different amount of arguments for the overloaded function.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</span>
+
+#### Returns
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box">void</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<h4 style="font-size: 20px; margin-bottom: -20px; margin-top: -30px"> Returns </h4>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td class="apiReferenceMethodBox">void</td>
-</tr>
-<tr>
-</tbody>
-</table>
-</div>
-</div>
+----------------------
 
 ### static
 <a style="color: lightskyblue;">void</a>
 
 Creates a new static member with the given parameters, and saves it to the `class`'s `Statics` table. These members do not replicate to the objects, as they belong to the `class`. 
 
-<h4 style="font-size: 20px; margin-bottom: -20px"> Parameters </h4>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff; width: 30%">accessSpecifier: <a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a></td>
-<td>The access specifier of the static member.</td>
-</tr>
-<tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff">name: <a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a></td>
-<td>The name of the static member.</td>
-</tr>
-<tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff">property: <a href="https://create.roblox.com/docs/luau/type-checking#types" style="color: lightskyblue;">any</a></td>
-<td>The property that will be saved to the static member. Can be accessed through indexing the <code>class</code> like <code>class.memberName.property</code> (or <code>class.memberName.p</code>) </td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+#### Parameters
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-param-highlight">accessSpecifier: <a href="https://create.roblox.com/docs/luau/strings">string</a></td>
+                    <td>The access specifier of the static member.</td>
+                </tr>
+                <tr>
+                    <td class="api-param-highlight">name: <a href="https://create.roblox.com/docs/luau/strings">string</a></td>
+                    <td>The name of the static member.</td>
+                </tr>
+                <tr>
+                    <td class="api-param-highlight">property: <a href="https://create.roblox.com/docs/luau/type-checking#types">any</a></td>
+                    <td>The property that will be saved to the static member. This property can then be accessed through indexing the <code>class</code> with the member name, such as: <code>class.memberName.property</code>. (Or <code>class.memberName.p</code>)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</span>
 
-<h4 style="font-size: 20px; margin-bottom: -20px; margin-top: -30px"> Returns </h4>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td class="apiReferenceMethodBox">void</td>
-</tr>
-<tr>
-</tbody>
-</table>
-</div>
+#### Returns
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box">void</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 

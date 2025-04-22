@@ -1,4 +1,7 @@
-# Class
+<h1 class="api-header" markdown>
+    <span class="api-icon" markdown>:package-24:</span>
+    <span class="api-title">Class</span>
+</h1>
 
 A `class` object created from the [`class()`](../classFunctions/mainModule/class.md) function. Contains all of the members given from the [`classData`](../types/classData.md).
 

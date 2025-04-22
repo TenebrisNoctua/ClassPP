@@ -1,4 +1,7 @@
-# Object
+<h1 class="api-header" markdown>
+    <span class="api-icon" markdown>:package-24:</span>
+    <span class="api-title">Object</span>
+</h1>
 
 An `object` created from the [`class.new()`](class.md#new) function. Contains all of the members given from the `class` object.
 

@@ -58,6 +58,8 @@
 .md-typeset__table {
     width: 100%;
     padding-left: 0.5em;
+    margin-bottom: 0em;
+    padding: 0 0.5rem;
 }
 
 td {

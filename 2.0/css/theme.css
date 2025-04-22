@@ -75,4 +75,9 @@ td {
 
 .md-typeset :is(.admonition, details) > :is(.admonition-title, summary) {
 	background-color: var(--md-admonition-bg-color);
+    border-radius: 0.4rem;
+}
+
+.md-typeset .admonition {
+    border-radius: 0.4rem;
 }

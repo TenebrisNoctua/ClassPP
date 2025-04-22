@@ -26,6 +26,11 @@
     width: 1000px;
 }
 
+.api-param-highlight {
+    background-color: var(--td-color);
+    color: var(--default-text-color);
+}
+
 .apiReferenceSummaryTitle {
     top: 0;
     display: block;

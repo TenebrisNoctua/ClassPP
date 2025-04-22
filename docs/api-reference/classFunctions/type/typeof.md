@@ -22,7 +22,7 @@ local objectType = ClassPP.Type.typeof(object)
             <tbody>
                 <tr>
                     <td class="api-param-highlight">object: <a href="../../../dataTypes/object">object</a></td>
-                    <td style="width: 74%">The <code>object</code>.</td>
+                    <td>The <code>object</code>.</td>
                 </tr>
             </tbody>
         </table>

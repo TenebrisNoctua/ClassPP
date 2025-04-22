@@ -22,15 +22,14 @@ local objectType = ClassPP.Type.type(object)
             <tbody>
                 <tr>
                     <td class="api-param-highlight">object: <a href="../../../dataTypes/object">object</a></td>
-                    <td style="width: 74%">The <code>object</code>.</td>
+                    <td>The <code>object</code>.</td>
                 </tr>
             </tbody>
         </table>
     </div>
 </span>
 
-<h2 markdown class="api-returns-title"> Returns </h2>
-
+## Returns
 <span markdown>
     <div class="md-typeset__table">
         <table>

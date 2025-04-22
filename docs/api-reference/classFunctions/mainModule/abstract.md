@@ -32,29 +32,28 @@ local Car = abstract({class("Car")({
 ```
 
 ## Parameters
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff">classTable: <a href="../../../dataTypes/class" style="color: lightskyblue;">{class}</a></td>
-<td style="width: 82%">The desired <code>class</code> or <code>class</code>es to be set to abstract.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-param-highlight">classTable: <a href="../../../dataTypes/class">{class}</a></td>
+                    <td>The desired <code>class</code> or <code>class</code>es to be set to abstract.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</span>
 
-<h2 markdown="1" style="font-size: 1.5625em; margin-bottom: -20px; margin-top: -30px"> Returns </h2>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td class="apiReferenceMethodBox">class</td>
-</tr>
-<tr>
-</tbody>
-</table>
-</div>
+## Returns
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box"><a href="../../../dataTypes/class">class</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

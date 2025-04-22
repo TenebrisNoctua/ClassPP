@@ -1256,6 +1256,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returns
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1555,6 +1564,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returns
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1587,6 +1605,46 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">isAllowed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Util</span><span class="p">.</span><span class="nf">inClassScope</span><span class="p">(</span><span class="nv">class</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nv">Classes</span><span class="p">)</span><span class="w"> </span><span class="c1">-- For the Private access specifier</span>
 </code></pre></div>
 <h2 id="parameters">Parameters</h2>
+<p><span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-param-highlight">class: <a href="../../../dataTypes/class">class</a></td>
+                    <td>The <code>class</code> that the check will be made from.</td>
+                </tr>
+                <tr>
+                    <td class="api-param-highlight">includeInherited: <a href="https://create.roblox.com/docs/luau/booleans">boolean</a></td>
+                    <td>Determines if the inherited <code>class</code>es can access.</td>
+                </tr>
+                <tr>
+                    <td class="api-param-highlight">includeFriend: <a href="https://create.roblox.com/docs/luau/booleans">boolean</a></td>
+                    <td>Determines if the friend <code>class</code>es can access.</td>
+                </tr>
+                <tr>
+                    <td class="api-param-highlight">classes: <a href="../../../dataTypes/class">{[string]: class}</a></td>
+                    <td>A table that contains classes. If <code>includeFriend</code> is set to <code>true</code>, this table will be given to the <a href="../../../classFunctions/util/checkFriendship">Util.checkFriendship</a> function.</td>
+                </tr>
+                <tr>
+                    <td class="api-param-highlight">defaultLevel: <a href="https://create.roblox.com/docs/luau/numbers">number</a></td>
+                    <td>Determines the default call stack level the function will start doing the checks on.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</span></p>
+<h2 id="returns">Returns</h2>
+<p><span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box"><a href="https://create.roblox.com/docs/luau/booleans">boolean</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div></p>
 
 
 

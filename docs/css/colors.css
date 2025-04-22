@@ -41,6 +41,6 @@
     --admonition-bg-color-white: #181824;
     --admonition-bg-color-dark: #181824;
 
-    --admonition-fg-color-white: #181824;
-    --admonition-fg-color-dark: #181824;
+    --admonition-fg-color-white: var(--text-color-black);
+    --admonition-fg-color-dark: var(--text-color-white);
 }

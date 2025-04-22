@@ -21,6 +21,8 @@
 
     --md-admonition-fg-color: var(--admonition-fg-color-dark);
 	--md-admonition-bg-color: var(--admonition-bg-color-dark);
+
+    --hr-color: var(--hr-white);
 }
 
 [data-md-color-scheme="classppdoc-light"] {
@@ -46,6 +48,8 @@
 
     --md-admonition-fg-color: var(--admonition-fg-color-white);
 	--md-admonition-bg-color: var(--admonition-bg-color-white);
+
+    --hr-color: var(--hr-dark);
 }
 
 .md-typeset a {
@@ -83,5 +87,5 @@ td {
 }
 
 .md-typeset hr {
-    border-bottom: .05rem solid var(--md-typeset-color);
+    border-bottom: .05rem solid var(--hr-color);
 }

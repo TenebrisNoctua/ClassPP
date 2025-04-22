@@ -45,4 +45,7 @@
     --admonition-fg-color-dark: var(--text-color-white);
 
     --md-accent-fg-color: #6956c8;
+
+    --hr-white: #353535e0;
+    --hr-dark: #353535e0;
 }

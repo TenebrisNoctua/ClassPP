@@ -7,6 +7,12 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
 
 ## Summary
 
+<span markdown>
+    <div class="api-summary-list">
+        <h3>Summary</h3>
+    </div>
+</span>
+
 <!------------------------- PROPERTIES -------------------------!-->
 
 <h3 markdown="1" class="apiReferenceSummaryTitle"> Properties </h3>

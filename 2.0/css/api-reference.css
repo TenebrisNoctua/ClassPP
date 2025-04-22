@@ -42,8 +42,28 @@
 }
 
 .api-summary-list {
-    border-radius: 1.4em;
+    border-radius: 1.2em;
     background-color: var(--code-bg-color-dark);
+}
+
+.api-summary-list-h3 {
+    padding-left: 1em;
+    padding-top: 1em;
+}
+
+.api-summary-section {
+    padding-left: 1.5em;
+    padding-bottom: 1em;
+}
+
+.api-summary-section-h3 {
+    padding-left: 1em;
+    margin-top: 0;
+}
+
+.api-summary-section-list {
+    padding-left: 2em;
+    margin-top: 0;
 }
 
 .apiReferenceSummaryTitle {

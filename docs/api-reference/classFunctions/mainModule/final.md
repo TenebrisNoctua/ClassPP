@@ -1,9 +1,8 @@
-#
-<span class="api-header">
+<h1 class="api-header" markdown>
     <span class="api-icon" markdown>:octicons-workflow-24:</span>
     <span class="api-title">final</span>
     <span class="api-type">:</span><a href="../../../dataTypes/class" class="api-type">class</a>
-</span>
+</h1>
 
 ```lua
 function classpp.final(classTable: {class}): class

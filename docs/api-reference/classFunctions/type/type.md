@@ -1,4 +1,3 @@
-#
 <span class="api-header">
     <span class="api-icon" markdown>:octicons-workflow-24:</span>
     <span class="api-title">type</span>

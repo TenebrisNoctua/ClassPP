@@ -16,6 +16,7 @@
     --md-default-bg-color: var(--main-background-color-dark);
     --md-default-fg-color--light: var(--text-color-white);
 
+    --md-typeset-table-color: var(--table-background-color-dark);
     --table-background-color: var(--table-background-color-dark);
     --td-color: var(--td-color-dark);
 }
@@ -38,6 +39,7 @@
     --md-default-bg-color: var(--main-background-color-white);
     --md-default-fg-color--light: var(--text-color-dark);
 
+    --md-typeset-table-color: var(--table-background-color-white);
     --table-background-color: var(--table-background-color-white);
     --td-color: var(--td-color-white);
 }
@@ -51,15 +53,10 @@
     font-size: .80rem;
     width: 100%;
     border-radius: 0.5em;
-    background-color: var(--table-background-color);
+    /* background-color: var(--table-background-color); */
 }
 
 .md-typeset__table {
     width: 100%;
     padding-left: 0.5em;
-}
-
-td {
-    background-color: var(--td-color);
-    color: var(--default-text-color);
 }

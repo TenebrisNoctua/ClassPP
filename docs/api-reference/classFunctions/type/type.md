@@ -22,7 +22,7 @@ local objectType = ClassPP.Type.type(object)
         <table>
             <tbody>
                 <tr>
-                    <td>object: <a href="../../../dataTypes/object">object</a></td>
+                    <td class="api-param-highlight">object: <a href="../../../dataTypes/object">object</a></td>
                     <td style="width: 74%">The <code>object</code>.</td>
                 </tr>
             </tbody>

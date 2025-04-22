@@ -43,4 +43,6 @@
 
     --admonition-fg-color-white: var(--text-color-black);
     --admonition-fg-color-dark: var(--text-color-white);
+
+    --md-accent-fg-color: #6956c8;
 }

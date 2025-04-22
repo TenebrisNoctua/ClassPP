@@ -18,6 +18,9 @@
 
     --md-typeset-table-color: var(--table-background-color-dark);
     --td-color: var(--td-color-dark);
+
+    --md-admonition-fg-color: var(--admonition-fg-color-dark);
+	--md-admonition-bg-color: var(--admonition-bg-color-dark);
 }
 
 [data-md-color-scheme="classppdoc-light"] {
@@ -40,6 +43,9 @@
 
     --md-typeset-table-color: var(--table-background-color-white);
     --td-color: var(--td-color-white);
+
+    --md-admonition-fg-color: var(--admonition-fg-color-white);
+	--md-admonition-bg-color: var(--admonition-bg-color-white);
 }
 
 .md-typeset a {

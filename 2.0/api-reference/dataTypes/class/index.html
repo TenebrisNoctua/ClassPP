@@ -1453,63 +1453,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="new">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#returns" class="md-nav__link">
-    <span class="md-ellipsis">
-      Returns
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#extends" class="md-nav__link">
-    <span class="md-ellipsis">
-      extends
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#overload" class="md-nav__link">
-    <span class="md-ellipsis">
-      overload
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="overload">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#returns_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Returns
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -1753,63 +1696,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="new">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#returns" class="md-nav__link">
-    <span class="md-ellipsis">
-      Returns
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#extends" class="md-nav__link">
-    <span class="md-ellipsis">
-      extends
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#overload" class="md-nav__link">
-    <span class="md-ellipsis">
-      overload
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="overload">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#returns_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Returns
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -1924,8 +1810,9 @@ objects, and can only be called through the <code>class</code> object.</p>
 <h3 id="new">new</h3>
 <p><a style="color: lightskyblue;">any</a></p>
 <p>Creates and returns a new <a href="../object/"><code>object</code></a> that contains all of the members given from the <code>class</code>.</p>
-<h4 id="returns">Returns</h4>
-<p><span markdown>
+<!--
+#### Returns
+<span markdown>
     <div class="md-typeset__table">
         <table>
             <tbody>
@@ -1935,17 +1822,24 @@ objects, and can only be called through the <code>class</code> object.</p>
             </tbody>
         </table>
     </div>
-</div></p>
-<hr />
-<h3 id="extends">extends</h3>
-<p><a style="color: lightskyblue;">class</a></p>
-<p>Creates and returns a new <code>class</code> that inherits the <code>class</code> it's been created from. Contains all the <code>Public</code> and <code>Protected</code> members of that base <code>class</code>. </p>
-<hr />
-<h3 id="overload">overload</h3>
-<p><a style="color: lightskyblue;">void</a></p>
-<p>Creates an overloaded function with the given parameters, and saves it to the <code>class</code>'s <code>classData</code> table.</p>
-<h4 id="parameters">Parameters</h4>
-<p><span markdown>
+</div>
+
+----------------------
+
+### extends
+<a style="color: lightskyblue;">class</a>
+
+Creates and returns a new `class` that inherits the `class` it's been created from. Contains all the `Public` and `Protected` members of that base `class`. 
+
+----------------------
+
+### overload
+<a style="color: lightskyblue;">void</a>
+
+Creates an overloaded function with the given parameters, and saves it to the `class`'s `classData` table.
+
+#### Parameters
+<span markdown>
     <div class="md-typeset__table">
         <table>
             <tbody>
@@ -1958,15 +1852,16 @@ objects, and can only be called through the <code>class</code> object.</p>
                     <td>The name of the overloaded function.</td>
                 </tr>
                 <tr>
-                    <td class="api-param-highlight">functionTable: <a href="https://create.roblox.com/docs/luau/tables">{(...any) -&gt; (any)}</a></td>
+                    <td class="api-param-highlight">functionTable: <a href="https://create.roblox.com/docs/luau/tables">{(...any) -> (any)}</a></td>
                     <td>The function table that contains all the functions with different amount of arguments for the overloaded function.</td>
                 </tr>
             </tbody>
         </table>
     </div>
-</span></p>
-<h4 id="returns_1">Returns</h4>
-<p><span markdown>
+</span>
+
+#### Returns
+<span markdown>
     <div class="md-typeset__table">
         <table>
             <tbody>
@@ -1976,9 +1871,10 @@ objects, and can only be called through the <code>class</code> object.</p>
             </tbody>
         </table>
     </div>
-</div></p>
-<hr />
-<!--
+</div>
+
+----------------------
+
 ### static
 <a style="color: lightskyblue;">void</a>
 

@@ -1,3 +1,7 @@
+.md-typeset .emojione, .md-typeset .gemoji, .md-typeset .twemoji {
+    --md-icon-size: 1.2em;
+}
+
 .api-header {
     display: flex;
 	align-items: center;
@@ -6,7 +10,7 @@
 }
 
 .api-header .api-icon {
-    margin-right: 1em
+    margin-right: 0.5em
 }
 
 .api-title {
@@ -72,6 +76,3 @@
     top: -20px
 }
 
-.md-typeset .emojione, .md-typeset .gemoji, .md-typeset .twemoji {
-    --md-icon-size: 2.2em;
-}

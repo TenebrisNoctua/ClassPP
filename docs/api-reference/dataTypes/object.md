@@ -1,5 +1,5 @@
 <h1 class="api-header" markdown>
-    <span class="api-icon" markdown>:package-24:</span>
+    <span class="api-icon" markdown>:octicons-package-24:</span>
     <span class="api-title">Object</span>
 </h1>
 

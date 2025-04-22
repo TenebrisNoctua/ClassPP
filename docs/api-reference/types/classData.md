@@ -1,5 +1,5 @@
 <h1 class="api-header" markdown>
-    <span class="api-icon" markdown>:note-24:</span>
+    <span class="api-icon" markdown>:octicons-note-24:</span>
     <span class="api-title">classData</span>
 </h1>
 

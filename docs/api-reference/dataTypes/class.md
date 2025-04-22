@@ -121,6 +121,7 @@ objects, and can only be called through the `class` object.
 
 Creates and returns a new [`object`](object.md) that contains all of the members given from the `class`.
 
+<!--
 #### Returns
 <span markdown>
     <div class="md-typeset__table">
@@ -184,7 +185,7 @@ Creates an overloaded function with the given parameters, and saves it to the `c
 </div>
 
 ----------------------
-<!--
+
 ### static
 <a style="color: lightskyblue;">void</a>
 

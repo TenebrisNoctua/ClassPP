@@ -81,3 +81,7 @@ td {
 .md-typeset .admonition {
     border-radius: 0.4rem;
 }
+
+.md-typeset hr {
+    border-bottom: .05rem solid var(--md-typeset-color);
+}

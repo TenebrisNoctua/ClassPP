@@ -41,6 +41,12 @@
     margin-top: -30px;
 }
 
+.md-typeset h2:not(.api-returns-title) {
+    font-size: 1.5625em;
+    line-height: 1.4;
+    margin: 1.6em 0.64em;
+}
+
 .apiReferenceSummaryTitle {
     top: 0;
     display: block;

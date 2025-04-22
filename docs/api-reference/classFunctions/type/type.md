@@ -1,8 +1,8 @@
-<span class="api-header">
+<h1 class="api-header" markdown>
     <span class="api-icon" markdown>:octicons-workflow-24:</span>
     <span class="api-title">type</span>
     <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/strings" class="api-type">string</a>
-</span>
+</h1>
 
 ```lua
 function Type.type(object: any): string

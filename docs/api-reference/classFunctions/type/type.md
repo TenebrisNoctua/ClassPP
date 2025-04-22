@@ -30,7 +30,7 @@ local objectType = ClassPP.Type.type(object)
     </div>
 </span>
 
-<h2 markdown style="font-size: 1.5625em; margin-bottom: -20px; margin-top: -30px"> Returns </h2>
+<h2 markdown class="api-returns-title"> Returns </h2>
 
 <span markdown>
     <div class="md-typeset__table">

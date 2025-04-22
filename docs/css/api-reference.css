@@ -22,13 +22,19 @@
     padding-left: 8px;
 }
 
+.api-param-highlight {
+    background-color: var(--td-color);
+    color: var(--default-text-color);
+}
+
 .api-return-box {
     width: 1000px;
 }
 
-.api-param-highlight {
-    background-color: var(--td-color);
-    color: var(--default-text-color);
+.api-returns-title {
+    font-size: 1.5625em; 
+    margin-bottom: -20px; 
+    margin-top: -30px;
 }
 
 .apiReferenceSummaryTitle {

@@ -17,29 +17,29 @@ local objectType = ClassPP.Type.typeof(object)
 ```
 
 ## Parameters
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td style="background-color: rgb(37, 39, 45); color: #fff">classObject: <a href="../../../dataTypes/class" style="color: lightskyblue;">class</a></td>
-<td style="width: 74%">The <code>class</code>.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-param-highlight">object: <a href="../../../dataTypes/object">object</a></td>
+                    <td style="width: 74%">The <code>object</code>.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</span>
 
-<h2 markdown="1" style="font-size: 1.5625em; margin-bottom: -20px; margin-top: -30px"> Returns </h2>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td class="apiReferenceMethodBox">string</td>
-</tr>
-<tr>
-</tbody>
-</table>
-</div>
+<h2 markdown class="api-returns-title"> Returns </h2>
+
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box"><a href="https://create.roblox.com/docs/luau/strings">string</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

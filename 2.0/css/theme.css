@@ -73,6 +73,6 @@ td {
     width: fit-content;
 }
 
-.md-typeset .info > .admonition-title, .md-typeset .info > summary {
-    background-color: var(--md-admonition-bg-color);
+.md-typeset :is(.admonition, details) > :is(.admonition-title, summary) {
+	background-color: var(--md-admonition-bg-color);
 }

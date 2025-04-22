@@ -44,7 +44,7 @@
 .md-typeset h2:not(.api-returns-title) {
     font-size: 1.5625em;
     line-height: 1.4;
-    margin: 1.6em 0.4em;
+    margin: 1.6em 0 0.4em;
 }
 
 .apiReferenceSummaryTitle {

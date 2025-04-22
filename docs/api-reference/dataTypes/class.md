@@ -184,7 +184,7 @@ Creates an overloaded function with the given parameters, and saves it to the `c
 </div>
 
 ----------------------
-
+<!--
 ### static
 <a style="color: lightskyblue;">void</a>
 
@@ -224,5 +224,4 @@ Creates a new static member with the given parameters, and saves it to the `clas
         </table>
     </div>
 </div>
-
-
+-->

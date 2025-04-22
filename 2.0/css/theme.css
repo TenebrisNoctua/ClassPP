@@ -62,6 +62,7 @@
 
 td {
     border: none;
+    width: fit-content;
 }
 
 .md-typeset h2:not(.api-returns-title) {

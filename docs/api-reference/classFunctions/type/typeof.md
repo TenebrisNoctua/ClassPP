@@ -29,8 +29,7 @@ local objectType = ClassPP.Type.typeof(object)
     </div>
 </span>
 
-<span markdown><h2 class="api-returns-title"> Returns </h2></span>
-
+## Returns
 <span markdown>
     <div class="md-typeset__table">
         <table>

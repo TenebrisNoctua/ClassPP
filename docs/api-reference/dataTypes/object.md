@@ -3,7 +3,7 @@
     <span class="api-title">Object</span>
 </h1>
 
-An `object` created from the [`class.new()`](class.md#new) function. Contains all of the members given from the `class` object.
+An `object` created from the [`class.new()`](class.md#new-object) function. Contains all of the members given from the `class` object.
 
 !!! warning
     `object`s act as a proxy, as they belong to the base type `userdata`. They allow access to members in the `objectData`, but they cannot be changed. This is to make access-specifiers work in the best way possible.

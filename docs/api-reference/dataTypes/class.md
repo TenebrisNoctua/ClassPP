@@ -218,4 +218,3 @@ Creates a new static member with the given parameters, and saves it to the `clas
         </table>
     </div>
 </span>
-

@@ -6,133 +6,165 @@
 An `object` created from the [`class.new()`](class.md#new) function. Contains all of the members given from the `class` object.
 
 !!! warning
-    An `object`'s `metatable` cannot be deleted or changed. This is to prevent access to the `Internal` members, logic that keeps the `object` secure, and the logic on how it works. An `object` will always belong to the base type `userdata`.
-
-## Summary
-
-<!------------------------- PROPERTIES -------------------------!-->
-
-<h3 markdown="1" class="apiReferenceSummaryTitle"> Properties </h3>
-
-<div>&nbsp;<a href="#__locked">__locked</a> : <a href="https://create.roblox.com/docs/luau/booleans" style="color: lightskyblue;">boolean</a><div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66)">Internal</div></div>
-
-&nbsp;Indicates if an `object` is locked. 
+    `object`s act as a proxy, as they belong to the base type `userdata`. They allow access to members in the `objectData`, but they cannot be changed. This is to make access-specifiers work in the best way possible.
 
 ----------------------
 
-<div>&nbsp;<a href="#__type">__type</a> : <a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a><div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66)">Internal</div></div>
+<!------------------------- SUMMARY -------------------------!-->
 
-&nbsp;Indicates the `class` type of the `object`. 
-
------------------------
-
-<div>&nbsp;<a href="#objectdata">objectData</a> : <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a><div class="apiReferenceAccessBox" style="background-color: rgb(110, 40, 100)">No Direct Access</div></div>
-
-&nbsp;The `object`'s data table that you can access by indexing the `object` with the member's name. (`object.member` or `object["member"]`)
-
-<!------------------------- METHODS -------------------------!-->
-
-<h3 markdown="1" class="apiReferenceSummaryTitle"> Methods </h3>
-
-<div>&nbsp;<a href="#constructor">constructor</a> (...) : <a style="color: lightskyblue;">void</a><div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66)">Internal</div></div>
-
-&nbsp;The constructor function of the `object`, if it exists. Cannot be directly called.
+<div class="api-summary-list">
+    <h3 class="api-summary-list-h3">Summary</h3>
+    <div class="api-summary-section">
+        <h3 class="api-summary-section-h3">Properties</h3>
+        <div class="api-summary-section-list">
+            <ul>
+                <li><a href="#__locked-internal">__locked</a>: Indicates if the <code>object</code> is locked.</li>
+                <li><a href="#__type-internal">__type</a>: Indicates the type of the <code>object</code>.</li>
+                <li><a href="#__objtype-internal">__objtype</a>: Indicates the <code>class</code> type of the <code>object</code>.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="api-summary-section-bottom">
+        <h3 class="api-summary-section-h3">Methods</h3>
+        <div class="api-summary-section-list">
+            <ul>
+                <li><a href="#constructor-internal">constructor</a>: The constructor function of the <code>object</code>, if it exists. Cannot be directly called.</li>
+                <li><a href="#destructor-internal">destructor</a>: The destructor function of the <code>object</code>, if it exists. Cannot be directly called.</li>
+                <li><a href="#destroy">Destroy</a>: Calls the <code>destructor</code> function, destroys all the instances inside the <code>objectData</code> and clears it, and sets the <code>__locked</code> property to <code>true</code>.</li>
+                <li><a href="#super">super</a>: Calls the method with the same name of the function that it's been called from in the parent <code>class</code>, if it exists.</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 ----------------------
 
-<div>&nbsp;<a href="#destructor">destructor</a> () : <a style="color: lightskyblue;">void</a><div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66)">Internal</div></div>
-
-&nbsp;The destructor function of the `object`, if it exists. Cannot be directly called.
-
-----------------------
-
-&nbsp;[Destroy](#destroy) () : <a style="color: lightskyblue;">void</a>
-
-&nbsp;Calls the `object`'s `destructor` function, destroys all the instances inside the `objectData` and clears it, and sets the `__locked` property to `true`.
+<!------------------------- MAIN -------------------------!-->
 
 ## Properties
 
-### __locked 
-<a href="https://create.roblox.com/docs/luau/booleans" style="color: lightskyblue;">boolean</a>
-<div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+<h3 markdown>
+	__locked
+	<span class="api-property-type">
+		: boolean
+	</span>
+    <div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+</h3>
 
 Indicates if an `object` has been locked. If set to true, the `object`'s metamethods will no longer work and all the members will become unaccessable. 
 
+----------------------
 
-### __type 
-<a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a>
-<div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+<h3 markdown>
+	__type
+	<span class="api-property-type">
+		: string
+	</span>
+    <div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+</h3>
+
+Indicates the type of the `object`. For `object`s created from `class.new()`, it will always be "Object".
+
+----------------------
+
+<h3 markdown>
+	__objtype
+	<span class="api-property-type">
+		: string
+	</span>
+    <div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+</h3>
 
 Indicates the `class` type of the `object`. Can be used to determine which `class` the `object` belongs to by using the [`Type.typeof()`](../classFunctions/type/typeof.md) function.
 
-
-### objectData 
-<a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a>
-<div class="apiReferenceAccessBox" style="background-color: rgb(110, 40, 100); float: none">No Direct Access</div>
-
-The `object`'s data table that stores every access specifier, and the members inside them. This data table cannot be accessed directly, so you have to index the `object` by using `object.member` or `object["member"]` methods to access it.
+----------------------
 
 ## Methods
 
-### constructor
-<a style="color: lightskyblue;">void</a>
-<div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+<h3 markdown>
+	constructor
+	<span class="api-property-type">
+		: void
+	</span>
+    <div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+</h3>
 
-The `constructor` function inside the `object`, if it has been set in the `classData` table. This function is internal, so it will only be called when the `object` is created by using the `class.new(...)` function.
+The `constructor` function of the `object`, if it has been set in the `classData` table. This function is internal, and it will only be called when the `object` is created by using the `class.new()` function.
 
-<h4 style="font-size: 20px; margin-bottom: -20px"> Returns </h4>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td class="apiReferenceMethodBox">void</td>
-</tr>
-<tr>
-</tbody>
-</table>
-</div>
-</div>
+#### Returns
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box">void</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</span>
 
-### destructor
-<a style="color: lightskyblue;">void</a>
-<div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+----------------------
 
-The `destructor` function inside the `object`, if it has been set in the `classData` table. This function accepts no parameters and is internal, so it can only be called when `object:Destroy()` is called, and can only be called once. 
+<h3 markdown>
+	destructor
+	<span class="api-property-type">
+		: void
+	</span>
+    <div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+</h3>
 
-<h4 style="font-size: 20px; margin-bottom: -20px"> Returns </h4>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td class="apiReferenceMethodBox">void</td>
-</tr>
-<tr>
-</tbody>
-</table>
-</div>
-</div>
+The `destructor` function of the `object`, if it has been set in the `classData` table. This function accepts no parameters and is internal, it will only be called when `object:Destroy()` is called. 
 
-### Destroy
-<a style="color: lightskyblue;">void</a>
+#### Returns
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box">void</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</span>
 
-This method first calls the `object`'s `destructor` function, then after the `destructor` runs, it goes through the `objectData` table, if a key or value is found to be an `Instance`, it calls `:Destroy()` on that `Instance`, and sets it to `nil`. If not, then it simply sets the key and value to `nil`, and when the `objectData` table is finally empty, it sets the `__locked` property to `true`, preventing further access to any member, function or operator function. 
+----------------------
+
+<h3 markdown>
+	Destroy
+	<span class="api-property-type">
+		: void
+	</span>
+</h3>
+
+Calling this method will destroy and clean the `object`. This method will first trigger the `destructor` function, then after, it will clear the internal `objectData` table and set the `__locked` property of the `object` to `true`. Instances inside `objectData` will automatically be destroyed and cleared too.
+
+After this function runs, the `object` will no longer be accessible in any way, so make sure to remove all references to the `object` to allow for the garbage collector to clear it. This prevents memory leaks.
+
+#### Returns
+<span markdown>
+    <div class="md-typeset__table">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box">void</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</span>
+
+----------------------
+
+<h3 markdown>
+	super
+	<span class="api-property-type">
+		: any
+	</span>
+</h3>
+
+This method allows you to refer to the parent `class`'s methods. Calling this method will call the function with the same name as the function it's been called from in the parent `class`, if it exists, and return the result.
 
 !!! warning
-    At this stage, your `object` should be treated as empty and completely gone. Make sure to remove all references to the `object`, so the garbage collector can pick it up.
-
-<h4 style="font-size: 20px; margin-bottom: -20px"> Returns </h4>
-<div markdown="1">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table">
-<table>
-<tbody>
-<tr>
-<td class="apiReferenceMethodBox">void</td>
-</tr>
-<tr>
-</tbody>
-</table>
-</div>
-</div>
-
+    `super` does not support being called in `class`es created from multi-inheritance, as it would create ambiguity. It also does not support calling functions that are defined in the `Private` access-specifier in the parent `class`.

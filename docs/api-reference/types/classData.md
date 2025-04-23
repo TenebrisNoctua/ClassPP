@@ -7,9 +7,9 @@
 export type classData = {
 	constructor: (self: any, ...any) -> ()?,
 	destructor: (self: any) -> ()?,
-	Public: {[any]: any}?,
-	Private: {[any]: any}?,
-	Protected: {[any]: any}?,
+	Public: {[string]: any}?,
+	Private: {[string]: any}?,
+	Protected: {[string]: any}?,
 	Friend: {any}?
 }
 ```
@@ -20,33 +20,67 @@ The `classData` table that is given to the [`class()`](../classFunctions/mainMod
 
 ## Properties
 
-### constructor
-<a style="color: lightskyblue;">(self: any, ...any) -> ()?</a>
+<h3 markdown>
+	constructor
+	<span class="api-property-type">
+		: (self: any, ...any) -> ()?
+	</span>
+</h3>
 
 The `constructor` function that will be called when an `object` gets created.
 
-### destructor
-<a style="color: lightskyblue;">(self: any) -> ()?</a>
+----
+
+<h3 markdown>
+	destructor
+	<span class="api-property-type">
+		: (self: any) -> ()?
+	</span>
+</h3>
 
 The `destructor` function that will be called when an `object` gets destroyed.
 
-### Public
-<a style="color: lightskyblue;">{[any]: any}</a>
+----
+
+<h3 markdown>
+	Public
+	<span class="api-property-type">
+		: {[string]: any}?
+	</span>
+</h3>
 
 The access specifier that contains properties that can be globally accessable.
 
-### Private
-<a style="color: lightskyblue;">{[any]: any}?</a>
+----
+
+<h3 markdown>
+	Private
+	<span class="api-property-type">
+		: {[string]: any}?
+	</span>
+</h3>
 
 The access specifier that contains properties that can only be accessed inside the `class`.
 
-### Protected
-<a style="color: lightskyblue;">{[any]: any}?</a>
+----
+
+<h3 markdown>
+	Protected
+	<span class="api-property-type">
+		: {[string]: any}?
+	</span>
+</h3>
 
 The access specifier that contains properties that can only be accessed inside the `class` and inherited classes.
 
-### Friend
-<a style="color: lightskyblue;">{any}?</a>
+----
+
+<h3 markdown>
+	Friend
+	<span class="api-property-type">
+		: {any}?
+	</span>
+</h3>
 
 The access specifier that contains functions and classes that can access the `class`'s `Private` properties.
 

@@ -48,7 +48,7 @@ An `object` created from the [`class.new()`](class.md#new-object) function. Cont
 	<span class="api-property-type">
 		: boolean
 	</span>
-    <div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+    <div class="api-access-type" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
 </h3>
 
 Indicates if an `object` has been locked. If set to true, the `object`'s metamethods will no longer work and all the members will become unaccessable. 
@@ -60,7 +60,7 @@ Indicates if an `object` has been locked. If set to true, the `object`'s metamet
 	<span class="api-property-type">
 		: string
 	</span>
-    <div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+    <div class="api-access-type" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
 </h3>
 
 Indicates the type of the `object`. For `object`s created from `class.new()`, it will always be "Object".
@@ -72,7 +72,7 @@ Indicates the type of the `object`. For `object`s created from `class.new()`, it
 	<span class="api-property-type">
 		: string
 	</span>
-    <div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+    <div class="api-access-type" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
 </h3>
 
 Indicates the `class` type of the `object`. Can be used to determine which `class` the `object` belongs to by using the [`Type.typeof()`](../classFunctions/type/typeof.md) function.
@@ -86,7 +86,7 @@ Indicates the `class` type of the `object`. Can be used to determine which `clas
 	<span class="api-property-type">
 		: void
 	</span>
-    <div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+    <div class="api-access-type" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
 </h3>
 
 The `constructor` function of the `object`, if it has been set in the `classData` table. This function is internal, and it will only be called when the `object` is created by using the `class.new()` function.
@@ -111,7 +111,7 @@ The `constructor` function of the `object`, if it has been set in the `classData
 	<span class="api-property-type">
 		: void
 	</span>
-    <div class="apiReferenceAccessBox" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
+    <div class="api-access-type" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
 </h3>
 
 The `destructor` function of the `object`, if it has been set in the `classData` table. This function accepts no parameters and is internal, it will only be called when `object:Destroy()` is called. 

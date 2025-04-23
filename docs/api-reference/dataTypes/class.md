@@ -173,8 +173,6 @@ Creates an overloaded function with the given parameters, and saves it to the `c
     </div>
 </div>
 
-<!--
-
 ----------------------
 
 <h3 markdown>
@@ -185,6 +183,8 @@ Creates an overloaded function with the given parameters, and saves it to the `c
 </h3>
 
 Creates a new static member with the given parameters, and saves it to the `class`'s `Statics` table. These members do not replicate to the objects, as they belong to the `class`. 
+
+<!--
 
 ### Parameters
 <span markdown>

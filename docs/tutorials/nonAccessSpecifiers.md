@@ -15,7 +15,7 @@ local Car = final { class "Car" {
 	}
 }}
 
-local BiggerCar = Car.extends "BiggerCar" { -- This will error!
+local BiggerCar = class "BiggerCar" (Car, nil) { -- This will error!
 	Public = {
 		Brand = "Tesla"
 	}
@@ -41,7 +41,7 @@ local BaseCar = abstract { class "BaseCar" {
 	}
 }}
 
-local Car = BaseCar.extends "Car" {
+local Car = class "Car" (BaseCar, nil) {
 	Public = {
 		Brand = "Ford",
 		Model = "Mustang",

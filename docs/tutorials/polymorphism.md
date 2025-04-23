@@ -18,7 +18,7 @@ local Animal = class "Animal" {
 }
 
 -- Derived class
-local Pig = Animal.extends "Pig" {
+local Pig = class "Pig" (Animal, nil) {
     Public = {
         animalSound = function(self)
             print("The pig says: oink oink")
@@ -27,7 +27,7 @@ local Pig = Animal.extends "Pig" {
 }
 
 -- Derived class
-local Dog = Animal.extends "Dog" {
+local Dog = class "Dog" (Animal, nil) {
     Public = {
         animalSound = function(self)
             print("The dog says: woof woof")

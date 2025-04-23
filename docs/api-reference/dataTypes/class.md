@@ -110,7 +110,7 @@ Creates and returns a new [`object`](object.md) that contains all of the members
             </tbody>
         </table>
     </div>
-</div>
+</span>
 
 <!--
 

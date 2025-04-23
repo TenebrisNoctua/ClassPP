@@ -99,7 +99,7 @@ objects, and can only be called through the `class` object.
 
 Creates and returns a new [`object`](object.md) that contains all of the members given from the `class`.
 
-#### Returns
+### Returns
 <span markdown>
     <div class="md-typeset__table">
         <table>

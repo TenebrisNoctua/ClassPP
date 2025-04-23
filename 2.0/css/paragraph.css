@@ -23,3 +23,15 @@
     padding-left: 1em;
     padding-top: 0.8em
 }
+
+.md-typeset h4 {
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin: 1em 0;
+}
+
+.md-typeset h4:is([id^="returns"], [id^="parameters"]) {
+    margin: 1em 0;
+    line-height: 1.5;
+    font-size: 1.25em;
+}

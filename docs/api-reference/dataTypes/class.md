@@ -5,16 +5,18 @@
 
 A `class` object created from the [`class()`](../classFunctions/mainModule/class.md) function. Contains all of the members given from the [`classData`](../types/classData.md).
 
+<!------------------------- SUMMARY -------------------------!-->
+
 <div class="api-summary-list">
     <h3 class="api-summary-list-h3">Summary</h3>
     <div class="api-summary-section">
         <h3 class="api-summary-section-h3">Properties</h3>
         <div class="api-summary-section-list">
             <ul>
-                <li><a href="#Name">Name</a></li>
-                <li><a href="#Inherits">Inherits</a></li>
-                <li><a href="#Friends">Friends</a></li>
-                <li><a href="#Statics">Statics</a></li>
+                <li><a href="#Name">Name</a>: An unique identifier of the <code>class</code>.</li>
+                <li><a href="#Inherits">Inherits</a>: A table that contains classes that the <code>class</code> inherits from.</li>
+                <li><a href="#Friends">Friends</a>: A table that contains functions or clases that can access the <code>Private</code> and the <code>Protected</code> members of the <code>class</code>. </li>
+                <li><a href="#Statics">Statics</a>:  A table that contains the static members of the <code>class</code>. These members can only be called through the <code>class</code> object.</li>
             </ul>
         </div>
     </div>
@@ -22,65 +24,17 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
         <h3 class="api-summary-section-h3">Methods</h3>
         <div class="api-summary-section-list">
             <ul>
-                <li><a href="#new">new</a></li>
-                <li><a href="#extends">extends</a></li>
-                <li><a href="#overload">overload</a></li>
+                <li><a href="#new">new</a>:  Returns a new <code><a href="../object">object</a></code> that contains all of the members given from the <code>class</code>.</li>
+                <li><a href="#extends">extends</a>: Used to create a new <code>class</code> that inherits the <code>class</code> it's been created from. (Deprecated)</li>
+                <li><a href="#overload">overload</a>: Creates an overloaded function with the given access specifier, name and the function table, and saves it to the <code>class</code>'s <code>classData</code>.</li>
             </ul>
         </div>
     </div>
 </div>
 
-<!------------------------- PROPERTIES -------------------------!-->
-
-<h3 markdown="1" class="apiReferenceSummaryTitle"> Properties </h3>
-
-&nbsp;[Name](#name) : <a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a>
-
-&nbsp;An unique identifier of the `class`.
-
 ----------------------
 
-<div>&nbsp;<a href="#inherits">Inherits</a> : <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a><div class="apiReferenceAccessBox">Read Only</div></div>
-
-&nbsp;A table that contains classes that the `class` inherits from.
-
-----------------------
-
-<div>&nbsp;<a href="#friends">Friends</a> : <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a><div class="apiReferenceAccessBox">Read Only</div></div>
-
-&nbsp;A table that contains functions or classes that can access `Private` and `Protected` members of the `class`.
-
-----------------------
-
-<div>&nbsp;<a href="#statics">Statics</a> : <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a><div class="apiReferenceAccessBox">Read Only</div></div>
-
-&nbsp;A table that contains the static members of the `class`. These members can only be called through the `class` object.
-
-<!------------------------- METHODS -------------------------!-->
-
-<h3 markdown="1" class="apiReferenceSummaryTitle"> Methods </h3>
-
-&nbsp;[new](#new) (...) : <a style="color: lightskyblue;">any</a>
-
-&nbsp;Returns a new [`object`](object.md) that contains all of the members given from the `class`.
-
-----------------------
-
-&nbsp;[extends](#extends) (className: string) : (classData: classData) : <a style="color: lightskyblue;">class</a>
-
-&nbsp;(Deprecated) Creates a new `class` that inherits the `class` it's been created from. Contains all `Public` and `Protected` members of that base `class`.
-
-----------------------
-
-&nbsp;[overload](#overload) (accessSpecifier: string, name: string, functionTable: {(...any) -> (any)}) : <a style="color: lightskyblue;">void</a>
-
-&nbsp;Creates an overloaded function with the given access specifier, name and the function table, and saves it to the `class`'s `classData`.
-
-----------------------
-
-&nbsp;[static](#overload) (accessSpecifier: string, name: string, property: any) : <a style="color: lightskyblue;">void</a>
-
-&nbsp;Creates a new static `class` member that can only be accessable through the `class` object. 
+<!------------------------- MAIN -------------------------!-->
 
 ## Properties
 

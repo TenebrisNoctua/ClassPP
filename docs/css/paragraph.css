@@ -11,20 +11,15 @@
 }
 
 .md-typeset h3:not(.api-summary-list-h3, .api-summary-section-h3) {
-    font-size: 1.25em;
-    font-weight: 400;
-    letter-spacing: -.01em;
-    line-height: 1.5;
     margin: 1.6em 0 .8em;
 }
 
 .api-summary-list-h3 {
     padding-left: 1em;
     padding-top: 1em;
-    margin: 0;
 }
 
 .api-summary-section-h3 {
     padding-left: 1em;
-    margin-top: 0;
+    padding-top: 0.8em
 }

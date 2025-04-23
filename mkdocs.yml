@@ -80,7 +80,7 @@ nav:
       - tutorials/polymorphism.md
       - tutorials/types.md
   - API Reference:
-      - api-reference/gettingStarted.md
+      - API Reference: api-reference/gettingStarted.md
       - General:
         - Errors: api-reference/errors.md
       - Class++ Functions: 

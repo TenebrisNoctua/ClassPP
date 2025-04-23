@@ -1378,9 +1378,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#name" class="md-nav__link">
+  <a href="#name-string" class="md-nav__link">
     <span class="md-ellipsis">
-      Name
+      Name : string
     </span>
   </a>
   
@@ -1389,7 +1389,7 @@
           <li class="md-nav__item">
   <a href="#inherits" class="md-nav__link">
     <span class="md-ellipsis">
-      Inherits
+      Inherits :
     </span>
   </a>
   
@@ -1398,7 +1398,7 @@
           <li class="md-nav__item">
   <a href="#friends" class="md-nav__link">
     <span class="md-ellipsis">
-      Friends
+      Friends :
     </span>
   </a>
   
@@ -1407,7 +1407,7 @@
           <li class="md-nav__item">
   <a href="#statics" class="md-nav__link">
     <span class="md-ellipsis">
-      Statics
+      Statics :
     </span>
   </a>
   
@@ -1429,9 +1429,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#new" class="md-nav__link">
+  <a href="#new-any" class="md-nav__link">
     <span class="md-ellipsis">
-      new
+      new : any
     </span>
   </a>
   
@@ -1603,9 +1603,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#name" class="md-nav__link">
+  <a href="#name-string" class="md-nav__link">
     <span class="md-ellipsis">
-      Name
+      Name : string
     </span>
   </a>
   
@@ -1614,7 +1614,7 @@
           <li class="md-nav__item">
   <a href="#inherits" class="md-nav__link">
     <span class="md-ellipsis">
-      Inherits
+      Inherits :
     </span>
   </a>
   
@@ -1623,7 +1623,7 @@
           <li class="md-nav__item">
   <a href="#friends" class="md-nav__link">
     <span class="md-ellipsis">
-      Friends
+      Friends :
     </span>
   </a>
   
@@ -1632,7 +1632,7 @@
           <li class="md-nav__item">
   <a href="#statics" class="md-nav__link">
     <span class="md-ellipsis">
-      Statics
+      Statics :
     </span>
   </a>
   
@@ -1654,9 +1654,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#new" class="md-nav__link">
+  <a href="#new-any" class="md-nav__link">
     <span class="md-ellipsis">
-      new
+      new : any
     </span>
   </a>
   
@@ -1691,6 +1691,7 @@
     <span class="api-title">Class</span>
 </h1>
 <p>A <code>class</code> object created from the <a href="../../classFunctions/mainModule/class/"><code>class()</code></a> function. Contains all of the members given from the <a href="../../types/classData/"><code>classData</code></a>.</p>
+<hr />
 <!------------------------- SUMMARY -------------------------!-->
 
 <div class="api-summary-list">
@@ -1722,31 +1723,26 @@
 <!------------------------- MAIN -------------------------!-->
 
 <h2 id="properties">Properties</h2>
-<h3 id="name">Name</h3>
-<p><a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a></p>
+<h3 id="name-string">Name : string</h3>
 <p>This is an unique identifier of the <code>class</code>. Using the <a href="../../classFunctions/mainModule/getClass/"><code>getClass()</code></a> function with this property will retrieve the desired <code>class</code>. Since names are unique, for every class, you have to use a different name.</p>
 <hr />
-<h3 id="inherits">Inherits</h3>
-<p><a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a></p>
+<h3 class="class" id="inherits">Inherits :</h3>
 <div class="apiReferenceAccessBox" style="float: none">Read Only</div>
 
 <p>This table contains all the classes that the <code>class</code> is inheriting from. Currently, multiple class inheritance is not supported, so a <code>class</code> can only inherit from one <code>class</code>, but it may be different in the future.</p>
 <hr />
-<h3 id="friends">Friends</h3>
-<p><a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a></p>
+<h3 class="class" id="friends">Friends :</h3>
 <div class="apiReferenceAccessBox" style="float: none">Read Only</div>
 
 <p>This table contains all the functions and the classes that can access all of the <code>Public</code> and <code>Protected</code> members of the <code>class</code>.</p>
 <hr />
-<h3 id="statics">Statics</h3>
-<p><a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a></p>
+<h3 _string_:="[string]:" any="any" id="statics">Statics :</h3>
 <div class="apiReferenceAccessBox" style="float: none">Read Only</div>
 
 <p>This table contains all the members that are static, meaning they only belong to the <code>class</code>. These members won't replicate to the 
 objects, and can only be called through the <code>class</code> object.</p>
 <h2 id="methods">Methods</h2>
-<h3 id="new">new</h3>
-<p><a style="color: lightskyblue;">any</a></p>
+<h3 id="new-any">new : any</h3>
 <p>Creates and returns a new <a href="../object/"><code>object</code></a> that contains all of the members given from the <code>class</code>.</p>
 <!--
 #### Returns

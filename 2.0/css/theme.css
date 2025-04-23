@@ -22,7 +22,7 @@
     --md-admonition-fg-color: var(--admonition-fg-color-dark);
 	--md-admonition-bg-color: var(--admonition-bg-color-dark);
 
-    --hr-color: var(--hr-white);
+    --hr-color: var(--hr-dark);
 
     --summary-bg-color: var(--summary-bg-color-dark);
 }
@@ -51,7 +51,7 @@
     --md-admonition-fg-color: var(--admonition-fg-color-white);
 	--md-admonition-bg-color: var(--admonition-bg-color-white);
 
-    --hr-color: var(--hr-dark);
+    --hr-color: var(--hr-white);
     
     --summary-bg-color: var(--summary-bg-color-white);
 }

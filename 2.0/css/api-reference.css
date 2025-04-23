@@ -61,6 +61,14 @@
     width: 95%;
 }
 
+.api-property-type {
+    vertical-align: middle;
+	font-size: calc((0.5em + 1rem) / 2);
+	flex-shrink: 0;
+	margin-left: 0.5em;
+	font-weight: 400;
+}
+
 .apiReferenceSummaryTitle {
     top: 0;
     display: block;

@@ -78,10 +78,11 @@ nav:
       - tutorials/nonAccessSpecifiers.md
       - tutorials/staticMembers.md
       - tutorials/polymorphism.md
-      - tutorials/errorHandling.md
       - tutorials/types.md
-  - API Reference: 
-      - Getting Started: api-reference/gettingStarted.md
+  - API Reference:
+      - api-reference/gettingStarted.md
+      - General:
+        - Errors: api-reference/errors.md
       - Class++ Functions: 
         - class: api-reference/classFunctions/mainModule/class.md
         - final: api-reference/classFunctions/mainModule/final.md

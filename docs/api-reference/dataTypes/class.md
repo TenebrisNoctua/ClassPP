@@ -93,7 +93,7 @@ objects, and can only be called through the `class` object.
 <h3 markdown>
 	new
 	<span class="api-property-type">
-		: {any}
+		: object
 	</span>
 </h3>
 
@@ -218,3 +218,4 @@ Creates a new static member with the given parameters, and saves it to the `clas
         </table>
     </div>
 </span>
+

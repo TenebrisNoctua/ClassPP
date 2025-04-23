@@ -702,7 +702,16 @@
         <li class="md-nav__item">
   <a href="#multilevel-inheritance" class="md-nav__link">
     <span class="md-ellipsis">
-      Multilevel Inheritance
+      Multilevel-Inheritance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Inheritance
     </span>
   </a>
   
@@ -1535,7 +1544,16 @@
         <li class="md-nav__item">
   <a href="#multilevel-inheritance" class="md-nav__link">
     <span class="md-ellipsis">
-      Multilevel Inheritance
+      Multilevel-Inheritance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Inheritance
     </span>
   </a>
   
@@ -1586,7 +1604,7 @@ We group the inheritance concept into two categories: derived class (child), and
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Vehicle</span><span class="p">.</span><span class="py">extends</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">-- Derived Class</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">(</span><span class="nv">Vehicle</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">-- Derived Class</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="nv">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;A1B2C3&quot;</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">}</span>
@@ -1597,14 +1615,15 @@ We group the inheritance concept into two categories: derived class (child), and
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="nb">print</span><span class="p">(</span><span class="nv">newCar</span><span class="p">.</span><span class="py">Brand</span><span class="p">,</span><span class="w"> </span><span class="nv">newCar</span><span class="p">.</span><span class="py">Model</span><span class="p">,</span><span class="w"> </span><span class="nv">newCar</span><span class="p">.</span><span class="py">License_Plate</span><span class="p">,</span><span class="w"> </span><span class="nv">newCar</span><span class="p">.</span><span class="py">Year</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Prints &quot;Tesla S A1B2C3 2012&quot;!</span>
 </code></pre></div>
 <p>In this example, we have 2 classes: The Vehicle class (base), and the Car class (child). <br>
-We create the Car class by calling the function <code>.extends()</code> on the Vehicle class, the <code>.extends()</code> function works almost the same as the <code>class</code> function, it takes in a name, and the class data. </p>
-<p>When you create a class using <code>.extends()</code>, you create a new derived class that inherits all of the members and member functions from the base class, so you don't need to re-declare them again. The members are overwritable in the derived class, like in the example above, you can modify the <code>License_Plate</code>'s default value to anything you wish. The same applies to other members.</p>
+We created the Car class by providing the <code>class</code> function a list of classes to inherit from (in this case, only the Vehicle class), and the <code>classData</code> table after.</p>
+<p>When you create a class using this method, you create a new derived class that inherits all of the members and member functions from the class(es) provided, so you don't need to re-declare them again. The members are overwritable in the derived class, like in the example above, you can modify the <code>License_Plate</code>'s default value to anything you wish. The same applies to other members.</p>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>"Why should I use Inheritence?"
 It's very useful for code reusability: reusing members and functions of an existing class when you're creating a new class will save you a lot of time and effort, defining same members over and over again may cause spaghetti code and decrease code readability.</p>
 </div>
-<h2 id="multilevel-inheritance">Multilevel Inheritance</h2>
+<hr />
+<h2 id="multilevel-inheritance">Multilevel-Inheritance</h2>
 <p>A class can also be derived from one class, which can be derived from another class:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
@@ -1617,14 +1636,14 @@ It's very useful for code reusability: reusing members and functions of an exist
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Person</span><span class="p">.</span><span class="py">extends</span><span class="w"> </span><span class="s2">&quot;Child&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">-- Derived Class</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Child&quot;</span><span class="w"> </span><span class="p">(</span><span class="nv">Person</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">-- Derived Class</span>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="nv">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="nv">Energetic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Child</span><span class="p">.</span><span class="py">extends</span><span class="w"> </span><span class="s2">&quot;Student&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">-- Derived Class from a Derived Class</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Student&quot;</span><span class="w"> </span><span class="p">(</span><span class="nv">Child</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">-- Derived Class from a Derived Class</span>
 <a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="nv">SchoolId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
 <a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="nv">Grade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
@@ -1636,32 +1655,58 @@ It's very useful for code reusability: reusing members and functions of an exist
 <a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="nb">print</span><span class="p">(</span><span class="nv">newStudent</span><span class="p">.</span><span class="py">Name</span><span class="p">,</span><span class="w"> </span><span class="nv">newStudent</span><span class="p">.</span><span class="py">Age</span><span class="p">,</span><span class="w"> </span><span class="nv">newStudent</span><span class="p">.</span><span class="py">Gender</span><span class="p">,</span><span class="w"> </span><span class="nv">newStudent</span><span class="p">.</span><span class="py">Height</span><span class="p">,</span><span class="w"> </span><span class="nv">newStudent</span><span class="p">.</span><span class="py">Age</span><span class="p">,</span><span class="w"> </span><span class="nv">newStudent</span><span class="p">.</span><span class="py">Energetic</span><span class="p">,</span><span class="w"> </span><span class="nv">newStudent</span><span class="p">.</span><span class="py">SchoolId</span><span class="p">,</span><span class="w"> </span><span class="nv">newStudent</span><span class="p">.</span><span class="py">Grade</span><span class="p">,</span><span class="w"> </span><span class="nv">newStudent</span><span class="p">.</span><span class="py">Behaviour</span><span class="p">)</span>
 <a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="c1">-- Prints &quot; 9  0 9 true 0 0 Good&quot;! (Spaces represent empty strings)</span>
 </code></pre></div>
+<hr />
+<h2 id="multi-inheritance">Multi-Inheritance</h2>
+<p>A class can also be derived from multiple classes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="nv">Variable_A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="kd">local</span><span class="w"> </span><span class="nv">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;B&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="nv">Variable_B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="kd">local</span><span class="w"> </span><span class="nv">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;C&quot;</span><span class="w"> </span><span class="p">(</span><span class="nv">A</span><span class="p">,</span><span class="w"> </span><span class="nv">B</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">-- Derived Class</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="nv">Variable_C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="p">}</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">C</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span><span class="w"> </span><span class="c1">-- {Variable_A: number, Variable_B: number, Variable_C: number}</span>
+</code></pre></div>
+<hr />
 <h2 id="protected-access-specifier">Protected Access Specifier</h2>
 <p>In the <a href="../accessSpecifiers/">Access Specifiers</a> section, you have learned that there are 4 access specifiers in Class++, so far you have seen <code>Public</code>, <code>Private</code> and <code>Friend</code>.
 The fourth specifier, <code>Protected</code>, is pretty much the same as the <code>Private</code>, however, aside from the class members, inherited classes will also be able to access these members. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lamborghini&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nv">Protected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="nv">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;XXXX&quot;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="kd">local</span><span class="w"> </span><span class="nv">BiggerCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="py">extends</span><span class="w"> </span><span class="s2">&quot;BiggerCar&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tesla&quot;</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="kr">function</span><span class="w"> </span><span class="nc">BiggerCar</span><span class="p">.</span><span class="nc">Public</span><span class="p">:</span><span class="nf">printLicensePlate</span><span class="p">()</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">License_Plate</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Will print &quot;XXXX&quot;!</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="kr">end</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">BiggerCar</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="nv">newCar</span><span class="p">:</span><span class="nf">printLicensePlate</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lamborghini&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nv">Protected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="nv">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;XXXX&quot;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="kd">local</span><span class="w"> </span><span class="nv">BiggerCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;BiggerCar&quot;</span><span class="w"> </span><span class="p">(</span><span class="nv">Car</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tesla&quot;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="p">}</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="kr">function</span><span class="w"> </span><span class="nc">BiggerCar</span><span class="p">.</span><span class="nc">Public</span><span class="p">:</span><span class="nf">printLicensePlate</span><span class="p">()</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">License_Plate</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Will print &quot;XXXX&quot;!</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="kr">end</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">BiggerCar</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="nv">newCar</span><span class="p">:</span><span class="nf">printLicensePlate</span><span class="p">()</span>
 </code></pre></div>
 <p>In this example, we put the member <code>License_Plate</code> under the <code>Protected</code> access specifier, and created a new class inherited from the Car class. The inherited class and it's member functions will now be able to access this member. </p>
 

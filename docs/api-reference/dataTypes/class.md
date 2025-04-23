@@ -86,6 +86,8 @@ This table contains all the functions and the classes that can access all of the
 This table contains all the members that are static, meaning they only belong to the `class`. These members won't replicate to the 
 objects, and can only be called through the `class` object.
 
+----------------------
+
 ## Methods
 
 <h3 markdown>

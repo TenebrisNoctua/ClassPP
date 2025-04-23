@@ -112,14 +112,16 @@ Creates and returns a new [`object`](object.md) that contains all of the members
     </div>
 </span>
 
-<!--
-
 ----------------------
 
 ### extends
 <a style="color: lightskyblue;">class</a>
 
-Creates and returns a new `class` that inherits the `class` it's been created from. Contains all the `Public` and `Protected` members of that base `class`. 
+Used to create and return a new `class` that inherits the `class` it's been created from.
+
+!!! failure "Deprecated"
+    This method has been deprecated and should not be used for new work.
+    Instead, use the <a href="../../classFunctions/mainModule/class/"><code>class</code></a> method.
 
 ----------------------
 
@@ -128,6 +130,7 @@ Creates and returns a new `class` that inherits the `class` it's been created fr
 
 Creates an overloaded function with the given parameters, and saves it to the `class`'s `classData` table.
 
+<!--
 #### Parameters
 <span markdown>
     <div class="md-typeset__table">

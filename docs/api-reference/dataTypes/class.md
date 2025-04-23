@@ -5,6 +5,8 @@
 
 A `class` object created from the [`class()`](../classFunctions/mainModule/class.md) function. Contains all of the members given from the [`classData`](../types/classData.md).
 
+----------------------
+
 <!------------------------- SUMMARY -------------------------!-->
 
 <div class="api-summary-list">
@@ -38,40 +40,32 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
 
 ## Properties
 
-### Name 
-<a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a>
+<h3 markdown>Name : string</h3>
 
 This is an unique identifier of the `class`. Using the [`getClass()`](../classFunctions/mainModule/getClass.md) function with this property will retrieve the desired `class`. Since names are unique, for every class, you have to use a different name.
 
 ----------------------
 
-### Inherits
-<a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a>
-<div class="apiReferenceAccessBox" style="float: none">Read Only</div>
+<h3 markdown>Inherits : {class}</h3> <div class="apiReferenceAccessBox" style="float: none">Read Only</div>
 
 This table contains all the classes that the `class` is inheriting from. Currently, multiple class inheritance is not supported, so a `class` can only inherit from one `class`, but it may be different in the future.
 
 ----------------------
 
-### Friends
-<a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a>
-<div class="apiReferenceAccessBox" style="float: none">Read Only</div>
+<h3 markdown>Friends : {class}</h3> <div class="apiReferenceAccessBox" style="float: none">Read Only</div>
 
 This table contains all the functions and the classes that can access all of the `Public` and `Protected` members of the `class`.
 
 ----------------------
 
-### Statics
-<a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a>
-<div class="apiReferenceAccessBox" style="float: none">Read Only</div>
+<h3 markdown>Statics : {[string]: any}</h3> <div class="apiReferenceAccessBox" style="float: none">Read Only</div>
 
 This table contains all the members that are static, meaning they only belong to the `class`. These members won't replicate to the 
 objects, and can only be called through the `class` object.
 
 ## Methods
 
-### new
-<a style="color: lightskyblue;">any</a>
+<h3 markdown>new : any</h3>
 
 Creates and returns a new [`object`](object.md) that contains all of the members given from the `class`.
 

@@ -18,9 +18,9 @@ An `object` created from the [`class.new()`](class.md#new) function. Contains al
         <h3 class="api-summary-section-h3">Properties</h3>
         <div class="api-summary-section-list">
             <ul>
-                <li><a href="#__locked-internal">__locked</a>: Indicates if the <code>object</code> is locked.</li>
-                <li><a href="#__type-internal">__type</a>: Indicates the type of the <code>object</code>.</li>
-                <li><a href="#__objtype-internal">__objtype</a>: Indicates the <code>class</code> type of the <code>object</code>.</li>
+                <li><a href="#__locked-boolean-internal">__locked</a>: Indicates if the <code>object</code> is locked.</li>
+                <li><a href="#__type-string-internal">__type</a>: Indicates the type of the <code>object</code>.</li>
+                <li><a href="#__objtype-string-internal">__objtype</a>: Indicates the <code>class</code> type of the <code>object</code>.</li>
             </ul>
         </div>
     </div>
@@ -28,8 +28,8 @@ An `object` created from the [`class.new()`](class.md#new) function. Contains al
         <h3 class="api-summary-section-h3">Methods</h3>
         <div class="api-summary-section-list">
             <ul>
-                <li><a href="#constructor-internal">constructor</a>: The constructor function of the <code>object</code>, if it exists. Cannot be directly called.</li>
-                <li><a href="#destructor-internal">destructor</a>: The destructor function of the <code>object</code>, if it exists. Cannot be directly called.</li>
+                <li><a href="#constructor-void-internal">constructor</a>: The constructor function of the <code>object</code>, if it exists. Cannot be directly called.</li>
+                <li><a href="#destructor-void-internal">destructor</a>: The destructor function of the <code>object</code>, if it exists. Cannot be directly called.</li>
                 <li><a href="#destroy-void">Destroy</a>: Calls the <code>destructor</code> function, destroys all the instances inside the <code>objectData</code> and clears it, and sets the <code>__locked</code> property to <code>true</code>.</li>
                 <li><a href="#super-any">super</a>: Calls the method with the same name of the function that it's been called from in the parent <code>class</code>, if it exists.</li>
             </ul>

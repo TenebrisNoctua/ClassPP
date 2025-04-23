@@ -59,7 +59,7 @@ This is an unique identifier of the `class`. Using the [`getClass()`](../classFu
     <div class="apiReferenceAccessBox" style="float: none">Read Only</div>
 </h3>
 
-This table contains all the classes that the `class` is inheriting from. Currently, multiple class inheritance is not supported, so a `class` can only inherit from one `class`, but it may be different in the future.
+This table contains all the classes that the `class` is inheriting from. 
 
 ----------------------
 
@@ -99,7 +99,7 @@ objects, and can only be called through the `class` object.
 
 Creates and returns a new [`object`](object.md) that contains all of the members given from the `class`.
 
-### Returns
+#### Returns
 <span markdown>
     <div class="md-typeset__table">
         <table>
@@ -138,7 +138,7 @@ Used to create and return a new `class` that inherits the `class` it's been crea
 
 Creates an overloaded function with the given parameters, and saves it to the `class`'s `classData` table.
 
-### Parameters
+#### Parameters
 <span markdown>
     <div class="md-typeset__table">
         <table>
@@ -160,7 +160,7 @@ Creates an overloaded function with the given parameters, and saves it to the `c
     </div>
 </span>
 
-### Returns
+#### Returns
 <span markdown>
     <div class="md-typeset__table">
         <table>
@@ -184,7 +184,7 @@ Creates an overloaded function with the given parameters, and saves it to the `c
 
 Creates a new static member with the given parameters, and saves it to the `class`'s `Statics` table. These members do not replicate to the objects, as they belong to the `class`. 
 
-### Parameters
+#### Parameters
 <span markdown>
     <div class="md-typeset__table">
         <table>
@@ -206,7 +206,7 @@ Creates a new static member with the given parameters, and saves it to the `clas
     </div>
 </span>
 
-### Returns
+#### Returns
 <span markdown>
     <div class="md-typeset__table">
         <table>

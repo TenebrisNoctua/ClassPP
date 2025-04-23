@@ -25,6 +25,8 @@
     --hr-color: var(--hr-dark);
 
     --summary-bg-color: var(--summary-bg-color-dark);
+
+    --property-type-color: var(--code-fg-color-white);
 }
 
 [data-md-color-scheme="classppdoc-light"] {
@@ -54,6 +56,8 @@
     --hr-color: var(--hr-white);
     
     --summary-bg-color: var(--summary-bg-color-white);
+
+    --property-type-color: var(--code-fg-color-dark);
 }
 
 .md-typeset a {

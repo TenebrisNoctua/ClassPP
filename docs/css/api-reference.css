@@ -63,10 +63,11 @@
 
 .api-property-type {
     vertical-align: middle;
-	font-size: calc((0.5em + 1rem) / 2);
-	flex-shrink: 0;
-	margin-left: 0.5em;
+	font-size: 0.8em;
+	margin-left: 0.1em;
+    margin-right: 0.2em;
 	font-weight: 400;
+    color: var(--property-type-color);
 }
 
 .apiReferenceSummaryTitle {

@@ -160,8 +160,6 @@ Creates an overloaded function with the given parameters, and saves it to the `c
     </div>
 </span>
 
-<!--
-
 ### Returns
 <span markdown>
     <div class="md-typeset__table">
@@ -174,6 +172,8 @@ Creates an overloaded function with the given parameters, and saves it to the `c
         </table>
     </div>
 </div>
+
+<!--
 
 ----------------------
 

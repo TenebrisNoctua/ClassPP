@@ -726,6 +726,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#super" class="md-nav__link">
+    <span class="md-ellipsis">
+      super
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1568,6 +1577,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#super" class="md-nav__link">
+    <span class="md-ellipsis">
+      super
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1709,6 +1727,41 @@ The fourth specifier, <code>Protected</code>, is pretty much the same as the <co
 <a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="nv">newCar</span><span class="p">:</span><span class="nf">printLicensePlate</span><span class="p">()</span>
 </code></pre></div>
 <p>In this example, we put the member <code>License_Plate</code> under the <code>Protected</code> access specifier, and created a new class inherited from the Car class. The inherited class and it's member functions will now be able to access this member. </p>
+<hr />
+<h2 id="super">super</h2>
+<p>Let's say that you want to access a function in the base class from a child class, how would you do it?
+Creating a new object from the base class would be tedious, as it would take longer to write and would decrease performance.
+Luckily, in Class++ 2.0, you can call the <code>super</code> method of the object, which allows you to call the function in the base class that has the same name from the function it's been called from.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nv">getVariable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">            </span><span class="kr">return</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">Variable_A</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="kr">end</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nv">Protected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="nv">Variable_A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">}</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="kd">local</span><span class="w"> </span><span class="nv">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;B&quot;</span><span class="w"> </span><span class="p">(</span><span class="nv">A</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="nv">Variable_B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="nv">getVariable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">)</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">            </span><span class="kr">return</span><span class="w"> </span><span class="nv">self</span><span class="p">:</span><span class="nf">super</span><span class="p">()</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">        </span><span class="kr">end</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="p">}</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="nb">print</span><span class="p">(</span><span class="nv">newObject</span><span class="p">:</span><span class="nf">getVariable</span><span class="p">())</span><span class="w"> </span><span class="c1">-- 1</span>
+</code></pre></div>
+<p>In this example, we created a new class called "B" that inherits from "A". In both classes, we have a function called "getVariable", in the base class, this function returns the "Variable_A" member's value, and in the child class, this function returns the value from the "getVariable" function from the parent class, by calling the <code>super()</code> method. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>super</code> cannot be used within classes that have multi-inheritance. This is due to ambiguity that occurs with multiple functions that have the same name in classes that have multi-inheritance. </p>
+</div>
 
 
 

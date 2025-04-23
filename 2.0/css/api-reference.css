@@ -71,6 +71,14 @@
     margin-top: 0;
 }
 
+.md-typeset h3:not(.api-summary-list-h3, .api-summary-section-h3) {
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 1.5;
+    margin: 1.6em 0 .8em;
+}
+
 .apiReferenceSummaryTitle {
     top: 0;
     display: block;

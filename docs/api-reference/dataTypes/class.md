@@ -138,8 +138,7 @@ Used to create and return a new `class` that inherits the `class` it's been crea
 
 Creates an overloaded function with the given parameters, and saves it to the `class`'s `classData` table.
 
-<!--
-#### Parameters
+### Parameters
 <span markdown>
     <div class="md-typeset__table">
         <table>
@@ -161,7 +160,7 @@ Creates an overloaded function with the given parameters, and saves it to the `c
     </div>
 </span>
 
-#### Returns
+### Returns
 <span markdown>
     <div class="md-typeset__table">
         <table>
@@ -176,12 +175,16 @@ Creates an overloaded function with the given parameters, and saves it to the `c
 
 ----------------------
 
-### static
-<a style="color: lightskyblue;">void</a>
+<h3 markdown>
+	static
+	<span class="api-property-type">
+		: void
+	</span>
+</h3>
 
 Creates a new static member with the given parameters, and saves it to the `class`'s `Statics` table. These members do not replicate to the objects, as they belong to the `class`. 
 
-#### Parameters
+### Parameters
 <span markdown>
     <div class="md-typeset__table">
         <table>
@@ -203,7 +206,7 @@ Creates a new static member with the given parameters, and saves it to the `clas
     </div>
 </span>
 
-#### Returns
+### Returns
 <span markdown>
     <div class="md-typeset__table">
         <table>
@@ -215,4 +218,3 @@ Creates a new static member with the given parameters, and saves it to the `clas
         </table>
     </div>
 </div>
--->

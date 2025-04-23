@@ -2,6 +2,13 @@
     border-bottom: .05rem solid var(--hr-color);
 }
 
+.md-typeset h3 {
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 1.5;
+}
+
 .md-typeset h3:not(.api-summary-list-h3, .api-summary-section-h3) {
     font-size: 1.25em;
     font-weight: 400;

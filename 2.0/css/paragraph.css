@@ -7,6 +7,7 @@
     font-weight: 400;
     letter-spacing: -.01em;
     line-height: 1.5;
+    margin: 0;
 }
 
 .md-typeset h3:not(.api-summary-list-h3, .api-summary-section-h3) {

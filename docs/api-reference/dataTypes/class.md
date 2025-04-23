@@ -25,7 +25,7 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
         <div class="api-summary-section-list">
             <ul>
                 <li><a href="#new">new</a>:  Returns a new <code><a href="../object">object</a></code> that contains all of the members given from the <code>class</code>.</li>
-                <li><a href="#extends">extends</a>: Used to create a new <code>class</code> that inherits the <code>class</code> it's been created from. (Deprecated)</li>
+                <li><a href="#extends">extends</a>: Used to create a new <code>class</code> that inherits the <code>class</code> it's been created from. <b><i>(Deprecated)</i></b></li>
                 <li><a href="#overload">overload</a>: Creates an overloaded function with the given access specifier, name and the function table, and saves it to the <code>class</code>'s <code>classData</code>.</li>
             </ul>
         </div>

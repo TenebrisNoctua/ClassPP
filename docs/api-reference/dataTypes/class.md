@@ -18,7 +18,7 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
             </ul>
         </div>
     </div>
-    <div class="api-summary-section">
+    <div class="api-summary-section-bottom">
         <h3 class="api-summary-section-h3">Methods</h3>
         <div class="api-summary-section-list">
             <ul>

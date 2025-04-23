@@ -23,6 +23,8 @@
 	--md-admonition-bg-color: var(--admonition-bg-color-dark);
 
     --hr-color: var(--hr-white);
+
+    --summary-bg-color: var(--summary-bg-color-dark);
 }
 
 [data-md-color-scheme="classppdoc-light"] {
@@ -50,6 +52,8 @@
 	--md-admonition-bg-color: var(--admonition-bg-color-white);
 
     --hr-color: var(--hr-dark);
+    
+    --summary-bg-color: var(--summary-bg-color-white);
 }
 
 .md-typeset a {

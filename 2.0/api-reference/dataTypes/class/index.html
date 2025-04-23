@@ -1374,24 +1374,6 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      Methods
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Properties
-    </span>
-  </a>
-  
     <nav class="md-nav" aria-label="Properties">
       <ul class="md-nav__list">
         
@@ -1437,7 +1419,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#methods_1" class="md-nav__link">
+  <a href="#methods" class="md-nav__link">
     <span class="md-ellipsis">
       Methods
     </span>
@@ -1617,24 +1599,6 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      Methods
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Properties
-    </span>
-  </a>
-  
     <nav class="md-nav" aria-label="Properties">
       <ul class="md-nav__list">
         
@@ -1680,7 +1644,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#methods_1" class="md-nav__link">
+  <a href="#methods" class="md-nav__link">
     <span class="md-ellipsis">
       Methods
     </span>
@@ -1727,16 +1691,18 @@
     <span class="api-title">Class</span>
 </h1>
 <p>A <code>class</code> object created from the <a href="../../classFunctions/mainModule/class/"><code>class()</code></a> function. Contains all of the members given from the <a href="../../types/classData/"><code>classData</code></a>.</p>
+<!------------------------- SUMMARY -------------------------!-->
+
 <div class="api-summary-list">
     <h3 class="api-summary-list-h3">Summary</h3>
     <div class="api-summary-section">
         <h3 class="api-summary-section-h3">Properties</h3>
         <div class="api-summary-section-list">
             <ul>
-                <li><a href="#Name">Name</a></li>
-                <li><a href="#Inherits">Inherits</a></li>
-                <li><a href="#Friends">Friends</a></li>
-                <li><a href="#Statics">Statics</a></li>
+                <li><a href="#Name">Name</a>: An unique identifier of the <code>class</code>.</li>
+                <li><a href="#Inherits">Inherits</a>: A table that contains classes that the <code>class</code> inherits from.</li>
+                <li><a href="#Friends">Friends</a>: A table that contains functions or clases that can access the <code>Private</code> and the <code>Protected</code> members of the <code>class</code>. </li>
+                <li><a href="#Statics">Statics</a>:  A table that contains the static members of the <code>class</code>. These members can only be called through the <code>class</code> object.</li>
             </ul>
         </div>
     </div>
@@ -1744,46 +1710,18 @@
         <h3 class="api-summary-section-h3">Methods</h3>
         <div class="api-summary-section-list">
             <ul>
-                <li><a href="#new">new</a></li>
-                <li><a href="#extends">extends</a></li>
-                <li><a href="#overload">overload</a></li>
+                <li><a href="#new">new</a>:  Returns a new <code><a href="../object">object</a></code> that contains all of the members given from the <code>class</code>.</li>
+                <li><a href="#extends">extends</a>: Used to create a new <code>class</code> that inherits the <code>class</code> it's been created from. (Deprecated)</li>
+                <li><a href="#overload">overload</a>: Creates an overloaded function with the given access specifier, name and the function table, and saves it to the <code>class</code>'s <code>classData</code>.</li>
             </ul>
         </div>
     </div>
 </div>
 
-<!------------------------- PROPERTIES -------------------------!-->
+<hr />
+<!------------------------- MAIN -------------------------!-->
 
-<h3 class="apiReferenceSummaryTitle" id="properties"> Properties </h3>
-<p>&nbsp;<a href="#name">Name</a> : <a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a></p>
-<p>&nbsp;An unique identifier of the <code>class</code>.</p>
-<hr />
-<div>&nbsp;<a href="#inherits">Inherits</a> : <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a><div class="apiReferenceAccessBox">Read Only</div></div>
-
-<p>&nbsp;A table that contains classes that the <code>class</code> inherits from.</p>
-<hr />
-<div>&nbsp;<a href="#friends">Friends</a> : <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a><div class="apiReferenceAccessBox">Read Only</div></div>
-
-<p>&nbsp;A table that contains functions or classes that can access <code>Private</code> and <code>Protected</code> members of the <code>class</code>.</p>
-<hr />
-<div>&nbsp;<a href="#statics">Statics</a> : <a href="https://create.roblox.com/docs/luau/tables" style="color: lightskyblue;">Table</a><div class="apiReferenceAccessBox">Read Only</div></div>
-
-<p>&nbsp;A table that contains the static members of the <code>class</code>. These members can only be called through the <code>class</code> object.</p>
-<!------------------------- METHODS -------------------------!-->
-
-<h3 class="apiReferenceSummaryTitle" id="methods"> Methods </h3>
-<p>&nbsp;<a href="#new">new</a> (...) : <a style="color: lightskyblue;">any</a></p>
-<p>&nbsp;Returns a new <a href="../object/"><code>object</code></a> that contains all of the members given from the <code>class</code>.</p>
-<hr />
-<p>&nbsp;<a href="#extends">extends</a> (className: string) : (classData: classData) : <a style="color: lightskyblue;">class</a></p>
-<p>&nbsp;(Deprecated) Creates a new <code>class</code> that inherits the <code>class</code> it's been created from. Contains all <code>Public</code> and <code>Protected</code> members of that base <code>class</code>.</p>
-<hr />
-<p>&nbsp;<a href="#overload">overload</a> (accessSpecifier: string, name: string, functionTable: {(...any) -&gt; (any)}) : <a style="color: lightskyblue;">void</a></p>
-<p>&nbsp;Creates an overloaded function with the given access specifier, name and the function table, and saves it to the <code>class</code>'s <code>classData</code>.</p>
-<hr />
-<p>&nbsp;<a href="#overload">static</a> (accessSpecifier: string, name: string, property: any) : <a style="color: lightskyblue;">void</a></p>
-<p>&nbsp;Creates a new static <code>class</code> member that can only be accessable through the <code>class</code> object. </p>
-<h2 id="properties_1">Properties</h2>
+<h2 id="properties">Properties</h2>
 <h3 id="name">Name</h3>
 <p><a href="https://create.roblox.com/docs/luau/strings" style="color: lightskyblue;">string</a></p>
 <p>This is an unique identifier of the <code>class</code>. Using the <a href="../../classFunctions/mainModule/getClass/"><code>getClass()</code></a> function with this property will retrieve the desired <code>class</code>. Since names are unique, for every class, you have to use a different name.</p>
@@ -1806,7 +1744,7 @@
 
 <p>This table contains all the members that are static, meaning they only belong to the <code>class</code>. These members won't replicate to the 
 objects, and can only be called through the <code>class</code> object.</p>
-<h2 id="methods_1">Methods</h2>
+<h2 id="methods">Methods</h2>
 <h3 id="new">new</h3>
 <p><a style="color: lightskyblue;">any</a></p>
 <p>Creates and returns a new <a href="../object/"><code>object</code></a> that contains all of the members given from the <code>class</code>.</p>

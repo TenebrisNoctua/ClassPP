@@ -43,7 +43,7 @@
 
 .api-summary-list {
     border-radius: 1.2em;
-    background-color: var(--code-bg-color-dark);
+    background-color: var(--summary-bg-color);
 }
 
 .api-summary-section {
@@ -58,6 +58,7 @@
 .api-summary-section-list {
     padding-left: 2em;
     margin-top: 0;
+    width: 95%;
 }
 
 .apiReferenceSummaryTitle {

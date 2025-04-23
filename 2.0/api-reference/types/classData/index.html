@@ -1476,54 +1476,54 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#constructor" class="md-nav__link">
+  <a href="#constructor-self-any-any-" class="md-nav__link">
     <span class="md-ellipsis">
-      constructor
+      constructor : (self: any, ...any) -&gt; ()?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#destructor" class="md-nav__link">
+  <a href="#destructor-self-any-" class="md-nav__link">
     <span class="md-ellipsis">
-      destructor
+      destructor : (self: any) -&gt; ()?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#public" class="md-nav__link">
+  <a href="#public-string-any" class="md-nav__link">
     <span class="md-ellipsis">
-      Public
+      Public : {[string]: any}?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#private" class="md-nav__link">
+  <a href="#private-string-any" class="md-nav__link">
     <span class="md-ellipsis">
-      Private
+      Private : {[string]: any}?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#protected" class="md-nav__link">
+  <a href="#protected-string-any" class="md-nav__link">
     <span class="md-ellipsis">
-      Protected
+      Protected : {[string]: any}?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#friend" class="md-nav__link">
+  <a href="#friend-any" class="md-nav__link">
     <span class="md-ellipsis">
-      Friend
+      Friend : {any}?
     </span>
   </a>
   
@@ -1595,54 +1595,54 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#constructor" class="md-nav__link">
+  <a href="#constructor-self-any-any-" class="md-nav__link">
     <span class="md-ellipsis">
-      constructor
+      constructor : (self: any, ...any) -&gt; ()?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#destructor" class="md-nav__link">
+  <a href="#destructor-self-any-" class="md-nav__link">
     <span class="md-ellipsis">
-      destructor
+      destructor : (self: any) -&gt; ()?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#public" class="md-nav__link">
+  <a href="#public-string-any" class="md-nav__link">
     <span class="md-ellipsis">
-      Public
+      Public : {[string]: any}?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#private" class="md-nav__link">
+  <a href="#private-string-any" class="md-nav__link">
     <span class="md-ellipsis">
-      Private
+      Private : {[string]: any}?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#protected" class="md-nav__link">
+  <a href="#protected-string-any" class="md-nav__link">
     <span class="md-ellipsis">
-      Protected
+      Protected : {[string]: any}?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#friend" class="md-nav__link">
+  <a href="#friend-any" class="md-nav__link">
     <span class="md-ellipsis">
-      Friend
+      Friend : {any}?
     </span>
   </a>
   
@@ -1679,32 +1679,61 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">export</span><span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="nv">classData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nv">constructor</span><span class="p">:</span><span class="w"> </span><span class="err">(</span><span class="py">self</span><span class="p">:</span><span class="w"> </span><span class="py">any</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nv">any</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">()</span><span class="err">?</span><span class="p">,</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nv">destructor</span><span class="p">:</span><span class="w"> </span><span class="err">(</span><span class="py">self</span><span class="p">:</span><span class="w"> </span><span class="py">any</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">()</span><span class="err">?</span><span class="p">,</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nv">Public</span><span class="p">:</span><span class="w"> </span><span class="err">{[</span><span class="py">any</span><span class="p">]:</span><span class="w"> </span><span class="nv">any</span><span class="p">}</span><span class="err">?</span><span class="p">,</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nv">Private</span><span class="p">:</span><span class="w"> </span><span class="err">{[</span><span class="py">any</span><span class="p">]:</span><span class="w"> </span><span class="nv">any</span><span class="p">}</span><span class="err">?</span><span class="p">,</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nv">Protected</span><span class="p">:</span><span class="w"> </span><span class="err">{[</span><span class="py">any</span><span class="p">]:</span><span class="w"> </span><span class="nv">any</span><span class="p">}</span><span class="err">?</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nv">Public</span><span class="p">:</span><span class="w"> </span><span class="err">{[</span><span class="py">string</span><span class="p">]:</span><span class="w"> </span><span class="nv">any</span><span class="p">}</span><span class="err">?</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nv">Private</span><span class="p">:</span><span class="w"> </span><span class="err">{[</span><span class="py">string</span><span class="p">]:</span><span class="w"> </span><span class="nv">any</span><span class="p">}</span><span class="err">?</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nv">Protected</span><span class="p">:</span><span class="w"> </span><span class="err">{[</span><span class="py">string</span><span class="p">]:</span><span class="w"> </span><span class="nv">any</span><span class="p">}</span><span class="err">?</span><span class="p">,</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nv">Friend</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="py">any</span><span class="p">}</span><span class="err">?</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
 </code></pre></div>
 <p>The <code>classData</code> table that is given to the <a href="../../classFunctions/mainModule/class/"><code>class()</code></a> function that contains data about the desired <a href="../../dataTypes/class/"><code>class</code></a>.</p>
 <hr />
 <h2 id="properties">Properties</h2>
-<h3 id="constructor">constructor</h3>
-<p><a style="color: lightskyblue;">(self: any, ...any) -&gt; ()?</a></p>
+<h3 id="constructor-self-any-any-">
+    constructor
+    <span class="api-property-type">
+        : (self: any, ...any) -&gt; ()?
+    </span>
+</h3>
 <p>The <code>constructor</code> function that will be called when an <code>object</code> gets created.</p>
-<h3 id="destructor">destructor</h3>
-<p><a style="color: lightskyblue;">(self: any) -&gt; ()?</a></p>
+<hr />
+<h3 id="destructor-self-any-">
+    destructor
+    <span class="api-property-type">
+        : (self: any) -&gt; ()?
+    </span>
+</h3>
 <p>The <code>destructor</code> function that will be called when an <code>object</code> gets destroyed.</p>
-<h3 id="public">Public</h3>
-<p><a style="color: lightskyblue;">{[any]: any}</a></p>
+<hr />
+<h3 id="public-string-any">
+    Public
+    <span class="api-property-type">
+        : {[string]: any}?
+    </span>
+</h3>
 <p>The access specifier that contains properties that can be globally accessable.</p>
-<h3 id="private">Private</h3>
-<p><a style="color: lightskyblue;">{[any]: any}?</a></p>
+<hr />
+<h3 id="private-string-any">
+    Private
+    <span class="api-property-type">
+        : {[string]: any}?
+    </span>
+</h3>
 <p>The access specifier that contains properties that can only be accessed inside the <code>class</code>.</p>
-<h3 id="protected">Protected</h3>
-<p><a style="color: lightskyblue;">{[any]: any}?</a></p>
+<hr />
+<h3 id="protected-string-any">
+    Protected
+    <span class="api-property-type">
+        : {[string]: any}?
+    </span>
+</h3>
 <p>The access specifier that contains properties that can only be accessed inside the <code>class</code> and inherited classes.</p>
-<h3 id="friend">Friend</h3>
-<p><a style="color: lightskyblue;">{any}?</a></p>
+<hr />
+<h3 id="friend-any">
+    Friend
+    <span class="api-property-type">
+        : {any}?
+    </span>
+</h3>
 <p>The access specifier that contains functions and classes that can access the <code>class</code>'s <code>Private</code> properties.</p>
 
 

@@ -114,8 +114,12 @@ Creates and returns a new [`object`](object.md) that contains all of the members
 
 ----------------------
 
-### extends
-<a style="color: lightskyblue;">class</a>
+<h3 markdown>
+	extends
+	<span class="api-property-type">
+		: void
+	</span>
+</h3>
 
 Used to create and return a new `class` that inherits the `class` it's been created from.
 
@@ -125,8 +129,12 @@ Used to create and return a new `class` that inherits the `class` it's been crea
 
 ----------------------
 
-### overload
-<a style="color: lightskyblue;">void</a>
+<h3 markdown>
+	overload
+	<span class="api-property-type">
+		: void
+	</span>
+</h3>
 
 Creates an overloaded function with the given parameters, and saves it to the `class`'s `classData` table.
 

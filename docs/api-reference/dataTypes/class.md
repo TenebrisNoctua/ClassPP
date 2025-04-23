@@ -105,7 +105,7 @@ Creates and returns a new [`object`](object.md) that contains all of the members
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="object.md">object</a></td>
+                    <td class="api-return-box"><a href="../object">object</a></td>
                 </tr>
             </tbody>
         </table>

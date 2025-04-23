@@ -147,7 +147,7 @@ In this example, we put the member `License_Plate` under the `Protected` access 
 
 Let's say that you want to access a function in the base class from a child class, how would you do it?
 Creating a new object from the base class would be tedious, as it would take longer to write and would decrease performance.
-Luckily, in Class++ 2.0, you can call the `super` method of the object, which allows you to call the function in the base class that has the same name from the function it's been called from.
+Luckily, in Class++ 2.0, you can call the `super` method of the object, which allows you to call the function in the base class that has the same name of the function it's been called from.
 
 ```lua
 local class = ClassPP.class

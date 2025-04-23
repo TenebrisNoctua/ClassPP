@@ -18,7 +18,7 @@ local Vehicle = class "Vehicle" { -- Base Class
     }
 }
 
-local Car = Vehicle.extends "Car" { -- Derived Class
+local Car = class "Car" (Vehicle, nil) { -- Derived Class
     Public = {
         License_Plate = "A1B2C3"
     }
@@ -30,15 +30,17 @@ print(newCar.Brand, newCar.Model, newCar.License_Plate, newCar.Year) -- Prints "
 ```
 
 In this example, we have 2 classes: The Vehicle class (base), and the Car class (child). <br>
-We create the Car class by calling the function `.extends()` on the Vehicle class, the `.extends()` function works almost the same as the `class` function, it takes in a name, and the class data. 
+We created the Car class by providing the `class` function a list of classes to inherit from (in this case, only the Vehicle class), and the `classData` table after.
 
-When you create a class using `.extends()`, you create a new derived class that inherits all of the members and member functions from the base class, so you don't need to re-declare them again. The members are overwritable in the derived class, like in the example above, you can modify the `License_Plate`'s default value to anything you wish. The same applies to other members.
+When you create a class using this method, you create a new derived class that inherits all of the members and member functions from the class(es) provided, so you don't need to re-declare them again. The members are overwritable in the derived class, like in the example above, you can modify the `License_Plate`'s default value to anything you wish. The same applies to other members.
 
 !!! question
     "Why should I use Inheritence?"
     It's very useful for code reusability: reusing members and functions of an existing class when you're creating a new class will save you a lot of time and effort, defining same members over and over again may cause spaghetti code and decrease code readability.
 
-## Multilevel Inheritance
+----
+
+## Multilevel-Inheritance
 
 A class can also be derived from one class, which can be derived from another class:
 
@@ -54,14 +56,14 @@ local Person = class "Person" { -- Base Class
     }
 }
 
-local Child = Person.extends "Child" { -- Derived Class
+local Child = class "Child" (Person, nil) { -- Derived Class
     Public = {
         Age = 9,
         Energetic = true
     }
 }
 
-local Student = Child.extends "Student" { -- Derived Class from a Derived Class
+local Student = class "Student" (Child, nil) { -- Derived Class from a Derived Class
     Public = {
         SchoolId = 0,
         Grade = 0,
@@ -73,6 +75,38 @@ local newStudent = Student.new()
 print(newStudent.Name, newStudent.Age, newStudent.Gender, newStudent.Height, newStudent.Age, newStudent.Energetic, newStudent.SchoolId, newStudent.Grade, newStudent.Behaviour)
 -- Prints " 9  0 9 true 0 0 Good"! (Spaces represent empty strings)
 ```
+
+----
+
+## Multi-Inheritance
+
+A class can also be derived from multiple classes:
+
+```lua
+local class = ClassPP.class
+
+local A = class "A" { 
+    Public = {
+        Variable_A = 1
+    }
+}
+
+local B = class "B" { 
+    Public = {
+        Variable_B = 1
+    }
+}
+
+local C = class "C" (A, B) { -- Derived Class
+    Public = {
+        Variable_C = 1
+    }
+}
+
+local newObject = C.new() -- {Variable_A: number, Variable_B: number, Variable_C: number}
+```
+
+----
 
 ## Protected Access Specifier
 
@@ -91,7 +125,7 @@ local Car = class "Car" {
     }
 }
 
-local BiggerCar = Car.extends "BiggerCar" {
+local BiggerCar = class "BiggerCar" (Car, nil) {
     Public = {
         Brand = "Tesla"
     }

@@ -6,10 +6,10 @@
 A `class` object created from the [`class()`](../classFunctions/mainModule/class.md) function. Contains all of the members given from the [`classData`](../types/classData.md).
 
 <div class="api-summary-list">
-    <h3 style="api-summary-list-h3">Summary</h3>
-    <div style="api-summary-section">
-        <h3 style="api-summary-section-h3">Properties</h3>
-        <div style="api-summary-section-list">
+    <h3 class="api-summary-list-h3">Summary</h3>
+    <div class="api-summary-section">
+        <h3 class="api-summary-section-h3">Properties</h3>
+        <div class="api-summary-section-list">
             <ul>
                 <li><a href="#Name">Name</a></li>
                 <li><a href="#Inherits">Inherits</a></li>
@@ -18,9 +18,9 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
             </ul>
         </div>
     </div>
-    <div style="api-summary-section">
-        <h3 style="api-summary-section-h3">Methods</h3>
-        <div style="api-summary-section-list">
+    <div class="api-summary-section">
+        <h3 class="api-summary-section-h3">Methods</h3>
+        <div class="api-summary-section-list">
             <ul>
                 <li><a href="#new">new</a></li>
                 <li><a href="#extends">extends</a></li>

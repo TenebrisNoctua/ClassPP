@@ -8,6 +8,7 @@ extra:
 
 theme:
   logo: img/cppicon_v2.png
+  favicon: img/cppicon_v2.png
   name: material
   features:
     - navigation.tabs

@@ -12,6 +12,7 @@
 
     --md-footer-fg-color: var(--footer-fg-color);
 
+    --md-primary-bg-color: var(--text-color-white);
     --md-primary-fg-color: var(--top-background-color-dark);
     --md-default-bg-color: var(--main-background-color-dark);
     --md-default-fg-color--light: var(--text-color-white);
@@ -43,6 +44,7 @@
 
     --md-footer-fg-color: var(--footer-fg-color);
 
+    --md-primary-bg-color: var(--text-color-dark);
     --md-primary-fg-color: var(--top-background-color-white);
     --md-default-bg-color: var(--main-background-color-white);
     --md-default-fg-color--light: var(--text-color-dark);

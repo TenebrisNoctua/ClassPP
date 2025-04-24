@@ -15,6 +15,7 @@
     --md-primary-bg-color: var(--text-color-white);
     --md-primary-fg-color: var(--top-background-color-dark);
     --md-default-bg-color: var(--main-background-color-dark);
+    --md-default-fg-color: var(--text-color-white);
     --md-default-fg-color--light: var(--text-color-white);
 
     --md-typeset-table-color: var(--table-background-color-dark);
@@ -47,6 +48,7 @@
     --md-primary-bg-color: var(--text-color-dark);
     --md-primary-fg-color: var(--top-background-color-white);
     --md-default-bg-color: var(--main-background-color-white);
+    --md-default-fg-color: var(--text-color-dark);
     --md-default-fg-color--light: var(--text-color-dark);
 
     --md-typeset-table-color: var(--table-background-color-white);

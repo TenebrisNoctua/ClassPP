@@ -275,7 +275,7 @@ You've tried to create an illegal combination of modifiers. Certain modifiers ha
 Operator function ... cannot be called without its operator.
 ```
 
-You've tried to call an operator function without its operator. Operator functions are meant to be called with with their operators.
+You've tried to call an operator function without its operator. Operator functions are meant to be called with their operators.
 
 ----
 
@@ -335,7 +335,7 @@ The provided object's type cannot be found.
 An unknown error has occured.
 ```
 
-Class++ ran into a problem, but it cannot associate it with a valid error type. This error is meant to be a fallback error, and may only occur if the internal code isn't running properly.
+Class++ ran into a problem, but it cannot associate it with a valid error type. This is meant to be a fallback error, and may only occur if the internal code isn't running properly.
 
 
 

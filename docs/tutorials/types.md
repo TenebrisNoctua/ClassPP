@@ -105,7 +105,7 @@ In the example above, we created a custom type called `Person` for the Person cl
 
 ## Typechecking for Classes and Class Objects
 
-Class++ also comes with its own [`Type`](../apiReference/classFunctions/type/type.md) API that allows you to get the types of `class`es and `object`s.
+Class++ also comes with its own [`Type`](../api-reference/classFunctions/type/type.md) API that allows you to get the types of `class`es and `object`s.
 
 ```lua
 local class = ClassPP.class

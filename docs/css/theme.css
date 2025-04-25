@@ -127,6 +127,6 @@ td {
     background-color: #0000;
 }
 
-.md-footer-meta.md-typeset a {
+html .md-footer-meta.md-typeset a {
     color: var(--md-default-fg-color);
 }

@@ -1794,8 +1794,8 @@ This allows Class++ to be more intelligent with the <code>class</code> and <code
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newPerson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Person</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span><span class="w"> </span><span class="c1">-- Now has intellisense for members in all access specifiers, and obtains the correct types for every member!</span>
 </code></pre></div>
-<p>This also applies to <code>class</code>es, where before you tried to create an inherited <code>class</code>, the returned <code>class</code> type would not be correct, and new <code>object</code>s would not have the correct type. Some members would either be missing or messed up.
-Now, this has also been fixed:</p>
+<p>This also applies to classes, where before you tried to create an inherited class, the returned class type would not be correct, and new objects would also not have the correct type. For example, some members of an inherited class would be missing from auto-complete.</p>
+<p>Now, this has also been fixed:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
@@ -1818,7 +1818,7 @@ Now, this has also been fixed:</p>
 <a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">C</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span><span class="w"> </span><span class="c1">-- {Variable_A: number, Variable_B: number, Variable_C: number}</span>
 </code></pre></div>
-<p>Though, as much as this update brings in an intellisense much better than before, it is still limited. Like in the previous versions of Class++, to support all of the features of type-completion in Luau, you have to create a custom type and assign it to the created objects.</p>
+<p>Though, as much as this update brings in an intellisense much better than before, it is still limited. Like in the previous versions of Class++, to support all of the features of types in Luau, you have to create a custom type and assign it to the created objects.</p>
 <p>In the tutorial below, you will learn how to create a basic <code>Person</code> type and assign it to the created object, to enable the support.</p>
 <hr />
 <h2 id="creating-a-basic-custom-class-type">Creating a Basic Custom Class Type</h2>
@@ -1855,7 +1855,7 @@ Now, this has also been fixed:</p>
 <a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newPerson</span><span class="p">:</span><span class="w"> </span><span class="py">Person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Person</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
 <a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="c1">-- This object now fully supports all type features of Luau!</span>
 </code></pre></div>
-<p>In the example above, we created a custom type called <code>Person</code> for the Person class, and inserted the types of all the members inside it, and declared the new created object as of the Person type. This now allows us to use the all of the features of Luau type-completion.</p>
+<p>In the example above, we created a custom type called <code>Person</code> for the Person class, and inserted the types of all the members inside it, and declared the new created object as of the Person type. This now allows us to use all the features of Luau types.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Since class objects belong to the base type <code>userdata</code>, you can type cast them to either your custom types, or any other existing type you wish.</p>

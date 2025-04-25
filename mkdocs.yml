@@ -7,8 +7,8 @@ extra:
     provider: mike
 
 theme:
-  logo: img/cppicon_v2.png
-  favicon: img/cppicon_v2.png
+  logo: img/classpp_small.png
+  favicon: img/classpp_fav.png
   name: material
   features:
     - navigation.tabs

@@ -118,3 +118,15 @@ td {
     color: var(--md-default-fg-color);
     display: grid;
 }
+
+.md-copyright__highlight {
+    color: var(--md-default-fg-color);
+}
+
+.md-footer-meta {
+    background-color: #000000;
+}
+
+.md-footer-meta.md-typeset a {
+    color: var(--md-default-fg-color);
+}

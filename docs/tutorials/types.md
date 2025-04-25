@@ -26,7 +26,8 @@ local Person = class "Person" {
 local newPerson = Person.new() -- Now has intellisense for members in all access specifiers, and obtains the correct types for every member!
 ```
 
-This also applies to `class`es, where before you tried to create an inherited `class`, the returned `class` type would not be correct, and new `object`s would not have the correct type. Some members would either be missing or messed up.
+This also applies to classes, where before you tried to create an inherited class, the returned class type would not be correct, and new objects would also not have the correct type. For example, some members of an inherited class would be missing from auto-complete.
+
 Now, this has also been fixed:
 
 ```lua
@@ -53,7 +54,7 @@ local C = class "C" (A, B) { -- Derived Class
 local newObject = C.new() -- {Variable_A: number, Variable_B: number, Variable_C: number}
 ```
 
-Though, as much as this update brings in an intellisense much better than before, it is still limited. Like in the previous versions of Class++, to support all of the features of type-completion in Luau, you have to create a custom type and assign it to the created objects.
+Though, as much as this update brings in an intellisense much better than before, it is still limited. Like in the previous versions of Class++, to support all of the features of types in Luau, you have to create a custom type and assign it to the created objects.
 
 In the tutorial below, you will learn how to create a basic `Person` type and assign it to the created object, to enable the support.
 
@@ -96,7 +97,7 @@ local newPerson: Person = Person.new()
 -- This object now fully supports all type features of Luau!
 ```
 
-In the example above, we created a custom type called `Person` for the Person class, and inserted the types of all the members inside it, and declared the new created object as of the Person type. This now allows us to use the all of the features of Luau type-completion.
+In the example above, we created a custom type called `Person` for the Person class, and inserted the types of all the members inside it, and declared the new created object as of the Person type. This now allows us to use all the features of Luau types.
 
 !!! info
     Since class objects belong to the base type `userdata`, you can type cast them to either your custom types, or any other existing type you wish.

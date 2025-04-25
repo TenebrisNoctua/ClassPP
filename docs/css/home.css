@@ -28,14 +28,6 @@
     margin-right: 0
 }
 
-[data-md-color-scheme="classppdoc-dark"] .logo-light {
-    display: none;
-}
-
-[data-md-color-scheme="classppdoc-light"] .logo-dark {
-    display: none;
-}
-
 #classppTitle {
     font-weight: 700;
     letter-spacing: -.02em;

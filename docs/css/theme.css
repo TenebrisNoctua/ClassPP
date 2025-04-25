@@ -68,14 +68,6 @@
     --main-section-image: url("../img/light/classpp_large.png");
 }
 
-[data-md-color-scheme="classppdoc-dark"] .logo-light {
-    display: none;
-}
-
-[data-md-color-scheme="classppdoc-light"] .logo-dark {
-    display: none;
-}
-
 .md-typeset a {
     color: var(--md-typeset-a-color);
     word-break: break-word;

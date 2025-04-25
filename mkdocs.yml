@@ -7,8 +7,9 @@ extra:
     provider: mike
 
 theme:
-  logo: img/classpp_small.png
-  favicon: img/classpp_fav.png
+  logo: img/light/classpp_small.png
+  logo_dark: img/dark/classpp_small.png
+  favicon: img/light/classpp_fav.png
   name: material
   features:
     - navigation.tabs

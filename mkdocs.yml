@@ -29,7 +29,7 @@ theme:
   palette:
     - scheme: classppdoc-dark
       toggle:
-        icon: octicons/light-bulb-24
+        icon: octicons/sun-24
         name: Switch to Light Mode
 
     - scheme: classppdoc-light 

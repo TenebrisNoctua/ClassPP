@@ -146,8 +146,9 @@ In this example, we put the member `License_Plate` under the `Protected` access 
 ## super
 
 Let's say that you want to access a function in the base class from a child class, how would you do it?
-Creating a new object from the base class would be tedious, as it would take longer to write and would decrease performance.
-Luckily, in Class++ 2.0, you can call the `super` method of the object, which allows you to call the function in the base class that has the same name of the function it's been called from.
+Creating a new object from the base class and calling the function would be tedious, as it would take longer to write and would decrease performance.
+
+Luckily, in Class++ 2.0, you can call the `super` method of the object, which allows you to call the function in the base class that has the same name of the function this method has been called from.
 
 ```lua
 local class = ClassPP.class
@@ -163,7 +164,7 @@ local A = class "A" {
     }
 }
 
-local B = class "B" (A) { 
+local B = class "B" (A, nil) { 
     Public = {
         Variable_B = 1,
         getVariable = function(self)
@@ -179,4 +180,4 @@ print(newObject:getVariable()) -- 1
 In this example, we created a new class called "B" that inherits from "A". In both classes, we have a function called "getVariable", in the base class, this function returns the "Variable_A" member's value, and in the child class, this function returns the value from the "getVariable" function from the parent class, by calling the `super()` method. 
 
 !!! warning
-    `super` cannot be used within classes that have multi-inheritance. This is due to ambiguity that occurs with multiple functions that have the same name in classes that have multi-inheritance. 
+    `super` cannot be used within classes that have multi-inheritance. This is due to ambiguity that occurs with functions that have the same name in classes that have multi-inheritance. 

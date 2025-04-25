@@ -29,6 +29,8 @@
     --summary-bg-color: var(--summary-bg-color-dark);
 
     --property-type-color: var(--code-fg-color-white);
+
+    --main-section-image: url("../img/dark/classpp_large.png");
 }
 
 [data-md-color-scheme="classppdoc-light"] {
@@ -62,6 +64,16 @@
     --summary-bg-color: var(--summary-bg-color-white);
 
     --property-type-color: var(--code-fg-color-dark);
+
+    --main-section-image: url("../img/light/classpp_large.png");
+}
+
+[data-md-color-scheme="classppdoc-dark"] .logo-light {
+    display: none;
+}
+
+[data-md-color-scheme="classppdoc-light"] .logo-dark {
+    display: none;
 }
 
 .md-typeset a {

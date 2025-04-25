@@ -68,6 +68,13 @@
     --main-section-image: url("../img/light/classpp_large.png");
 }
 
+[data-md-color-scheme="classppdoc-light"] .dark-theme-only,
+[data-md-color-scheme="classppdoc-dark"] .light-theme-only,
+[data-md-color-scheme="classppdoc-light"] img[src$="#only-dark"],
+[data-md-color-scheme="classppdoc-dark"] img[src$="#only-light"] {
+	display: none !important;
+}
+
 .md-typeset a {
     color: var(--md-typeset-a-color);
     word-break: break-word;

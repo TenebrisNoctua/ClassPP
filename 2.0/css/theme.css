@@ -112,3 +112,9 @@ td {
 .md-typeset .admonition {
     border-radius: 0.4rem;
 }
+
+.md-banner {
+    background-color: var(--md-default-bg-color);
+    color: var(--md-default-fg-color);
+    display: grid;
+}

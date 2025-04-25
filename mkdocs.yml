@@ -9,7 +9,8 @@ extra:
 theme:
   logo: img/light/classpp_small.png
   logo_dark: img/dark/classpp_small.png
-  favicon: img/light/classpp_fav.png
+  favicon: img/dark/classpp_fav.png
+  custom_dir: docs/overrides
   name: material
   features:
     - navigation.tabs

@@ -124,7 +124,7 @@ td {
 }
 
 html .md-footer-meta.md-typeset a {
-    color: var(--md-typeset-color);
+    color: var(--md-default-fg-color);
 }
 
 .md-search__form {

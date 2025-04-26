@@ -205,7 +205,7 @@ The `functionsTable` that you provided to `class.overload` function had a value 
 Extends is now deprecated. Use the "class" function instead.
 ```
 
-You've tried to use the now deprecated `extends` function for inheritance.
+You've tried to use the now deprecated `extends` function for inheritance.<br>
 See the discussion [`#4`](https://github.com/TenebrisNoctua/ClassPP/discussions/4) for more info.
 
 ----

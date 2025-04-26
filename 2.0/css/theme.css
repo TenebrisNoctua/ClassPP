@@ -131,3 +131,7 @@ html .md-footer-meta.md-typeset a {
     background-color: transparent;
     border-radius: 0.25rem;
 }
+
+.md-copyright {
+    color: var(--md-footer-fg-color);
+}

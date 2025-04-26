@@ -206,6 +206,7 @@ Extends is now deprecated. Use the "class" function instead.
 ```
 
 You've tried to use the now deprecated `extends` function for inheritance.
+See the discussion [`#4`](https://github.com/TenebrisNoctua/ClassPP/discussions/4) for more info.
 
 ----
 

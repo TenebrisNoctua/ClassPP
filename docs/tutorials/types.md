@@ -54,7 +54,7 @@ local C = class "C" (A, B) { -- Derived Class
 local newObject = C.new() -- {Variable_A: number, Variable_B: number, Variable_C: number}
 ```
 
-Though, as much as this update brings in an intellisense much better than before, it is still limited. Like in the previous versions of Class++, to support all of the features of types in Luau, you have to create a custom type and assign it to the created objects.
+Though, as much as this update brings in an intellisense much better than before, it is still limited. Like in the previous versions of Class++, to support all the features of types in Luau, you have to create a custom type and assign it to the created objects.
 
 In the tutorial below, you will learn how to create a basic `Person` type and assign it to the created object, to enable the support.
 
@@ -147,9 +147,9 @@ print(typeof(Person), ",", typeof(newPerson)) -- Prints "Person, Person"!
 
 ### Type.type
 
-`Type.type` will return the true type of the given object. It behaves the same as the built-in luau `type` function, but with additional support for `class`es and `object`s. For example, if the provided object is a `class`, it will return a string called "Class". This is due to the `class` object belonging to the base [`Class`](../apiReference/dataTypes/class.md) type.
+`Type.type` will return the true type of the given object. It behaves the same as the built-in luau `type` function, but with additional support for `class`es and `object`s. For example, if the provided object is a `class`, it will return a string called "Class". This is due to the `class` object belonging to the base [`Class`](../api-reference/dataTypes/class.md) type.
 
-The same applies to `object`s, where if the provided object is an `object`, it will return a string called "Object". This is due to the `object` belonging to the base [`Object`](../apiReference/dataTypes/object.md) type.
+The same applies to `object`s, where if the provided object is an `object`, it will return a string called "Object". This is due to the `object` belonging to the base [`Object`](../api-reference/dataTypes/object.md) type.
 
 ### Type.typeof
 

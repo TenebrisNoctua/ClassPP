@@ -5,12 +5,10 @@
     --button-background-color: var(--button-bg-color-white);
     --button-text-color: var(--button-text-color-dark);
 
-    --footer-fg-color: var(--footer-fg-color-white);
-
     --md-typeset-color: var(--text-color-white);
     --md-typeset-a-color: var(--typeset-a-color);
 
-    --md-footer-fg-color: var(--footer-fg-color);
+    --md-footer-fg-color: var(--footer-fg-color-white);
 
     --md-primary-bg-color: var(--text-color-white);
     --md-primary-fg-color: var(--top-background-color-dark);
@@ -41,13 +39,11 @@
 
     --button-background-color: var(--button-bg-color-dark);
     --button-text-color: var(--button-text-color-white);
-
-    --footer-fg-color: var(--footer-fg-color-dark);
     
     --md-typeset-color: var(--text-color-dark);
     --md-typeset-a-color: var(--typeset-a-color);
 
-    --md-footer-fg-color: var(--footer-fg-color);
+    --md-footer-fg-color: var(--footer-fg-color-dark);
 
     --md-primary-bg-color: var(--text-color-dark);
     --md-primary-fg-color: var(--top-background-color-white);
@@ -124,9 +120,14 @@ td {
 }
 
 .md-footer-meta {
-    background-color: #0000;
+    background-color: transparent;
 }
 
 html .md-footer-meta.md-typeset a {
-    color: var(--md-default-fg-color);
+    color: var(--md-typeset-color);
+}
+
+.md-search__form {
+    background-color: transparent;
+    border-radius: 0.25rem;
 }

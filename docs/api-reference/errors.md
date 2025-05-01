@@ -49,6 +49,16 @@ You've tried to call a function within a `class` without creating an `object`. C
 
 ----
 
+## cannotFindBaseClassMethod
+
+```
+Property ... cannot be found or is not a function in the base class ...
+```
+
+You've tried to call a property with `super()` in the base `class` that cannot be found, or wasn't a function.
+
+----
+
 ## classAlreadyExists
 
 ```
@@ -230,23 +240,13 @@ You've given a `classData` value that contains invalid access-specifiers or func
 
 ----
 
-## invalidDestructorDecleration
+## invalidDestructorCall
 
 ```
-Cannot create reserved function "Destroy".
+Cannot call Destroy without an object argument. Try calling the function with the ':' operator.
 ```
 
-You've declared a member called "Destroy", that is already reserved for calling the `destructor`.
-
-----
-
-## invalidSuperDecleration
-
-```
-Cannot create reserved function "super".
-```
-
-You've declared a member called "super", that is already reserved for calling the `super` method.
+You've tried to call the `Destroy()` without providing the `object` as its first argument. Calling it with a ':' like `:Destroy()`, passes the `object` argument automatically.
 
 ----
 
@@ -257,6 +257,27 @@ Given argument is not a class table.
 ```
 
 You've given a value to a modifier function that wasn't a table containing classes.
+
+----
+
+## invalidPropertyDecleration
+
+```
+Cannot create reserved property ...
+```
+
+You've tried to create a reserved property in a `class`.<br>
+Some property names are reserved for certain functions that come by default for every `object`, so you cannot declare them inside the `classData` value.
+
+----
+
+## invalidSuperCall
+
+```
+Cannot call super in a multi-inherited class, or in a non-inherited class.
+```
+
+You've tried to call the `super()` function from a `class` that either wasn't inheriting from another `class`, or it was inheriting from multiple `class`es. 
 
 ----
 

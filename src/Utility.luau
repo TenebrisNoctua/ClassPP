@@ -38,7 +38,6 @@ function Util.checkInheritance(class: internalClass, classOrMethod: any | () -> 
 	return false
 end
 
-
 function Util.checkFriendship(class: internalClass, methodName: string, method: (any) -> (any), classes: {[string]: internalClass}): boolean
 	for _, friend in class.Friends do
 		if Type.type(friend) == "Class" and friend[methodName] then
@@ -74,6 +73,28 @@ function Util.inClassScope(class: internalClass, includeInherited: boolean, incl
 	end
 
 	return false
+end
+
+function Util.binarySearch(array: {any}, value: any): any
+	local Low: number = 1
+	local High: number = #array
+	
+	while Low <= High do
+		local Middle: number = Low + math.floor((High - Low) / 2)
+		local MiddleValue: number = array[Middle]
+		
+		if value < MiddleValue then
+			High = Middle - 1
+		elseif MiddleValue < value then
+			Low = Middle + 1
+		else
+			while Middle >= 1 and not (array[Middle] < value or value < array[Middle]) do
+				Middle -= 1
+			end
+			return Middle + 1
+		end
+	end
+	return
 end
 
 return Util

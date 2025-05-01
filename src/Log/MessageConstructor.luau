@@ -10,7 +10,7 @@
 local RunService = game:GetService("RunService")
 
 local Messages = require('./Messages')
-local INFO_URL = "https://tenebrisnoctua.github.io/ClassPP/2.0/apiReference/errors#"
+local INFO_URL = "https://tenebrisnoctua.github.io/ClassPP/2.0/api-reference/errors#"
 
 --// Return Message Object Constructor
 

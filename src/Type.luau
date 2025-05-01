@@ -42,7 +42,7 @@ export type overloadableOperators = {
 }
 
 export type class<classData, nClassData> = setmetatable<{
-	new: (...any) -> convertToObjectData<classData>,
+	new: getConstructorType<classData, convertToObjectData<classData>>,
 	overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (...any?)}) -> (),
 	static: (accessSpecifier: string, name: string, property: any) -> (),
 	read classData: nClassData,
@@ -118,6 +118,36 @@ type function isClass(t: type)
 	end
 	
 	return passedCount > 0
+end
+
+export type function getConstructorType(classData: type, objectData: type)
+	local properties = classData:properties()
+	local constructorParams
+
+	for k, v in properties do
+		local key = k:value()
+		local value = v.read
+
+		if key == "constructor" and value then
+			constructorParams = value:parameters()
+		end
+	end
+	
+	local newHead: {type} = {}
+	local allowedTags = {"string", "any", "singleton", "boolean", "number", "class", "buffer", "nil", "table", "function", "union"}
+	
+	if constructorParams and constructorParams.head then
+		for i, type in constructorParams.head do
+			if i == 1 then continue end
+			if not table.find(allowedTags, type.tag) then
+				table.insert(newHead, types.any)
+			else
+				table.insert(newHead, type)
+			end
+		end
+	end
+	
+	return types.newfunction({head = newHead}, {head = {objectData}})
 end
 
 export type function constructClassData(t)
@@ -249,13 +279,16 @@ export type function convertToObjectData(t)
 			end
 		end
 	end
-
+	
+	nT:setproperty(types.singleton("super"), types.newfunction({head = {nT}, tail = types.any}, {head = {types.any}}))
+	nT:setproperty(types.singleton("Destroy"), types.newfunction({head = {nT}, tail = types.any}, {head = {types.any}}))
+	
 	return nT
 end
 
 --////// Module Functions
 
-function Type.type<T>(object: T): string?
+function Type.type<T>(object: T): string
 	local objType = type(object)
 	
 	if not objType then Logger.logError("typeofObjectNotFound", false) end
@@ -274,7 +307,7 @@ function Type.type<T>(object: T): string?
 	return objType
 end
 
-function Type.typeof<T>(object: T): string?
+function Type.typeof<T>(object: T): string
 	local objType = typeof(object)
 	if not objType then Logger.logError("typeofObjectNotFound", false) end
 	
@@ -283,6 +316,9 @@ function Type.typeof<T>(object: T): string?
 		if not metatable["__classtype"] then return objType end 
 		
 		return metatable["__classtype"]
+	elseif Type.type(object) == "Object" then
+		local _, rType = select(1, pcall(function() return (object :: any)["__objtype"] end))
+		if rType then return rType end
 	end
 	
 	return objType

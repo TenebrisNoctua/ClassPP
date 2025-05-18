@@ -8,8 +8,13 @@
 
 --// Variables
 
-local Util = {}
+
 local Type = require('./Type')
+
+local type = Type.type
+local typeof = Type.typeof
+
+local Util = {}
 
 --// Types
 
@@ -40,11 +45,13 @@ end
 
 function Util.checkFriendship(class: internalClass, methodName: string, method: (any) -> (any), classes: {[string]: internalClass}): boolean
 	for _, friend in class.Friends do
-		if Type.type(friend) == "Class" and friend[methodName] then
+		if type(friend) == "Class" and friend[methodName] then
 			return true
 		elseif typeof(friend) == "string" then
 			if classes[friend] and classes[friend][methodName] then
 				return true
+			else
+				continue
 			end
 		elseif typeof(friend) == "function" and friend == method then
 			return true
@@ -66,7 +73,7 @@ function Util.inClassScope(class: internalClass, includeInherited: boolean, incl
 		local result = if includeInherited then Util.checkInheritance(class, method) else false or if includeFriend and classes then Util.checkFriendship(class, methodName, method, classes) else false
 		if result then return true end
 		
-		if method == Type.typeof then return true end
+		if method == typeof then return true end
 		if methodName == "overloadHandler" and table.find(class.overloadlist, method) then return true end
 		
 		level += 1

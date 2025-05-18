@@ -42,10 +42,20 @@ You tried to create a `class` from a final `class`. Final classes are not meant 
 ## cannotCallFunctionError
 
 ```
-Cannot call function directly.
+Cannot call function ... directly.
 ```
 
 You've tried to call a function within a `class` without creating an `object`. Class functions are not meant to be used directly, rather, they are to be used from objects. *(Excluding static members.)*
+
+----
+
+## cannotCallFunctionFrom
+
+```
+Cannot call function ... from ...
+```
+
+You've tried to call a function within an `object` that cannot be called within certain functions, such as `super()` in `destructor`.
 
 ----
 

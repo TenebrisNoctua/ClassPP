@@ -8,10 +8,9 @@
 
 --// Variables
 
--- Use @self when it becomes available.
-local Util = require("./ClassPP/Utility")
-local Logger = require("./ClassPP/Log/Logger")
-local Type = require("./ClassPP/Type")
+local Util = require("@self/Utility")
+local Logger = require("@self/Log/Logger")
+local Type = require("@self/Type")
 
 local LogError = Logger.logError
 local LogErrorNonFatal = Logger.logErrorNonFatal
@@ -30,7 +29,7 @@ type accessSpecifiers = Type.accessSpecifiers
 type overloadableOperators = Type.overloadableOperators
 
 export type classData<T> = Type.classData<T>
-export type class<AccessSpecifierTable> = Type.class<AccessSpecifierTable, AccessSpecifierTable>
+export type class<T> = Type.class<T, T>
 
 type defaultClassData = classData<{Public: {}, Private: {}, Protected: {}, Friend: {}}> 
 type objectData = Type.objectData
@@ -73,15 +72,60 @@ local function recursiveClean(tbl: deepAnyTable)
 	end
 end
 
+-- Detects when an object gets garbage collected.
+local function runOnGarbageCollection(object: unknown, callback: () -> ())
+	local alive_test = setmetatable({object}, {__mode = "v"})
+	task.spawn(function()
+		repeat task.wait(1) until alive_test[1] == nil
+		callback()
+	end)
+end
+
 -- Cleans the given object's objectData table.
 local function objectCleaner(objectData: objectData): objectData
 	for accessSpecifier, attributesData in objectData do
 		if accessSpecifier == "Internal" then continue end
 		recursiveClean(attributesData)
+		objectData[accessSpecifier] = nil
 	end
 
 	objectData.Internal.__locked = true
 	return objectData
+end
+
+-- Runs on garbage collection.
+local function garbageCollectionCallback(objectData: objectData)
+	if objectData.Internal.__locked then
+		objectData.Internal = nil :: any
+	else
+		if objectData.Internal.destructor then
+			-- We create a copy of the object here, because giving a direct reference to the object will cause this function to never be run.
+			-- This copy will immediately be deleted after destructor runs.
+			local objectCopy = setmetatable({}, {__metatable = "This table is locked."}) :: metatable<{[string]: any}, {__metatable: string}>
+			
+			for k, v in objectData.Public do
+				if k == "Destroy" or k == "super" then continue end
+				objectCopy[k] = v
+			end
+			for k, v in objectData.Private do
+				objectCopy[k] = v
+			end
+			for k, v in objectData.Protected do
+				objectCopy[k] = v
+			end
+			
+			objectData.Internal.destructor(objectCopy)
+			objectCleaner(objectData)
+			
+			for i, _ in objectCopy do
+				objectCopy[i] = nil
+			end
+			
+			objectCopy = nil
+		end
+		
+		objectData.Internal = nil :: any
+	end
 end
 
 -- Sorts the classData into an objectData that can be used inside objects.
@@ -112,14 +156,19 @@ local function sortAttributes(data: defaultClassData, className: string, class: 
 	
 	function classObjTbl.Public.Destroy(obj: objectData)
 		if Type.type(obj) ~= "Object" then LogError("invalidDestructorCall", true) end
-		if destructor then destructor(obj) end
+		if Util.getMethodContext(5) == classObjTbl.Internal.constructor then LogError("cannotCallFunctionFrom", true, {"Destroy", "constructor"}) end
 		
+		if destructor then destructor(obj) end
 		objectCleaner(classObjTbl)
 	end
 	
 	function classObjTbl.Public.super(...)
 		if inheritedClassNum > 1 or not inheritedClass then LogError("invalidSuperCall", true) end
 		
+		local methodContext = Util.getMethodContext(5)
+		if methodContext == classObjTbl.Internal.destructor then LogError("cannotCallFunctionFrom", true, {"super", "destructor"}) end
+		if methodContext == classObjTbl.Internal.constructor then LogError("cannotCallFunctionFrom", true, {"super", "constructor"}) end
+
 		local _, currentFunction = Util.getMethodContext(5)
 		local foundPublic = inheritedClassData.Public[currentFunction]
 		local foundProtected = inheritedClassData.Protected[currentFunction]
@@ -182,22 +231,21 @@ local function mergeClassDatas(classDataTable: {defaultClassData}, childClassDat
 end
 
 -- Returns the access specifier of an index.
-local function returnAccessSpecifier(index: string, classData: objectData): string?
-	for accessSpecifier, attributesData in classData do
-		if typeof(attributesData) == "table" and attributesData[index] ~= nil then
-			return accessSpecifier
-		end
-	end
-
+local function returnAccessSpecifier(index: string, objectData: objectData): string?
+	if objectData.Public and objectData.Public[index] ~= nil then return "Public" end
+	if objectData.Private and objectData.Private[index] ~= nil then return "Private" end
+	if objectData.Protected and objectData.Protected[index] ~= nil then return "Protected" end
+	if objectData.Internal and (objectData.Internal :: any)[index] ~= nil then return "Internal" end
+	
 	return nil
 end
 
 -- Finds the property that's been set to the given index. If given an access specifier string, it will try to find the property inside that access specifier.
 local function findPropertyFromIndex(classData: objectData, index: string, accessSpecifier: string?): any?
 	local fAccessSpecifier = accessSpecifier or returnAccessSpecifier(index, classData)
+	if not fAccessSpecifier then return end
+	
 	local attributesData = classData[fAccessSpecifier]
-
-	if not attributesData then return end
 	return attributesData[index]
 end
 
@@ -283,7 +331,7 @@ end
 local function setMetamethods(class: internalClass, classData: objectData, methods: anyTable)
 	methods.__metatable = 'The metatable is locked.'
 	
-	function methods:__index(index: string): any
+	function methods:__index(index: string)
 		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
 
 		local accessSpecifier = returnAccessSpecifier(index, classData)
@@ -328,7 +376,7 @@ local function setMetamethods(class: internalClass, classData: objectData, metho
 		
 		local attributesData = classData[accessSpecifier]
 		local foundAttribute = attributesData[index]
-		if not foundAttribute then LogError("classMemberNotFound", true, {index}) elseif foundAttribute == value then return end
+		if foundAttribute == nil then LogError("classMemberNotFound", true, {index}) elseif foundAttribute == value then return end
 		
 		attributesData[index] = value
 	end
@@ -433,9 +481,9 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 
 		local result = newClassData[i] or findPropertyFromIndex(newClassData :: objectData, i)
 		if not result then return class.Statics[i] end
-
+		
 		local methodContext = Util.getMethodContext(5)
-		if typeof(result) == "function" and methodContext ~= Util.inClassScope and methodContext ~= Util.checkFriendship then LogError("cannotCallFunctionError", true) elseif typeof(result) == "table" and getmetatable(result :: metatable<{}>) and getmetatable(result :: metatable<{__call: () -> ()}>)["__call"] and methodContext ~= Util.inClassScope then LogError("cannotCallFunctionError", true) end
+		if typeof(result) == "function" and methodContext ~= Util.inClassScope and methodContext ~= Util.checkFriendship then LogError("cannotCallFunctionError", true, {i}) elseif typeof(result) == "table" and getmetatable(result :: metatable<{}>) and getmetatable(result :: any)["__call"] and methodContext ~= Util.inClassScope then LogError("cannotCallFunctionError", true, {i}) end
 
 		return result
 	end
@@ -467,6 +515,11 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 		local newObjData: objectData = sortAttributes(newClassData, className, class)
 		local newObject = newproxy(true)
 		local proxyMethods = getmetatable(newObject)
+		
+		runOnGarbageCollection(newObject, function() 
+			garbageCollectionCallback(newObjData)
+			newObjData = nil :: any
+		end)
 		
 		setMetamethods(class, newObjData, proxyMethods)
 		

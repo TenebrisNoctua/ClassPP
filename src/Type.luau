@@ -10,6 +10,7 @@
 --// Variables
 
 local Logger = require('./Log/Logger')
+local LogError = Logger.logError
 
 local Type = {}
 
@@ -68,9 +69,9 @@ export type internalClass = {
 }
 
 export type objectData = {
-	Public: anyTable?,
-	Private: anyTable?,
-	Protected: anyTable?,
+	Public: anyTable,
+	Private: anyTable,
+	Protected: anyTable,
 	Friend: {any}?,
 	Internal: {
 		__type: string?,
@@ -164,7 +165,7 @@ export type function constructClassData(t)
 	
 	nT:setindexer(types.string, types.any)
 	
-	for k, v in t:properties() do
+	for k: type, v in t:properties() do
 		local key = k:value()
 		local value = v.read
 		
@@ -210,7 +211,7 @@ export type function combineClassData(nt, t1, t2)
 		end
 		
 		if ProtectedAccessSpecifier and (ProtectedAccessSpecifier :: any):is("table") then
-			local ProtectedTable = newClassData:readproperty(types.singleton("Protected"))
+			local ProtectedTable: type = newClassData:readproperty(types.singleton("Protected"))
 			if not ProtectedTable then error("Unknown error occured.") end
 
 			for k, v in ProtectedAccessSpecifier:properties() do
@@ -248,12 +249,12 @@ export type function convertToObjectData(t)
 	local nT = types.newtable()
 	nT:setindexer(types.any, types.any)
 	
-	for k, v in t:properties() do
+	for k: type, v in t:properties() do
 		local key = k:value()
 		local value = v.read
 
 		if key == "Public" and value:is("table") then
-			for k, v in value:properties() do
+			for k: type, v in value:properties() do
 				local key = k:value()
 				local value = v.read
 				
@@ -262,7 +263,7 @@ export type function convertToObjectData(t)
 		end
 
 		if key == "Private" and value:is("table") then
-			for k, v in value:properties() do
+			for k: type, v in value:properties() do
 				local key = k:value()
 				local value = v.read
 
@@ -271,7 +272,7 @@ export type function convertToObjectData(t)
 		end
 
 		if key == "Protected" and value:is("table") then
-			for k, v in value:properties() do
+			for k: type, v in value:properties() do
 				local key = k:value()
 				local value = v.read
 
@@ -291,7 +292,7 @@ end
 function Type.type<T>(object: T): string
 	local objType = type(object)
 	
-	if not objType then Logger.logError("typeofObjectNotFound", false) end
+	if not objType then LogError("typeofObjectNotFound", false) end
 	if objType ~= "table" and objType ~= "userdata" then return objType end
 	
 	local metatable = getmetatable(object) :: setmetatable<anyTable, anyTable>
@@ -309,7 +310,7 @@ end
 
 function Type.typeof<T>(object: T): string
 	local objType = typeof(object)
-	if not objType then Logger.logError("typeofObjectNotFound", false) end
+	if not objType then LogError("typeofObjectNotFound", false) end
 	
 	if Type.type(object) == "Class" then
 		local metatable = getmetatable(object) :: setmetatable<anyTable, anyTable>

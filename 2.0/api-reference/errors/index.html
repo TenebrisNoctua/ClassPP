@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../img/dark/classpp_fav.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1065,6 +1065,15 @@ switcher to go back to the production version.
 </li>
       
         <li class="md-nav__item">
+  <a href="#cannotcallfunctionfrom" class="md-nav__link">
+    <span class="md-ellipsis">
+      cannotCallFunctionFrom
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cannotfindbaseclassmethod" class="md-nav__link">
     <span class="md-ellipsis">
       cannotFindBaseClassMethod
@@ -2008,6 +2017,15 @@ switcher to go back to the production version.
 </li>
       
         <li class="md-nav__item">
+  <a href="#cannotcallfunctionfrom" class="md-nav__link">
+    <span class="md-ellipsis">
+      cannotCallFunctionFrom
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cannotfindbaseclassmethod" class="md-nav__link">
     <span class="md-ellipsis">
       cannotFindBaseClassMethod
@@ -2328,164 +2346,169 @@ switcher to go back to the production version.
 <p>You tried to create a <code>class</code> from a final <code>class</code>. Final classes are not meant to be inherited from.</p>
 <hr />
 <h2 id="cannotcallfunctionerror">cannotCallFunctionError</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Cannot call function directly.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Cannot call function ... directly.
 </code></pre></div>
 <p>You've tried to call a function within a <code>class</code> without creating an <code>object</code>. Class functions are not meant to be used directly, rather, they are to be used from objects. <em>(Excluding static members.)</em></p>
 <hr />
+<h2 id="cannotcallfunctionfrom">cannotCallFunctionFrom</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Cannot call function ... from ...
+</code></pre></div>
+<p>You've tried to call a function within an <code>object</code> that cannot be called within certain functions, such as <code>super()</code> in <code>destructor</code>.</p>
+<hr />
 <h2 id="cannotfindbaseclassmethod">cannotFindBaseClassMethod</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Property ... cannot be found or is not a function in the base class ...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Property ... cannot be found or is not a function in the base class ...
 </code></pre></div>
 <p>You've tried to call a property with <code>super()</code> in the base <code>class</code> that cannot be found, or wasn't a function.</p>
 <hr />
 <h2 id="classalreadyexists">classAlreadyExists</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Class ... already exists.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Class ... already exists.
 </code></pre></div>
 <p>You've tried to create a <code>class</code> that already has been created with the same name. Consider changing the name of the new <code>class</code>.</p>
 <hr />
 <h2 id="classclassdatainternal">classClassDataInternal</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>The property classData of the class ... is Internal. It cannot be used.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>The property classData of the class ... is Internal. It cannot be used.
 </code></pre></div>
 <p>You've attempted to access the <code>classData</code> property of a <code>class</code> directly. This property is meant to be used internally, and is not meant for external use. This property only shows up in the auto-complete to support type-checking in certain cases.</p>
 <hr />
 <h2 id="classdatanottable">classDataNotTable</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Given classData value for the class ... is not a table.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Given classData value for the class ... is not a table.
 </code></pre></div>
 <p>You've given a <code>classData</code> value that is not a table to the <code>class</code> function. The <code>class</code> function only takes a table as its <code>classData</code> parameter.</p>
 <hr />
 <h2 id="classdatacontainsmetatable">classDataContainsMetatable</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Given classData value for the class ... contains a metatable.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Given classData value for the class ... contains a metatable.
 </code></pre></div>
 <p>You've given a <code>classData</code> value that contains a metatable attached to it. For security and performance reasons, <code>classData</code> parameter only takes a raw table without any metatables attached to it.</p>
 <hr />
 <h2 id="classmembercannotsettonil">classMemberCannotSetToNil</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Class members cannot be set to nil.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Class members cannot be set to nil.
 </code></pre></div>
 <p>You've attempted to set a class member within the <code>object</code> to nil. Setting member values to nil causes certain bugs to happen <em>(due to the nature of dictionaries)</em>, so it is not allowed to set them to <code>nil.</code> Consider setting it to a value such as <code>false</code> to indicate that it is no longer in use.</p>
 <hr />
 <h2 id="classmembernotfound">classMemberNotFound</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>This class has no member named ...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>This class has no member named ...
 </code></pre></div>
 <p>You've tried to index the <code>object</code> with a member that does not exist within the <code>classData</code> table. Members can only be added or removed through changing the <code>classData</code> table given to the <code>class</code> function.</p>
 <hr />
 <h2 id="classnamenotstring">classNameNotString</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Class name is not a string or is nil.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Class name is not a string or is nil.
 </code></pre></div>
 <p>The <code>class</code> function expected a <code>string</code> as it's name, but you provided something else. A <code>class</code>'s name can only be a <code>string</code>. </p>
 <hr />
 <h2 id="classnotfound">classNotFound</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>A class with the given name cannot be found.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>A class with the given name cannot be found.
 </code></pre></div>
 <p>A <code>class</code> cannot be found with the provided name argument. Make sure the name is correct, or if the <code>class</code> actually exists.</p>
 <hr />
 <h2 id="classnomatchingfunctionerror">classNoMatchingFunctionError</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>No match for ... function in this class.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>No match for ... function in this class.
 </code></pre></div>
 <p>You've used an operator on an <code>object</code> which had no overloads set for it.</p>
 <hr />
 <h2 id="classobjectlocked">classObjectLocked</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>This class object has been locked.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>This class object has been locked.
 </code></pre></div>
 <p>You've tried to use an <code>object</code> after it's been locked.</p>
 <hr />
 <h2 id="classpropertyisprivate">classPropertyIsPrivate</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Property ... is private in this class.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Property ... is private in this class.
 </code></pre></div>
 <p>You've tried to access a private member of an <code>object</code> outside of a class function.</p>
 <hr />
 <h2 id="classpropertyisprotected">classPropertyIsProtected</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Property ... is protected in this class.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Property ... is protected in this class.
 </code></pre></div>
 <p>You've tried to access a protected member of an <code>object</code> outside of a class function.</p>
 <hr />
 <h2 id="classpropertyisinternal">classPropertyIsInternal</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Property ... is internal in this class. You cannot access it.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Property ... is internal in this class. You cannot access it.
 </code></pre></div>
 <p>You've tried to access an internal member of an <code>object</code>. Internal members are not accessible.</p>
 <hr />
 <h2 id="classpropertyredeclaration">classPropertyRedeclaration</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Cannot redeclare property ...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Cannot redeclare property ...
 </code></pre></div>
 <p>You've tried to declare a property that has already been declared in another access-specifier. You can only declare a member in one access-specifier.</p>
 <hr />
 <h2 id="expectedfunctionerror">expectedFunctionError</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Expected function, got: ...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Expected function, got: ...
 </code></pre></div>
 <p>The <code>functionsTable</code> that you provided to <code>class.overload</code> function had a value that wasn't a function.</p>
 <hr />
 <h2 id="extendsdeprecated">extendsDeprecated</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Extends is now deprecated. Use the &quot;class&quot; function instead.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>Extends is now deprecated. Use the &quot;class&quot; function instead.
 </code></pre></div>
 <p>You've tried to use the now deprecated <code>extends</code> function for inheritance.<br>
 See the discussion <a href="https://github.com/TenebrisNoctua/ClassPP/discussions/4"><code>#4</code></a> for more info.</p>
 <hr />
 <h2 id="invalidaccessspecifiererror">invalidAccessSpecifierError</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>Given value is not a valid access specifier.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Given value is not a valid access specifier.
 </code></pre></div>
 <p>You've provided a value that wasn't a valid access specifier. Make sure the given <code>string</code> contains a valid access-specifier. </p>
 <hr />
 <h2 id="invalidaccessspecifierinclassdata">invalidAccessSpecifierInClassData</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Given classData value for the class ... contains invalid access specifier(s) or function(s).
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>Given classData value for the class ... contains invalid access specifier(s) or function(s).
 </code></pre></div>
 <p>You've given a <code>classData</code> value that contains invalid access-specifiers or functions. Make sure the access-specifier or function names are correct.</p>
 <hr />
 <h2 id="invaliddestructorcall">invalidDestructorCall</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>Cannot call Destroy without an object argument. Try calling the function with the &#39;:&#39; operator.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>Cannot call Destroy without an object argument. Try calling the function with the &#39;:&#39; operator.
 </code></pre></div>
 <p>You've tried to call the <code>Destroy()</code> without providing the <code>object</code> as its first argument. Calling it with a ':' like <code>:Destroy()</code>, passes the <code>object</code> argument automatically.</p>
 <hr />
 <h2 id="invalidmodifierargument">invalidModifierArgument</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>Given argument is not a class table.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Given argument is not a class table.
 </code></pre></div>
 <p>You've given a value to a modifier function that wasn't a table containing classes.</p>
 <hr />
 <h2 id="invalidpropertydecleration">invalidPropertyDecleration</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Cannot create reserved property ...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Cannot create reserved property ...
 </code></pre></div>
 <p>You've tried to create a reserved property in a <code>class</code>.<br>
 Some property names are reserved for certain functions that come by default for every <code>object</code>, so you cannot declare them inside the <code>classData</code> value.</p>
 <hr />
 <h2 id="invalidsupercall">invalidSuperCall</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Cannot call super in a multi-inherited class, or in a non-inherited class.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Cannot call super in a multi-inherited class, or in a non-inherited class.
 </code></pre></div>
 <p>You've tried to call the <code>super()</code> function from a <code>class</code> that either wasn't inheriting from another <code>class</code>, or it was inheriting from multiple <code>class</code>es. </p>
 <hr />
 <h2 id="illegalmodifiercombination">illegalModifierCombination</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Cannot create an illegal combination of modifiers: ...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Cannot create an illegal combination of modifiers: ...
 </code></pre></div>
 <p>You've tried to create an illegal combination of modifiers. Certain modifiers have opposite functionality, so combining them is not possible.</p>
 <hr />
 <h2 id="nonnativeoperatorcall">nonNativeOperatorCall</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Operator function ... cannot be called without its operator.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Operator function ... cannot be called without its operator.
 </code></pre></div>
 <p>You've tried to call an operator function without its operator. Operator functions are meant to be called with their operators.</p>
 <hr />
 <h2 id="overloadfunctionargumentmismatch">overloadfunctionArgumentMismatch</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>A function to handle the given number of arguments ... have not been provided for the overloaded function: ...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>A function to handle the given number of arguments ... have not been provided for the overloaded function: ...
 </code></pre></div>
 <p>You haven't provided a function to the <code>functionsTable</code> to handle the given number of arguments for an overloaded function.</p>
 <hr />
 <h2 id="overloadfunctionnamenotset">overloadfunctionNameNotSet</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>A function name has not been set for the overloaded function.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>A function name has not been set for the overloaded function.
 </code></pre></div>
 <p>You haven't provided a name for the overloaded function.</p>
 <hr />
 <h2 id="overloadfunctiontablenotgiven">overloadfunctionTableNotGiven</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>A function table has not been given for the overloaded function.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>A function table has not been given for the overloaded function.
 </code></pre></div>
 <p>You haven't provided a <code>functionsTable</code> for the overloaded function.</p>
 <hr />
 <h2 id="staticmembernamenotset">staticMemberNameNotSet</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>A name has not been set for the static member.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>A name has not been set for the static member.
 </code></pre></div>
 <p>You haven't provided a name for the static member.</p>
 <hr />
 <h2 id="typeofobjectnotfound">typeofObjectNotFound</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>The given object&#39;s type cannot be found.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>The given object&#39;s type cannot be found.
 </code></pre></div>
 <p>The provided object's type cannot be found.</p>
 <hr />
 <h2 id="unknownerror">unknownError</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>An unknown error has occured.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>An unknown error has occured.
 </code></pre></div>
 <p>Class++ ran into a problem, but it cannot associate it with a valid error type. This is meant to be a fallback error, and may only occur if the internal code isn't running properly.</p>
 
@@ -2588,10 +2611,10 @@ Some property names are reserved for certain functions that come by default for 
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>

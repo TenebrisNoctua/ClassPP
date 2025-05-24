@@ -46,7 +46,7 @@ local newCar = Car.new()
 newCar:getLicensePlate()
 ```
 
-You might have noticed that we've called the `getLicensePlate` function with the `:` (colon) operator. This is a syntax sugar that we use to pass the object itself as the first argument to a function. Calling a function with the `:` operator is equivalent to calling it like `object.method(object)`, but it makes our job easier because we don't have to manually pass the object.
+You might have noticed that we've called the `getLicensePlate` function with the `:` (colon) operator. This is a syntax sugar that we use to pass the object itself as the first argument to a function. Calling a function with the `:` operator is equivalent to calling it like `object.method(object)`, but it makes our job easier because we don't have to manually pass the object every single time.
 
 Due to this, the first argument of a function will always be what we call `self`, that is a pointer to the object. We use it to access the object's properties and functions from a class function.
 

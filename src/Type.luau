@@ -25,12 +25,13 @@ export type version = {
 
 export type classPP<Utility, Type> = {
 	version: version,
+	autoGarbageCollection: boolean,
+	Util: Utility,
+	Type: Type,
 	class: (className: string) -> (ovloadFT) & (ovloadST),
+	getClass: (className: string) -> classShort<classData<{}>>,
 	abstract: <T>(arg: {T}, ...any) -> T,
 	final: <T>(arg: {T}, ...any) -> T,
-	getClass: (className: string) -> classShort<classData<{}>>,
-	Util: Utility,
-	Type: Type
 }
 
 export type accessSpecifiers = {
@@ -287,7 +288,7 @@ export type function convertToObjectData(t)
 	return nT
 end
 
---////// Module Functions
+--// Module Functions
 
 function Type.type<T>(object: T): string
 	local objType = type(object)

@@ -70,7 +70,7 @@ nav:
   - Home: index.md
   - Tutorials:
     - Tutorials: tutorials/index.md
-    - Class Creation:
+    - Basics:
       - tutorials/classCreation.md
       - tutorials/accessSpecifiers.md
       - tutorials/classMethods.md
@@ -84,6 +84,15 @@ nav:
       - tutorials/staticMembers.md
       - tutorials/polymorphism.md
       - tutorials/types.md
+    - Best Practices:
+
+    * Rewrite certain sections
+    * Add Best Practices:
+      * Encapsulation
+      * Polymorphism
+      * Error Handling
+      * Optimization
+
   - API Reference:
       - API Reference: api-reference/index.md
       - General:

@@ -23,11 +23,12 @@ type internalClass = Type.internalClass
 --// Module Functions
 
 function Util.getMethodContext(level: number): ((any) -> (any), string)
-	local _, f, n = pcall(function() 
-		local f = debug.info(level, 'f') 
-		local n = debug.info(level, 'n')
-
-		return f, n
+	local f: (any) -> (any)
+	local n: string
+	
+	pcall(function() 
+		f = debug.info(level, 'f') 
+		n = debug.info(level, 'n')
 	end)
 
 	return f, n
@@ -69,12 +70,8 @@ function Util.inClassScope(class: internalClass, includeInherited: boolean, incl
 		if not method then return false end
 
 		if class[methodName] == method then return true end
-
-		local result = if includeInherited then Util.checkInheritance(class, method) else false or if includeFriend and classes then Util.checkFriendship(class, methodName, method, classes) else false
-		if result then return true end
-		
-		if method == typeof then return true end
-		if methodName == "overloadHandler" and table.find(class.overloadlist, method) then return true end
+		if includeInherited and Util.checkInheritance(class, method) or includeFriend and classes and Util.checkFriendship(class, methodName, method, classes) then return true end
+		if method == typeof or methodName == "overloadHandler" and table.find(class.overloadlist, method) then return true end
 		
 		level += 1
 	end
@@ -85,11 +82,11 @@ end
 function Util.binarySearch(array: {any}, value: any): any
 	local Low: number = 1
 	local High: number = #array
-	
+
 	while Low <= High do
 		local Middle: number = Low + math.floor((High - Low) / 2)
 		local MiddleValue: number = array[Middle]
-		
+
 		if value < MiddleValue then
 			High = Middle - 1
 		elseif MiddleValue < value then
@@ -101,6 +98,7 @@ function Util.binarySearch(array: {any}, value: any): any
 			return Middle + 1
 		end
 	end
+	
 	return
 end
 

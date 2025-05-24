@@ -93,10 +93,10 @@ nav:
       - General:
         - Errors: api-reference/errors.md
       - Class++ Functions: 
-        - class: api-reference/class-functions/mainModule/class.md
-        - getClass: api-reference/class-functions/mainModule/getClass.md
-        - final: api-reference/class-functions/mainModule/final.md
-        - abstract: api-reference/class-functions/mainModule/abstract.md
+        - class: api-reference/class-functions/main/class.md
+        - getClass: api-reference/class-functions/main/getClass.md
+        - final: api-reference/class-functions/main/final.md
+        - abstract: api-reference/class-functions/main/abstract.md
         - Type: 
           - type: api-reference/class-functions/type/type.md
           - typeof: api-reference/class-functions/type/typeof.md

@@ -107,3 +107,6 @@ In this example, we defined a function outside of the class by specifying the cl
 
 !!! info
     Outside Class Definition syntax is recommended as it allows for a better formatting style.
+
+!!! info
+    Class Functions are also called Class Methods, and we will use this term from now on in later pages.

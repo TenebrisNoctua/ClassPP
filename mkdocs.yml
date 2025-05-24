@@ -71,47 +71,42 @@ nav:
   - Tutorials:
     - Tutorials: tutorials/index.md
     - Basics:
-      - tutorials/classCreation.md
-      - tutorials/accessSpecifiers.md
-      - tutorials/classMethods.md
+      - tutorials/basics/classCreation.md
+      - tutorials/basics/accessSpecifiers.md
+      - tutorials/basics/classMethods.md
+      - tutorials/basics/classConstructors.md
     - Advanced:
-      - tutorials/friendAccessSpecifier.md
-      - tutorials/classConstructors.md
-      - tutorials/inheritance.md
-      - tutorials/operatorOverloading.md
-      - tutorials/functionOverloading.md
-      - tutorials/nonAccessSpecifiers.md
-      - tutorials/staticMembers.md
-      - tutorials/polymorphism.md
-      - tutorials/types.md
+      - tutorials/advanced/friendAccessSpecifier.md
+      - tutorials/advanced/inheritance.md
+      - tutorials/advanced/operatorOverloading.md
+      - tutorials/advanced/functionOverloading.md
+      - tutorials/advanced/nonAccessSpecifiers.md
+      - tutorials/advanced/staticMembers.md
+      - tutorials/advanced/types.md
     - Best Practices:
-
-    * Rewrite certain sections
-    * Add Best Practices:
-      * Encapsulation
-      * Polymorphism
-      * Error Handling
-      * Optimization
-
+      - tutorials/best-practices/encapsulation.md
+      - tutorials/best-practices/polymorphism.md
+      - tutorials/best-practices/errorHandling.md
+      - tutorials/best-practices/optimization.md
   - API Reference:
       - API Reference: api-reference/index.md
       - General:
         - Errors: api-reference/errors.md
       - Class++ Functions: 
-        - class: api-reference/classFunctions/mainModule/class.md
-        - final: api-reference/classFunctions/mainModule/final.md
-        - abstract: api-reference/classFunctions/mainModule/abstract.md
-        - getClass: api-reference/classFunctions/mainModule/getClass.md
+        - class: api-reference/class-functions/mainModule/class.md
+        - getClass: api-reference/class-functions/mainModule/getClass.md
+        - final: api-reference/class-functions/mainModule/final.md
+        - abstract: api-reference/class-functions/mainModule/abstract.md
         - Type: 
-          - type: api-reference/classFunctions/type/type.md
-          - typeof: api-reference/classFunctions/type/typeof.md
-        - Util:
-          - inClassScope: api-reference/classFunctions/util/inClassScope.md
-          - checkInheritance: api-reference/classFunctions/util/checkInheritance.md
-          - checkFriendship: api-reference/classFunctions/util/checkFriendship.md
+          - type: api-reference/class-functions/type/type.md
+          - typeof: api-reference/class-functions/type/typeof.md
+        - Utility:
+          - inClassScope: api-reference/class-functions/utility/inClassScope.md
+          - checkInheritance: api-reference/class-functions/utility/checkInheritance.md
+          - checkFriendship: api-reference/class-functions/utility/checkFriendship.md
       - Data Types:
-        - api-reference/dataTypes/class.md
-        - api-reference/dataTypes/object.md
+        - api-reference/data-types/class.md
+        - api-reference/data-types/object.md
       - Types:
         - api-reference/types/classData.md
 copyright: |

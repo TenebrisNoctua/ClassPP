@@ -1,11 +1,11 @@
 # Access Specifiers
 
-Unlike any other class module or system on Roblox, Class++ comes with an Access Specifier system, like in C++, it provides you a way to modify the access control of a member. There are currently 4 access specifiers in Class++: `Public`, `Private`, `Protected`, and `Friend`.<br>
-(You will learn about `Protected` and `Friend` later.)
+Unlike any other class module or system on Roblox, Class++ comes with an **Access Specifier** system. Like in other OO *(Object Oriented)* languages such as C++, it provides you a way to modify the access control of a member. There are 4 access specifiers in Class++: `Public`, `Private`, `Protected`, and `Friend`.<br>
+(`Protected` and `Friend` are mentioned in later pages.)
 
 ## Public Access Specifier
 
-Like you have seen in the examples on the previous pages, a Public access specifier allows anyone to access a member. Whether it be from a function inside the class or from the script's main thread, the member is accessible and can be modified.
+Like you have seen in the examples on the previous page, a Public Access Specifier allows anyone to access a member. Whether it be from a function inside the class or from the script's main thread, the member is accessible and can be modified.
 
 ```lua
 local class = ClassPP.class
@@ -46,4 +46,4 @@ newCar.License_Plate = "YYYY" -- This will error!
 In this example, we updated the previous class with a private member named `License_Plate`, this member is private and can only be accessed by the class members, so trying to access or modify it outside of the class will cause an error.
 
 !!! warning
-    A member (property/attribute) can be declared only once. This means a member can only be defined under one access specifier. Attempting to declare another member with the same name on a different access specifier will error.
+    A member *(property/attribute)* can be declared only once. This means a member can only be defined under one access specifier. Attempting to declare a member in multiple access specifiers will cause an error.

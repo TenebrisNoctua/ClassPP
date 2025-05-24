@@ -75,7 +75,7 @@ newCar:setLicensePlate("A1B2C3") -- Calling the function with an argument
 print(newCar:getLicensePlate()) -- Prints "A1B2C3"!
 ```
 
-In the example above, we added a new function called `setLicensePlate` that updates the private member `License_Plate` with the provided `newPlate` parameter. Then we used the now updated function `getLicensePlate` to access the private member `License_Plate` again to print the now updated value of the member. As you can see here, you can call the class functions with multiple parameters easily. <br>
+In the example above, we added a new function called `setLicensePlate` that updates the private member `License_Plate` with the provided `newPlate` parameter. We've also updated the `getLicensePlate` function to return the private member `License_Plate`, which we then use to print the now updated value of the member. As you can see, you can call the class functions with multiple parameters easily by following the method in the example. <br>
 
 You can also notice that since the `self` is the first argument, all the other arguments that come after will start at 2.
 

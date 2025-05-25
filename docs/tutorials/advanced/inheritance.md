@@ -110,7 +110,7 @@ local newObject = C.new() -- {Variable_A: number, Variable_B: number, Variable_C
 
 ## Protected Access Specifier
 
-In the [Access Specifiers](accessSpecifiers.md) section, you have learned that there are 4 access specifiers in Class++, so far you have seen `Public`, `Private` and `Friend`.
+In the [Access Specifiers](../basics/accessSpecifiers.md) section, you have learned that there are 4 access specifiers in Class++, so far you have seen `Public`, `Private` and `Friend`.
 The fourth specifier, `Protected`, is pretty much the same as the `Private`, however, aside from the class members, inherited classes will also be able to access these members. 
 
 ```lua
@@ -148,7 +148,7 @@ In this example, we put the member `License_Plate` under the `Protected` access 
 Let's say that you want to access a function in the base class from a child class, how would you do it?
 Creating a new object from the base class and calling the function would be tedious, as it would take longer to write and would decrease performance.
 
-Luckily, in Class++ 2.0, you can call the `super` method of the object, which allows you to call the function in the base class that has the same name of the function this method has been called from.
+Fortunately, for this, you can call the default `super` method of the object, which allows you to call the function in the base class that has the same name of the function this method has been called from.
 
 ```lua
 local class = ClassPP.class

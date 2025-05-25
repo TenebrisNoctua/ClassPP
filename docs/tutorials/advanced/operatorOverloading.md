@@ -45,62 +45,62 @@ In this example, we have created a custom Vector3 class that has a special funct
 ## Overloadable Operators
 
 <div markdown="1" class="operator_overloading_table">
-	<div class="operator_overloading_table">
-		<div class="md-typeset__scrollwrap">
-			<div class="md-typeset__table">
-				<table>
-					<thead>
-						<tr>
-							<th class="operator_overloading_method">Method</th>
-							<th class="operator_overloading_description">Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><code>operator_add(self, obj)</code></td>
-							<td>Function for overloading the + operator.</td>
-						</tr>
-						<tr>
-							<td><code>operator_sub(self, obj)</code></td>
-							<td>Function for overloading the - operator.</td>
-						</tr>
-						<tr>
-							<td><code>operator_mul(self, obj)</code></td>
-							<td>Function for overloading the * operator.</td>
-						</tr>
-						<tr>
-							<td><code>operator_div(self, obj)</code></td>
-							<td>Function for overloading the / operator.</td>
-						</tr>
-						<tr>
-							<td><code>operator_idiv(self, obj)</code></td>
-							<td>Function for overloading the // operator.</td>
-						</tr>
-						<tr>
-							<td><code>operator_mod(self, obj)</code></td>
-							<td>Function for overloading the % operator.</td>
-						</tr>
-						<tr>
-							<td><code>operator_pow(self, obj)</code></td>
-							<td>Function for overloading the ^ operator.</td>
-						</tr>
-						<tr>
-							<td><code>operator_unm(self)</code></td>
-							<td>Function for overloading the unary – operator.</td>
-						</tr>
-						<tr>
-							<td><code>operator_eq(self, obj)</code></td>
-							<td>Function for overloading the == operator.¹</td>
-						</tr>
-						<tr>
-							<td><code>__tostring()</code></td>
-							<td>Fired when tostring is called on the object.</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+<div class="operator_overloading_table">
+<div class="md-typeset__scrollwrap">
+<div class="md-typeset__table">
+<table>
+<thead>
+<tr>
+<th class="operator_overloading_method">Method</th>
+<th class="operator_overloading_description">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>operator_add(self, obj)</code></td>
+<td>Function for overloading the + operator.</td>
+</tr>
+<tr>
+<td><code>operator_sub(self, obj)</code></td>
+<td>Function for overloading the - operator.</td>
+</tr>
+<tr>
+<td><code>operator_mul(self, obj)</code></td>
+<td>Function for overloading the * operator.</td>
+</tr>
+<tr>
+<td><code>operator_div(self, obj)</code></td>
+<td>Function for overloading the / operator.</td>
+</tr>
+<tr>
+<td><code>operator_idiv(self, obj)</code></td>
+<td>Function for overloading the // operator.</td>
+</tr>
+<tr>
+<td><code>operator_mod(self, obj)</code></td>
+<td>Function for overloading the % operator.</td>
+</tr>
+<tr>
+<td><code>operator_pow(self, obj)</code></td>
+<td>Function for overloading the ^ operator.</td>
+</tr>
+<tr>
+<td><code>operator_unm(self)</code></td>
+<td>Function for overloading the unary – operator.</td>
+</tr>
+<tr>
+<td><code>operator_eq(self, obj)</code></td>
+<td>Function for overloading the == operator.¹</td>
+</tr>
+<tr>
+<td><code>__tostring()</code></td>
+<td>Fired when tostring is called on the object.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 
 !!! info 

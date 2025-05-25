@@ -95,7 +95,7 @@ The problems with this system, however are:
 
 * If we want to create a new role, or a new ability, we need to create a new class.
 * If certain roles share the same functions, it might even decrease code reusability.
-* If we want to create a user with multiple roles, such as an Admin whos also an Editor, the system becomes even more complicated.
+* If we want to create a user with multiple roles, such as an `Admin` whos also an `Editor`, the system becomes even more complicated.
 
 However, if we use composition over inheritance:
 
@@ -156,7 +156,7 @@ local User = class "User" {
 }
 ```
 
-In the example above, instead of mainly using inheritance, we used composition. Instead of extending the users to create new classes, we extended permissions, that each can have different abilities and methods. This allowed us to create a User class that can have multiple permissions.
+In the example above, instead of mainly using inheritance, we used composition. In other words, instead of extending the users to create new classes, we extended permissions, that each can have different abilities and methods. This allowed us to create a very flexible `User` class that can have multiple permissions.
 
 ## Tips
 

@@ -25,7 +25,7 @@ local BiggerCar = class "BiggerCar" (Car, nil) { -- This will error!
 ## Abstract 
 
 Using this non-access specifier will make the given class an abstract class, meaning this class now cannot be used to create objects.
-To access an abstract class, it must be inherited from another class.
+To access an abstract class's members, you need to create a class that inherits from this abstract class.
 
 ```lua
 local class, abstract = ClassPP.class, ClassPP.abstract

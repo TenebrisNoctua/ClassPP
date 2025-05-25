@@ -3,7 +3,7 @@
 Friend access specifier allows anyone defined in that access specifier to access the private members of a class.
 
 !!! warning
-    Members of this access specifier will not be replicated to objects, rather, these members are stored in the class itself, and they can only be used to access the members in other access specifiers through objects.
+    Members of this access specifier will not be replicated to objects, rather, these members are stored in the class itself. And they can only be used to allow functions or classes to have access to Private or Protected members of a class.
 
 ```lua
 local function getLicensePlate(object: any)
@@ -32,4 +32,4 @@ In this example, we updated the previous class to include a function in the `Fri
 
 !!! info
     Aside from functions, `Friend` access specifier can include other classes as well.
-    Classes can be saved by using their variables, or their names. You can put a string inside the `Friend` access specifier that has the class's name, and it will still work!
+    Classes can be saved by using their variables, or their names. You can put a string inside the `Friend` access specifier that has a class's name, and it will still work!

@@ -92,6 +92,7 @@ local Viewer = class "Viewer" (User, nil) {
 
 In the example above, we have created a user hierarchy, where different types of users have different methods. <br>
 The problems with this system, however are:
+
 * If we want to create a new role, or a new ability, we need to create a new class.
 * If certain roles share the same functions, it might even decrease code reusability.
 * If we want to create a user with multiple roles, such as an Admin whos also an Editor, the system becomes even more complicated.

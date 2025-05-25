@@ -1994,7 +1994,7 @@ It's very useful for code reusability: reusing members and functions of an exist
 </code></pre></div>
 <hr />
 <h2 id="protected-access-specifier">Protected Access Specifier</h2>
-<p>In the <a href="accessSpecifiers.md">Access Specifiers</a> section, you have learned that there are 4 access specifiers in Class++, so far you have seen <code>Public</code>, <code>Private</code> and <code>Friend</code>.
+<p>In the <a href="../../basics/accessSpecifiers/">Access Specifiers</a> section, you have learned that there are 4 access specifiers in Class++, so far you have seen <code>Public</code>, <code>Private</code> and <code>Friend</code>.
 The fourth specifier, <code>Protected</code>, is pretty much the same as the <code>Private</code>, however, aside from the class members, inherited classes will also be able to access these members. </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
@@ -2025,7 +2025,7 @@ The fourth specifier, <code>Protected</code>, is pretty much the same as the <co
 <h2 id="super">super</h2>
 <p>Let's say that you want to access a function in the base class from a child class, how would you do it?
 Creating a new object from the base class and calling the function would be tedious, as it would take longer to write and would decrease performance.</p>
-<p>Luckily, in Class++ 2.0, you can call the <code>super</code> method of the object, which allows you to call the function in the base class that has the same name of the function this method has been called from.</p>
+<p>Fortunately, for this, you can call the default <code>super</code> method of the object, which allows you to call the function in the base class that has the same name of the function this method has been called from.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>

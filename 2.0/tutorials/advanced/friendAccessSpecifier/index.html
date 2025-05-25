@@ -1791,7 +1791,7 @@ switcher to go back to the production version.
 <p>Friend access specifier allows anyone defined in that access specifier to access the private members of a class.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Members of this access specifier will not be replicated to objects, rather, these members are stored in the class itself, and they can only be used to access the members in other access specifiers through objects.</p>
+<p>Members of this access specifier will not be replicated to objects, rather, these members are stored in the class itself. And they can only be used to allow functions or classes to have access to Private or Protected members of a class.</p>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">getLicensePlate</span><span class="p">(</span><span class="nv">object</span><span class="p">:</span><span class="w"> </span><span class="py">any</span><span class="p">)</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">object</span><span class="p">.</span><span class="py">License_Plate</span><span class="p">)</span>
@@ -1818,7 +1818,7 @@ switcher to go back to the production version.
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Aside from functions, <code>Friend</code> access specifier can include other classes as well.
-Classes can be saved by using their variables, or their names. You can put a string inside the <code>Friend</code> access specifier that has the class's name, and it will still work!</p>
+Classes can be saved by using their variables, or their names. You can put a string inside the <code>Friend</code> access specifier that has a class's name, and it will still work!</p>
 </div>
 
 

@@ -46,9 +46,7 @@ In this example, we have created a custom Vector3 class that has a special funct
 
 <div markdown="1" class="operator_overloading_table">
 <div class="operator_overloading_table">
-<div class="md-typeset__scrollwrap">
-<div class="md-typeset__table">
-<table>
+<div class="md-typeset__scrollwrap"><div class="md-typeset__table"><table>
 <thead>
 <tr>
 <th class="operator_overloading_method">Method</th>
@@ -97,9 +95,7 @@ In this example, we have created a custom Vector3 class that has a special funct
 <td>Fired when tostring is called on the object.</td>
 </tr>
 </tbody>
-</table>
-</div>
-</div>
+</table></div></div>
 </div>
 </div>
 

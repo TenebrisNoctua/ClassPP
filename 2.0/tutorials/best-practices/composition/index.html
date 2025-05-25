@@ -1948,7 +1948,7 @@ The problems with this system, however are:</p>
 <ul>
 <li>If we want to create a new role, or a new ability, we need to create a new class.</li>
 <li>If certain roles share the same functions, it might even decrease code reusability.</li>
-<li>If we want to create a user with multiple roles, such as an Admin whos also an Editor, the system becomes even more complicated.</li>
+<li>If we want to create a user with multiple roles, such as an <code>Admin</code> whos also an <code>Editor</code>, the system becomes even more complicated.</li>
 </ul>
 <p>However, if we use composition over inheritance:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Permission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Permission&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -2006,7 +2006,7 @@ The problems with this system, however are:</p>
 <a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="p">}</span>
 </code></pre></div>
-<p>In the example above, instead of mainly using inheritance, we used composition. Instead of extending the users to create new classes, we extended permissions, that each can have different abilities and methods. This allowed us to create a User class that can have multiple permissions.</p>
+<p>In the example above, instead of mainly using inheritance, we used composition. In other words, instead of extending the users to create new classes, we extended permissions, that each can have different abilities and methods. This allowed us to create a very flexible <code>User</code> class that can have multiple permissions.</p>
 <h2 id="tips">Tips</h2>
 <p>Like you've seen in the examples above, composition over inheritance generally yields better results. However, this does not mean that inheritance holds no place in OOP, as in the above example when we created our permission classes, we still used inheritance.</p>
 <p>From <a href="https://kea.nu/files/textbooks/new/Effective%20Java%20(2017%2C%20Addison-Wesley).pdf">"Effective Java"</a>: <em>"...a class B should extend a class A only if an “is-a” relationship exists between the two classes. If you are tempted to have a class B extend a class A, ask yourself the question: Is every B really an A? If you cannot truthfully answer yes to this question, B should not extend A. If the answer is no, it is often the case that B should contain a private instance of A and expose a different API: A is not an essential part of B, merely a detail of its implementation."</em></p>

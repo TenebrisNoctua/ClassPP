@@ -2,6 +2,7 @@
 
 Just like in C++ and many other languages, Class++ allows you to inherit classes. 
 We group the inheritance concept into two categories: derived class (child), and the base class (parent).
+Inheritance implements an *is-a* relationship between classes.
 
 ```lua
 local class = ClassPP.class
@@ -74,36 +75,6 @@ local Student = class "Student" (Child, nil) { -- Derived Class from a Derived C
 local newStudent = Student.new()
 print(newStudent.Name, newStudent.Age, newStudent.Gender, newStudent.Height, newStudent.Age, newStudent.Energetic, newStudent.SchoolId, newStudent.Grade, newStudent.Behaviour)
 -- Prints " 9  0 9 true 0 0 Good"! (Spaces represent empty strings)
-```
-
-----
-
-## Multi-Inheritance
-
-A class can also be derived from multiple classes:
-
-```lua
-local class = ClassPP.class
-
-local A = class "A" { 
-    Public = {
-        Variable_A = 1
-    }
-}
-
-local B = class "B" { 
-    Public = {
-        Variable_B = 1
-    }
-}
-
-local C = class "C" (A, B) { -- Derived Class
-    Public = {
-        Variable_C = 1
-    }
-}
-
-local newObject = C.new() -- {Variable_A: number, Variable_B: number, Variable_C: number}
 ```
 
 ----
@@ -181,3 +152,115 @@ In this example, we created a new class called "B" that inherits from "A". In bo
 
 !!! warning
     `super` cannot be used within classes that have multi-inheritance. This is due to ambiguity that occurs with functions that have the same name in classes that have multi-inheritance. 
+
+----
+
+## Multi-Inheritance
+
+A class can also be derived from multiple classes:
+
+```lua
+local class = ClassPP.class
+
+local A = class "A" { 
+    Public = {
+        Variable_A = 1
+    }
+}
+
+local B = class "B" { 
+    Public = {
+        Variable_B = 1
+    }
+}
+
+local C = class "C" (A, B) { -- Derived Class
+    Public = {
+        Variable_C = 1
+    }
+}
+
+local newObject = C.new() -- {Variable_A: number, Variable_B: number, Variable_C: number}
+```
+
+### The Diamond Problem
+
+The Diamond Problem is an ambiguity that arises when two classes, let's say "B" and "C", that inherits from a class called "A", and another class "D" that inherits from both "B" and "C". If there is a method in "A" that "B" and "C" have overridden, and "D" does not override it, then which version of the method does "D" inherit from: that of "B", or that of "C"?
+
+```lua
+local class = ClassPP.class
+
+local A = class "A" { 
+    Public = {
+        method = function(self)
+            print("Method from A")
+        end
+    }
+}
+
+local B = class "B" (A, nil) { 
+    Public = {
+        method = function(self)
+            print("Method from B")
+        end
+    }
+}
+
+local C = class "C" (A, nil) { -- Derived Class
+    Public = {
+        method = function(self)
+            print("Method from C")
+        end
+    }
+}
+
+local D = class "D" (B, C) { -- Derived Class
+    Public = {
+        -- Which method will D have, B's or C's?
+    }
+}
+```
+
+### How Class++ solves the Diamond Problem
+
+In Class++, the class inheritation system does not work by referencing the parent classes, but rather for the sake of performance, it *combines* the given classes into a new one. The combination is done in an order, from the first given class argument to the last. Certain Access Specifiers such as Protected can change how this system behaves.
+
+To create class "D", Class++ takes the class arguments one by one in an order, from left to right, and combines their `classData` and the given `classData` table into a new class. So due to this order, class "B"'s members and methods will automatically be overwritten by class "C"'s, therefore the method that will exist on class "D", will be the method of class "C"'s.
+
+This is similar to the Python's [MRO (Method Resolution Order)](https://docs.python.org/3/howto/mro.html).
+
+```lua
+local class = ClassPP.class
+
+local A = class "A" { 
+    Public = {
+        method = function(self)
+            print("Method from A")
+        end
+    }
+}
+
+local B = class "B" (A, nil) { 
+    Public = {
+        method = function(self)
+            print("Method from B")
+        end
+    }
+}
+
+local C = class "C" (A, nil) { -- Derived Class
+    Public = {
+        method = function(self)
+            print("Method from C")
+        end
+    }
+}
+
+local D = class "D" (B, C) {} -- Derived Class
+
+local newObject = D.new()
+newObject:method() -- Prints "Method from C"!
+```
+
+
+

@@ -55,4 +55,25 @@ newCarObj:honk()
 ```
 
 !!! warning
+	Creating Private members in an abstract class will cause these members to never be accessible, since Private members of a class will never be inherited to another class.
+
+```lua
+local class, abstract = ClassPP.class, ClassPP.abstract
+
+local BaseCar = abstract { class "BaseCar" {
+	Public = {
+		Brand = "",
+		Model = "",
+		Year = 0,
+		honk = function(self)
+			print("honk honk!")
+		end
+	},
+	Private = {
+		Secret = "" -- This property will never be accessible!
+	}
+}}
+```
+
+!!! warning
     You cannot make a class both abstract and final, as they have opposite meanings. An abstract class must be subclassed, whereas a final class cannot be subclassed. Attempting to form an illegal combination between final and abstract methods will cause an error.

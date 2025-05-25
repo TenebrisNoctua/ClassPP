@@ -2,7 +2,7 @@
 
 ## Intellisense
 
-Class++ has been rewritten from ground up, to support the new type-solver and its capabilities. 
+Class++ in 2.0, has been rewritten from ground up to support the new type-solver and its capabilities. 
 This allows Class++ to be more intelligent with the `class` and `object` types, finally allowing the intellisense to be far better than what it used to be. 
 
 ```lua

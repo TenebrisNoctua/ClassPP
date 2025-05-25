@@ -2,7 +2,7 @@
 
 Encapsulation is a fundamental concept in OOP that combines data (properties) and methods (class functions) that work with that data into a single unit known as a class. This protective layer around the data allows it to maintain its integrity and prevents unauthorized access.
 
-For example, imagine a coffee machine. A coffee machine has a dispenser, brewer, and many other internal components that allows it to function. But you don't need to know how it works, you only need to know which buttons to press to get your coffee. This is similar to how it works in OOP.
+For example, imagine a coffee machine. A coffee machine has a grinder, brewer, and many other internal components that allows it to function. But you don't need to know how it works, you only need to know which buttons to press to get your coffee. This is similar to how it works in OOP.
 
 ## Why Encapsulation?
 

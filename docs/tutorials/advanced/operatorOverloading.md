@@ -1,9 +1,9 @@
 # Operator Overloading
 
 Suppose we have two objects that belong to a custom Vector class, how would we allow the addition of those two objects?
-Using normal class functions would be good, but it would take a longer time to write, and would be harder to understand.
+Using a normal class function would suffice, but it would require you to call the same function over and over again every single time you want to add them together.
 
-To solve this issue in Class++, just like in C++, we can change the way operators work for our classes. This is known as operator overloading.
+To solve this issue, just like in other OO languages, we can change the way operators work for our classes. This is known as operator overloading.
 
 ```lua
 local class = ClassPP.class
@@ -45,58 +45,62 @@ In this example, we have created a custom Vector3 class that has a special funct
 ## Overloadable Operators
 
 <div markdown="1" class="operator_overloading_table">
-<div class="operator_overloading_table">
-<div class="md-typeset__scrollwrap"><div class="md-typeset__table"><table>
-<thead>
-<tr>
-<th class="operator_overloading_method">Method</th>
-<th class="operator_overloading_description">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>operator_add(self, obj)</code></td>
-<td>Function for overloading the + operator.</td>
-</tr>
-<tr>
-<td><code>operator_sub(self, obj)</code></td>
-<td>Function for overloading the - operator.</td>
-</tr>
-<tr>
-<td><code>operator_mul(self, obj)</code></td>
-<td>Function for overloading the * operator.</td>
-</tr>
-<tr>
-<td><code>operator_div(self, obj)</code></td>
-<td>Function for overloading the / operator.</td>
-</tr>
-<tr>
-<td><code>operator_idiv(self, obj)</code></td>
-<td>Function for overloading the // operator.</td>
-</tr>
-<tr>
-<td><code>operator_mod(self, obj)</code></td>
-<td>Function for overloading the % operator.</td>
-</tr>
-<tr>
-<td><code>operator_pow(self, obj)</code></td>
-<td>Function for overloading the ^ operator.</td>
-</tr>
-<tr>
-<td><code>operator_unm(self)</code></td>
-<td>Function for overloading the unary – operator.</td>
-</tr>
-<tr>
-<td><code>operator_eq(self, obj)</code></td>
-<td>Function for overloading the == operator.¹</td>
-</tr>
-<tr>
-<td><code>__tostring()</code></td>
-<td>Fired when tostring is called on the object.</td>
-</tr>
-</tbody>
-</table></div></div>
-</div>
+	<div class="operator_overloading_table">
+		<div class="md-typeset__scrollwrap">
+			<div class="md-typeset__table">
+				<table>
+					<thead>
+						<tr>
+						<th class="operator_overloading_method">Method</th>
+						<th class="operator_overloading_description">Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td><code>operator_add(self, obj)</code></td>
+						<td>Function for overloading the + operator.</td>
+						</tr>
+						<tr>
+						<td><code>operator_sub(self, obj)</code></td>
+						<td>Function for overloading the - operator.</td>
+						</tr>
+						<tr>
+						<td><code>operator_mul(self, obj)</code></td>
+						<td>Function for overloading the * operator.</td>
+						</tr>
+						<tr>
+						<td><code>operator_div(self, obj)</code></td>
+						<td>Function for overloading the / operator.</td>
+						</tr>
+						<tr>
+						<td><code>operator_idiv(self, obj)</code></td>
+						<td>Function for overloading the // operator.</td>
+						</tr>
+						<tr>
+						<td><code>operator_mod(self, obj)</code></td>
+						<td>Function for overloading the % operator.</td>
+						</tr>
+						<tr>
+						<td><code>operator_pow(self, obj)</code></td>
+						<td>Function for overloading the ^ operator.</td>
+						</tr>
+						<tr>
+						<td><code>operator_unm(self)</code></td>
+						<td>Function for overloading the unary – operator.</td>
+						</tr>
+						<tr>
+						<td><code>operator_eq(self, obj)</code></td>
+						<td>Function for overloading the == operator.¹</td>
+						</tr>
+						<tr>
+						<td><code>__tostring()</code></td>
+						<td>Fired when tostring is called on the object.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
 
 !!! info 

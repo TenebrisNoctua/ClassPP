@@ -21,7 +21,7 @@ local Grinder = class "Grinder" {
 local BrewingUnit = class "BrewingUnit" {
 	Public = {
 		brew = function(self, groundCoffee)
-			-- Brrew the groundCoffee and return a new Coffee.
+			-- Brew the groundCoffee and return a new Coffee.
 			return Coffee.new()
 		end,
 	}

@@ -1944,10 +1944,12 @@ In the example above, we have <code>GroundCoffee</code> and <code>Coffee</code> 
 <a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="p">}</span>
 </code></pre></div>
 <p>In the example above, we have created a user hierarchy, where different types of users have different methods. <br>
-The problems with this system, however are:
-* If we want to create a new role, or a new ability, we need to create a new class.
-* If certain roles share the same functions, it might even decrease code reusability.
-* If we want to create a user with multiple roles, such as an Admin whos also an Editor, the system becomes even more complicated.</p>
+The problems with this system, however are:</p>
+<ul>
+<li>If we want to create a new role, or a new ability, we need to create a new class.</li>
+<li>If certain roles share the same functions, it might even decrease code reusability.</li>
+<li>If we want to create a user with multiple roles, such as an Admin whos also an Editor, the system becomes even more complicated.</li>
+</ul>
 <p>However, if we use composition over inheritance:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Permission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Permission&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>

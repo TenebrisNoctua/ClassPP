@@ -86,6 +86,7 @@ nav:
     - Best Practices:
       - tutorials/best-practices/encapsulation.md
       - tutorials/best-practices/polymorphism.md
+      - tutorials/best-practices/composition.md
       - tutorials/best-practices/errorHandling.md
       - tutorials/best-practices/optimization.md
   - API Reference:

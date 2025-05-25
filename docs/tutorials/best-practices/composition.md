@@ -44,7 +44,7 @@ local CoffeeMachine = class "CoffeeMachine" {
 	}
 }
 ```
-In the example above, we have `GroundCoffee` and `Coffee` classes who are used within the `Grinder` and `BrewingUnit` classes, and the `CoffeeMachine` class that uses them. As you can see in the example, `CoffeeMachine` only exposes a `brewCoffee` method, that brews a `Coffee` and returns it. (Implementation details are skipped for the sake of clarity.)
+In the example above, we have `GroundCoffee` and `Coffee` classes which are used within the `Grinder` and `BrewingUnit` classes, and the `CoffeeMachine` class that uses them. As you can see in the example, `CoffeeMachine` only exposes a `brewCoffee` method, that brews a `Coffee` and returns it. (Implementation details are skipped for the sake of clarity.)
 
 Like we have discussed in the [Encapsulation](encapsulation.md) page, by restricting access through only exposing a method to brew a coffee, we allow for data integrity, so we can be sure that `CoffeeMachine`'s `Grinder` and `BrewingUnit` objects will not change, and they cannot be accessed directly.
 

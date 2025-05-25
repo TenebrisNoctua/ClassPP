@@ -54,7 +54,6 @@ In the example above, the `Student` class has private members called "Name" and 
 
 If you want to implement encapsulation, make sure all the important data are set as private, to protect them from external modification.
 Using getter and setter methods for that data will allow for a much safer experience while allowing flexibility in changing the internal implementation. Like in the example on the previous section, also implementing validation checks will greatly improve data integrity.
-Encapsulation also allows for many class types, such as Singletons.
 
 
 

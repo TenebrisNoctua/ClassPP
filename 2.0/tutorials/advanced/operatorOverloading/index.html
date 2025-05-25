@@ -1847,8 +1847,8 @@ switcher to go back to the production version.
 
 <h1 id="operator-overloading">Operator Overloading</h1>
 <p>Suppose we have two objects that belong to a custom Vector class, how would we allow the addition of those two objects?
-Using normal class functions would be good, but it would take a longer time to write, and would be harder to understand.</p>
-<p>To solve this issue in Class++, just like in C++, we can change the way operators work for our classes. This is known as operator overloading.</p>
+Using a normal class function would suffice, but it would require you to call the same function over and over again every single time you want to add them together.</p>
+<p>To solve this issue, just like in other OO languages, we can change the way operators work for our classes. This is known as operator overloading.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Vector3&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -1885,62 +1885,64 @@ Using normal class functions would be good, but it would take a longer time to w
 <p>In this example, we have created a custom Vector3 class that has a special function called <code>operator_add</code>, this special function is one of the special functions in Class++ that allows you to overload a specific operator. Here, we overloaded the operator <code>+</code> with our custom function that allows us to add two Vectors together.</p>
 <h2 id="overloadable-operators">Overloadable Operators</h2>
 <div class="operator_overloading_table">
-<div class="operator_overloading_table">
-<div class="md-typeset__scrollwrap">
-<div class="md-typeset__table">
-<table>
-<thead>
-<tr>
-<th class="operator_overloading_method">Method</th>
-<th class="operator_overloading_description">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>operator_add(self, obj)</code></td>
-<td>Function for overloading the + operator.</td>
-</tr>
-<tr>
-<td><code>operator_sub(self, obj)</code></td>
-<td>Function for overloading the - operator.</td>
-</tr>
-<tr>
-<td><code>operator_mul(self, obj)</code></td>
-<td>Function for overloading the * operator.</td>
-</tr>
-<tr>
-<td><code>operator_div(self, obj)</code></td>
-<td>Function for overloading the / operator.</td>
-</tr>
-<tr>
-<td><code>operator_idiv(self, obj)</code></td>
-<td>Function for overloading the // operator.</td>
-</tr>
-<tr>
-<td><code>operator_mod(self, obj)</code></td>
-<td>Function for overloading the % operator.</td>
-</tr>
-<tr>
-<td><code>operator_pow(self, obj)</code></td>
-<td>Function for overloading the ^ operator.</td>
-</tr>
-<tr>
-<td><code>operator_unm(self)</code></td>
-<td>Function for overloading the unary – operator.</td>
-</tr>
-<tr>
-<td><code>operator_eq(self, obj)</code></td>
-<td>Function for overloading the == operator.¹</td>
-</tr>
-<tr>
-<td><code>__tostring()</code></td>
-<td>Fired when tostring is called on the object.</td>
-</tr>
-</tbody>
-</table>
+<div class="highlight"><pre><span></span><code>&lt;div class=&quot;operator_overloading_table&quot;&gt;
+    &lt;div class=&quot;md-typeset__scrollwrap&quot;&gt;
+        &lt;div class=&quot;md-typeset__table&quot;&gt;
+            &lt;table&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                    &lt;th class=&quot;operator_overloading_method&quot;&gt;Method&lt;/th&gt;
+                    &lt;th class=&quot;operator_overloading_description&quot;&gt;Description&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                    &lt;td&gt;&lt;code&gt;operator_add(self, obj)&lt;/code&gt;&lt;/td&gt;
+                    &lt;td&gt;Function for overloading the + operator.&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                    &lt;td&gt;&lt;code&gt;operator_sub(self, obj)&lt;/code&gt;&lt;/td&gt;
+                    &lt;td&gt;Function for overloading the - operator.&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                    &lt;td&gt;&lt;code&gt;operator_mul(self, obj)&lt;/code&gt;&lt;/td&gt;
+                    &lt;td&gt;Function for overloading the * operator.&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                    &lt;td&gt;&lt;code&gt;operator_div(self, obj)&lt;/code&gt;&lt;/td&gt;
+                    &lt;td&gt;Function for overloading the / operator.&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                    &lt;td&gt;&lt;code&gt;operator_idiv(self, obj)&lt;/code&gt;&lt;/td&gt;
+                    &lt;td&gt;Function for overloading the // operator.&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                    &lt;td&gt;&lt;code&gt;operator_mod(self, obj)&lt;/code&gt;&lt;/td&gt;
+                    &lt;td&gt;Function for overloading the % operator.&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                    &lt;td&gt;&lt;code&gt;operator_pow(self, obj)&lt;/code&gt;&lt;/td&gt;
+                    &lt;td&gt;Function for overloading the ^ operator.&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                    &lt;td&gt;&lt;code&gt;operator_unm(self)&lt;/code&gt;&lt;/td&gt;
+                    &lt;td&gt;Function for overloading the unary – operator.&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                    &lt;td&gt;&lt;code&gt;operator_eq(self, obj)&lt;/code&gt;&lt;/td&gt;
+                    &lt;td&gt;Function for overloading the == operator.¹&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                    &lt;td&gt;&lt;code&gt;__tostring()&lt;/code&gt;&lt;/td&gt;
+                    &lt;td&gt;Fired when tostring is called on the object.&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+</code></pre></div>
 </div>
-</div>
-</div>
+<div class="highlight"><pre><span></span><code>    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>

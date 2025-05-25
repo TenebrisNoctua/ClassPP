@@ -1788,7 +1788,7 @@ switcher to go back to the production version.
 
 
 <h1 id="function-overloading">Function Overloading</h1>
-<p>Just like in many languages such as C++, Class++ supports function overloading. <br>
+<p>Just like in other OO languages, Class++ supports function overloading. <br>
 Function Overloading is a feature where multiple functions can share the same name, but they are different from each other with different amount of arguments.</p>
 <p>To do function overloading in Class++, you have to use the <code>class.overload(&lt;accessSpecifier&gt;, &lt;name&gt;, &lt;functionTable&gt;)</code> function.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
@@ -1820,7 +1820,7 @@ Function Overloading is a feature where multiple functions can share the same na
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="nv">newTest</span><span class="p">:</span><span class="nf">Set</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Prints &quot;3&quot;</span>
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="nv">newTest</span><span class="p">:</span><span class="nf">Set</span><span class="p">()</span><span class="w"> </span><span class="c1">-- Prints &quot;3 2&quot;</span>
 </code></pre></div>
-<p>In this example, to create an overloaded function, we used the <code>.overload()</code> function with the <code>Public</code> access specifier, and <code>Set</code> for the function name. Then we gave a table with multiple functions with different arguments that each do a different thing. When we call the <code>:Set()</code> function through the object, depending on the amount of the given arguments, only the function that accepts the same amount of arguments will be ran.</p>
+<p>In this example, to create an overloaded function, we used the <code>.overload()</code> function with the <code>Public</code> access specifier, and <code>Set</code> for the function name. Then we gave a table with multiple functions with different arguments that each do a different action. When we call the <code>:Set()</code> function through the object, depending on the amount of the given arguments, only the function that accepts the same amount of arguments will be ran.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Giving multiple functions that have the same amount of arguments will cause only one of these functions to be ran. Only create one function for a specific amount of arguments.</p>

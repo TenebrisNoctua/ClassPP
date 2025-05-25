@@ -14,7 +14,9 @@ For example, imagine a coffee machine. A coffee machine has a dispenser, brewer,
 ## Implementation
 
 ```lua
-class "Student" {
+local class = ClassPP.class
+
+local Student = class "Student" {
     Public = {
         -- Getter method for name
         getName = function(self)

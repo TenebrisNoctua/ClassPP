@@ -11,6 +11,8 @@ theme:
   logo_dark: img/dark/classpp_small.png
   favicon: img/dark/classpp_fav.png
   custom_dir: docs/overrides
+  static_templates:
+    - docs/overrides/404.html
   name: material
   features:
     - navigation.tabs

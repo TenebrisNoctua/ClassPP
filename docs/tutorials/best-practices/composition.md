@@ -50,6 +50,8 @@ Like we have discussed in the [Encapsulation](encapsulation.md) page, by restric
 
 Maintainability is also increased, as if the implementation of the `Grinder`'s `grind` method ever changes, `CoffeeMachine` will not be affected. The same can be said for `BrewingUnit` as well.
 
+----
+
 ## Composition Over Inheritance
 
 Like we have mentioned in the [Inheritance](../advanced/inheritance.md) page, inheritance is a powerful way to achieve code reuse, but not always it is the best tool for the job. 
@@ -157,6 +159,8 @@ local User = class "User" {
 ```
 
 In the example above, instead of mainly using inheritance, we used composition. In other words, instead of extending the users to create new classes, we extended permissions, that each can have different abilities and methods. This allowed us to create a very flexible `User` class that can have multiple permissions.
+
+----
 
 ## Tips
 

@@ -5,7 +5,10 @@ It refers to situations where something occurs in several different forms, and d
 
 [Function Overloading](functionOverloading.md), [Operator Overloading](operatorOverloading.md), and [Inheritance](inheritance.md) belong to this concept, for example with inheritance, we can create derived classes that have the same method name, but all do different things. Or with function overloading, every function has different arguments and does a different thing, but all share the same name. It provides flexibility, and extensibility.
 
+----
+
 ## Inheritance Example
+
 ```lua
 local class = ClassPP.class
 
@@ -35,6 +38,8 @@ local Dog = class "Dog" (Animal, nil) {
     }
 }
 ```
+
+----
 
 ## Function Overloading Example
 

@@ -1,4 +1,5 @@
 site_name: Class++ Documentation
+site_url: https://tenebrisnoctua.github.io/ClassPP/2.0
 repo_name: TenebrisNoctua/Class++
 repo_url: https://github.com/TenebrisNoctua/ClassPP
 
@@ -11,8 +12,6 @@ theme:
   logo_dark: img/dark/classpp_small.png
   favicon: img/dark/classpp_fav.png
   custom_dir: docs/overrides
-  static_templates:
-    - docs/overrides/404.html
   name: material
   features:
     - navigation.tabs

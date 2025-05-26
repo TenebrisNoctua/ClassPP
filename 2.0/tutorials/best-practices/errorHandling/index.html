@@ -975,6 +975,19 @@ switcher to go back to the production version.
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Error Handling
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -986,6 +999,67 @@ switcher to go back to the production version.
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#error-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fatal-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fatal Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-fatal-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Fatal Errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1770,6 +1844,56 @@ switcher to go back to the production version.
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#error-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fatal-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fatal Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-fatal-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Fatal Errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1788,7 +1912,37 @@ switcher to go back to the production version.
 
 
 <h1 id="error-handling">Error Handling</h1>
-<p>(Coming Soon)</p>
+<p>Class++ is designed in a way that prevents you from causing the most common errors, but it cannot stop you from causing errors altogether. It cannot stop you from trying to access private data or data that doesn't exist, for example.</p>
+<p>So it is up to you to be able to deal with the errors that occur while the program is running.</p>
+<hr />
+<h2 id="error-types">Error Types</h2>
+<p>In Class++ there are two types of errors that can occur during runtime: Fatal and Non-Fatal.</p>
+<h3 id="fatal-errors">Fatal Errors</h3>
+<p>Fatal errors are the type of errors that will completely crash your program. These errors are the most dangerous ones, naturally.</p>
+<p>Fatal errors can normally be created by using the built-in <code>error()</code> function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">error</span><span class="p">(</span><span class="s2">&quot;This will error!&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Halts the execution, and prints the stack to the output.</span>
+</code></pre></div>
+<p>In Class++, a fatal error will occur if you encounter a set limitation. For example, if you try to access a private property outside of a class method, this will cause a fatal error.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">newObject</span><span class="p">.</span><span class="py">PrivateProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hello!&quot;</span><span class="w"> </span><span class="c1">-- Will cause a fatal error.</span>
+</code></pre></div>
+<hr />
+<h3 id="non-fatal-errors">Non-Fatal Errors</h3>
+<p>Non-Fatal errors are the type of errors that will not crash your program. While less dangerous, this still does not mean that your program will continue to work as expected. For example, if a <code>destructor</code> function fails to run, Class++ will still destroy the object, while ensuring the program keeps running. But this does not mean that destructor has ran correctly, and there might be an object or a system that could not be cleared up, thus causing a memory leak.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Test&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nv">destructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="nb">error</span><span class="p">(</span><span class="s2">&quot;An unknown error occured!&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">object</span><span class="p">:</span><span class="nf">Destroy</span><span class="p">()</span><span class="w"> </span><span class="c1">-- This line will never be reached, causing the object to never be destroyed!</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kr">end</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="tips">Tips</h2>
+<p>Be careful. To ensure your program is running safely, every operation that can fail should be put inside either a <code>pcall()</code> or a <code>xpcall()</code>. These functions allow you to safely handle any errors that may occur in your code.</p>
+<p><em>A full list of fatal and non-fatal errors can be found in the <a href="../../../api-reference/errors/">Errors</a> page.</em></p>
 
 
 

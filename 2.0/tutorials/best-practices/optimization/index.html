@@ -998,6 +998,19 @@ switcher to go back to the production version.
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Optimization
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1009,6 +1022,58 @@ switcher to go back to the production version.
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#skipping-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skipping Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-members" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Members
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing Members">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-s-3-microseconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      *: (3 μs = 3 microseconds)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1770,6 +1835,47 @@ switcher to go back to the production version.
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#skipping-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skipping Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-members" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Members
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing Members">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-s-3-microseconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      *: (3 μs = 3 microseconds)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1788,7 +1894,33 @@ switcher to go back to the production version.
 
 
 <h1 id="optimization">Optimization</h1>
-<p>(Coming Soon)</p>
+<p>Class++ is designed to be as optimized as possible for a class and objects system. To achieve the best performance, you can avoid certain scenarios that will slow Class++ down.</p>
+<hr />
+<h2 id="skipping-operations">Skipping Operations</h2>
+<p>Class++ will skip certain unnecessary operations made by the user. For example, if you try to set a value to a member that is exactly the same as the one the member had before, Class++ will skip this operation.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Test&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nv">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">newClass</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nv">newObject</span><span class="p">.</span><span class="py">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="c1">-- This operation will be skipped.</span>
+</code></pre></div>
+<p>However, you still shouldn't trust on Class++ to skip these operations, as it will still try to check if the thread is able to access the member or not. To get the best performance, avoid setting member values to the same values as before.</p>
+<hr />
+<h2 id="accessing-members">Accessing Members</h2>
+<p>Now, accessing members in Class++ is <em>very fast*</em>, and you should not worry about performance. However, if you still want to gain the best amount of performance, here are some things you can do:</p>
+<ol>
+<li>Always access private members from class functions.
+This allows Class++ to achieve the best performance when achieving the member values. This also supports <a href="../encapsulation/">encapsulation</a>, and will encourage you to adopt coding styles that will be the best for you in the long-run.</li>
+<li>Use public members when necessary.
+If a member does not contain sensetive data or does not hold a lot of value for the class, then it should be a public member. This greatly increases the performance when accessing that member, and also promotes a better coding style. The interface of a class should always be public.</li>
+</ol>
+<hr />
+<p>Class++ is very flexible and tries to be as lightweight as possible. Always avoid using systems or patterns that will both slow Class++ and your own methods down. You can check out other pages of the Tutorial to adapt to the recommended patterns and syntax.</p>
+<hr />
+<h6 id="3-s-3-microseconds">*: (3 μs = 3 microseconds)</h6>
 
 
 

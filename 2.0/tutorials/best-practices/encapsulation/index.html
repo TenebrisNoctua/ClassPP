@@ -1884,6 +1884,7 @@ switcher to go back to the production version.
 <h1 id="encapsulation">Encapsulation</h1>
 <p>Encapsulation is a fundamental concept in OOP that combines data (properties) and methods (class functions) that work with that data into a single unit known as a class. This protective layer around the data allows it to maintain its integrity and prevents unauthorized access.</p>
 <p>For example, imagine a coffee machine. A coffee machine has a grinder, brewer, and many other internal components that allows it to function. But you don't need to know how it works, you only need to know which buttons to press to get your coffee. This is similar to how it works in OOP.</p>
+<hr />
 <h2 id="why-encapsulation">Why Encapsulation?</h2>
 <ul>
 <li><strong>Data Protection</strong>: By making the data private, you hide it from the outside world. Therefore, you protect it from accidental or intentional modifications from outside the class, ensuring its integrity. It also protects sensitive information.</li>
@@ -1891,6 +1892,7 @@ switcher to go back to the production version.
 <li><strong>Increased Maintainability</strong>: By controlling the access, any internal implementation changes are less likely to effect other external parts of the program.</li>
 <li><strong>Increased Flexibility</strong>: It also allows for a cleaner interface, and due to the internal parts being private, the interface can be reused effectively. </li>
 </ul>
+<hr />
 <h2 id="implementation">Implementation</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1926,6 +1928,7 @@ switcher to go back to the production version.
 <a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="p">}</span>
 </code></pre></div>
 <p>In the example above, the <code>Student</code> class has private members called "Name" and "Age". The setter for the member "Age" includes a basic validation check. Using these getter and setter methods, we are able to access the values for these members.</p>
+<hr />
 <h2 id="tips">Tips</h2>
 <p>If you want to implement encapsulation, make sure all the important data are set as private, to protect them from external modification.
 Using getter and setter methods for that data will allow for a much safer experience while allowing flexibility in changing the internal implementation. Like in the example on the previous section, also implementing validation checks will greatly improve data integrity.</p>

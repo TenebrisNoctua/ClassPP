@@ -37,4 +37,4 @@ If a member does not contain sensetive data or does not hold a lot of value for 
 Class++ is very flexible and tries to be as lightweight as possible. Always avoid using systems or patterns that will both slow Class++ and your own methods down. You can check out other pages of the Tutorial to adapt to the recommended patterns and syntax.
 
 ----
-###### *: (3 μs = 3 microseconds)
+<h6>*: (3 μs = 3 microseconds)</h6>

@@ -42,15 +42,35 @@ type metatable<T, V = any?> = setmetatable<{T}, {V}>
 --// Local Functions
 
 -- A deep copy function for tables, with support for metatables.
-local function deepCopy<T>(original: T): T
-	local copy = table.clone(original) :: T & anyTable
+local function deepCopy<T>(original: T, copyMetatable: boolean?): T 
+	local original: anyTable = original
+	local copy = table.clone(original)
 	
-	for key, value in (original :: anyTable) do
+	for key, value in original do
 		if type(value) ~= "table" then continue end
-		local tmetatable = getmetatable(value :: metatable<{}>);
-		copy[key] = if not tmetatable then deepCopy(value :: metatable<{}>) else value
+		local metatable = getmetatable(value) :: any
+		
+		if not metatable then 
+			copy[key] = deepCopy(value, true) 
+		elseif not copyMetatable then 
+			local success, result = pcall(setmetatable, value, {})
+			local copyTable
+			
+			if success then 
+				copyTable = result
+			else
+				copyTable = {}
+				for key, val in value do
+					copyTable[key] = val
+				end
+			end
+			
+			copy[key] = deepCopy(copyTable, true) 
+		else 
+			copy[key] = value
+		end
 	end
-
+	
 	return copy
 end
 
@@ -121,7 +141,9 @@ local function garbageCollectionCallback(objectData: objectData)
 				objectCopy[k] = v
 			end
 			
-			objectData.Internal.destructor(objectCopy)
+			local success, err = pcall(objectData.Internal.destructor, objectCopy)
+			if not success then LogErrorNonFatal("unhandledError", true, {"destructor", err}) end
+			
 			objectCleaner(objectData)
 			table.clear(objectCopy)
 			
@@ -133,47 +155,51 @@ local function garbageCollectionCallback(objectData: objectData)
 end
 
 -- Sorts the classData into an objectData that can be used inside objects.
-local function sortAttributes(data: defaultClassData, className: string, class: internalClass): objectData
-	local classObjTbl = deepCopy(data) :: anyTable
+local function sortAttributes(classData: defaultClassData, className: string, class: internalClass): objectData
+	local objectTbl = deepCopy(classData) :: objectData
 	
-	local constructor = classObjTbl.constructor
-	local destructor = classObjTbl.destructor
+	local constructor = objectTbl.constructor
+	local destructor = objectTbl.destructor
 	
-	classObjTbl.Friend = nil
-	classObjTbl.Internal = {
+	objectTbl.Friend = nil
+	objectTbl.Internal = {
 		__type = "Object",
 		__objtype = className,
 		__locked = false,
 		constructor = constructor,
 		destructor = destructor
-	}
+	} :: any
 
 	if constructor then 
-		classObjTbl.constructor = nil
+		objectTbl.constructor = nil
 	end
 
 	if destructor then
-		classObjTbl.destructor = nil
+		objectTbl.destructor = nil
 	end
 	
 	local inheritedClassNum = #class.Inherits
 	local inheritedClass: internalClass = class.Inherits[1]
 	local inheritedClassData = if inheritedClass then inheritedClass.classData else nil
-	local destructor = classObjTbl.Internal.destructor
+	local destructor = objectTbl.Internal.destructor
 	
-	function classObjTbl.Public.Destroy(obj: objectData)
+	function objectTbl.Public.Destroy(obj: objectData)
 		if Type.type(obj) ~= "Object" then LogError("invalidDestructorCall", true) end
-		if Util.getMethodContext(5) == classObjTbl.Internal.constructor then LogError("cannotCallFunctionFrom", true, {"Destroy", "constructor"}) end
+		if Util.getMethodContext(5) == objectTbl.Internal.constructor then LogError("cannotCallFunctionFrom", true, {"Destroy", "constructor"}) end
 		
-		if destructor then destructor(obj) end
-		objectCleaner(classObjTbl)
+		if destructor then 
+			local success, err = pcall(destructor, obj)
+			if not success then LogErrorNonFatal("unhandledError", true, {"destructor", err}) end
+		end
+		
+		objectCleaner(objectTbl)
 	end
 	
-	function classObjTbl.Public.super(...)
+	function objectTbl.Public.super(...)
 		if inheritedClassNum > 1 or not inheritedClass then LogError("invalidSuperCall", true) end
 		
 		local method, currentMethod = Util.getMethodContext(5)
-		if method == classObjTbl.Internal.destructor or method == classObjTbl.Internal.constructor then LogError("cannotCallFunctionFrom", true, {"super", currentMethod}) end
+		if method == objectTbl.Internal.destructor or method == objectTbl.Internal.constructor then LogError("cannotCallFunctionFrom", true, {"super", currentMethod}) end
 
 		local foundPublic = inheritedClassData.Public[currentMethod]
 		local foundProtected = inheritedClassData.Protected[currentMethod]
@@ -187,7 +213,7 @@ local function sortAttributes(data: defaultClassData, className: string, class: 
 		LogError("cannotFindBaseClassMethod", true, {currentMethod, inheritedClass.Name})
 	end
 
-	return classObjTbl
+	return objectTbl
 end
 
 -- Merge the <code>classData</code>s in the given <code>classDataTable</code> with the <code>childClassData</code>.
@@ -296,7 +322,7 @@ end
 -- Checks if the given classData is valid and can be used.
 local function checkValidClassData(classData: defaultClassData, className: string)
 	if typeof(classData) ~= "table" then LogError("classDataNotTable", false, {className}) end
-	if getmetatable(classData :: metatable<defaultClassData>) or not select(1, pcall(setmetatable, classData, {})) then LogError("classDataContainsMetatable", false, {className}) end
+	if getmetatable(classData) or not select(1, pcall(setmetatable, classData, {})) then LogError("classDataContainsMetatable", false, {className}) end
 
 	local isAPropertyRedeclared: boolean, redeclaredIndex: any? = checkRedeclaration(classData)
 	if isAPropertyRedeclared then LogError("classPropertyRedeclaration", false, redeclaredIndex) end
@@ -328,14 +354,15 @@ local function callOperator(functionName: string, obj: anyTable, obj2: anyTable?
 end
 
 -- Sets the metamethods of an object.
-local function setMetamethods(class: internalClass, classData: objectData, methods: anyTable)
+local function setMetamethods(class: internalClass, objectData: objectData, methods: anyTable)
+	local Internal = objectData.Internal
 	methods.__metatable = 'The metatable is locked.'
 	
 	function methods:__index(index: string)
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
+		if Internal.__locked == true then LogError("classObjectLocked", true) end
 
-		local accessSpecifier = returnAccessSpecifier(index, classData)
-		local rprop = findPropertyFromIndex(classData, index, accessSpecifier)
+		local accessSpecifier = returnAccessSpecifier(index, objectData)
+		local rprop = findPropertyFromIndex(objectData, index, accessSpecifier)
 		local isOperatorCall = string.find(index, "operator")
 		
 		if accessSpecifier ~= "Public" then
@@ -360,10 +387,10 @@ local function setMetamethods(class: internalClass, classData: objectData, metho
 	end
 
 	function methods:__newindex(index: string, value: any)
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
+		if Internal.__locked == true then LogError("classObjectLocked", true) end
 		if value == nil then LogError("classMemberCannotSetToNil", true) end
 
-		local accessSpecifier = returnAccessSpecifier(index, classData)
+		local accessSpecifier = returnAccessSpecifier(index, objectData)
 		if accessSpecifier ~= "Public" then
 			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, classes) then
 				LogError("classPropertyIsPrivate", true, {index})
@@ -374,7 +401,7 @@ local function setMetamethods(class: internalClass, classData: objectData, metho
 			end
 		end
 		
-		local attributesData = classData[accessSpecifier]
+		local attributesData = objectData[accessSpecifier]
 		local foundAttribute = attributesData[index]
 		if foundAttribute == nil then LogError("classMemberNotFound", true, {index}) elseif foundAttribute == value then return end
 		
@@ -382,7 +409,7 @@ local function setMetamethods(class: internalClass, classData: objectData, metho
 	end
 
 	function methods:__tostring()
-		if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
+		if Internal.__locked == true then LogError("classObjectLocked", true) end
 
 		local result = callOperator("__tostring", self, nil, true)
 		if result then
@@ -393,10 +420,10 @@ local function setMetamethods(class: internalClass, classData: objectData, metho
 	end
 
 	for _, operatorFuncName in overloadableOperators do
-		if not classData.Public[operatorFuncName] then continue end
+		if not objectData.Public[operatorFuncName] then continue end
 
 		methods[string.gsub(operatorFuncName, "operator", "_")] = function(obj, obj2)
-			if classData.Internal.__locked == true then LogError("classObjectLocked", true) end
+			if Internal.__locked == true then LogError("classObjectLocked", true) end
 			return callOperator(operatorFuncName, obj, obj2)
 		end
 	end

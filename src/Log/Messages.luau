@@ -41,5 +41,6 @@ return {
 	overloadfunctionTableNotGiven = "A function table has not been given for the overloaded function.",
 	staticMemberNameNotSet = "A name has not been set for the static member.",
 	typeofObjectNotFound = "The given object's type cannot be found.",
+	unhandledError = "An unhandled error occured in \"%s\": %s",
 	unknownError = "An unknown error has occured."
 }

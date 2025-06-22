@@ -361,6 +361,16 @@ The provided object's type cannot be found.
 
 ----
 
+## unhandledError
+
+```
+An unhandled error occured in "...": ...
+```
+
+An unhandled error has occured in a specific function given to Class++. This error does not halt the execution of the thread, so be mindful of the bugs that may occur in your code.
+
+----
+
 ## unknownError
 
 ```

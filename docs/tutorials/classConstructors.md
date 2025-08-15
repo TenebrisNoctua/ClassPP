@@ -36,7 +36,7 @@ This can be useful for setting inital values for certain members.
 local class = ClassPP.class
 
 local Car = class "Car" {
-    constructor = function(self, brand, model, licensePlate)
+    constructor = function(self, licensePlate, brand, model)
         self.License_Plate = licensePlate
         self.Brand = brand
         self.Model = model
@@ -49,7 +49,7 @@ local Car = class "Car" {
 }
 
 local newCar = Car.new("ABCD", "Ford", "Mustang")
-print(newCar.Brand, newCar.Model, newCar.License_Plate) -- Prints "ABCD, Ford, Mustang"!
+print(newCar.License_Plate, newCar.Brand, newCar.Model) -- Prints "ABCD Ford Mustang"!
 ```
 
 ## Class Destructors
@@ -60,7 +60,7 @@ A destructor is a special function that runs when you call `:Destroy()` on an ob
 local class = ClassPP.class
 
 local Car = class "Car" {
-    constructor = function(self, brand, model, licensePlate)
+    constructor = function(self, licensePlate, brand, model)
         self.License_Plate = licensePlate
         self.Brand = brand
         self.Model = model
@@ -78,7 +78,7 @@ local Car = class "Car" {
 }
 
 local newCar = Car.new("ABCD", "Ford", "Mustang")
-print(newCar.Brand, newCar.Model, newCar.License_Plate)
+print(newCar.License_Plate, newCar.Brand, newCar.Model)
 
 newCar:Destroy() -- The class object will now be destroyed
 newCar = nil
@@ -89,3 +89,4 @@ newCar = nil
 
 !!! info
     Constructor and Destructor functions can also be written in the outside class definition syntax.
+

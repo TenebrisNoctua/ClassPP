@@ -41,44 +41,6 @@ When you create a class using this method, you create a new derived class that i
 
 ----
 
-## Multilevel-Inheritance
-
-A class can also be derived from one class, which can be derived from another class:
-
-```lua
-local class = ClassPP.class
-
-local Person = class "Person" { -- Base Class
-    Public = {
-        Name = "",
-        Age = 0,
-        Gender = "",
-        Height = 0
-    }
-}
-
-local Child = class "Child" (Person, nil) { -- Derived Class
-    Public = {
-        Age = 9,
-        Energetic = true
-    }
-}
-
-local Student = class "Student" (Child, nil) { -- Derived Class from a Derived Class
-    Public = {
-        SchoolId = 0,
-        Grade = 0,
-        Behaviour = "Good"
-    }
-}
-
-local newStudent = Student.new()
-print(newStudent.Name, newStudent.Age, newStudent.Gender, newStudent.Height, newStudent.Age, newStudent.Energetic, newStudent.SchoolId, newStudent.Grade, newStudent.Behaviour)
--- Prints " 9  0 9 true 0 0 Good"! (Spaces represent empty strings)
-```
-
-----
-
 ## Protected Access Specifier
 
 In the [Access Specifiers](../basics/accessSpecifiers.md) section, you have learned that there are 4 access specifiers in Class++, so far you have seen `Public`, `Private` and `Friend`.
@@ -110,7 +72,35 @@ local newCar = BiggerCar.new()
 newCar:printLicensePlate()
 ```
 
-In this example, we put the member `License_Plate` under the `Protected` access specifier, and created a new class inherited from the Car class. The inherited class and it's member functions will now be able to access this member. 
+In this example, we put the member `License_Plate` under the Protected access specifier, and created a new class that inherits from the Car class. This child class and it's member functions will now be able to access this member. 
+
+Members in the Protected access specifier are overwritable by members in other access specifiers. This means, when you define a member in the Public or the Private access specifier that has the same name as a member in the Protected access specifier, this new member will overwrite the Protected member, meaning the Protected member will be removed.  
+
+```lua
+local class = ClassPP.class
+
+local Car = class "Car" {
+    Public = {
+        Brand = "Lamborghini",
+    },
+    Protected = {
+        License_Plate = "XXXX"
+    }
+}
+
+local BiggerCar = class "BiggerCar" (Car, nil) {
+    Public = {
+        License_Plate = "A1B2C3"
+    }
+}
+
+function BiggerCar.Public:printLicensePlate()
+    print(self.License_Plate) -- Will print "A1B2C3"!
+end
+
+local newCar = BiggerCar.new()
+newCar:printLicensePlate()
+```
 
 ----
 
@@ -152,6 +142,44 @@ In this example, we created a new class called "B" that inherits from "A". In bo
 
 !!! warning
     `super` cannot be used within classes that have multi-inheritance. This is due to ambiguity that occurs with functions that have the same name in classes that have multi-inheritance. 
+
+----
+
+## Multilevel-Inheritance
+
+A class can also be derived from one class, which can be derived from another class:
+
+```lua
+local class = ClassPP.class
+
+local Person = class "Person" { -- Base Class
+    Public = {
+        Name = "",
+        Age = 0,
+        Gender = "",
+        Height = 0
+    }
+}
+
+local Child = class "Child" (Person, nil) { -- Derived Class
+    Public = {
+        Age = 9,
+        Energetic = true
+    }
+}
+
+local Student = class "Student" (Child, nil) { -- Derived Class from a Derived Class
+    Public = {
+        SchoolId = 0,
+        Grade = 0,
+        Behaviour = "Good"
+    }
+}
+
+local newStudent = Student.new()
+print(newStudent.Name, newStudent.Age, newStudent.Gender, newStudent.Height, newStudent.Age, newStudent.Energetic, newStudent.SchoolId, newStudent.Grade, newStudent.Behaviour)
+-- Prints " 9  0 9 true 0 0 Good"! (Spaces represent empty strings)
+```
 
 ----
 

@@ -3,7 +3,7 @@
 In simple terms, Polymorphism stands for "many forms", it's one of the core concepts of OOP.
 It refers to situations where something occurs in several different forms, and describes the concept that you can access objects of different types through the same interface.
 
-[Function Overloading](functionOverloading.md), [Operator Overloading](operatorOverloading.md), and [Inheritance](inheritance.md) belong to this concept, for example with inheritance, we can create derived classes that have the same method name, but all do different things. Or with function overloading, every function has different arguments and does a different thing, but all share the same name. It provides flexibility, and extensibility.
+[Function Overloading](../advanced/functionOverloading.md), [Operator Overloading](../advanced/operatorOverloading.md), and [Inheritance](../advanced/inheritance.md) belong to this concept, for example with inheritance, we can create derived classes that have the same method name, but all do different things. Or with function overloading, every function has different arguments and does a different thing, but all share the same name. It provides flexibility, and extensibility.
 
 ----
 

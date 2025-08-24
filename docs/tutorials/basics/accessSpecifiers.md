@@ -5,7 +5,7 @@ Unlike any other class module or system on Roblox, Class++ comes with an **Acces
 
 ## Public Access Specifier
 
-Like you have seen in the examples on the previous page, a Public Access Specifier allows anyone to access a member. Whether it be from a function inside the class or from the script's main thread, the member is accessible and can be modified.
+Like you have seen in the examples on the previous page, the Public Access Specifier allows anything to access a member. Whether it be from a function inside the class or from the script's main thread, the member is accessible and can be modified.
 
 ```lua
 local class = ClassPP.class

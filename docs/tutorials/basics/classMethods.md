@@ -5,6 +5,9 @@ Just like in other OO languages, there are two ways to define a function *(metho
 * Inside class definition
 * Outside class definition
 
+!!! info
+    Class Functions are also called Class Methods, and we will use this term from now on in later pages.
+
 ## Inside Class Definition
 
 ```lua
@@ -103,10 +106,10 @@ local newCar = Car.new()
 newCar:getLicensePlate(1)
 ```
 
-In this example, we defined a function outside of the class by specifying the class name, then the access specifier, followed by the `:` operator and the name of the function. Unlike in some other OO languages, you do not have to define the function inside the class first to use this method.
+In this example, we defined a function outside of the class by specifying the class name, then the access specifier, followed by the `:` operator and the name of the function. Unlike in some other OO languages, you do not have to define the function inside the class data first to use this method.
 
-!!! info
-    Outside Class Definition syntax is recommended as it allows for a better formatting style.
+!!! success
+    Outside Class Definition method syntax is recommended as it allows for a better formatting style.
 
-!!! info
-    Class Functions are also called Class Methods, and we will use this term from now on in later pages.
+!!! warning
+    While this method is recommended, it will not provide any intellisense when accessing the member. This is due to limitations of Luau's typechecking system. To get around it, you can define a function first inside the class data with the parameter types (but leave the function itself empty), then define it again with the outside class definition method.

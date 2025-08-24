@@ -30,7 +30,7 @@ Now, accessing members in Class++ is *very fast\**, and you should not worry abo
 1. Always access private members from class functions.<br>
 This allows Class++ to achieve the best performance when achieving the member values. This also supports [encapsulation](encapsulation.md), and will encourage you to adopt coding styles that will be the best for you in the long-run.
 2. Use public members when necessary.<br>
-If a member does not contain sensetive data or does not hold a lot of value for the class, then it should be a public member. This greatly increases the performance when accessing that member, and also promotes a better coding style. The interface of a class should always be public.
+If a member does not contain important data or is an interface, then it should be a public member. This greatly increases the performance when accessing that member, and also promotes a better coding style.
 
 ----
 

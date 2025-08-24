@@ -1901,6 +1901,10 @@ switcher to go back to the production version.
 <li>Inside class definition</li>
 <li>Outside class definition</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Class Functions are also called Class Methods, and we will use this term from now on in later pages.</p>
+</div>
 <h2 id="inside-class-definition">Inside Class Definition</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1981,14 +1985,14 @@ switcher to go back to the production version.
 <a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
 <a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="nv">newCar</span><span class="p">:</span><span class="nf">getLicensePlate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-<p>In this example, we defined a function outside of the class by specifying the class name, then the access specifier, followed by the <code>:</code> operator and the name of the function. Unlike in some other OO languages, you do not have to define the function inside the class first to use this method.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Outside Class Definition syntax is recommended as it allows for a better formatting style.</p>
+<p>In this example, we defined a function outside of the class by specifying the class name, then the access specifier, followed by the <code>:</code> operator and the name of the function. Unlike in some other OO languages, you do not have to define the function inside the class data first to use this method.</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>Outside Class Definition method syntax is recommended as it allows for a better formatting style.</p>
 </div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Class Functions are also called Class Methods, and we will use this term from now on in later pages.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While this method is recommended, it will not provide any intellisense when accessing the member. This is due to limitations of Luau's typechecking system. To get around it, you can define a function first inside the class data with the parameter types (but leave the function itself empty), then define it again with the outside class definition method.</p>
 </div>
 
 

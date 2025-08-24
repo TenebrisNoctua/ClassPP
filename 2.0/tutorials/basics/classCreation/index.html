@@ -1879,10 +1879,10 @@ switcher to go back to the production version.
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
 </code></pre></div>
 To create a new basic class, you use the <code>class()</code> function with the above syntax. The first argument will be a string that defines the name of the class, and the next argument is the class data, a table that contains all the access specifiers and the member data.</p>
-<p>In the above example, we created a new class with the name <code>Person</code>, and we created two members named: <code>Name</code> and <code>Age</code>. <br>
+<p>In the above example, we created a new class with the name <code>Person</code>, and we created two members named: <code>Name</code> and <code>Age</code> under the Public access specifier. <br>
 Then, we assigned default values to them. These values will be transferred to the object when it gets created.</p>
 <h2 id="creating-an-object">Creating an Object</h2>
-<p>Now that you have learned how to create classes, it's time to learn how to create objects.
+<p>Now that we have created our class, we can now move on to creating an object from this class.
 In Class++, to create an object, you use the <code>class.new()</code> function. This function returns an object created from this class, and will contain all of the members that you've defined.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
@@ -1896,7 +1896,7 @@ In Class++, to create an object, you use the <code>class.new()</code> function. 
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newPerson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">person</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nb">print</span><span class="p">(</span><span class="nv">newPerson</span><span class="p">.</span><span class="py">Age</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Prints &quot;0&quot;!</span>
 </code></pre></div>
-<p>Objects will have the members and their default values that you've set in the class data table, so if you want to update them, you can simply index the object with the member and set it to something else!</p>
+<p>Objects will have the members and their default values that you've set in the class data table, so if you want to update them, you can simply index the object with the member name and set it to something else!</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -1913,7 +1913,7 @@ In Class++, to create an object, you use the <code>class.new()</code> function. 
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Unlike the classic class creation method on Luau that programmers use, in Class++, to define a member you must do it through the <code>class()</code> function (Or by simply indexing the class). Trying to define a new member through the object will cause an error.</p>
+<p>Unlike the classic class creation method in Luau that programmers use, in Class++, to define a member you must do it through the <code>class()</code> function (or by simply indexing the class). Trying to define a new member through the object will cause an error.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Person&quot;</span><span class="w"> </span><span class="p">{</span>

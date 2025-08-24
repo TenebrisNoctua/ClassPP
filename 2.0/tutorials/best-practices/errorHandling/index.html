@@ -1914,19 +1914,23 @@ switcher to go back to the production version.
 
 
 <h1 id="error-handling">Error Handling</h1>
-<p>Class++ is designed in a way that prevents you from causing the most common errors, but it cannot stop you from causing errors altogether. It cannot stop you from trying to access private data or data that doesn't exist, for example.</p>
+<p>Class++ is designed in a way that makes class and object access safe and optimized. But unfortunately, it cannot stop errors occuring in your program altogether. For example, it cannot stop you from trying to access private or non-existent data.</p>
 <p>So it is up to you to be able to deal with the errors that occur while the program is running.</p>
 <hr />
 <h2 id="error-types">Error Types</h2>
 <p>In Class++ there are two types of errors that can occur during runtime: Fatal and Non-Fatal.</p>
 <h3 id="fatal-errors">Fatal Errors</h3>
 <p>Fatal errors are the type of errors that will completely crash your program. These errors are the most dangerous ones, naturally.</p>
-<p>Fatal errors can normally be created by using the built-in <code>error()</code> function:</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Fatal errors in Luau can normally be created by using the built-in <code>error()</code> function:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">error</span><span class="p">(</span><span class="s2">&quot;This will error!&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Halts the execution, and prints the stack to the output.</span>
 </code></pre></div>
-<p>In Class++, a fatal error will occur if you encounter a set limitation. For example, if you try to access a private property outside of a class method, this will cause a fatal error.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">newObject</span><span class="p">.</span><span class="py">PrivateProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hello!&quot;</span><span class="w"> </span><span class="c1">-- Will cause a fatal error.</span>
+</div>
+<p>In Class++, a fatal error will occur if you encounter a set limitation. For example, if you try to access a private member outside of a class method, it will cause a fatal error.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">-- Assuming this is the main thread of the script.</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">newObject</span><span class="p">.</span><span class="py">PrivateProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hello!&quot;</span><span class="w"> </span><span class="c1">-- Will cause a fatal error.</span>
 </code></pre></div>
 <hr />
 <h3 id="non-fatal-errors">Non-Fatal Errors</h3>

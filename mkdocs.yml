@@ -113,5 +113,6 @@ nav:
         - api-reference/data-types/object.md
       - Types:
         - api-reference/types/classData.md
+        - api-reference/types/version.md
 copyright: |
   &copy; 2025 <a href="https://github.com/TenebrisNoctua"  target="_blank" rel="noopener">Tenebris Noctua</a>

@@ -7,7 +7,7 @@
 ```lua
 function classpp.abstract(classTable: {class}): class
 ```
-Marks the given [`class`](../../dataTypes/class.md) or [`class`](../../dataTypes/class.md)es as abstract. If given multiple, then the first class will be returned.
+Marks the given [`class`](../../data-types/class.md) or [`class`](../../data-types/class.md)es as abstract. If given multiple, then the first class will be returned.
 
 ## Default Syntax
 
@@ -37,7 +37,7 @@ local Car = abstract({class("Car")({
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">classTable: <a href="../../../dataTypes/class">{class}</a></td>
+                    <td class="api-param-highlight">classTable: <a href="../../data-types/class.md">{class}</a></td>
                     <td>The desired <code>class</code> or <code>class</code>es to be set to abstract.</td>
                 </tr>
             </tbody>
@@ -51,7 +51,7 @@ local Car = abstract({class("Car")({
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="../../../dataTypes/class">class</a></td>
+                    <td class="api-return-box"><a href="../../data-types/class.md">class</a></td>
                 </tr>
             </tbody>
         </table>

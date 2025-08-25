@@ -8,7 +8,7 @@
 function classpp.class(className: string): (classData: classData) -> class
 ```
 
-Creates a new [`class`](../../dataTypes/class.md) with the given [`classData`](../../types/classData.md) table.
+Creates a new [`class`](../../data-types/class.md) with the given [`classData`](../../types/classData.md) table.
 
 ## Default Syntax
 ```lua
@@ -67,7 +67,7 @@ local Class = class("Class")({
                     <td>An unique name for the <code>class</code>.</td>
                 </tr>
                 <tr>
-                    <td class="api-param-highlight">inheritedClasses: <a href="../../../dataTypes/class">...class</a></td>
+                    <td class="api-param-highlight">inheritedClasses: <a href="../../../data-types/class">...class</a></td>
                     <td>The <code>class</code>es the created <code>class</code> will inherit from. (Optional)</td>
                 </tr>
                 <tr>
@@ -85,7 +85,7 @@ local Class = class("Class")({
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="../../../dataTypes/class">class</a></td>
+                    <td class="api-return-box"><a href="../../../data-types/class">class</a></td>
                 </tr>
             </tbody>
         </table>

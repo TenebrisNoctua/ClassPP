@@ -21,7 +21,7 @@ local isAFriend = ClassPP.Util.checkFriendship(class, methodName, method, classe
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">class: <a href="../../../dataTypes/class">class</a></td>
+                    <td class="api-param-highlight">class: <a href="../../../data-types/class">class</a></td>
                     <td>The <code>class</code> that the check will be made from.</td>
                 </tr>
                 <tr>
@@ -29,11 +29,11 @@ local isAFriend = ClassPP.Util.checkFriendship(class, methodName, method, classe
                     <td>The name of the given <code>method</code>.</td>
                 </tr>
                 <tr>
-                    <td class="api-param-highlight">class: <a href="../../../dataTypes/class">class</a></td>
+                    <td class="api-param-highlight">class: <a href="../../../data-types/class">class</a></td>
                     <td>The <code>method</code> that will be checked.</td>
                 </tr>
                 <tr>
-                    <td class="api-param-highlight">classes: <a href="../../../dataTypes/class">{[string]: class}</a></td>
+                    <td class="api-param-highlight">classes: <a href="../../../data-types/class">{[string]: class}</a></td>
                     <td>A table that contains all of the created <code>class</code>es. Since a <code>class</code> can also be inserted to the <code>Friend</code> access specifier through a <code>string</code> that contains the <code>class</code>'s name, this table is used to find the <code>class</code>es set with this method.</td>
                 </tr>
             </tbody>

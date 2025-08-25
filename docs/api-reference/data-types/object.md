@@ -75,7 +75,7 @@ Indicates the type of the `object`. For `object`s created from `class.new()`, it
     <div class="api-access-type" style="background-color: rgb(113, 25, 66); float: none">Internal</div>
 </h3>
 
-Indicates the `class` type of the `object`. Can be used to determine which `class` the `object` belongs to by using the [`Type.typeof()`](../classFunctions/type/typeof.md) function.
+Indicates the `class` type of the `object`. Can be used to determine which `class` the `object` belongs to by using the [`Type.typeof()`](../class-functions/type/typeof.md) function.
 
 ----------------------
 

@@ -21,11 +21,11 @@ local isInherited = ClassPP.Util.checkInheritance(class, method) -- For methods
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">class: <a href="../../../dataTypes/class">class</a></td>
+                    <td class="api-param-highlight">class: <a href="../../../data-types/class">class</a></td>
                     <td>The <code>class</code> that the check will be made from.</td>
                 </tr>
                 <tr>
-                    <td class="api-param-highlight">classOrMethod: <a href="../../../dataTypes/class">class | () ->()</a></td>
+                    <td class="api-param-highlight">classOrMethod: <a href="../../../data-types/class">class | () ->()</a></td>
                     <td>The <code>class</code> or the <code>method</code> that will be checked.</td>
                 </tr>
             </tbody>

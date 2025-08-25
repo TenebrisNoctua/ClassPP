@@ -3,7 +3,7 @@
     <span class="api-title">Class</span>
 </h1>
 
-A `class` object created from the [`class()`](../classFunctions/mainModule/class.md) function. Contains all of the members given from the [`classData`](../types/classData.md).
+A `class` object created from the [`class()`](../class-functions/main/class.md) function. Contains all of the members given from the [`classData`](../types/classData.md).
 
 ----------------------
 
@@ -47,7 +47,7 @@ A `class` object created from the [`class()`](../classFunctions/mainModule/class
 	</span>
 </h3>
 
-This is an unique identifier of the `class`. Using the [`getClass()`](../classFunctions/mainModule/getClass.md) function with this property will retrieve the desired `class`. Since names are unique, for every class, you have to use a different name.
+This is an unique identifier of the `class`. Using the [`getClass()`](../class-functions/main/getClass.md) function with this property will retrieve the desired `class`. Since names are unique, for every class, you have to use a different name.
 
 ----------------------
 
@@ -125,7 +125,7 @@ Used to create and return a new `class` that inherits the `class` it's been crea
 
 !!! failure "Deprecated"
     This method has been deprecated and should not be used for new work.
-    Instead, use the <a href="../../classFunctions/mainModule/class/"><code>class</code></a> method.
+    Instead, use the <a href="../../class-functions/main/class/"><code>class</code></a> method.
 
 ----------------------
 

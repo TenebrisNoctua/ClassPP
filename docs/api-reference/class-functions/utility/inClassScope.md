@@ -21,7 +21,7 @@ local isAllowed = Util.inClassScope(class, false, true, Classes) -- For the Priv
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">class: <a href="../../../dataTypes/class">class</a></td>
+                    <td class="api-param-highlight">class: <a href="../../../data-types/class">class</a></td>
                     <td>The <code>class</code> that the check will be made from.</td>
                 </tr>
                 <tr>
@@ -33,8 +33,8 @@ local isAllowed = Util.inClassScope(class, false, true, Classes) -- For the Priv
                     <td>Determines if the friend <code>class</code>es can access.</td>
                 </tr>
                 <tr>
-                    <td class="api-param-highlight">classes: <a href="../../../dataTypes/class">{[string]: class}</a></td>
-                    <td>A table that contains classes. If <code>includeFriend</code> is set to <code>true</code>, this table will be given to the <a href="../../../classFunctions/util/checkFriendship">Util.checkFriendship</a> function.</td>
+                    <td class="api-param-highlight">classes: <a href="../../../data-types/class">{[string]: class}</a></td>
+                    <td>A table that contains classes. If <code>includeFriend</code> is set to <code>true</code>, this table will be given to the <a href="../checkFriendship">Util.checkFriendship</a> function.</td>
                 </tr>
                 <tr>
                     <td class="api-param-highlight">defaultLevel: <a href="https://create.roblox.com/docs/luau/numbers">number</a></td>

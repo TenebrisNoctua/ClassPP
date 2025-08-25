@@ -37,7 +37,7 @@ local Car = abstract({class("Car")({
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">classTable: <a href="../../../data-types/class.md">{class}</a></td>
+                    <td class="api-param-highlight">classTable: <a href="../../../data-types/class">{class}</a></td>
                     <td>The desired <code>class</code> or <code>class</code>es to be set to abstract.</td>
                 </tr>
             </tbody>
@@ -51,7 +51,7 @@ local Car = abstract({class("Car")({
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="../../../data-types/class.md">class</a></td>
+                    <td class="api-return-box"><a href="../../../data-types/class">class</a></td>
                 </tr>
             </tbody>
         </table>

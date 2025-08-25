@@ -1,7 +1,7 @@
 <h1 class="api-header" markdown>
     <span class="api-icon" markdown>:octicons-workflow-24:</span>
     <span class="api-title">getClass</span>
-    <span class="api-type">:</span><a href="../../data-types/class.md" class="api-type">class</a>
+    <span class="api-type">:</span><a href="../../../data-types/class" class="api-type">class</a>
 </h1>
 
 ```lua
@@ -35,7 +35,7 @@ local Class = ClassPP.getClass("Class")
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="../../../dataTypes/class">class</a></td>
+                    <td class="api-return-box"><a href="../../../data-types/class">class</a></td>
                 </tr>
             </tbody>
         </table>

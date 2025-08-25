@@ -5,8 +5,8 @@
 
 ```lua
 export type classData = {
-	constructor: (self: any, ...any) -> ()?,
-	destructor: (self: any) -> ()?,
+	constructor: (any, ...any) -> ()?,
+	destructor: (any) -> ()?,
 	Public: {[string]: any}?,
 	Private: {[string]: any}?,
 	Protected: {[string]: any}?,
@@ -14,7 +14,7 @@ export type classData = {
 }
 ```
 
-The `classData` table that is given to the [`class()`](../classFunctions/mainModule/class.md) function that contains data about the desired [`class`](../dataTypes/class.md).
+The `classData` table that is given to the [`class()`](../class-functions/main/class.md) function that contains data about the desired [`class`](../data-types/class.md).
 
 ----
 

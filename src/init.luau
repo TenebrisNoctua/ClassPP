@@ -22,7 +22,7 @@ local LogErrorNonFatal = Logger.logErrorNonFatal
 local LogWarn = Logger.logWarn
 
 local classes = {} :: {[string]: internalClass}
-local classpp = {version = {major = 0, minor = 5, patch = 0, beta = true}, autoGarbageCollection = true} :: classPP
+local classpp = {version = {major = 0, minor = 5, patch = 0, beta = true}, autoObjectDestruction = true} :: classPP
 
 local accessSpecifiers: accessSpecifiers = {"Friend", "Internal", "Private", "Protected", "Public"}
 local overloadableOperators: overloadableOperators = {"operator_add", "operator_div", "operator_eq", "operator_idiv", "operator_mod", "operator_mul", "operator_pow", "operator_sub", "operator_unm"}
@@ -587,7 +587,7 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 		local newObject = newproxy(true)
 		local proxyMethods = getmetatable(newObject)
 		
-		if classpp.autoGarbageCollection then
+		if classpp.autoObjectDestruction then
 			runOnGarbageCollection(newObject, function() 
 				garbageCollectionCallback(newObjData)
 				newObjData = nil :: any

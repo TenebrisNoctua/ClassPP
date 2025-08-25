@@ -93,8 +93,10 @@ nav:
   - API Reference:
       - API Reference: api-reference/index.md
       - General:
-        - Errors: api-reference/errors.md
-      - Class++ Functions: 
+        - Errors: api-reference/general/errors.md
+        - version: api-reference/general/version.md
+        - autoObjectDestruction: api-reference/general/autoObjectDestruction.md
+      - Functions: 
         - class: api-reference/class-functions/main/class.md
         - getClass: api-reference/class-functions/main/getClass.md
         - final: api-reference/class-functions/main/final.md

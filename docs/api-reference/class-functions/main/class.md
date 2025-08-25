@@ -1,7 +1,7 @@
 <h1 class="api-header" markdown>
     <span class="api-icon" markdown>:octicons-workflow-24:</span>
     <span class="api-title">class</span>
-    <span class="api-type">:</span><a href="../../../dataTypes/class" class="api-type">class</a>
+    <span class="api-type">:</span><a href="../../data-types/class.md" class="api-type">class</a>
 </h1>
 
 ```lua

@@ -15,7 +15,7 @@ You can use that ID to find the details about that error or message down below.
 Cannot modify a read only table.
 ```
 
-You've attempted modify a read-only table within Class++. This usually occurs when you try to modify the [`Inherits`](./dataTypes/class.md#inherits-class-read-only), [`Friends`](./dataTypes/class.md#friends-class-read-only) and [`Statics`](./dataTypes/class.md#statics-string-any-read-only) tables of a `class`.
+You've attempted modify a read-only table within Class++. This usually occurs when you try to modify the [`Inherits`](../../data-types/class/#inherits-class-read-only), [`Friends`](../../data-types/class/#friends-class-read-only) and [`Statics`](../../data-types/class/#statics-string-any-read-only) tables of a `class`.
 
 ----
 

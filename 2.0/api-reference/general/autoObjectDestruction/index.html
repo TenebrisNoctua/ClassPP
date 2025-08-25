@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://tenebrisnoctua.github.io/ClassPP/2.0/tutorials/advanced/operatorOverloading/">
+        <link rel="canonical" href="https://tenebrisnoctua.github.io/ClassPP/2.0/api-reference/general/autoObjectDestruction/">
       
       
-        <link rel="prev" href="../inheritance/">
+        <link rel="prev" href="../version/">
       
       
-        <link rel="next" href="../functionOverloading/">
+        <link rel="next" href="../../class-functions/main/class/">
       
       
       <link rel="icon" href="../../../img/dark/classpp_fav.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Operator Overloading - Class++ Documentation</title>
+        <title>autoObjectDestruction - Class++ Documentation</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#operator-overloading" class="md-skip">
+        <a href="#autoobjectdestruction-boolean" class="md-skip">
           Skip to content
         </a>
       
@@ -136,7 +136,7 @@ switcher to go back to the production version.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Operator Overloading
+              autoObjectDestruction
             
           </span>
         </div>
@@ -266,13 +266,11 @@ switcher to go back to the production version.
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../tutorials/" class="md-tabs__link">
           
   
   
@@ -290,11 +288,13 @@ switcher to go back to the production version.
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../api-reference/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -380,8 +380,6 @@ switcher to go back to the production version.
       
   
   
-    
-  
   
   
     
@@ -401,23 +399,20 @@ switcher to go back to the production version.
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../tutorials/" class="md-nav__link ">
               
   
   
@@ -430,13 +425,13 @@ switcher to go back to the production version.
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -468,20 +463,17 @@ switcher to go back to the production version.
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
             
   
   
@@ -508,7 +500,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../basics/classCreation/" class="md-nav__link">
+      <a href="../../../tutorials/basics/classCreation/" class="md-nav__link">
         
   
   
@@ -531,7 +523,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../basics/accessSpecifiers/" class="md-nav__link">
+      <a href="../../../tutorials/basics/accessSpecifiers/" class="md-nav__link">
         
   
   
@@ -554,7 +546,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../basics/classMethods/" class="md-nav__link">
+      <a href="../../../tutorials/basics/classMethods/" class="md-nav__link">
         
   
   
@@ -577,7 +569,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../basics/classConstructors/" class="md-nav__link">
+      <a href="../../../tutorials/basics/classConstructors/" class="md-nav__link">
         
   
   
@@ -605,10 +597,8 @@ switcher to go back to the production version.
                 
   
   
-    
   
   
-  
     
     
       
@@ -631,21 +621,18 @@ switcher to go back to the production version.
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
             
   
   
@@ -658,7 +645,7 @@ switcher to go back to the production version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             Advanced
@@ -672,7 +659,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../friendAccessSpecifier/" class="md-nav__link">
+      <a href="../../../tutorials/advanced/friendAccessSpecifier/" class="md-nav__link">
         
   
   
@@ -695,7 +682,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../inheritance/" class="md-nav__link">
+      <a href="../../../tutorials/advanced/inheritance/" class="md-nav__link">
         
   
   
@@ -715,32 +702,10 @@ switcher to go back to the production version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Operator Overloading
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../tutorials/advanced/operatorOverloading/" class="md-nav__link">
         
   
   
@@ -751,35 +716,6 @@ switcher to go back to the production version.
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overloadable-operators" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overloadable Operators
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -792,7 +728,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../functionOverloading/" class="md-nav__link">
+      <a href="../../../tutorials/advanced/functionOverloading/" class="md-nav__link">
         
   
   
@@ -815,7 +751,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../nonAccessSpecifiers/" class="md-nav__link">
+      <a href="../../../tutorials/advanced/nonAccessSpecifiers/" class="md-nav__link">
         
   
   
@@ -838,7 +774,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../staticMembers/" class="md-nav__link">
+      <a href="../../../tutorials/advanced/staticMembers/" class="md-nav__link">
         
   
   
@@ -861,7 +797,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../types/" class="md-nav__link">
+      <a href="../../../tutorials/advanced/types/" class="md-nav__link">
         
   
   
@@ -910,20 +846,17 @@ switcher to go back to the production version.
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
             
   
   
@@ -950,7 +883,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../best-practices/encapsulation/" class="md-nav__link">
+      <a href="../../../tutorials/best-practices/encapsulation/" class="md-nav__link">
         
   
   
@@ -973,7 +906,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../best-practices/polymorphism/" class="md-nav__link">
+      <a href="../../../tutorials/best-practices/polymorphism/" class="md-nav__link">
         
   
   
@@ -996,7 +929,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../best-practices/composition/" class="md-nav__link">
+      <a href="../../../tutorials/best-practices/composition/" class="md-nav__link">
         
   
   
@@ -1019,7 +952,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../best-practices/errorHandling/" class="md-nav__link">
+      <a href="../../../tutorials/best-practices/errorHandling/" class="md-nav__link">
         
   
   
@@ -1042,7 +975,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../best-practices/optimization/" class="md-nav__link">
+      <a href="../../../tutorials/best-practices/optimization/" class="md-nav__link">
         
   
   
@@ -1077,6 +1010,8 @@ switcher to go back to the production version.
       
   
   
+    
+  
   
   
     
@@ -1098,20 +1033,23 @@ switcher to go back to the production version.
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../api-reference/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -1124,13 +1062,13 @@ switcher to go back to the production version.
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             API Reference
@@ -1143,8 +1081,10 @@ switcher to go back to the production version.
                 
   
   
+    
   
   
+  
     
     
       
@@ -1159,18 +1099,21 @@ switcher to go back to the production version.
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
             
   
   
@@ -1183,7 +1126,7 @@ switcher to go back to the production version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             General
@@ -1197,7 +1140,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/general/errors/" class="md-nav__link">
+      <a href="../errors/" class="md-nav__link">
         
   
   
@@ -1220,7 +1163,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/general/version/" class="md-nav__link">
+      <a href="../version/" class="md-nav__link">
         
   
   
@@ -1240,10 +1183,19 @@ switcher to go back to the production version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../api-reference/general/autoObjectDestruction/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1254,6 +1206,7 @@ switcher to go back to the production version.
   
 
       </a>
+      
     </li>
   
 
@@ -1294,17 +1247,20 @@ switcher to go back to the production version.
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
         
           
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
             
   
   
@@ -1331,7 +1287,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/class-functions/main/class/" class="md-nav__link">
+      <a href="../../class-functions/main/class/" class="md-nav__link">
         
   
   
@@ -1354,7 +1310,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/class-functions/main/getClass/" class="md-nav__link">
+      <a href="../../class-functions/main/getClass/" class="md-nav__link">
         
   
   
@@ -1377,7 +1333,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/class-functions/main/final/" class="md-nav__link">
+      <a href="../../class-functions/main/final/" class="md-nav__link">
         
   
   
@@ -1400,7 +1356,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/class-functions/main/abstract/" class="md-nav__link">
+      <a href="../../class-functions/main/abstract/" class="md-nav__link">
         
   
   
@@ -1472,7 +1428,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/class-functions/type/type/" class="md-nav__link">
+      <a href="../../class-functions/type/type/" class="md-nav__link">
         
   
   
@@ -1495,7 +1451,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/class-functions/type/typeof/" class="md-nav__link">
+      <a href="../../class-functions/type/typeof/" class="md-nav__link">
         
   
   
@@ -1577,7 +1533,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/class-functions/utility/inClassScope/" class="md-nav__link">
+      <a href="../../class-functions/utility/inClassScope/" class="md-nav__link">
         
   
   
@@ -1600,7 +1556,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/class-functions/utility/checkInheritance/" class="md-nav__link">
+      <a href="../../class-functions/utility/checkInheritance/" class="md-nav__link">
         
   
   
@@ -1623,7 +1579,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/class-functions/utility/checkFriendship/" class="md-nav__link">
+      <a href="../../class-functions/utility/checkFriendship/" class="md-nav__link">
         
   
   
@@ -1674,17 +1630,20 @@ switcher to go back to the production version.
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
             
   
   
@@ -1711,7 +1670,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/data-types/class/" class="md-nav__link">
+      <a href="../../data-types/class/" class="md-nav__link">
         
   
   
@@ -1734,7 +1693,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/data-types/object/" class="md-nav__link">
+      <a href="../../data-types/object/" class="md-nav__link">
         
   
   
@@ -1775,17 +1734,20 @@ switcher to go back to the production version.
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
         
           
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
             
   
   
@@ -1812,7 +1774,7 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../../api-reference/types/classData/" class="md-nav__link">
+      <a href="../../types/classData/" class="md-nav__link">
         
   
   
@@ -1863,23 +1825,6 @@ switcher to go back to the production version.
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overloadable-operators" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overloadable Operators
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1897,112 +1842,13 @@ switcher to go back to the production version.
   
 
 
-<h1 id="operator-overloading">Operator Overloading</h1>
-<p>Suppose we have two objects that belong to a custom Vector class, how would we allow the addition of those two objects?
-Using a normal class function would suffice, but it would require you to call the same function over and over again every single time you want to add them together.</p>
-<p>To solve this issue, just like in other OO languages, we can change the way operators work for our classes. This is known as operator overloading.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Vector3&quot;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nv">constructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">,</span><span class="w"> </span><span class="nv">x</span><span class="p">:</span><span class="w"> </span><span class="py">number</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">:</span><span class="w"> </span><span class="py">number</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="p">:</span><span class="w"> </span><span class="py">number</span><span class="p">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nf">typeof</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="s2">&quot;number&quot;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nf">typeof</span><span class="p">(</span><span class="nv">y</span><span class="p">)</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="s2">&quot;number&quot;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nf">typeof</span><span class="p">(</span><span class="nv">z</span><span class="p">)</span><span class="w"> </span><span class="o">~=</span><span class="w"> </span><span class="s2">&quot;number&quot;</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">coordinates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="kr">end</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">coordinates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="p">}</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="kr">end</span><span class="p">,</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="nv">coordinates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Vector</span><span class="p">.</span><span class="nc">Public</span><span class="p">:</span><span class="nf">operator_add</span><span class="p">(</span><span class="nv">otherVector</span><span class="p">)</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nb">assert</span><span class="p">(</span><span class="o">#</span><span class="nv">self</span><span class="p">.</span><span class="py">coordinates</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">#</span><span class="nv">otherVector</span><span class="p">.</span><span class="py">coordinates</span><span class="p">)</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">coordinates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">#</span><span class="nv">self</span><span class="p">.</span><span class="py">coordinates</span><span class="w"> </span><span class="kr">do</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="nv">coordinates</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">coordinates</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">otherVector</span><span class="p">.</span><span class="py">coordinates</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="kr">end</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">Vector</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nv">coordinates</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="nv">coordinates</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="kr">end</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Vector</span><span class="p">.</span><span class="nc">Public</span><span class="p">:</span><span class="nf">__tostring</span><span class="p">()</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="s2">&quot;(&quot;</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="nb">table.concat</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">coordinates</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;, &quot;</span><span class="p">)</span><span class="w"> </span><span class="o">..</span><span class="w"> </span><span class="s2">&quot;)&quot;</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="kr">end</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="kd">local</span><span class="w"> </span><span class="nv">vector1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Vector</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="kd">local</span><span class="w"> </span><span class="nv">vector2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Vector</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="nb">print</span><span class="p">(</span><span class="nv">vector1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">vector2</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Prints &quot;(5, 7, 5)&quot;</span>
-</code></pre></div>
-<p>In this example, we have created a custom Vector3 class that has a special function called <code>operator_add</code>, this special function is one of the special functions in Class++ that allows you to overload a specific operator. Here, we overloaded the operator <code>+</code> with our custom function that allows us to add two Vectors together.</p>
-<h2 id="overloadable-operators">Overloadable Operators</h2>
-<div class="operator_overloading_table">
-<div class="operator_overloading_table">
-<div class="md-typeset__scrollwrap">
-<div class="md-typeset__table">
-<table>
-<thead>
-<tr>
-<th class="operator_overloading_method">Method</th>
-<th class="operator_overloading_description">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>operator_add(self, obj)</code></td>
-<td>Function for overloading the + operator.</td>
-</tr>
-<tr>
-<td><code>operator_sub(self, obj)</code></td>
-<td>Function for overloading the - operator.</td>
-</tr>
-<tr>
-<td><code>operator_mul(self, obj)</code></td>
-<td>Function for overloading the * operator.</td>
-</tr>
-<tr>
-<td><code>operator_div(self, obj)</code></td>
-<td>Function for overloading the / operator.</td>
-</tr>
-<tr>
-<td><code>operator_idiv(self, obj)</code></td>
-<td>Function for overloading the // operator.</td>
-</tr>
-<tr>
-<td><code>operator_mod(self, obj)</code></td>
-<td>Function for overloading the % operator.</td>
-</tr>
-<tr>
-<td><code>operator_pow(self, obj)</code></td>
-<td>Function for overloading the ^ operator.</td>
-</tr>
-<tr>
-<td><code>operator_unm(self)</code></td>
-<td>Function for overloading the unary – operator.</td>
-</tr>
-<tr>
-<td><code>operator_eq(self, obj)</code></td>
-<td>Function for overloading the == operator.¹</td>
-</tr>
-<tr>
-<td><code>__tostring()</code></td>
-<td>Fired when tostring is called on the object.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>¹: This function will only run when == operator is used with the same base type (table, userdata, etc.).
-It will not work with different types, such as an object with a table, or another type.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Trying to directly call the operator functions will result in an error. They must be called with their operators.</p>
-</div>
+<h1 class="api-header" id="autoobjectdestruction-boolean">
+    <span class="api-icon" markdown><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 4.75C0 3.784.784 3 1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25Zm1.75-.25a.25.25 0 0 0-.25.25v14.5c0 .138.112.25.25.25h20.5a.25.25 0 0 0 .25-.25V4.75a.25.25 0 0 0-.25-.25Z"/><path d="M5 8.75A.75.75 0 0 1 5.75 8h11.5a.75.75 0 0 1 0 1.5H5.75A.75.75 0 0 1 5 8.75m0 4a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 0 1.5h-5.5a.75.75 0 0 1-.75-.75"/></svg></span></span>
+    <span class="api-title">autoObjectDestruction</span>
+    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/booleans" class="api-type">boolean</a>
+</h1>
+<p>This property indicates whether or not a created <a href="../../data-types/object/"><code>object</code></a> will automatically be destroyed when its reference has been garbage collected. It is set to <code>true</code> by default, and allows Class++ to automatically call the <code>destructor</code> function (if defined) of an <code>object</code> automatically.</p>
+<p>It can be set to <code>false</code> if desired, however, you will have to manually destroy every <code>object</code> if you do, to prevent memory leaks.</p>
 
 
 
@@ -2040,7 +1886,7 @@ It will not work with different types, such as an object with a table, or anothe
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../inheritance/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Inheritance">
+          <a href="../version/" class="md-footer__link md-footer__link--prev" aria-label="Previous: version">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2050,20 +1896,20 @@ It will not work with different types, such as an object with a table, or anothe
                 Previous
               </span>
               <div class="md-ellipsis">
-                Inheritance
+                version
               </div>
             </div>
           </a>
         
         
           
-          <a href="../functionOverloading/" class="md-footer__link md-footer__link--next" aria-label="Next: Function Overloading">
+          <a href="../../class-functions/main/class/" class="md-footer__link md-footer__link--next" aria-label="Next: class">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Function Overloading
+                class
               </div>
             </div>
             <div class="md-footer__button md-icon">

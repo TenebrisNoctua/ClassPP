@@ -1086,6 +1086,10 @@ switcher to go back to the production version.
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1132,12 +1136,58 @@ switcher to go back to the production version.
   
   
     <li class="md-nav__item">
-      <a href="../../errors/" class="md-nav__link">
+      <a href="../../general/errors/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Errors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../general/version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../general/autoObjectDestruction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    autoObjectDestruction
     
   </span>
   
@@ -1201,7 +1251,7 @@ switcher to go back to the production version.
   
   
   <span class="md-ellipsis">
-    Class++ Functions
+    Functions
     
   </span>
   
@@ -1212,7 +1262,7 @@ switcher to go back to the production version.
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
-            Class++ Functions
+            Functions
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1973,15 +2023,15 @@ switcher to go back to the production version.
     <span class="api-title">classData</span>
 </h1>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">export</span><span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="nv">classData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nv">constructor</span><span class="p">:</span><span class="w"> </span><span class="err">(</span><span class="py">self</span><span class="p">:</span><span class="w"> </span><span class="py">any</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nv">any</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">()</span><span class="err">?</span><span class="p">,</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nv">destructor</span><span class="p">:</span><span class="w"> </span><span class="err">(</span><span class="py">self</span><span class="p">:</span><span class="w"> </span><span class="py">any</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">()</span><span class="err">?</span><span class="p">,</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nv">constructor</span><span class="p">:</span><span class="w"> </span><span class="err">(</span><span class="py">any</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nv">any</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">()</span><span class="err">?</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nv">destructor</span><span class="p">:</span><span class="w"> </span><span class="err">(</span><span class="py">any</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">()</span><span class="err">?</span><span class="p">,</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nv">Public</span><span class="p">:</span><span class="w"> </span><span class="err">{[</span><span class="py">string</span><span class="p">]:</span><span class="w"> </span><span class="nv">any</span><span class="p">}</span><span class="err">?</span><span class="p">,</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nv">Private</span><span class="p">:</span><span class="w"> </span><span class="err">{[</span><span class="py">string</span><span class="p">]:</span><span class="w"> </span><span class="nv">any</span><span class="p">}</span><span class="err">?</span><span class="p">,</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nv">Protected</span><span class="p">:</span><span class="w"> </span><span class="err">{[</span><span class="py">string</span><span class="p">]:</span><span class="w"> </span><span class="nv">any</span><span class="p">}</span><span class="err">?</span><span class="p">,</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nv">Friend</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="py">any</span><span class="p">}</span><span class="err">?</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
 </code></pre></div>
-<p>The <code>classData</code> table that is given to the <a href="../classFunctions/mainModule/class.md"><code>class()</code></a> function that contains data about the desired <a href="../dataTypes/class.md"><code>class</code></a>.</p>
+<p>The <code>classData</code> table that is given to the <a href="../../class-functions/main/class/"><code>class()</code></a> function that contains data about the desired <a href="../../data-types/class/"><code>class</code></a>.</p>
 <hr />
 <h2 id="properties">Properties</h2>
 <h3 id="constructor-self-any-any-">

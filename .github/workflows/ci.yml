@@ -51,7 +51,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mike deploy $ClassPP_Version latest --update-aliases --branch gh-pages
-          mike set-default --push latest --branch gh-pages 
+          mike set-default --push latest --branch gh-pages --allow-empty
 
       - name: Deploy indev documentation
         if: env.Deploy_Type == 'indev'

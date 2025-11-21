@@ -10,6 +10,9 @@ env:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -40,6 +43,8 @@ jobs:
 
       - name: Deploy latest documentation version
         if: env.Deploy_Type == 'release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mike deploy $ClassPP_Version latest --update-aliases --branch gh-pages
 
       - name: Set default version to latest
@@ -48,4 +53,6 @@ jobs:
 
       - name: Deploy indev documentation
         if: env.Deploy_Type == 'indev'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mike deploy $ClassPP_Version --push --update-aliases --branch gh-pages 

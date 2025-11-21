@@ -45,9 +45,8 @@ jobs:
         if: env.Deploy_Type == 'release'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: 
-          mike deploy $ClassPP_Version latest --update-aliases --branch gh-pages
-          mike set-default --push latest --branch gh-pages 
+        run: mike deploy $ClassPP_Version latest --update-aliases --branch gh-pages
+        run: mike set-default --push latest --branch gh-pages 
 
       - name: Deploy indev documentation
         if: env.Deploy_Type == 'indev'

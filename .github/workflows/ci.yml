@@ -2,8 +2,12 @@ name: Build Documentation with MkDocs
 on:
   push:
     branches:
-      - master 
       - main
+
+env:
+  ClassPP_Version: '2.0'
+  Deploy_Type: 'release'
+
 permissions:
   contents: write
 jobs:

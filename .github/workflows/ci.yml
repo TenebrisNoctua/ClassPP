@@ -2,11 +2,11 @@ name: Build Documentation with MkDocs
 on:
   push:
     branches:
-      - new-type-solver-beta
+      - main
 
 env:
   ClassPP_Version: '2.0'
-  Deploy_Type: 'indev'
+  Deploy_Type: 'release'
 
 permissions:
   contents: write

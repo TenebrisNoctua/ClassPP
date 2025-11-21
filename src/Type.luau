@@ -24,7 +24,7 @@ export type version = {
 
 export type classPP<Utility, Type> = {
 	version: version,
-	autoGarbageCollection: boolean,
+	autoObjectDestruction: boolean,
 	Util: Utility,
 	Type: Type,
 	class: (className: string) -> (ovloadFT) & (ovloadST),
@@ -51,10 +51,10 @@ export type class<classData, nClassData> = setmetatable<{
 }, {
 	__index: ({any}, any) -> (any),
 	__newindex: ({any}, any, any) -> (),
-	__type: "",
-	__classtype: "",
-	__abstract: false,
-	__final: false
+	__type: string,
+	__classtype: string,
+	__abstract: boolean,
+	__final: boolean
 }>
 
 export type internalClass = {
@@ -96,7 +96,7 @@ type classShort<T> = class<T, T>
 
 type function isClass(t: type)
 	if not t:is("table") then return false end
-	
+
 	local classArgCheck = {
 		new = "function",
 		overload = "function",
@@ -104,21 +104,21 @@ type function isClass(t: type)
 		classData = "table",
 		Name = "string"
 	}
-	
+
 	local properties = t:properties()
 	local passedCount = 0
-	
+
 	for k, v in properties do
 		local key = k:value()
 		local value = v.read
 		if not value then return false end
-		
+
 		local argValue = classArgCheck[key]
 		if not argValue or argValue ~= value.tag then return false end
-		
+
 		passedCount += 1
 	end
-	
+
 	return passedCount > 0
 end
 
@@ -134,10 +134,10 @@ export type function getConstructorType(classData: type, objectData: type)
 			constructorParams = value:parameters()
 		end
 	end
-	
+
 	local newHead: {type} = {}
 	local allowedTags = {"string", "any", "singleton", "boolean", "number", "class", "buffer", "nil", "table", "function", "union"}
-	
+
 	if constructorParams and constructorParams.head then
 		for i, type in constructorParams.head do
 			if i == 1 then continue end
@@ -148,38 +148,44 @@ export type function getConstructorType(classData: type, objectData: type)
 			end
 		end
 	end
-	
+
 	return types.newfunction({head = newHead, tail = types.any}, {head = {objectData}})
 end
 
-export type function constructClassData(t)
-	if not t:is("table") then error("Given argument is not a table.") end
-	
+export type function constructClassData(tbl: type)
+	if not tbl:is("table") then error("Given argument is not a table.") end
+
+	local foundConstructorType = tbl:readproperty(types.singleton("constructor"))
+	local constructorType = if foundConstructorType and foundConstructorType:is("function") then foundConstructorType else types.newfunction({ head = {} }, {}, {})
+
+	local foundDestructorType = tbl:readproperty(types.singleton("destructor"))
+	local destructorType = if foundDestructorType and foundDestructorType:is("function") then foundDestructorType else types.newfunction({ head = {} }, {}, {})
+
 	local nT = types.newtable({
-		[types.singleton("constructor")] = if t.constructor and t.constructor:is("function") then t.constructor else types.newfunction({ head = {} }, {}, {}),
-		[types.singleton("destructor")] = if t.destructor and t.destructor:is("function") then t.destructor else types.newfunction({ head = {} }, {}, {}),
+		[types.singleton("constructor")] = constructorType,
+		[types.singleton("destructor")] = destructorType,
 		[types.singleton("Public")] = types.newtable({}),
 		[types.singleton("Private")] = types.newtable({}),
 		[types.singleton("Protected")] = types.newtable({}),
 		[types.singleton("Friend")] = types.newtable({})
 	})
-	
+
 	nT:setindexer(types.string, types.any)
-	
-	for k: type, v in t:properties() do
+
+	for k: type, v in tbl:properties() do
 		local key = k:value()
 		local value = v.read
-		
-		if value:is("function") then
+
+		if value and value:is("function") then
 			if key ~= "constructor" and key ~= "destructor" then continue end
 			nT:setproperty(types.singleton(key), value)
-		elseif value:is("table") then
+		elseif value and value:is("table") then
 			if key ~= "Public" and key ~= "Private" and key ~= "Protected" and key ~= "Friend" then continue end
 			nT:setproperty(types.singleton(key), value)
 			value:setindexer(types.any, types.any)
 		end
 	end
-	
+
 	return nT
 end
 
@@ -187,35 +193,35 @@ end
 -- If this is accepted: https://github.com/luau-lang/rfcs/pull/117, it will be updated.
 export type function combineClassData(nt: type, t1: type, t2: type)
 	if not isClass(t1) then error("Argument t1 must be a table.") end
-	
+
 	-- Create new empty classData
 	local newClassData = types.newtable({
 		[types.singleton("Public")] = types.newtable({}),
 		[types.singleton("Protected")] = types.newtable({}),
 		[types.singleton("Private")] = types.newtable({})
 	})
-	
+
 	-- Define the merge local function
 	local function merge(classData: type, finalize: boolean?)
 		local PublicAccessSpecifier = classData:readproperty(types.singleton("Public"))
 		local ProtectedAccessSpecifier = classData:readproperty(types.singleton("Protected"))
 		local PrivateAccessSpecifier = if finalize then classData:readproperty(types.singleton("Private")) else nil
 		local constructor = if finalize then classData:readproperty(types.singleton("constructor")) else nil
-		
+
 		if PublicAccessSpecifier and PublicAccessSpecifier:is("table") then
 			local PublicTable = newClassData:readproperty(types.singleton("Public"))
 			if not PublicTable then error("Unknown error occured.") end
-				
+
 			for k, v in PublicAccessSpecifier:properties() do
 				local key = k:value()
 				local value = v.read
-			
+
 				PublicTable:setproperty(types.singleton(key), value)
 			end
-			
+
 			newClassData:setproperty(types.singleton("Public"), PublicTable)
 		end
-		
+
 		if ProtectedAccessSpecifier and ProtectedAccessSpecifier:is("table") then
 			local ProtectedTable = newClassData:readproperty(types.singleton("Protected"))
 			if not ProtectedTable then error("Unknown error occured.") end
@@ -229,40 +235,40 @@ export type function combineClassData(nt: type, t1: type, t2: type)
 
 			newClassData:setproperty(types.singleton("Protected"), ProtectedTable)
 		end
-		
+
 		if finalize then
 			if PrivateAccessSpecifier and PrivateAccessSpecifier:is("table") then
 				local PrivateTable = newClassData:readproperty(types.singleton("Private"))
 				if not PrivateTable then error("Unknown error occured.") end
-	
+
 				for k, v in PrivateAccessSpecifier:properties() do
 					local key = k:value()
 					local value = v.read
-	
+
 					PrivateTable:setproperty(types.singleton(key), value)
 				end
 
 				newClassData:setproperty(types.singleton("Private"), PrivateTable)
 			end
-			
+
 			if constructor and constructor:is("function") then
 				newClassData:setproperty(types.singleton("constructor"), constructor)
 			end
 		end
 	end
-	
+
 	-- Get classDatas and merge
-	
+
 	local t1ClassData = t1:readproperty(types.singleton("classData"))
 	if not t1ClassData then error("classData type for argument t1 cannot be found.") end
-	
+
 	if isClass(t2) then
 		local t2ClassData = t2:readproperty(types.singleton("classData"))
 		if not t2ClassData then error("classData type for argument t2 cannot be found.") end
-		
+
 		merge(t2ClassData)
 	end
-	
+
 	merge(t1ClassData)
 	merge(nt, true)
 
@@ -271,10 +277,10 @@ end
 
 export type function convertToObjectData(t: type)
 	if not t:is("table") then error("Given argument is not a table.") end
-	
+
 	local nT = types.newtable()
 	nT:setindexer(types.any, types.any)
-	
+
 	for k: type, v in t:properties() do
 		local key = k:value()
 		local value = v.read
@@ -284,6 +290,18 @@ export type function convertToObjectData(t: type)
 			for k: type, v in value:properties() do
 				local key = k:value()
 				local value = v.read
+				if not value then continue end
+				
+				if value:is("function") then
+					local params = value:parameters()
+					local head = params.head or {}
+					head[1] = nT
+					
+					value:setparameters(head, types.any)
+				elseif value:is("boolean") then
+					nT:setproperty(types.singleton(key), types.any)
+					continue
+				end
 				
 				nT:setproperty(types.singleton(key), value)
 			end
@@ -293,6 +311,18 @@ export type function convertToObjectData(t: type)
 			for k: type, v in value:properties() do
 				local key = k:value()
 				local value = v.read
+				if not value then continue end
+
+				if value:is("function") then
+					local params = value:parameters()
+					local head = params.head or {}
+					head[1] = nT
+					
+					value:setparameters(head, types.any)
+				elseif value:is("boolean") then
+					nT:setproperty(types.singleton(key), types.any)
+					continue
+				end
 
 				nT:setproperty(types.singleton(key), value)
 			end
@@ -302,15 +332,27 @@ export type function convertToObjectData(t: type)
 			for k: type, v in value:properties() do
 				local key = k:value()
 				local value = v.read
+				if not value then continue end
+
+				if value:is("function") then
+					local params = value:parameters()
+					local head = params.head or {}
+					head[1] = nT
+					
+					value:setparameters(head, types.any)
+				elseif value:is("boolean") then
+					nT:setproperty(types.singleton(key), types.any)
+					continue
+				end
 
 				nT:setproperty(types.singleton(key), value)
 			end
 		end
 	end
-	
+
 	nT:setproperty(types.singleton("super"), types.newfunction({head = {nT}, tail = types.any}, {head = {types.any}}))
 	nT:setproperty(types.singleton("Destroy"), types.newfunction({head = {nT}, tail = types.any}, {head = {types.any}}))
-	
+
 	return nT
 end
 
@@ -321,20 +363,20 @@ end
 ]]
 function Type.type<T>(object: T): string
 	local objType = type(object)
-	
+
 	if not objType then LogError("typeofObjectNotFound", false) end
 	if objType ~= "table" and objType ~= "userdata" then return objType end
-	
+
 	local metatable = getmetatable(object) :: setmetatable<anyTable, anyTable>
 	if not metatable then return objType end
-	
+
 	if metatable["__type"] then return metatable["__type"] end
-	
+
 	if objType == "userdata" then 
 		local _, rType = select(1, pcall(function() return (object :: anyTable)["__type"] end))
 		if rType then return rType end
 	end 
-	
+
 	return objType
 end
 
@@ -344,17 +386,17 @@ end
 function Type.typeof<T>(object: T): string
 	local objType = typeof(object)
 	if not objType then LogError("typeofObjectNotFound", false) end
-	
+
 	if Type.type(object) == "Class" then
 		local metatable = getmetatable(object) :: setmetatable<anyTable, anyTable>
 		if not metatable["__classtype"] then return objType end 
-		
+
 		return metatable["__classtype"]
 	elseif Type.type(object) == "Object" then
 		local _, rType = select(1, pcall(function() return (object :: anyTable)["__objtype"] end))
 		if rType then return rType end
 	end
-	
+
 	return objType
 end
 

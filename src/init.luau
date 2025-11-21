@@ -22,7 +22,7 @@ local LogErrorNonFatal = Logger.logErrorNonFatal
 local LogWarn = Logger.logWarn
 
 local classes = {} :: {[string]: internalClass}
-local classpp = {version = {major = 0, minor = 5, patch = 0, beta = true}, autoObjectDestruction = true} :: classPP
+local classpp = {version = {major = 2, minor = 0, patch = 0, beta = false}, autoObjectDestruction = true} :: classPP
 
 local accessSpecifiers: accessSpecifiers = {"Friend", "Internal", "Private", "Protected", "Public"}
 local overloadableOperators: overloadableOperators = {"operator_add", "operator_div", "operator_eq", "operator_idiv", "operator_mod", "operator_mul", "operator_pow", "operator_sub", "operator_unm"}
@@ -50,17 +50,17 @@ type metatable<T, V = any?> = setmetatable<{T}, {V}>
 local function deepCopy<T>(original: T, copyMetatable: boolean?): T 
 	local original: anyTable = original
 	local copy = table.clone(original)
-	
+
 	for key, value in original do
 		if type(value) ~= "table" then continue end
-		local metatable = getmetatable(value :: any) 
-		
+		local metatable = getmetatable(value :: anyTable) 
+
 		if not metatable then 
 			copy[key] = deepCopy(value, true) 
 		elseif not copyMetatable then 
 			local success, result = pcall(setmetatable, value, {})
 			local copyTable
-			
+
 			if success then 
 				copyTable = result
 			else
@@ -69,13 +69,13 @@ local function deepCopy<T>(original: T, copyMetatable: boolean?): T
 					copyTable[key] = val
 				end
 			end
-			
+
 			copy[key] = deepCopy(copyTable, true) 
 		else 
 			copy[key] = value
 		end
 	end
-	
+
 	return copy
 end
 
@@ -84,9 +84,9 @@ local function recursiveClean(tbl: anyTable)
 	for key, value in tbl do
 		local keyType = typeof(key)
 		local valueType = typeof(value)
-		
+
 		if keyType == "Instance" then key:Destroy() end
-		
+
 		if valueType == "table" then
 			for _, v in tbl do
 				if v == value then return end
@@ -134,7 +134,7 @@ local function garbageCollectionCallback(objectData: objectData)
 			-- We create a copy of the object here, because giving a direct reference to the object will cause this function to never be run.
 			-- This copy will immediately be deleted after destructor runs.
 			local objectCopy = setmetatable({}, {__metatable = "This table is locked."}) :: metatable<{[string]: any}, {__metatable: string}>
-			
+
 			for k, v in objectData.Protected do
 				objectCopy[k] = v
 			end
@@ -145,16 +145,16 @@ local function garbageCollectionCallback(objectData: objectData)
 			for k, v in objectData.Private do
 				objectCopy[k] = v
 			end
-			
+
 			local success, err = pcall(objectData.Internal.destructor, objectCopy)
 			if not success then LogErrorNonFatal("unhandledError", true, {"destructor", err}) end
-			
+
 			objectCleaner(objectData)
 			table.clear(objectCopy)
-			
+
 			objectCopy = nil
 		end
-		
+
 		table.clear(objectData)
 	end
 end
@@ -163,7 +163,7 @@ end
 local function recursiveFindParentFunction(obj: objectData, method: (...any) -> (any), class: internalClass, findType: "constructor" | "function", methodName: string?, ...)
 	local inheritedClass: internalClass? = class.Inherits[1]
 	if not class.classData then return end
-	
+
 	if findType == "constructor" then
 		if inheritedClass and class.classData.constructor == method and inheritedClass.classData then
 			return inheritedClass.classData.constructor(obj, ...)
@@ -177,7 +177,7 @@ local function recursiveFindParentFunction(obj: objectData, method: (...any) -> 
 			local inheritedClassData = inheritedClass.classData
 			local foundPublic: (...any) -> (any?) = inheritedClassData.Public[methodName]
 			local foundProtected: (...any) -> (any?) = inheritedClassData.Protected[methodName]
-			
+
 			if foundPublic and typeof(foundPublic) == "function" and class.classData.Public[methodName] == method then 
 				return foundPublic(obj, ...) 
 			elseif foundProtected and typeof(foundProtected) == "function" and (class.classData.Protected[methodName] == method or class.classData.Public[methodName] == method) then
@@ -211,35 +211,35 @@ local function sortAttributes(classData: defaultClassData, className: string, cl
 	local inheritedClassData = if inheritedClass then inheritedClass.classData else nil
 	local classType = Type.typeof(class)
 	local destructor = objectTbl.Internal.destructor
-	
+
 	function objectTbl.Public.Destroy(obj: objectData)
 		local objectType = Type.type(obj)
 		local objectClassType = Type.typeof(obj)
-		
+
 		if objectType ~= "Object" then LogError("invalidDestructorCall", true) end
 		if objectClassType ~= classType then LogError("classTypeMismatch", true, {objectType, classType}) end
 		if Util.getMethodContext(5) == objectTbl.Internal.constructor then LogError("cannotCallFunctionFrom", true, {"Destroy", "constructor"}) end
-		
+
 		if destructor then 
 			local success, err = pcall(destructor, obj)
 			if not success then LogErrorNonFatal("unhandledError", true, {"destructor", err}) end
 		end
-		
+
 		objectCleaner(objectTbl)
 	end
-	
+
 	function objectTbl.Public.super(obj: objectData, ...)
 		local objectType = Type.type(obj)
 		local objectClassType = Type.typeof(obj)
-		
+
 		if objectType ~= "Object" then LogError("invalidSuperCall", true) end
 		if objectClassType ~= classType then LogError("classTypeMismatch", true, {objectType, classType}) end
 		if inheritedClassNum > 1 or not inheritedClass then LogError("invalidInheritation", true) end
 		if not inheritedClassData then return end
-		
+
 		local method, currentMethod = Util.getMethodContext(5)
 		if method == destructor then LogError("cannotCallFunctionFrom", true, {"super", currentMethod}) end
-		
+
 		if currentMethod == "constructor" then
 			return recursiveFindParentFunction(obj, method, class, "constructor", nil, ...)
 		else
@@ -266,17 +266,17 @@ local function mergeClassDatas(classDataTable: {defaultClassData}, childClassDat
 			end
 		end
 	end
-	
+
 	local function finalize(classData: defaultClassData)
 		for name, _ in newClassData.Protected do
 			if newClassData.Public[name] or newClassData.Private[name] then
 				newClassData.Protected[name] = nil
 			end
 		end
-		
+
 		if classData.constructor then newClassData.constructor = classData.constructor end
 		if classData.destructor then newClassData.destructor = classData.destructor end
-		
+
 		newClassData.Private = classData.Private
 		newClassData.Friend = classData.Friend
 	end
@@ -288,7 +288,7 @@ local function mergeClassDatas(classDataTable: {defaultClassData}, childClassDat
 
 	-- Merge the childClassData.
 	merge(childClassData)
-	
+
 	-- Finalize the merge.
 	finalize(childClassData)
 
@@ -301,7 +301,7 @@ local function returnAccessSpecifier(index: string, objectData: defaultClassData
 	if objectData.Private and objectData.Private[index] ~= nil then return "Private" end
 	if objectData.Protected and objectData.Protected[index] ~= nil then return "Protected" end
 	if objectData.Internal and (objectData.Internal :: any)[index] ~= nil then return "Internal" end
-	
+
 	return nil
 end
 
@@ -309,7 +309,7 @@ end
 local function findPropertyFromIndex(classData: defaultClassData | objectData, index: string, accessSpecifier: string?): any?
 	local fAccessSpecifier = accessSpecifier or returnAccessSpecifier(index, classData)
 	if not fAccessSpecifier then return end
-	
+
 	local attributesData = classData[fAccessSpecifier]
 	return attributesData[index]
 end
@@ -326,7 +326,7 @@ local function checkRedeclaration(classData: defaultClassData, index: string?): 
 
 	if index then
 		local fnumber = 0
-		
+
 		if classData.Public and classData.Public[index] then fnumber += 1 end
 		if classData.Private and classData.Private[index] then fnumber += 1 end
 		if classData.Protected and classData.Protected[index] then fnumber += 1 end
@@ -369,14 +369,14 @@ end
 -- Calls an operator function from the given name.
 local function callOperator(functionName: string, obj: anyTable, obj2: anyTable?, silenceError: boolean?): boolean | any
 	if typeof(obj) == "userdata" then
-		local objFunction = obj[functionName]
+		local objFunction = obj[functionName] :: (...any) -> (any)
 		if objFunction then
 			return objFunction(obj, obj2)
 		elseif not silenceError then
 			LogError("classNoMatchingFunctionError", true, {functionName})
 		end
 	elseif typeof(obj2) == "userdata" then
-		local objFunction = obj2[functionName]
+		local objFunction = obj2[functionName] :: (...any) -> (any)
 		if objFunction then
 			return objFunction(obj2, obj)
 		elseif not silenceError then
@@ -391,14 +391,14 @@ end
 local function setMetamethods(class: internalClass, objectData: objectData, methods: anyTable)
 	local Internal = objectData.Internal
 	methods.__metatable = 'The metatable is locked.'
-	
+
 	function methods:__index(index: string)
 		if Internal.__locked == true then LogError("classObjectLocked", true) end
 
 		local accessSpecifier = returnAccessSpecifier(index, objectData)
 		local rprop = findPropertyFromIndex(objectData, index, accessSpecifier)
 		local isOperatorCall = string.find(index, "operator")
-		
+
 		if accessSpecifier ~= "Public" then
 			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, classes) then
 				LogError("classPropertyIsPrivate", true, {index})
@@ -408,14 +408,14 @@ local function setMetamethods(class: internalClass, objectData: objectData, meth
 				LogError("classPropertyIsInternal", true, {index})
 			end
 		end
-		
+
 		if isOperatorCall then
 			local isFound = Util.binarySearch(overloadableOperators, index)
 			if isFound and Util.getMethodContext(5) ~= callOperator then
 				LogError("nonNativeOperatorCall", true, {index})
 			end
 		end
-		
+
 		if rprop ~= nil then return rprop elseif index ~= "constructor" and index ~= "destructor" and index ~= "__tostring" and not isOperatorCall then LogError("classMemberNotFound", true, {index}) end		
 		return
 	end
@@ -434,11 +434,11 @@ local function setMetamethods(class: internalClass, objectData: objectData, meth
 				LogError("classPropertyIsProtected", true, {index})
 			end
 		end
-		
+
 		local attributesData = objectData[accessSpecifier]
 		local foundAttribute = attributesData[index]
 		if foundAttribute == nil then LogError("classMemberNotFound", true, {index}) elseif foundAttribute == value then return end
-		
+
 		attributesData[index] = value
 	end
 
@@ -477,25 +477,25 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 		overload = function() end,
 		static = function() end
 	}
-	
+
 	newClassData.Public = setmetatable(newClassData.Public or {}, {__newindex = function(t, i, v) 
 		local previousAccessSpecifier = returnAccessSpecifier(i, newClassData)
 		if previousAccessSpecifier then newClassData[previousAccessSpecifier][i] = nil end 
 		rawset(t, i, v)
 	end}) :: any
-	
+
 	newClassData.Private = setmetatable(newClassData.Private or {}, {__newindex = function(t, i, v) 
 		local previousAccessSpecifier = returnAccessSpecifier(i, newClassData)
 		if previousAccessSpecifier then newClassData[previousAccessSpecifier][i] = nil end 
 		rawset(t, i, v)
 	end}) :: any
-	
+
 	newClassData.Protected = setmetatable(newClassData.Protected or {}, {__newindex = function(t, i, v) 
 		local previousAccessSpecifier = returnAccessSpecifier(i, newClassData)
 		if previousAccessSpecifier then newClassData[previousAccessSpecifier][i] = nil end 
 		rawset(t, i, v)
 	end}) :: any
-	
+
 	--// Class Metatable
 
 	local methods = {
@@ -509,7 +509,7 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 		local methodContext = Util.getMethodContext(5)
 		local isNotInClassScope = methodContext ~= Util.inClassScope
 		local isNotCheckFriendShip = methodContext ~= Util.checkFriendship 
-		
+
 		if isNotInClassScope then
 			if i == "__type" then return end
 			if i == "__abstract" then 
@@ -537,7 +537,7 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 
 		local result = newClassData[i] or findPropertyFromIndex(newClassData, i)
 		if not result then return class.Statics[i] end
-		
+
 		local resultType = typeof(result)
 		if resultType == "function" and isNotInClassScope and isNotCheckFriendShip then 
 			LogError("cannotCallFunctionError", true, {i}) 
@@ -553,7 +553,7 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 
 	function methods.__newindex(t: internalClass, i: string, v: any)
 		local methodContext = Util.getMethodContext(5)
-		
+
 		if i == "__type" then return end
 		if i == "__abstract" then 
 			if classpp.abstract == methodContext and v == true then
@@ -570,52 +570,52 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 				return
 			end
 		end
-		
+
 		if not checkValidAccessSpecifier(i) and i ~= "constructor" and i ~= "destructor" then
 			LogError("invalidClassNewIndex", true, {className})
 		end
-		
+
 		newClassData[i] = v
 
 		return v
 	end
-	
+
 	--// Class Methods
-	
+
 	function class.new(...)
 		local newObjData: objectData = sortAttributes(newClassData, className, class)
 		local newObject = newproxy(true)
 		local proxyMethods = getmetatable(newObject)
-		
+
 		if classpp.autoObjectDestruction then
 			runOnGarbageCollection(newObject, function() 
 				garbageCollectionCallback(newObjData)
 				newObjData = nil :: any
 			end)
 		end
-	
+
 		setMetamethods(class, newObjData, proxyMethods)
-		
+
 		if newObjData.Internal.constructor then newObjData.Internal.constructor(newObject, ...) end
-		
+
 		return newObject
 	end
-	
+
 	function class.extends()
 		LogError("extendsDeprecated", true)
 	end
-	
+
 	function class.overload(accessSpecifier: string, name: string, functionTable: {(...any) -> (any)})
 		local accessSpecifierCheck, specifierName = checkValidAccessSpecifier(accessSpecifier)
 		if not accessSpecifierCheck or specifierName and specifierName == "Internal" then LogError("invalidAccessSpecifierError", true) end
 		if not name then LogError("overloadfunctionNameNotSet", true) end
 		if typeof(functionTable) ~= "table" or #functionTable == 0 then LogError("overloadfunctionTableNotGiven", true) end
 		if not specifierName then return end
-		
+
 		for _, func in functionTable do
 			if typeof(func) ~= "function" then LogError("expectedFunctionError", true, {typeof(func)}) end
 		end
-		
+
 		local function overloadHandler(...)
 			if Util.getMethodContext(4) == deepCopy then return end
 
@@ -632,17 +632,17 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 
 			if not f and #args > 0 then LogErrorNonFatal("overloadfunctionArgumentMismatch", false, {#args, name}) end
 		end
-		
+
 		newClassData[specifierName][name] = overloadHandler
 		table.insert(overloadedFunctions, overloadHandler)
 	end
-	
+
 	function class.static(accessSpecifier: string, name: string, property: any)
 		local accessSpecifierCheck, specifierName = checkValidAccessSpecifier(accessSpecifier)
 		if not accessSpecifierCheck or specifierName and specifierName == "Internal" or specifierName and specifierName == "Protected" then LogError("invalidAccessSpecifierError", true) end
 		if not name then LogError("staticMemberNameNotSet", true) end
 		if not class.Statics then return end
-		
+
 		local newObj = newproxy(true)
 		local methods = getmetatable(newObj)
 
@@ -684,20 +684,20 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 		end
 
 		class.Statics[name] = newObj
-		
+
 		return newObj
 	end
-	
+
 	staticFunction = class.static
 	return setmetatable(class, methods)
 end
 
 local function constructClass(classDataArg: defaultClassData, className: string, otherClassDatas: {defaultClassData}?, otherClasses: {internalClass}?)
 	checkValidClassData(classDataArg, className)
-	
+
 	local newClassData: defaultClassData = if not otherClassDatas then classDataArg else mergeClassDatas(otherClassDatas, classDataArg)
 	local nCObj = createClassObject(newClassData, className, otherClasses)
-	
+
 	classes[className] = nCObj
 
 	return nCObj
@@ -715,7 +715,8 @@ returnClassFunction = function(className: string, ...): any
 		for _, class: internalClass in argTable do
 			if Type.type(class) ~= "Class" then continue end
 			if class["__final"] then LogError("attemptToExtendAFinalClass", true) end
-
+			if not class.classData then continue end
+			
 			table.insert(classDataTable, class.classData)
 			table.insert(classTable, class)
 		end
@@ -727,7 +728,7 @@ returnClassFunction = function(className: string, ...): any
 		local class: internalClass = firstArg
 		if class["__final"] then LogError("attemptToExtendAFinalClass", true) end
 		if not class.classData then return end
-		
+
 		local classDataTable: {defaultClassData} = {class.classData}
 		local classTable: {internalClass} = {class}
 

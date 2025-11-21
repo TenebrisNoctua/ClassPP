@@ -25,7 +25,7 @@ type internalClass = Type.internalClass
 function Util.getMethodContext(level: number): ((any) -> (any), string)
 	local f: (any) -> (any)
 	local n: string
-	
+
 	pcall(function() 
 		f = debug.info(level, 'f') 
 		n = debug.info(level, 'n')
@@ -36,7 +36,7 @@ end
 
 function Util.checkInheritance(class: internalClass, classOrMethod: any | () -> ()): boolean
 	for _, inherited in class.Inherits do
-		if inherited == classOrMethod or inherited[classOrMethod] then
+		if inherited == classOrMethod or (inherited :: any)[classOrMethod] then
 			return true
 		end
 	end
@@ -64,7 +64,7 @@ end
 
 function Util.inClassScope(class: internalClass, includeInherited: boolean, includeFriend: boolean, classes: {[string]: internalClass}?, defaultLevel: number?): boolean
 	local level: number = defaultLevel or 6
-	
+
 	while true do
 		local method, methodName = Util.getMethodContext(level)
 		if not method then return false end
@@ -72,7 +72,7 @@ function Util.inClassScope(class: internalClass, includeInherited: boolean, incl
 		if class[methodName] == method then return true end
 		if includeInherited and Util.checkInheritance(class, method) or includeFriend and classes and Util.checkFriendship(class, methodName, method, classes) then return true end
 		if method == typeof or methodName == "overloadHandler" and table.find(class.overloadlist, method) then return true end
-		
+
 		level += 1
 	end
 
@@ -98,7 +98,7 @@ function Util.binarySearch(array: {any}, value: any): any
 			return Middle + 1
 		end
 	end
-	
+
 	return
 end
 

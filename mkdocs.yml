@@ -1,14 +1,25 @@
 site_name: Class++ Documentation
+site_url: https://tenebrisnoctua.github.io/ClassPP/
 repo_name: TenebrisNoctua/Class++
 repo_url: https://github.com/TenebrisNoctua/ClassPP
+
+extra:
+  version:
+    provider: mike
+
 theme:
-  logo: img/cppicon_v2.png
+  logo: img/light/classpp_small.png
+  logo_dark: img/dark/classpp_small.png
+  favicon: img/dark/classpp_fav.png
+  custom_dir: docs/overrides
   name: material
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.top
     - navigation.footer
+    - navigation.path
+    - navigation.indexes 
     - search.suggest
     - search.highlight
     - content.tabs.link
@@ -17,20 +28,25 @@ theme:
   language: en
 
   palette:
-    - scheme: slate
+    - scheme: classppdoc-dark
       toggle:
-        icon: material/toggle-switch-off-outline 
-        name: Light Mode
-      primary: purple
-      accent: purple 
+        icon: octicons/sun-24
+        name: Switch to Light Mode
 
-    - scheme: default 
+    - scheme: classppdoc-light 
       toggle:
-        icon: material/toggle-switch
-        name: Dark Mode 
-      primary: purple
-      accent: purple
-extra_css: [css/extra.css]
+        icon: octicons/moon-24
+        name: Switch To Dark Mode
+  icon:
+    repo: octicons/mark-github-16
+
+extra_css:
+  - css/colors.css
+  - css/theme.css
+  - css/code.css
+  - css/api-reference.css
+  - css/paragraph.css
+  - css/home.css
 
 markdown_extensions:
   - toc
@@ -54,40 +70,49 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Tutorials:
-    - tutorials/gettingStarted.md
-    - Class Creation:
-      - tutorials/classCreation.md
-      - tutorials/accessSpecifiers.md
-      - tutorials/classMethods.md
+    - Tutorials: tutorials/index.md
+    - Basics:
+      - tutorials/basics/classCreation.md
+      - tutorials/basics/accessSpecifiers.md
+      - tutorials/basics/classMethods.md
+      - tutorials/basics/classConstructors.md
     - Advanced:
-      - tutorials/friendAccessSpecifier.md
-      - tutorials/classConstructors.md
-      - tutorials/inheritance.md
-      - tutorials/operatorOverloading.md
-      - tutorials/functionOverloading.md
-      - tutorials/nonAccessSpecifiers.md
-      - tutorials/staticMembers.md
-      - tutorials/polymorphism.md
-      - tutorials/errorHandling.md
-      - tutorials/types.md
-  - API Reference: 
-      - Getting Started: apiReference/gettingStarted.md
-      - Class++ Functions: 
-        - class: apiReference/classFunctions/mainModule/class.md
-        - final: apiReference/classFunctions/mainModule/final.md
-        - abstract: apiReference/classFunctions/mainModule/abstract.md
-        - getClass: apiReference/classFunctions/mainModule/getClass.md
+      - tutorials/advanced/friendAccessSpecifier.md
+      - tutorials/advanced/inheritance.md
+      - tutorials/advanced/operatorOverloading.md
+      - tutorials/advanced/functionOverloading.md
+      - tutorials/advanced/nonAccessSpecifiers.md
+      - tutorials/advanced/staticMembers.md
+      - tutorials/advanced/types.md
+    - Best Practices:
+      - tutorials/best-practices/encapsulation.md
+      - tutorials/best-practices/polymorphism.md
+      - tutorials/best-practices/composition.md
+      - tutorials/best-practices/errorHandling.md
+      - tutorials/best-practices/optimization.md
+  - API Reference:
+      - API Reference: api-reference/index.md
+      - General:
+        - Errors: api-reference/general/errors.md
+        - version: api-reference/general/version.md
+        - autoObjectDestruction: api-reference/general/autoObjectDestruction.md
+      - Functions: 
+        - class: api-reference/class-functions/main/class.md
+        - getClass: api-reference/class-functions/main/getClass.md
+        - final: api-reference/class-functions/main/final.md
+        - abstract: api-reference/class-functions/main/abstract.md
         - Type: 
-          - typeof: apiReference/classFunctions/type/typeof.md
-          - typeofClass: apiReference/classFunctions/type/typeofclass.md
-        - Util:
-          - inClassScope: apiReference/classFunctions/util/inClassScope.md
-          - checkInheritance: apiReference/classFunctions/util/checkInheritance.md
-          - checkFriendship: apiReference/classFunctions/util/checkFriendship.md
+          - type: api-reference/class-functions/type/type.md
+          - typeof: api-reference/class-functions/type/typeof.md
+        - Utility:
+          - inClassScope: api-reference/class-functions/utility/inClassScope.md
+          - checkInheritance: api-reference/class-functions/utility/checkInheritance.md
+          - checkFriendship: api-reference/class-functions/utility/checkFriendship.md
       - Data Types:
-        - apiReference/dataTypes/class.md
-        - apiReference/dataTypes/object.md
+        - api-reference/data-types/class.md
+        - api-reference/data-types/object.md
       - Types:
-        - apiReference/types/classData.md
+        - api-reference/types/classData.md
+        - api-reference/types/version.md
 copyright: |
-  &copy; 2024 <a href="https://github.com/TenebrisNoctua"  target="_blank" rel="noopener">Tenebris Noctua</a>
+  &copy; 2025 <a href="https://github.com/TenebrisNoctua"  target="_blank" rel="noopener">Tenebris Noctua</a>

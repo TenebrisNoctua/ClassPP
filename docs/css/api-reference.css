@@ -1,0 +1,97 @@
+.md-typeset .emojione, .md-typeset .gemoji, .md-typeset .twemoji {
+    --md-icon-size: 1.2em;
+}
+
+.api-header {
+    display: flex;
+	align-items: center;
+	margin: 0 !important;
+	flex-wrap: wrap;
+}
+
+.api-header .api-icon {
+    margin-right: 0.5em
+}
+
+.api-title {
+    font-size: 40px;
+    font-weight: bold;
+    top: -20px
+}
+
+.api-type {
+    font-size: 18px;
+    font-weight: bold;
+    top: -26px;
+    padding-left: 8px;
+}
+
+.api-param-highlight {
+    background-color: var(--td-color);
+    color: var(--default-text-color);
+}
+
+.api-return-box {
+    width: 1000px;
+}
+
+.api-returns-title {
+    font-size: 1.5625em; 
+    margin-bottom: -20px; 
+    margin-top: -20px;
+}
+
+.api-summary-list {
+    border-radius: 1.2em;
+    background-color: var(--summary-bg-color);
+}
+
+.api-summary-section {
+    padding-left: 1.5em;
+}
+
+.api-summary-section-bottom {
+    padding-left: 1.5em;
+    padding-bottom: 1em;
+}
+
+.api-summary-section-list {
+    padding-left: 2em;
+    margin-top: 0;
+    width: 95%;
+}
+
+.api-property-type {
+    vertical-align: middle;
+	font-size: 0.8em;
+	margin-left: 0.1em;
+    margin-right: 0.2em;
+	font-weight: 400;
+    color: var(--property-type-color);
+}
+
+.api-access-type {
+    font-weight: 500;
+    font-style: normal;
+    line-height: 20px;
+    font-size: 15px;
+    text-transform: none;
+    align-items: center;
+    background-color: rgb(99, 87, 87);
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: inline-flex;
+    float: right;
+    height: 24px;
+    width: auto;
+    text-align: center;
+    padding: 6px;
+}
+
+.operator_overloading_method {
+    width: 30%;
+}
+
+.operator_overloading_description {
+    width: 50%;
+}

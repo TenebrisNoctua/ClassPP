@@ -1,4 +1,4 @@
-<img src="./.github/images/classppiconextended.svg" alt="Class++">
+<img src="./.github/images/ClassPP_Expanded.svg" width=60% alt="Class++">
 
 ## Overload Your Classes.
 

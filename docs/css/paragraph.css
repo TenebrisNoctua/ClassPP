@@ -1,0 +1,37 @@
+.md-typeset hr {
+    border-bottom: .05rem solid var(--hr-color);
+}
+
+.md-typeset h3 {
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.md-typeset h3:not(.api-summary-list-h3, .api-summary-section-h3) {
+    margin: 1.6em 0 .8em;
+}
+
+.api-summary-list-h3 {
+    padding-left: 1em;
+    padding-top: 1em;
+}
+
+.api-summary-section-h3 {
+    padding-left: 1em;
+    padding-top: 0.8em
+}
+
+.md-typeset h4 {
+    font-weight: 700;
+    letter-spacing: -.01em;
+    margin: 1em 0;
+}
+
+.md-typeset h4:is([id^="returns"], [id^="parameters"]) {
+    margin: 1em 0;
+    line-height: 1.5;
+    font-size: 1.25em;
+}

@@ -21,7 +21,7 @@
     Classes were never this easy to create, and advanced before on Roblox.
 </p>
 <nav> 
-<a href="tutorials/gettingStarted" id="classppNavButton">Getting Started</a>
+<a href="tutorials" id="classppNavButton">Getting Started</a>
 <a href="https://github.com/TenebrisNoctua/ClassPP/releases/latest" id="classppNavButton">Download</a>
 </nav>
 </section>

@@ -1,0 +1,87 @@
+[dir=ltr] .md-header__title {
+    margin-left: 0.5rem;
+    margin-right: .4rem;
+}
+
+.md-footer {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.md-footer__title {
+    color: var(--footer-fg-color);
+}
+
+.md-footer__direction {
+    color: var(--footer-fg-color);
+}
+
+.md-footer__button {
+    color: var(--footer-fg-color);
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+    height: 2rem;
+}
+
+.md-header__button.md-logo {
+    margin-right: 0
+}
+
+#classppTitle {
+    font-weight: 700;
+    letter-spacing: -.02em;
+    z-index: inherit;
+    color: var(--title-text-color);
+}
+
+.classppTitleDes {
+    z-index: inherit;
+}
+
+#classppTitleSeperator {
+    margin-top: -30px;
+    width: 33%;
+    border: none;
+    height: 2px;
+    color: #333;
+    background-color: #333;
+}
+
+#classppMainSection {
+    position: relative;
+    min-height: 30rem;
+    font-size: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    z-index: 1;
+}
+
+#classppMainSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    background-size: 60vh 43vh;
+    background-position: center right;
+    background-image: var(--main-section-image);
+    z-index: 0;
+    margin-bottom: 12%;
+}
+
+#classppNavButton {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    font-weight: 610;
+    font-size: 0.76rem;
+    border-radius: 0.3rem;
+    position: relative;
+}

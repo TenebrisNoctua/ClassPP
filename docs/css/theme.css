@@ -1,0 +1,139 @@
+[data-md-color-scheme="classppdoc-dark"] {
+    --default-text-color: var(--text-color-white);
+    --title-text-color: var(--title-text-color-white);
+
+    --button-background-color: var(--button-bg-color-white);
+    --button-text-color: var(--button-text-color-dark);
+
+    --md-typeset-color: var(--text-color-white);
+    --md-typeset-a-color: var(--typeset-a-color);
+
+    --md-footer-fg-color: var(--footer-fg-color-white);
+
+    --md-primary-bg-color: var(--text-color-white);
+    --md-primary-fg-color: var(--top-background-color-dark);
+    --md-default-bg-color: var(--main-background-color-dark);
+    --md-default-fg-color: var(--text-color-white);
+
+    --md-primary-bg-color--light: var(--text-color-white);
+    --md-default-fg-color--light: var(--text-color-white);
+    --md-footer-fg-color--light: var(--text-color-white);
+
+    --md-typeset-table-color: var(--table-background-color-dark);
+    --td-color: var(--td-color-dark);
+
+    --md-admonition-fg-color: var(--admonition-fg-color-dark);
+	--md-admonition-bg-color: var(--admonition-bg-color-dark);
+
+    --hr-color: var(--hr-dark);
+
+    --summary-bg-color: var(--summary-bg-color-dark);
+
+    --property-type-color: var(--code-fg-color-white);
+
+    --main-section-image: url("../img/dark/classpp_large.png");
+}
+
+[data-md-color-scheme="classppdoc-light"] {
+    --default-text-color: var(--text-color-dark);
+    --title-text-color: var(--title-text-color-dark);
+
+    --button-background-color: var(--button-bg-color-dark);
+    --button-text-color: var(--button-text-color-white);
+    
+    --md-typeset-color: var(--text-color-dark);
+    --md-typeset-a-color: var(--typeset-a-color);
+
+    --md-footer-fg-color: var(--footer-fg-color-dark);
+
+    --md-primary-bg-color: var(--text-color-dark);
+    --md-primary-fg-color: var(--top-background-color-white);
+    --md-default-bg-color: var(--main-background-color-white);
+    --md-default-fg-color: var(--text-color-dark);
+
+    --md-primary-bg-color--light: var(--text-color-dark);
+    --md-default-fg-color--light: var(--text-color-dark);
+    --md-footer-fg-color--light: var(--text-color-dark);
+
+    --md-typeset-table-color: var(--table-background-color-white);
+    --td-color: var(--td-color-white);
+
+    --md-admonition-fg-color: var(--admonition-fg-color-white);
+	--md-admonition-bg-color: var(--admonition-bg-color-white);
+
+    --hr-color: var(--hr-white);
+    
+    --summary-bg-color: var(--summary-bg-color-white);
+
+    --property-type-color: var(--code-fg-color-dark);
+
+    --main-section-image: url("../img/light/classpp_large.png");
+}
+
+[data-md-color-scheme="classppdoc-light"] .dark-theme-only,
+[data-md-color-scheme="classppdoc-dark"] .light-theme-only,
+[data-md-color-scheme="classppdoc-light"] img[src$="#only-dark"],
+[data-md-color-scheme="classppdoc-dark"] img[src$="#only-light"] {
+	display: none !important;
+}
+
+.md-typeset a {
+    color: var(--md-typeset-a-color);
+    word-break: break-word;
+}
+
+.md-typeset__table table:not([class]) {
+    font-size: .80rem;
+    width: 100%;
+    border-radius: 0.5em;
+    border: none;
+    background-color: var(--md-typeset-table-color);
+}
+
+.md-typeset__table {
+    width: 100%;
+    padding-left: 0.5em;
+    margin-bottom: 0em;
+    padding: 0 0.5rem;
+}
+
+td {
+    border: none;
+    width: fit-content;
+}
+
+.md-typeset :is(.admonition, details) > :is(.admonition-title, summary) {
+	background-color: var(--md-admonition-bg-color);
+    border-radius: 0.4rem;
+}
+
+.md-typeset .admonition {
+    border-radius: 0.4rem;
+}
+
+.md-banner {
+    background-color: var(--md-default-bg-color);
+    color: var(--md-default-fg-color);
+    display: grid;
+}
+
+.md-copyright__highlight {
+    color: var(--md-default-fg-color);
+}
+
+.md-footer-meta {
+    background-color: transparent;
+}
+
+html .md-footer-meta.md-typeset a {
+    color: var(--md-default-fg-color);
+}
+
+.md-search__form {
+    background-color: transparent;
+    border-radius: 0.25rem;
+}
+
+.md-copyright {
+    color: var(--md-footer-fg-color);
+}

@@ -2,7 +2,7 @@
 
 Sometimes, you may wish to access the private members of a class without having to use a class method. Perhaps for a utility or a library function, you may wish to grant them access to the private members of your class. This is where the friend access specifier comes in. 
 
-The friend access specifier allows all functions, and even classes, defined inside itself to access the private members of a class.
+The friend access specifier allows all functions, and even other classes, defined inside itself to access the private members of a class.
 
 !!! warning
     Members of this access specifier will not be replicated to objects, rather, these members are stored in the class itself.

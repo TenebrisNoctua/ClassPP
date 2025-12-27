@@ -31,7 +31,7 @@ getLicensePlate(newCar)
 ```
 
 In this example, we have a "Car" class that contains a private member called `License_Plate`, and a local function called `getLicensePlate`.
-By passing the reference to the `getLicensePlate` function inside the friend access specifier, this function is now able to access the private members of a class.
+By passing the reference of the `getLicensePlate` function to inside the friend access specifier, this function is now able to access the private members of a class.
 
 !!! info
     Besides functions, friend access specifier can include other classes as well.

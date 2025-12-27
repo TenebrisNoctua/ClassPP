@@ -8,7 +8,7 @@ There are currently 4 access specifiers in Class++: `Public`, `Private`, `Protec
 
 ## Public Access Specifier
 
-The public access specifier allows the members to be accessed from anywhere. Whether it be from a function inside the class or from the main thread, the member is accessible and can be modified.
+The public access specifier allows the member to be accessed from anywhere. Whether it be from a function inside the class or from the main thread, the member is accessible and can be modified.
 
 ```luau
 local class = ClassPP.class

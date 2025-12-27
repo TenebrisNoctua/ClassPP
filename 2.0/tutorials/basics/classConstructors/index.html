@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../img/dark/classpp_fav.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -703,6 +703,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Class Destructors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-object-destruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Object Destruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2221,6 +2238,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Class Destructors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-object-destruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Object Destruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2310,15 +2344,15 @@
 
 
 <h1 id="class-constructors-and-destructors">Class Constructors and Destructors</h1>
-<p>Up until this point, when we created an object from a class and we wanted to update the object, we had to update it either in a class method or outside of the class. Especially when it comes to updating private members, this can get tedious, as you have to define a class method every time if you want to update them after creation. <br></p>
+<p>Up until this point, we have only updated an object's members from either on the main thread, or inside of a class method. This is fine when it comes to public members, as they can be accessed anywhere. However, when it comes to other member types, such as private members, this can become <em>tedious</em>, as you have to call a class method every single time if you want to update them after object creation.</p>
 <p>Fortunately, to solve these issues, there are 2 special functions that you can define in every class, called: <code>constructor</code> and <code>destructor</code>.</p>
 <h2 id="class-constructors">Class Constructors</h2>
 <p>A constructor is a special function that gets called when an object is created. To create a constructor, you have to specifically define a function called <code>constructor</code> outside of the access specifiers. Constructors can be really useful for setting initial values for certain members.</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nv">constructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;YYYY&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="nv">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;YYYY&quot;</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kr">end</span><span class="p">,</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lamborghini&quot;</span><span class="p">,</span>
@@ -2330,16 +2364,16 @@
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
 </code></pre></div>
-When <code>Car.new()</code> is called, it will automatically call the constructor function.</p>
+<p>When <code>Car.new()</code> is called, it will automatically call the constructor function.</p>
 <h3 id="constructor-parameters">Constructor Parameters</h3>
 <p>Constructors, like regular class methods, can take parameters. Unlike class methods however, a constructor will always have <code>self</code> (the object) as the first parameter, regardless of how you call the <code>class.new()</code> function.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nv">constructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">,</span><span class="w"> </span><span class="nv">brand</span><span class="p">,</span><span class="w"> </span><span class="nv">model</span><span class="p">,</span><span class="w"> </span><span class="nv">licensePlate</span><span class="p">)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">licensePlate</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">brand</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">Model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">model</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="nv">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">licensePlate</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">brand</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="nv">Model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">model</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="kr">end</span><span class="p">,</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -2349,26 +2383,26 @@ When <code>Car.new()</code> is called, it will automatically call the constructo
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">}</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;ABCD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Ford&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Mustang&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nb">print</span><span class="p">(</span><span class="nv">newCar</span><span class="p">.</span><span class="py">Brand</span><span class="p">,</span><span class="w"> </span><span class="nv">newCar</span><span class="p">.</span><span class="py">Model</span><span class="p">,</span><span class="w"> </span><span class="nv">newCar</span><span class="p">.</span><span class="py">License_Plate</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Prints &quot;ABCD, Ford, Mustang&quot;!</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nf">print</span><span class="p">(</span><span class="nv">newCar</span><span class="p">.</span><span class="nv">Brand</span><span class="p">,</span><span class="w"> </span><span class="nv">newCar</span><span class="p">.</span><span class="nv">Model</span><span class="p">,</span><span class="w"> </span><span class="nv">newCar</span><span class="p">.</span><span class="nv">License_Plate</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Prints &quot;ABCD, Ford, Mustang&quot;!</span>
 </code></pre></div>
 <h2 id="class-destructors">Class Destructors</h2>
-<p>A destructor is a special function that runs when you call the default <code>:Destroy()</code> method on an object. To create a destructor, you have to specifically define a function called <code>destructor</code> outside of the Access Specifiers.</p>
+<p>A destructor is a special function that runs when you call the default <code>:Destroy()</code> method on an object. To create a destructor, you have to specifically define a function called <code>destructor</code> outside of the access specifiers.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p><code>object:Destroy()</code> is a reserved special method that all objects have. Due to this, you cannot define any member or a method that is called "Destroy".</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nv">constructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">,</span><span class="w"> </span><span class="nv">brand</span><span class="p">,</span><span class="w"> </span><span class="nv">model</span><span class="p">,</span><span class="w"> </span><span class="nv">licensePlate</span><span class="p">)</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">licensePlate</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">brand</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">Model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">model</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="nv">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">licensePlate</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">brand</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="nv">Model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">model</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="kr">end</span><span class="p">,</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nv">destructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">)</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">Model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="nv">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="nv">Model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="kr">end</span><span class="p">,</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -2378,17 +2412,17 @@ When <code>Car.new()</code> is called, it will automatically call the constructo
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="p">}</span>
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">&quot;ABCD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Ford&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Mustang&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="nb">print</span><span class="p">(</span><span class="nv">newCar</span><span class="p">.</span><span class="py">Brand</span><span class="p">,</span><span class="w"> </span><span class="nv">newCar</span><span class="p">.</span><span class="py">Model</span><span class="p">,</span><span class="w"> </span><span class="nv">newCar</span><span class="p">.</span><span class="py">License_Plate</span><span class="p">)</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="nf">print</span><span class="p">(</span><span class="nv">newCar</span><span class="p">.</span><span class="nv">Brand</span><span class="p">,</span><span class="w"> </span><span class="nv">newCar</span><span class="p">.</span><span class="nv">Model</span><span class="p">,</span><span class="w"> </span><span class="nv">newCar</span><span class="p">.</span><span class="nv">License_Plate</span><span class="p">)</span>
 <a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="nv">newCar</span><span class="p">:</span><span class="nf">Destroy</span><span class="p">()</span><span class="w"> </span><span class="c1">-- The class object will now be destroyed</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="nv">newCar</span><span class="p">:</span><span class="nc">Destroy</span><span class="p">()</span><span class="w"> </span><span class="c1">-- The class object will now be destroyed</span>
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">nil</span>
 </code></pre></div>
 <p>Unlike <code>constructor</code>, the <code>destructor</code> function does not take any additional parameters, and the only parameter will be the <code>self</code> pointing to the object. After the <code>destructor</code> is called, all members inside the object will be set to <code>nil</code>, and the object will be locked, preventing any further access. At this stage, the object should be treated as completely empty and gone, so you should remove all references to the object to prevent memory leaks.</p>
-<p>Instances, threads and connections inside an object will automatically be destroyed and cleared during the clearing process as well.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>While manual memory management is recommended, Class++ will still automatically call the <code>destructor</code> function on any object that no longer has any references (if it has not been destroyed yet). This is to prevent memory leaks that might cause problems if you have objects that can put a heavy toll on the memory.</p>
-</div>
+<p>Instances, threads and connections inside an object will automatically be cleared and destroyed during the clearing process as well.</p>
+<h3 id="automatic-object-destruction">Automatic Object Destruction</h3>
+<p>Unlike any other class and object creation system in Luau, Class++ comes with a built-in automatic object destruction system. This system automatically destroys an object when it deems there are no longer any references made to the object itself. </p>
+<p>If this system detects that there are no longer any references made to an object, it will first call the <code>destructor</code> function for the object, if defined. And next, it will apply the standard destruction protocol for the object, clearing any data left inside.</p>
+<p>This system reduces potential memory leaks that may happen due to non-destroyed objects that still have data stored in memory. However, if you wish to apply full manual memory management instead, you can set the <code>autoObjectDestruction</code> property of the main library to <code>false</code>.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Constructor and Destructor functions can also be written in the outside class definition syntax.</p>
@@ -2494,10 +2528,10 @@ When <code>Car.new()</code> is called, it will automatically call the constructo
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

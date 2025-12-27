@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../img/dark/classpp_fav.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2097,10 +2097,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
+  <a href="#what-you-should-know" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Requirements
+        What You Should Know
       
     </span>
   </a>
@@ -2116,16 +2116,72 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-a-testing-script" class="md-nav__link">
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-via-roblox" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating A Testing Script
+        Installing via Roblox
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-as-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing as Source Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-from-roblox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing from Roblox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-from-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing from Source Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2198,35 +2254,71 @@
 
 
 <h1 id="getting-started">Getting Started</h1>
-<p>Welcome to the tutorial section of Class++ !
-<br>
-Here, you will learn what you need to install Class++, how to install it, and how to create a basic testing script.</p>
-<h2 id="requirements">Requirements</h2>
-<p>To use Class++, you don't need to be an expert developer, all you need is:</p>
+<p>Welcome to the Class++ tutorial section! In here, you will learn how to use and build systems with Class++.</p>
+<h2 id="what-you-should-know">What You Should Know</h2>
+<p>While you don't need to be an expert programmer to use Class++, you should still have:</p>
 <ul>
-<li>Basic understanding on the concept of OOP (Object Oriented Programming), and Classes.</li>
-<li>Basic understanding on how <a href="https://create.roblox.com/docs/luau/metatables">metatables</a> work in Roblox.</li>
+<li>Basic knowledge of Luau.</li>
+<li>While not a requirement, having basic knowledge of <a href="https://create.roblox.com/docs/luau/metatables">metatables</a> will definitely benefit you.</li>
+<li>Basic understanding on the concept of OOP (Object Oriented Programming).</li>
 </ul>
-<p>Basically, if you're already experienced with OOP, you're good to go!
-<br>
-Especially, if you already have knowledge in languages like C++ and Java, your job will be pretty easy.</p>
+<p>Some tutorials may seem harder or easier depending on your existing knowledge. It is recommended that you follow each one in order, and try the given examples on your own.</p>
 <h2 id="installation">Installation</h2>
-<p>Installing Class++ is pretty easy! Just head over to this <a href="https://github.com/TenebrisNoctua/ClassPP/releases/latest">link</a> to download the <code>.rbxm</code> file that contains the source code.</p>
-<p>After the download, open Roblox Studio, go into the place that you want to import Class++ to, and right click on the <code>ReplicatedStorage</code> (or the location that you want to insert into), and select "Insert from File".</p>
-<p>Select the <code>ClassPP.rbxm</code> file that you just downloaded, and if the <code>ClassPP</code> module script has appeared, congratulations, the installation is complete!</p>
-<h2 id="creating-a-testing-script">Creating A Testing Script</h2>
-<p>Now that you've installed Class++, we can create a script to test if it has been successfully installed:</p>
+<h3 id="installing-via-roblox">Installing via Roblox</h3>
+<p>If you are creating experiences in Roblox, and you wish to install Class++, you can either:</p>
+<ul>
+<li>Download the <code>.rbxm</code> file that contains the source code from the <a href="https://github.com/TenebrisNoctua/ClassPP/releases/latest">latest release</a>.</li>
+<li>1: Then, in Roblox Studio, right click the location (e.g, <code>ReplicatedStorage</code>) that you wish to insert this file to.</li>
+<li>2: Go to "Insert &gt; Import Roblox Model".</li>
+<li>
+<p>3: Select the <code>ClassPP.rbxm</code> file that you've just downloaded.</p>
+</li>
+<li>
+<p>Get the source code from <a href="https://create.roblox.com/store/asset/18312821151/Class">Roblox Creator Store</a>.</p>
+</li>
+<li>1: Then, in Roblox Studio, open Toolbox.</li>
+<li>2: Go to "Inventory &gt; Models".</li>
+<li>3: Select the "Class++" item on your inventory. It should automatically be inserted into <code>Workspace</code>.</li>
+</ul>
+<h3 id="installing-as-source-code">Installing as Source Code</h3>
+<p>If you're using pure Luau, or if you're just synchronising external files into Roblox Studio, then you can use the source code instead.<br>
+To do this, you can either:</p>
+<ul>
+<li>From the <a href="https://github.com/TenebrisNoctua/ClassPP/releases/latest">latest release</a>, download the source code as zip.</li>
+<li>1: Inside the zip, copy the <code>src</code> folder.</li>
+<li>2: Paste this folder into wherever you please, for example, inside another folder named <code>lib</code> or <code>shared</code>.</li>
+<li>
+<p>3: Rename this pasted <code>src</code> folder as "ClassPP".</p>
+</li>
+<li>
+<p>From the <a href="https://wally.run/package/tenebrisnoctua/classpp">wally package manager</a>.</p>
+</li>
+<li>1: Copy the code on the "Install" section.</li>
+<li>2: Inside your <code>wally.toml</code> file, paste this code under the "dependencies" section.</li>
+<li>3: Run <code>wally install</code> through the command line.</li>
+</ul>
+<h2 id="testing">Testing</h2>
+<p>To make sure if Class++ has been successfully installed or not, you can create a simple script to test.</p>
+<h3 id="testing-from-roblox">Testing from Roblox</h3>
 <ul>
 <li>1: Create a <code>Script</code> or a <code>LocalScript</code> instance, and parent it to <code>workspace</code> or <code>StarterPlayer &gt; StarterPlayerScripts</code>.</li>
 <li>2: Remove the <code>print("Hello World")</code> line, and paste the following code in:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">ReplicatedStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">game</span><span class="p">:</span><span class="nf">GetService</span><span class="p">(</span><span class="s2">&quot;ReplicatedStorage&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- If you&#39;ve inserted it to somewhere else, you can change this line.</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">ClassPP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="py">ClassPP</span><span class="p">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">ReplicatedStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">game</span><span class="p">:</span><span class="nc">GetService</span><span class="p">(</span><span class="s2">&quot;ReplicatedStorage&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- If you&#39;ve inserted it to somewhere else, you can change this line.</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">ClassPP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">ClassPP</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 </code></pre></div>
 <ul>
 <li>3: Press "Play" or "Run". If everything is working properly and there are no errors, you're good to go!</li>
 </ul>
+<h3 id="testing-from-source-code">Testing from Source Code</h3>
+<p>If you're using the source code, you can <code>require()</code> Class++ in one of the following ways:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">-- Rojo (Roblox Instance)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">ClassPP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="nv">ReplicatedStorage</span><span class="p">.</span><span class="nv">ClassPP</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">-- Vanilla Luau (Using Require By String)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kd">local</span><span class="w"> </span><span class="nv">ClassPP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="s2">&quot;../shared/ClassPP&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 
 
@@ -2328,10 +2420,10 @@ Especially, if you already have knowledge in languages like C++ and Java, your j
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

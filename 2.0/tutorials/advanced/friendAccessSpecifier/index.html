@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../img/dark/classpp_fav.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2187,18 +2187,19 @@
 
 
 <h1 id="friend-access-specifier">Friend Access Specifier</h1>
-<p>Friend access specifier allows anyone defined in that access specifier to access the private members of a class.</p>
+<p>Sometimes, you may wish to access the private members of a class without having to use a class method. Perhaps for a utility or a library function, you may wish to grant them access to the private members of your class. This is where the friend access specifier comes in. </p>
+<p>The friend access specifier allows all functions, and even classes, defined inside itself to access the private members of a class.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Members of this access specifier will not be replicated to objects, rather, these members are stored in the class itself. And they can only be used to allow functions or classes to have access to Private or Protected members of a class.</p>
+<p>Members of this access specifier will not be replicated to objects, rather, these members are stored in the class itself.</p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">getLicensePlate</span><span class="p">(</span><span class="nv">object</span><span class="p">:</span><span class="w"> </span><span class="py">any</span><span class="p">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">object</span><span class="p">.</span><span class="py">License_Plate</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">getLicensePlate</span><span class="p">(</span><span class="nv">object</span><span class="p">:</span><span class="w"> </span><span class="nc">any</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nv">object</span><span class="p">.</span><span class="nv">License_Plate</span><span class="p">)</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kr">end</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lamborghini&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">},</span>
@@ -2213,11 +2214,12 @@
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="nf">getLicensePlate</span><span class="p">(</span><span class="nv">newCar</span><span class="p">)</span>
 </code></pre></div>
-<p>In this example, we updated the previous class to include a function in the <code>Friend</code> access specifier, this function is now able to access the private members of this class. </p>
+<p>In this example, we have a "Car" class that contains a private member called <code>License_Plate</code>, and a local function called <code>getLicensePlate</code>.
+By passing the reference to the <code>getLicensePlate</code> function inside the friend access specifier, this function is now able to access the private members of a class.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Aside from functions, <code>Friend</code> access specifier can include other classes as well.
-Classes can be saved by using their variables, or their names. You can put a string inside the <code>Friend</code> access specifier that has a class's name, and it will still work!</p>
+<p>Besides functions, friend access specifier can include other classes as well.
+Classes can be saved by using their variables, or their names. You can put a string inside the friend access specifier that contains a class's name, and it will still work!</p>
 </div>
 
 
@@ -2320,10 +2322,10 @@ Classes can be saved by using their variables, or their names. You can put a str
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

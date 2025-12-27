@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../img/dark/classpp_fav.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -675,6 +675,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Outside Class Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typechecking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typechecking
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2221,6 +2238,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Outside Class Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typechecking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typechecking
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2310,23 +2344,24 @@
 
 
 <h1 id="class-functions">Class Functions</h1>
-<p>Just like in other OO languages, there are two ways to define a function <em>(method)</em> inside a class:</p>
+<p>So far, we have only created simple members that hold simple values, what about <em>functions</em>?</p>
+<p>Just like in other object oriented languages, there are two ways to define a function <em>(method)</em> inside a class:</p>
 <ul>
 <li>Inside class definition</li>
 <li>Outside class definition</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Class Functions are also called Class Methods, and we will use this term from now on in later pages.</p>
+<p>Class Functions are also called Class Methods, and we will use this term from now on in later pages of the tutorials.</p>
 </div>
 <h2 id="inside-class-definition">Inside Class Definition</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lamborghini&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nv">getLicensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">License_Plate</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">            </span><span class="nf">print</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="nv">License_Plate</span><span class="p">)</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="kr">end</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p">},</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nv">Private</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -2334,15 +2369,15 @@
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
 </code></pre></div>
-<p>In this example, we have defined a function inside the Public Access Specifier called <code>getLicensePlate</code>, this function when called will print the license plate of our object. </p>
+<p>In this example, we have defined a new function inside the public access specifier called <code>getLicensePlate</code>, this function when called will print the license plate of our object. </p>
 <p>Now, let's create an object from this class:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lamborghini&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="nv">getLicensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">)</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">License_Plate</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="nf">print</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="nv">License_Plate</span><span class="p">)</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="kr">end</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="p">},</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nv">Private</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -2351,21 +2386,21 @@
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="nv">newCar</span><span class="p">:</span><span class="nf">getLicensePlate</span><span class="p">()</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="nv">newCar</span><span class="p">:</span><span class="nc">getLicensePlate</span><span class="p">()</span>
 </code></pre></div>
-<p>You might have noticed that we've called the <code>getLicensePlate</code> function with the <code>:</code> (colon) operator. This is a syntax sugar that we use to pass the object itself as the first argument to a function. Calling a function with the <code>:</code> operator is equivalent to calling it like <code>object.method(object)</code>, but it makes our job easier because we don't have to manually pass the object every single time.</p>
-<p>Due to this, the first argument of a function will always be what we call <code>self</code>, that is a pointer to the object. We use it to access the object's properties and functions from a class function.</p>
+<p>You might have noticed that we've called the <code>getLicensePlate</code> function with the <code>:</code> (colon) operator. This is a syntax sugar that we use to pass the object itself as the first argument to a function. Calling a function with the <code>:</code> operator is equivalent to calling it like <code>object.method(object)</code>, but it makes our job easier because we don't have to manually pass the object every single time when calling the function.</p>
+<p>Due to this, the first argument of a function will always be what we call <code>self</code>, that is a pointer to the object. We use it to access the object's properties inside the function.</p>
 <h3 id="functions-with-multiple-parameters">Functions with multiple parameters</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lamborghini&quot;</span><span class="p">,</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="nv">setLicensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">,</span><span class="w"> </span><span class="nv">newPlate</span><span class="p">)</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">            </span><span class="nv">self</span><span class="p">.</span><span class="py">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">newPlate</span><span class="w"> </span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">            </span><span class="nv">self</span><span class="p">.</span><span class="nv">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">newPlate</span><span class="w"> </span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="kr">end</span><span class="p">,</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="nv">getLicensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">)</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">            </span><span class="kr">return</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">License_Plate</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">            </span><span class="kr">return</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="nv">License_Plate</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="kr">end</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="p">},</span>
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nv">Private</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -2374,16 +2409,15 @@
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nv">newCar</span><span class="p">:</span><span class="nf">setLicensePlate</span><span class="p">(</span><span class="s2">&quot;A1B2C3&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Calling the function with an argument</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="nb">print</span><span class="p">(</span><span class="nv">newCar</span><span class="p">:</span><span class="nf">getLicensePlate</span><span class="p">())</span><span class="w"> </span><span class="c1">-- Prints &quot;A1B2C3&quot;!</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nv">newCar</span><span class="p">:</span><span class="nc">setLicensePlate</span><span class="p">(</span><span class="s2">&quot;A1B2C3&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Calling the function with an argument</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="nf">print</span><span class="p">(</span><span class="nv">newCar</span><span class="p">:</span><span class="nc">getLicensePlate</span><span class="p">())</span><span class="w"> </span><span class="c1">-- Prints &quot;A1B2C3&quot;!</span>
 </code></pre></div>
-<p>In the example above, we added a new function called <code>setLicensePlate</code> that updates the private member <code>License_Plate</code> with the provided <code>newPlate</code> parameter. We've also updated the <code>getLicensePlate</code> function to return the private member <code>License_Plate</code>, which we then use to print the now updated value of the member. As you can see, you can call the class functions with multiple parameters easily by following the method in the example. <br></p>
-<p>You can also notice that since the <code>self</code> is the first argument, all the other arguments that come after will start at 2.</p>
+<p>In the example above, we added a new function called <code>setLicensePlate</code> that updates the private member <code>License_Plate</code> with the provided <code>newPlate</code> parameter. We've also updated the <code>getLicensePlate</code> function to return the private member <code>License_Plate</code>, which we then use to print the now updated value of the member. Make sure to remember that <code>self</code> should always be the first parameter, and all the other parameters should come after it.</p>
 <h2 id="outside-class-definition">Outside Class Definition</h2>
-<p>To define a function outside of the class, you must define it as: <br><code>function Class.&lt;accessSpecifier&gt;:&lt;functionName&gt;</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<p>You're not limited to always defining functions inside of the <code>classData</code> itself. You can also define it outside of the <code>classData</code>, by using the method shown below.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lamborghini&quot;</span><span class="p">,</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">},</span>
@@ -2392,21 +2426,41 @@
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Car</span><span class="p">.</span><span class="nc">Public</span><span class="p">:</span><span class="nf">getLicensePlate</span><span class="p">(</span><span class="nv">number</span><span class="p">)</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="py">License_Plate</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Prints &quot;XXXX 1&quot;!</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Car</span><span class="p">.</span><span class="nc">Public</span><span class="p">:</span><span class="nf">getLicensePlate</span><span class="p">(</span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="c1">-- You should always define a function through the Class.AccessSpecifier:FunctionName syntax.</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="nv">License_Plate</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Prints &quot;XXXX 1&quot;!</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="kr">end</span>
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
 <a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="nv">newCar</span><span class="p">:</span><span class="nf">getLicensePlate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="nv">newCar</span><span class="p">:</span><span class="nc">getLicensePlate</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
 </code></pre></div>
-<p>In this example, we defined a function outside of the class by specifying the class name, then the access specifier, followed by the <code>:</code> operator and the name of the function. Unlike in some other OO languages, you do not have to define the function inside the class data first to use this method.</p>
+<p>In this example, we defined a function outside of the class by specifying the class name, then the access specifier, followed by the <code>:</code> operator and the name of the function.</p>
+<h3 id="typechecking">Typechecking</h3>
+<p>Unlike any other object oriented language such as C++, Class++ does not require you to define class functions inside the <code>classData</code> first to use the outside class definition method. However, it comes with certain disadvantages.</p>
+<p>Unfortunately, defining class functions this way alone will not give you any intellisense when you're calling the function through the object.
+This is due to the limitations of the Luau's typechecking system. So, to get around this, we define the class function first inside the <code>classData</code> with only its parameter types, and then using the outside class definition method, we define the actual body of the function outside of the <code>classData</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">ClassPP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">require</span><span class="p">(</span><span class="s1">&#39;./ClassPP&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lamborghini&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nv">getLicensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="kr">end</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nv">Private</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="nv">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;XXXX&quot;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">}</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="kr">function</span><span class="w"> </span><span class="nc">Car</span><span class="p">.</span><span class="nc">Public</span><span class="p">:</span><span class="nf">getLicensePlate</span><span class="p">(</span><span class="nv">number</span><span class="p">)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nv">self</span><span class="p">.</span><span class="nv">License_Plate</span><span class="p">,</span><span class="w"> </span><span class="nv">number</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Still prints &quot;XXXX 1&quot;!</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="kr">end</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="nv">newCar</span><span class="p">:</span><span class="nc">getLicensePlate</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+</code></pre></div>
 <div class="admonition success">
-<p class="admonition-title">Success</p>
-<p>Outside Class Definition method syntax is recommended as it allows for a better formatting style.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>While this method is recommended, it will not provide any intellisense when accessing the member. This is due to limitations of Luau's typechecking system. To get around it, you can define a function first inside the class data with the parameter types (but leave the function itself empty), then define it again with the outside class definition method.</p>
+<p class="admonition-title">Recommended</p>
+<p>Outside Class Definition method with the syntax above is recommended as it allows for a better formatting style.</p>
 </div>
 
 
@@ -2509,10 +2563,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../img/dark/classpp_fav.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2342,21 +2342,21 @@
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Fatal errors in Luau can normally be created by using the built-in <code>error()</code> function:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">error</span><span class="p">(</span><span class="s2">&quot;This will error!&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Halts the execution, and prints the stack to the output.</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">error</span><span class="p">(</span><span class="s2">&quot;This will error!&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">-- Halts the execution, and prints the stack to the output.</span>
 </code></pre></div>
 </div>
 <p>In Class++, a fatal error will occur if you encounter a set limitation. For example, if you try to access a private member outside of a class method, it will cause a fatal error.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">-- Assuming this is the main thread of the script.</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">newObject</span><span class="p">.</span><span class="py">PrivateProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hello!&quot;</span><span class="w"> </span><span class="c1">-- Will cause a fatal error.</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">newObject</span><span class="p">.</span><span class="nv">PrivateProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hello!&quot;</span><span class="w"> </span><span class="c1">-- Will cause a fatal error.</span>
 </code></pre></div>
 <hr />
 <h3 id="non-fatal-errors">Non-Fatal Errors</h3>
 <p>Non-Fatal errors are the type of errors that will not crash your program. While less dangerous, this still does not mean that your program will continue to work as expected. For example, if a <code>destructor</code> function fails to run, Class++ will still destroy the object, while ensuring the program keeps running. But this does not mean that destructor has ran correctly, and there might be an object or a system that could not be cleared up, thus causing a memory leak.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Test&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Test&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nv">destructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">self</span><span class="p">)</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="nb">error</span><span class="p">(</span><span class="s2">&quot;An unknown error occured!&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="py">object</span><span class="p">:</span><span class="nf">Destroy</span><span class="p">()</span><span class="w"> </span><span class="c1">-- This line will never be reached, causing the object to never be destroyed!</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="nf">error</span><span class="p">(</span><span class="s2">&quot;An unknown error occured!&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="nv">self</span><span class="p">.</span><span class="nv">object</span><span class="p">:</span><span class="nc">Destroy</span><span class="p">()</span><span class="w"> </span><span class="c1">-- This line will never be reached, causing the object to never be destroyed!</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kr">end</span><span class="p">,</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
@@ -2468,10 +2468,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

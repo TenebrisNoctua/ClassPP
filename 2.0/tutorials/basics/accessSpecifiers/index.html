@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../img/dark/classpp_fav.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2276,28 +2276,30 @@
 
 
 <h1 id="access-specifiers">Access Specifiers</h1>
-<p>Unlike any other class module or system on Roblox, Class++ comes with an <strong>Access Specifier</strong> system. Like in other OO <em>(Object Oriented)</em> languages such as C++, it provides you a way to modify the access control of a member. There are 4 access specifiers in Class++: <code>Public</code>, <code>Private</code>, <code>Protected</code>, and <code>Friend</code>.<br>
+<p>In the previous page, you may have noticed that we have defined our members inside a specific table, called "Public", inside the <code>classData</code> table.
+This table represents an "Access Specifier". It allows you to modify the access control of a specific member, essentially allowing you to control where the member can be accessed from. This concept comes from certain object oriented languages such as C++, allowing you to apply many OOP concepts effectively in Luau.</p>
+<p>There are currently 4 access specifiers in Class++: <code>Public</code>, <code>Private</code>, <code>Protected</code>, and <code>Friend</code>.<br>
 (<code>Protected</code> and <code>Friend</code> are mentioned in later pages.)</p>
 <h2 id="public-access-specifier">Public Access Specifier</h2>
-<p>Like you have seen in the examples on the previous page, the Public Access Specifier allows anything to access a member. Whether it be from a function inside the class or from the script's main thread, the member is accessible and can be modified.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<p>The public access specifier allows the members to be accessed from anywhere. Whether it be from a function inside the class or from the main thread, the member is accessible and can be modified.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lamborghini&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nv">newCar</span><span class="p">.</span><span class="py">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tesla&quot;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nv">newCar</span><span class="p">.</span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tesla&quot;</span>
 </code></pre></div>
-<p>In this example, we created a new class with a Public member <code>Brand</code> that has the default value of <code>Lamborghini</code>.<br>
+<p>In this example, we created a new class with a public member <code>Brand</code> that has the default value of <code>Lamborghini</code>.<br>
 Then we created a new object from this class and modified the <code>Brand</code> member of this object. Now the value is set to <code>Tesla</code>.</p>
 <h2 id="private-access-specifier">Private Access Specifier</h2>
-<p>Private access specifier allows you to hide a member from anyone outside from that class. No one besides the class members can access this member or modify it.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="py">class</span>
+<p>The private access specifier allows the member to only be accessed from class functions, essentially locking the member from the outside world.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;Car&quot;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nv">Public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="nv">Brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Lamborghini&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="p">},</span>
@@ -2307,9 +2309,9 @@ Then we created a new object from this class and modified the <code>Brand</code>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Car</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nv">newCar</span><span class="p">.</span><span class="py">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;YYYY&quot;</span><span class="w"> </span><span class="c1">-- This will error!</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nv">newCar</span><span class="p">.</span><span class="nv">License_Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;YYYY&quot;</span><span class="w"> </span><span class="c1">-- This will error!</span>
 </code></pre></div>
-<p>In this example, we updated the previous class with a private member named <code>License_Plate</code>, this member is private and can only be accessed by the class members, so trying to access or modify it outside of the class will cause an error.</p>
+<p>In this example, we updated the previous class with a private member named <code>License_Plate</code>, this member is private and can only be accessed from the class functions, so trying to access or modify it outside of the class functions will cause an error.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>A member <em>(property/attribute)</em> can be declared only once. This means a member can only be defined under one access specifier. Attempting to declare a member in multiple access specifiers will cause an error.</p>
@@ -2415,10 +2417,10 @@ Then we created a new object from this class and modified the <code>Brand</code>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "navigation.path", "navigation.indexes", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

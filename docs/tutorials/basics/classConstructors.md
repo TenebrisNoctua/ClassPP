@@ -89,7 +89,7 @@ newCar = nil
 
 Unlike `constructor`, the `destructor` function does not take any additional parameters, and the only parameter will be the `self` pointing to the object. After the `destructor` is called, all members inside the object will be set to `nil`, and the object will be locked, preventing any further access. At this stage, the object should be treated as completely empty and gone, so you should remove all references to the object to prevent memory leaks.
 
-Instances, threads and connections inside an object will automatically be cleared and destroyed during the clearing process as well.
+Instances, threads and connections inside an object will automatically be destroyed during the clearing process as well.
 
 ### Automatic Object Destruction
 
@@ -97,7 +97,7 @@ Unlike any other class and object creation system in Luau, Class++ comes with a 
 
 If this system detects that there are no longer any references made to an object, it will first call the `destructor` function for the object, if defined. And next, it will apply the standard destruction protocol for the object, clearing any data left inside.
 
-This system reduces potential memory leaks that may happen due to non-destroyed objects that still have data stored in memory. However, if you wish to apply full manual memory management instead, you can set the `autoObjectDestruction` property of the main library to `false`.
+This system reduces potential memory leaks that may happen due to non-destroyed objects that still have data stored in memory. However, if you wish to apply full manual memory management instead, you can set the [`autoObjectDestruction`](../../api-reference/general/autoObjectDestruction.md) property of the main library to `false`.
 
 !!! info
     Constructor and Destructor functions can also be written in the outside class definition syntax.

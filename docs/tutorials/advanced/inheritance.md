@@ -43,7 +43,9 @@ When you create a class using this method, you create a new derived class that i
 
 ## Protected Access Specifier
 
-In Class++, private members can never be inherited by derived classes. But what if you wanted to make a member able to be inherited by other classes, while still preventing outside access to it? The protected access specifier allows you to achieve exactly this, the members stored in this access specifier can be inherited by derived classes, while still being inaccessible from the outside world.
+In Class++, private members can never be inherited by derived classes. But what if you wanted to make a member able to be inherited by other classes, while still preventing outside access to it? 
+
+The protected access specifier allows you to achieve exactly this, the members stored in this access specifier can be inherited by derived classes, while still being inaccessible from the outside world.
 
 ```luau
 local class = ClassPP.class

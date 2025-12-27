@@ -30,7 +30,8 @@ If you are creating experiences in Roblox, and you wish to install Class++, you 
 
 ### Installing as Source Code
 
-If you're using pure Luau, or if you're just synchronising external files into Roblox Studio, then you can use the source code instead.<br>
+If you're using pure Luau, or if you're just synchronising external files into Roblox Studio, then you can use the source code instead.
+
 To do this, you can either:
 
 * From the [latest release](https://github.com/TenebrisNoctua/ClassPP/releases/latest), download the source code as zip.

@@ -53,4 +53,4 @@ local newClass = class "Test" {
 
 Be careful. To ensure your program is running safely, every operation that can fail should be put inside either a `pcall()` or a `xpcall()`. These functions allow you to safely handle any errors that may occur in your code.
 
-*A full list of fatal and non-fatal errors can be found in the [Errors](../../api-reference/errors.md) page.*
+*A full list of fatal and non-fatal errors can be found in the [Errors](../../api-reference/general/errors.md) page.*

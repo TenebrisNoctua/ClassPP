@@ -7,7 +7,7 @@ Welcome to the Class++ tutorial section! In here, you will learn how to use and 
 While you don't need to be an expert programmer to use Class++, you should still have:
 
 * Basic knowledge of Luau.
-    * While not a requirement, having basic knowledge of [metatables](https://create.roblox.com/docs/luau/metatables) will definitely benefit you.
+    * While not a requirement, you should also have basic knowledge of [metatables](https://create.roblox.com/docs/luau/metatables).
 * Basic understanding on the concept of OOP (Object Oriented Programming).
 
 Some tutorials may seem harder or easier depending on your existing knowledge. It is recommended that you follow each one in order, and try the given examples on your own.

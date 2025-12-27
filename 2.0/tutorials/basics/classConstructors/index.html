@@ -2418,11 +2418,11 @@
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="nv">newCar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">nil</span>
 </code></pre></div>
 <p>Unlike <code>constructor</code>, the <code>destructor</code> function does not take any additional parameters, and the only parameter will be the <code>self</code> pointing to the object. After the <code>destructor</code> is called, all members inside the object will be set to <code>nil</code>, and the object will be locked, preventing any further access. At this stage, the object should be treated as completely empty and gone, so you should remove all references to the object to prevent memory leaks.</p>
-<p>Instances, threads and connections inside an object will automatically be cleared and destroyed during the clearing process as well.</p>
+<p>Instances, threads and connections inside an object will automatically be destroyed during the clearing process as well.</p>
 <h3 id="automatic-object-destruction">Automatic Object Destruction</h3>
 <p>Unlike any other class and object creation system in Luau, Class++ comes with a built-in automatic object destruction system. This system automatically destroys an object when it deems there are no longer any references made to the object itself. </p>
 <p>If this system detects that there are no longer any references made to an object, it will first call the <code>destructor</code> function for the object, if defined. And next, it will apply the standard destruction protocol for the object, clearing any data left inside.</p>
-<p>This system reduces potential memory leaks that may happen due to non-destroyed objects that still have data stored in memory. However, if you wish to apply full manual memory management instead, you can set the <code>autoObjectDestruction</code> property of the main library to <code>false</code>.</p>
+<p>This system reduces potential memory leaks that may happen due to non-destroyed objects that still have data stored in memory. However, if you wish to apply full manual memory management instead, you can set the <a href="../../../api-reference/general/autoObjectDestruction/"><code>autoObjectDestruction</code></a> property of the main library to <code>false</code>.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Constructor and Destructor functions can also be written in the outside class definition syntax.</p>

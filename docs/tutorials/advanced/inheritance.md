@@ -110,7 +110,7 @@ newCar:printLicensePlate()
 Let's say that you want to access a method in a base class from a derived class, how would you do it?
 Creating a new object from the base class and calling the method would be tedious, as it would take longer to write and would reduce performance and increase memory usage.
 
-Fortunately, for this, you can just call the default `super` method of an object, which allows you to call the method in a base class that has the same name of the method it's been called from.
+Fortunately, for this, you can just call the default `super` method of an object, which allows you to call the method in a base class that has the same name of the method that `super` has been called from.
 
 ```luau
 local class = ClassPP.class
@@ -139,7 +139,7 @@ local newObject = B.new()
 print(newObject:getVariable()) -- 1
 ```
 
-In this example, we created a new class called "B" that inherits from "A". In both classes, we have a method called `getVariable()`. In the base class, this method returns the value of the member `Variable_A`, and in the derived class, this method returns the value from the `getVariable()` method from the base class, by calling the `super()` method. 
+In this example, we created a new class called "B" that inherits from "A". In both classes, we have a method called `getVariable`. In the base class, this method returns the value of the member `Variable_A`, and in the derived class, this method returns the value from the `getVariable` method from the base class, by calling the `super()` method. 
 
 !!! warning
     `super` cannot be used within classes that have multi-inheritance. This is due to ambiguity that occurs with functions that have the same name in classes that have multi-inheritance. 

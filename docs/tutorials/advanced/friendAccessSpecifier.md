@@ -1,11 +1,13 @@
 # Friend Access Specifier
 
-Friend access specifier allows anyone defined in that access specifier to access the private members of a class.
+Sometimes, you may wish to access the private members of a class without having to use a class method. Perhaps for a utility or a library function, you may wish to grant them access to the private members of your class. This is where the friend access specifier comes in. 
+
+The friend access specifier allows all functions, and even classes, defined inside itself to access the private members of a class.
 
 !!! warning
-    Members of this access specifier will not be replicated to objects, rather, these members are stored in the class itself. And they can only be used to allow functions or classes to have access to Private or Protected members of a class.
+    Members of this access specifier will not be replicated to objects, rather, these members are stored in the class itself.
 
-```lua
+```luau
 local function getLicensePlate(object: any)
     print(object.License_Plate)
 end
@@ -28,8 +30,9 @@ local newCar = Car.new()
 getLicensePlate(newCar)
 ```
 
-In this example, we updated the previous class to include a function in the `Friend` access specifier, this function is now able to access the private members of this class. 
+In this example, we have a "Car" class that contains a private member called `License_Plate`, and a local function called `getLicensePlate`.
+By passing the reference to the `getLicensePlate` function inside the friend access specifier, this function is now able to access the private members of a class.
 
 !!! info
-    Aside from functions, `Friend` access specifier can include other classes as well.
-    Classes can be saved by using their variables, or their names. You can put a string inside the `Friend` access specifier that has a class's name, and it will still work!
+    Besides functions, friend access specifier can include other classes as well.
+    Classes can be saved by using their variables, or their names. You can put a string inside the friend access specifier that contains a class's name, and it will still work!

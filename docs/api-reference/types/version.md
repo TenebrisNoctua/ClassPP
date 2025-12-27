@@ -3,7 +3,7 @@
     <span class="api-title">version</span>
 </h1>
 
-```lua
+```luau
 export type version = {
 	major: number,
 	minor: number,

@@ -17,7 +17,7 @@ For example, imagine a coffee machine. A coffee machine has a grinder, brewer, a
 
 ## Implementation
 
-```lua
+```luau
 local class = ClassPP.class
 
 local Student = class "Student" {

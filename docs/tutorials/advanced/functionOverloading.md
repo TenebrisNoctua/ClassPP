@@ -1,11 +1,12 @@
 # Function Overloading
 
-Just like in other OO languages, Class++ supports function overloading. <br>
+Just like in other object oriented languages, Class++ supports function overloading.
+
 Function Overloading is a feature where multiple functions can share the same name, but they are different from each other with different amount of arguments.
 
 To do function overloading in Class++, you have to use the `class.overload(<accessSpecifier>, <name>, <functionTable>)` function.
 
-```lua
+```luau
 local class = ClassPP.class
 
 local Test = class "Test" {

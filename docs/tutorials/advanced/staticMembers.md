@@ -5,7 +5,7 @@ Once a static member has been created, they cannot be destroyed or modified in a
 
 To create a static member in Class++, you have to use the `class.static(<accessSpecifier>, <name>, <property>)` function.
 
-```lua
+```luau
 local class = ClassPP.class
 
 local Test = class "Test" {
@@ -26,7 +26,7 @@ Test.StaticTestValue("Hi!") -- This will work fine!
 
 You can also give properties that aren't functions. To retrieve those properties, you can do `class.<memberName>.property` or `class.<memberName>.p` for short.
 
-```lua
+```luau
 local class = ClassPP.class
 
 local Test = class "Test" {

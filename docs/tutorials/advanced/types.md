@@ -5,7 +5,7 @@
 Class++ in 2.0, has been rewritten from ground up to support the new type-solver and its capabilities. 
 This allows Class++ to be more intelligent with the `class` and `object` types, finally allowing the intellisense to be far better than what it used to be. 
 
-```lua
+```luau
 local Person = class "Person" {
 	Public = {
 		Age = 0,
@@ -30,7 +30,7 @@ This also applies to classes, where before you tried to create an inherited clas
 
 Now, this has also been fixed:
 
-```lua
+```luau
 local class = ClassPP.class
 
 local A = class "A" { 
@@ -62,7 +62,7 @@ In the tutorial below, you will learn how to create a basic `Person` type and as
 
 ## Creating a Basic Custom Class Type
 
-```lua
+```luau
 local class = ClassPP.class
 
 type Person = {
@@ -108,7 +108,7 @@ In the example above, we created a custom type called `Person` for the Person cl
 
 Class++ also comes with its own [`Type`](../api-reference/classFunctions/type/type.md) API that allows you to get the types of `class`es and `object`s.
 
-```lua
+```luau
 local class = ClassPP.class
 local type, typeof = ClassPP.Type.type, ClassPP.Type.typeof
 

@@ -4,14 +4,14 @@
     <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/strings" class="api-type">string</a>
 </h1>
 
-```lua
+```luau
 function Type.type(object: any): string
 ```
 
 Returns the true type of the given `object`. Behaves the same as the built-in `type()` function, but with additional support for `class`es and `object`s.
 
 ## Default syntax
-```lua
+```luau
 local objectType = ClassPP.Type.type(object)
 ```
 

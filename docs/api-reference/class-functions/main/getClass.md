@@ -4,14 +4,14 @@
     <span class="api-type">:</span><a href="../../../data-types/class" class="api-type">class</a>
 </h1>
 
-```lua
+```luau
 function classpp.getClass(className: string): class
 ```
 
 Returns the `class` with the given `className`, if it exists.
 
 ## Default syntax
-```lua
+```luau
 local Class = ClassPP.getClass("Class")
 ```
 

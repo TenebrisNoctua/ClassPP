@@ -4,14 +4,14 @@
     <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/booleans" class="api-type">boolean</a>
 </h1>
 
-```lua
+```luau
 function Util.inClassScope(class: class, includeInherited: boolean, includeFriend: boolean, classes: {[string]: class}?, defaultLevel: number?): boolean
 ```
 
 This function checks if the current thread is allowed to access a specific `class` property from a certain access specifier.
 
 ## Default syntax
-```lua
+```luau
 local isAllowed = Util.inClassScope(class, false, true, Classes) -- For the Private access specifier
 ```
 

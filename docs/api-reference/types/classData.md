@@ -3,7 +3,7 @@
     <span class="api-title">classData</span>
 </h1>
 
-```lua
+```luau
 export type classData = {
 	constructor: (any, ...any) -> ()?,
 	destructor: (any) -> ()?,

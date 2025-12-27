@@ -4,14 +4,14 @@
     <span class="api-type">:</span><a href="../../../data-types/class" class="api-type">class</a>
 </h1>
 
-```lua
+```luau
 function classpp.class(className: string): (classData: classData) -> class
 ```
 
 Creates a new [`class`](../../data-types/class.md) with the given [`classData`](../../types/classData.md) table.
 
 ## Default Syntax
-```lua
+```luau
 local Class = class "Class" {
     constructor = function(self)
         ...
@@ -35,7 +35,7 @@ local Class = class "Class" {
 ```
 
 ## Without Syntax Sugar
-```lua
+```luau
 local Class = class("Class")({
     constructor = function(self)
         ...

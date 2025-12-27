@@ -5,7 +5,7 @@ This implements a *has-a* relationship between objects, rather than *is-a* from 
 
 For example, let's imagine a coffee machine. This coffee machine **has a** grinder, a brewer, and many other components, but the coffee machine itself *is not one of them*.
 
-```lua
+```luau
 local GroundCoffee = class "GroundCoffee" {}
 local Coffee = class "Coffee" {}
 
@@ -58,7 +58,7 @@ Like we have mentioned in the [Inheritance](../advanced/inheritance.md) page, in
 
 Inheritance may sometimes violate encapsulation. A derived class depends on the implementation details of its base class, so if the base class gets a change in its implementation, the derived class may break, even though its code hasn't been touched. Due to this, the derived class must also be updated alongside the base class, to ensure it works correctly.
 
-```lua
+```luau
 local User = class "User" {
     Public = {
         login = function(self)
@@ -101,7 +101,7 @@ The problems with this system, however are:
 
 However, if we use composition over inheritance:
 
-```lua
+```luau
 local Permission = class "Permission" {
     Public = {
         execute = function(self)

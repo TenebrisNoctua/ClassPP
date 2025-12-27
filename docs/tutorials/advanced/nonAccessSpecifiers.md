@@ -6,7 +6,7 @@ Unlike access specifiers, non-access specifiers do not modify the access control
 
 Using this non-access specifier will make the given class final, meaning this class now cannot be inherited by other classes.
 
-```lua
+```luau
 local class, final = ClassPP.class, ClassPP.final
 
 local Car = final { class "Car" {
@@ -27,7 +27,7 @@ local BiggerCar = class "BiggerCar" (Car, nil) { -- This will error!
 Using this non-access specifier will make the given class an abstract class, meaning this class now cannot be used to create objects.
 To access an abstract class's members, you need to create a class that inherits from this abstract class.
 
-```lua
+```luau
 local class, abstract = ClassPP.class, ClassPP.abstract
 
 local BaseCar = abstract { class "BaseCar" {
@@ -57,7 +57,7 @@ newCarObj:honk()
 !!! warning
 	Creating Private members in an abstract class will cause these members to never be accessible, since Private members of a class will never be inherited to another class.
 
-```lua
+```luau
 local class, abstract = ClassPP.class, ClassPP.abstract
 
 local BaseCar = abstract { class "BaseCar" {

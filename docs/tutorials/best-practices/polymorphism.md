@@ -9,7 +9,7 @@ It refers to situations where something occurs in several different forms, and d
 
 ## Inheritance Example
 
-```lua
+```luau
 local class = ClassPP.class
 
 local Animal = class "Animal" {
@@ -43,7 +43,7 @@ local Dog = class "Dog" (Animal, nil) {
 
 ## Function Overloading Example
 
-```lua
+```luau
 local class = ClassPP.class
 
 local Test = class "Test" {}

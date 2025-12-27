@@ -17,13 +17,13 @@ Fatal errors are the type of errors that will completely crash your program. The
 !!! info
     Fatal errors in Luau can normally be created by using the built-in `error()` function:
     
-    ```lua
+    ```luau
     error("This will error!") -- Halts the execution, and prints the stack to the output.
     ```
 
 In Class++, a fatal error will occur if you encounter a set limitation. For example, if you try to access a private member outside of a class method, it will cause a fatal error.
 
-```lua
+```luau
 -- Assuming this is the main thread of the script.
 local newObject = class.new()
 newObject.PrivateProperty = "Hello!" -- Will cause a fatal error.
@@ -35,7 +35,7 @@ newObject.PrivateProperty = "Hello!" -- Will cause a fatal error.
 
 Non-Fatal errors are the type of errors that will not crash your program. While less dangerous, this still does not mean that your program will continue to work as expected. For example, if a `destructor` function fails to run, Class++ will still destroy the object, while ensuring the program keeps running. But this does not mean that destructor has ran correctly, and there might be an object or a system that could not be cleared up, thus causing a memory leak.
 
-```lua
+```luau
 local newClass = class "Test" {
     destructor = function(self)
         error("An unknown error occured!")

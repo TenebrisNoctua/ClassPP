@@ -4,14 +4,14 @@
     <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/booleans" class="api-type">boolean</a>
 </h1>
 
-```lua
+```luau
 function Util.checkFriendship(class: class, methodName: string, method: () -> (), classes: {[string]: class}): boolean
 ```
 
 This function checks if the given `method` and it's `methodName` is in the given `class`'s `Friend` access specifier.
 
 ## Default syntax
-```lua
+```luau
 local isAFriend = ClassPP.Util.checkFriendship(class, methodName, method, classes)
 ```
 

@@ -1,10 +1,10 @@
 # Inheritance
 
-Just like in C++ and many other languages, Class++ allows you to inherit classes. 
+Just like in other object oriented languages, Class++ allows you to inherit classes. 
 We group the inheritance concept into two categories: derived class (child), and the base class (parent).
 Inheritance implements an *is-a* relationship between classes.
 
-```lua
+```luau
 local class = ClassPP.class
 
 local Vehicle = class "Vehicle" { -- Base Class
@@ -30,7 +30,7 @@ newCar:honk()
 print(newCar.Brand, newCar.Model, newCar.License_Plate, newCar.Year) -- Prints "Tesla S A1B2C3 2012"!
 ```
 
-In this example, we have 2 classes: The Vehicle class (base), and the Car class (child). <br>
+In this example, we have 2 classes: The "Vehicle" class (base), and the "Car" class (child). <br>
 We created the Car class by providing the `class` function a list of classes to inherit from (in this case, only the Vehicle class), and the `classData` table after.
 
 When you create a class using this method, you create a new derived class that inherits all of the members and member functions from the class(es) provided, so you don't need to re-declare them again. The members are overwritable in the derived class, like in the example above, you can modify the `License_Plate`'s default value to anything you wish. The same applies to other members.
@@ -43,10 +43,9 @@ When you create a class using this method, you create a new derived class that i
 
 ## Protected Access Specifier
 
-In the [Access Specifiers](../basics/accessSpecifiers.md) section, you have learned that there are 4 access specifiers in Class++, so far you have seen `Public`, `Private` and `Friend`.
-The fourth specifier, `Protected`, is pretty much the same as the `Private`, however, aside from the class members, inherited classes will also be able to access these members. 
+In Class++, private members can never be inherited by derived classes. But what if you wanted to make a member able to be inherited by other classes, while still preventing outside access to it? The protected access specifier allows you to achieve exactly this, the members stored in this access specifier can be inherited by derived classes, while still being inaccessible from the outside world.
 
-```lua
+```luau
 local class = ClassPP.class
 
 local Car = class "Car" {
@@ -72,11 +71,11 @@ local newCar = BiggerCar.new()
 newCar:printLicensePlate()
 ```
 
-In this example, we put the member `License_Plate` under the Protected access specifier, and created a new class that inherits from the Car class. This child class and it's member functions will now be able to access this member. 
+In this example, we put the member `License_Plate` under the protected access specifier, and created a new class that inherits from the "Car" class. This derived class and its methods will now be able to access this member. 
 
-Members in the Protected access specifier are overwritable by members in other access specifiers. This means, when you define a member in the Public or the Private access specifier that has the same name as a member in the Protected access specifier, this new member will overwrite the Protected member, meaning the Protected member will be removed.  
+Members in the protected access specifier are overwritable by members in other access specifiers. This means, when you define a member in the public or the private access specifier that has the same name as a member in the protected access specifier, this new member will overwrite the protected member, meaning the protected member will now be removed.
 
-```lua
+```luau
 local class = ClassPP.class
 
 local Car = class "Car" {
@@ -106,12 +105,12 @@ newCar:printLicensePlate()
 
 ## super
 
-Let's say that you want to access a function in the base class from a child class, how would you do it?
-Creating a new object from the base class and calling the function would be tedious, as it would take longer to write and would decrease performance.
+Let's say that you want to access a method in a base class from a derived class, how would you do it?
+Creating a new object from the base class and calling the method would be tedious, as it would take longer to write and would reduce performance and increase memory usage.
 
-Fortunately, for this, you can call the default `super` method of the object, which allows you to call the function in the base class that has the same name of the function this method has been called from.
+Fortunately, for this, you can just call the default `super` method of an object, which allows you to call the method in a base class that has the same name of the method it's been called from.
 
-```lua
+```luau
 local class = ClassPP.class
 
 local A = class "A" { 
@@ -138,7 +137,7 @@ local newObject = B.new()
 print(newObject:getVariable()) -- 1
 ```
 
-In this example, we created a new class called "B" that inherits from "A". In both classes, we have a function called "getVariable", in the base class, this function returns the "Variable_A" member's value, and in the child class, this function returns the value from the "getVariable" function from the parent class, by calling the `super()` method. 
+In this example, we created a new class called "B" that inherits from "A". In both classes, we have a method called `getVariable()`. In the base class, this method returns the value of the member `Variable_A`, and in the derived class, this method returns the value from the `getVariable()` method from the base class, by calling the `super()` method. 
 
 !!! warning
     `super` cannot be used within classes that have multi-inheritance. This is due to ambiguity that occurs with functions that have the same name in classes that have multi-inheritance. 
@@ -149,7 +148,7 @@ In this example, we created a new class called "B" that inherits from "A". In bo
 
 A class can also be derived from one class, which can be derived from another class:
 
-```lua
+```luau
 local class = ClassPP.class
 
 local Person = class "Person" { -- Base Class
@@ -185,9 +184,12 @@ print(newStudent.Name, newStudent.Age, newStudent.Gender, newStudent.Height, new
 
 ## Multi-Inheritance
 
+!!! warning
+    Multi-Inheritance is not Multilevel-Inheritance. While their names may be similar, they represent different concepts.
+
 A class can also be derived from multiple classes:
 
-```lua
+```luau
 local class = ClassPP.class
 
 local A = class "A" { 
@@ -215,7 +217,7 @@ local newObject = C.new() -- {Variable_A: number, Variable_B: number, Variable_C
 
 The Diamond Problem is an ambiguity that arises when two classes, let's say "B" and "C", that inherits from a class called "A", and another class "D" that inherits from both "B" and "C". If there is a method in "A" that "B" and "C" have overridden, and "D" does not override it, then which version of the method does "D" inherit from: that of "B", or that of "C"?
 
-```lua
+```luau
 local class = ClassPP.class
 
 local A = class "A" { 
@@ -257,7 +259,7 @@ To create class "D", Class++ takes the class arguments one by one in an order, f
 
 This is similar to the Python's [MRO (Method Resolution Order)](https://docs.python.org/3/howto/mro.html).
 
-```lua
+```luau
 local class = ClassPP.class
 
 local A = class "A" { 

@@ -8,7 +8,7 @@ Class++ is designed to be as optimized as possible for a class and objects syste
 
 Class++ will skip certain unnecessary operations made by the user. For example, if you try to set a value to a member that is exactly the same as the one the member had before, Class++ will skip this operation.
 
-```lua
+```luau
 local newClass = class "Test" {
     Public = {
         test = "hello"

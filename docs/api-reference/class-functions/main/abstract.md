@@ -4,14 +4,14 @@
     <span class="api-type">:</span><a href="../../../data-types/class" class="api-type">class</a>
 </h1>
 
-```lua
+```luau
 function classpp.abstract(classTable: {class}): class
 ```
 Marks the given [`class`](../../data-types/class.md) or [`class`](../../data-types/class.md)es as abstract. If given multiple, then the first class will be returned.
 
 ## Default Syntax
 
-```lua
+```luau
 local Car = abstract { class "Car" {
 	Public = {
         ...
@@ -22,7 +22,7 @@ local Car = abstract { class "Car" {
 
 ## Without Syntax Sugar
 
-```lua
+```luau
 local Car = abstract({class("Car")({
 	Public = {
         ...

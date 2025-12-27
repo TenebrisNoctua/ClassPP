@@ -1,11 +1,11 @@
 # Operator Overloading
 
 Suppose we have two objects that belong to a custom Vector class, how would we allow the addition of those two objects?
-Using a normal class function would suffice, but it would require you to call the same function over and over again every single time you want to add them together.
+Using a normal class method would suffice, but it would require you to call the same method over and over again every single time you want to add them together.
 
-To solve this issue, just like in other OO languages, we can change the way operators work for our classes. This is known as operator overloading.
+To solve this issue, just like in other object oriented languages, we can change the way operators work for our classes. This is known as operator overloading.
 
-```lua
+```luau
 local class = ClassPP.class
 
 local Vector = class "Vector3" {

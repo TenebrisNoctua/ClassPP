@@ -2469,7 +2469,7 @@ It's very useful for code reusability: reusing members and functions of an exist
 <h2 id="super">super</h2>
 <p>Let's say that you want to access a method in a base class from a derived class, how would you do it?
 Creating a new object from the base class and calling the method would be tedious, as it would take longer to write and would reduce performance and increase memory usage.</p>
-<p>Fortunately, for this, you can just call the default <code>super</code> method of an object, which allows you to call the method in a base class that has the same name of the method it's been called from.</p>
+<p>Fortunately, for this, you can just call the default <code>super</code> method of an object, which allows you to call the method in a base class that has the same name of the method that <code>super</code> has been called from.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ClassPP</span><span class="p">.</span><span class="nv">class</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">class</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
@@ -2495,7 +2495,7 @@ Creating a new object from the base class and calling the method would be tediou
 <a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="kd">local</span><span class="w"> </span><span class="nv">newObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">B</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
 <a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="nf">print</span><span class="p">(</span><span class="nv">newObject</span><span class="p">:</span><span class="nc">getVariable</span><span class="p">())</span><span class="w"> </span><span class="c1">-- 1</span>
 </code></pre></div>
-<p>In this example, we created a new class called "B" that inherits from "A". In both classes, we have a method called <code>getVariable()</code>. In the base class, this method returns the value of the member <code>Variable_A</code>, and in the derived class, this method returns the value from the <code>getVariable()</code> method from the base class, by calling the <code>super()</code> method. </p>
+<p>In this example, we created a new class called "B" that inherits from "A". In both classes, we have a method called <code>getVariable</code>. In the base class, this method returns the value of the member <code>Variable_A</code>, and in the derived class, this method returns the value from the <code>getVariable</code> method from the base class, by calling the <code>super()</code> method. </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><code>super</code> cannot be used within classes that have multi-inheritance. This is due to ambiguity that occurs with functions that have the same name in classes that have multi-inheritance. </p>

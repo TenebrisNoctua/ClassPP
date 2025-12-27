@@ -19,12 +19,12 @@ Some tutorials may seem harder or easier depending on your existing knowledge. I
 If you are creating experiences in Roblox, and you wish to install Class++, you can either:
 
 * Download the `.rbxm` file that contains the source code from the [latest release](https://github.com/TenebrisNoctua/ClassPP/releases/latest).
-      1: Then, in Roblox Studio, right click the location (e.g, `ReplicatedStorage`) that you wish to insert this file to.
+    * 1: In Roblox Studio, right click the location (e.g, `ReplicatedStorage`) that you wish to insert this file to.
     * 2: Go to "Insert > Import Roblox Model".
     * 3: Select the `ClassPP.rbxm` file that you've just downloaded.
 
 * Get the source code from [Roblox Creator Store](https://create.roblox.com/store/asset/18312821151/Class).
-    * 1: Then, in Roblox Studio, open Toolbox.
+    * 1: In Roblox Studio, open Toolbox.
     * 2: Go to "Inventory > Models".
     * 3: Select the "Class++" item on your inventory. It should automatically be inserted into `Workspace`.
 

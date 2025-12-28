@@ -21,7 +21,7 @@ In the above example, we created a new class with the name `Person`, and under t
 
 ## Creating an Object
 
-Now that we have a class, we can create an object from it. In Class++, to create an object, you use the `.new()` method a class. When called, this method returns an object created from this class, and like it's been mentioned above, it will contain all of the members and their default values from the class it's been created from.
+Now that we have a class, we can create an object from it. In Class++, to create an object, you use the `.new()` method of a class. When called, this method returns an object created from this class, and like it's been mentioned above, it will contain all of the members and their default values from the class it's been created from.
 
 ```luau
 local class = ClassPP.class

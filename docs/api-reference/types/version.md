@@ -54,7 +54,7 @@ The patch version number. Two versions with different patch, but not major or mi
 <h3 markdown>
 	beta
 	<span class="api-property-type">
-		: number
+		: boolean
 	</span>
 </h3>
 

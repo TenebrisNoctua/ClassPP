@@ -153,7 +153,7 @@ The same applies to `object`s, where if the provided object is an `object`, it w
 
 ### Type.typeof
 
-`Type.typeof` will return the type of the given object. Like `Type.type`, it behaves the same as the built-in Roblox `typeof` function, but with additional support for `class`es and `object`s. For example, if the provided object is a `class`, it will return a string containing the name of the `class`. This is due to `class`es are also being types on their own. They can also be represented as types.
+`Type.typeof` will return the type of the given object. Like `Type.type`, it behaves the same as the built-in Luau `typeof` function, but with additional support for `class`es and `object`s. For example, if the provided object is a `class`, it will return a string containing the name of the `class`. This is due to `class`es are also being types on their own. They can also be represented as types.
 
 For `object`s, this function will return the type of the `class` they belong to. For example, using this function with an `object` created from a "Person" `class`, will return "Person" as its type.
 

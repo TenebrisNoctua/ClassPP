@@ -17,7 +17,7 @@ A `class` object created from the [`class()`](../class-functions/main/class.md) 
             <ul>
                 <li><a href="#name-string">Name</a>: An unique identifier of the <code>class</code>.</li>
                 <li><a href="#inherits-class-read-only">Inherits</a>: A table that contains classes that the <code>class</code> inherits from.</li>
-                <li><a href="#friends-class-read-only">Friends</a>: A table that contains functions or clases that can access the <code>Private</code> and the <code>Protected</code> members of the <code>class</code>. </li>
+                <li><a href="#friends-class-read-only">Friends</a>: A table that contains functions or clases that can access the <code>Private</code> members of the <code>class</code>. </li>
                 <li><a href="#statics-string-any-read-only">Statics</a>:  A table that contains the static members of the <code>class</code>. These members can only be called through the <code>class</code> object.</li>
             </ul>
         </div>
@@ -59,7 +59,7 @@ This is an unique identifier of the `class`. Using the [`getClass()`](../class-f
     <div class="api-access-type" style="float: none">Read Only</div>
 </h3>
 
-This table contains all the classes that the `class` is inheriting from. 
+This table contains all the `class`es that the `class` is inheriting from. 
 
 ----------------------
 
@@ -71,7 +71,7 @@ This table contains all the classes that the `class` is inheriting from.
     <div class="api-access-type" style="float: none">Read Only</div>
 </h3>
 
-This table contains all the functions and the classes that can access all of the `Public` and `Protected` members of the `class`.
+This table contains all the functions and the `class`es that can access all of the `Private` members of the `class`.
 
 ----------------------
 
@@ -84,7 +84,7 @@ This table contains all the functions and the classes that can access all of the
 </h3>
 
 This table contains all the members that are static, meaning they only belong to the `class`. These members won't replicate to the 
-objects, and can only be called through the `class` object.
+`object`s, and can only be called through the `class` object.
 
 ----------------------
 

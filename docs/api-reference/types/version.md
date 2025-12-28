@@ -58,4 +58,4 @@ The patch version number. Two versions with different patch, but not major or mi
 	</span>
 </h3>
 
-Describes whether or not the version is beta. If `true`, then the version is seperate from release versions, and may not be available in multiple platforms.
+Describes whether or not the version is beta. If `true`, then the version is seperate from release versions, and may only be available on certain platforms.

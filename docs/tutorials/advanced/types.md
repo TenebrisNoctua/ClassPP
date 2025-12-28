@@ -106,7 +106,7 @@ In the example above, we created a custom type called `Person` for the Person cl
 
 ## Typechecking for Classes and Class Objects
 
-Class++ also comes with its own [`Type`](../api-reference/classFunctions/type/type.md) API that allows you to get the types of `class`es and `object`s.
+Class++ also comes with its own [`Type`](../../api-reference/class-functions/type/type.md) API that allows you to get the types of `class`es and `object`s.
 
 ```luau
 local class = ClassPP.class
@@ -147,9 +147,9 @@ print(typeof(Person), ",", typeof(newPerson)) -- Prints "Person, Person"!
 
 ### Type.type
 
-`Type.type` will return the true type of the given object. It behaves the same as the built-in luau `type` function, but with additional support for `class`es and `object`s. For example, if the provided object is a `class`, it will return a string called "Class". This is due to the `class` object belonging to the base [`Class`](../api-reference/dataTypes/class.md) type.
+`Type.type` will return the true type of the given object. It behaves the same as the built-in Luau `type` function, but with additional support for `class`es and `object`s. For example, if the provided object is a `class`, it will return a string called "Class". This is due to the `class` object belonging to the base [`Class`](../../api-reference/data-types/class.md) type.
 
-The same applies to `object`s, where if the provided object is an `object`, it will return a string called "Object". This is due to the `object` belonging to the base [`Object`](../api-reference/dataTypes/object.md) type.
+The same applies to `object`s, where if the provided object is an `object`, it will return a string called "Object". This is due to the `object` belonging to the base [`Object`](../../api-reference/data-types/object.md) type.
 
 ### Type.typeof
 

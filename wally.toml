@@ -1,7 +1,7 @@
 [package]
 name = "tenebrisnoctua/classpp"
 description = "Class++ is a module that aims to make class creation easier and more powerful in Luau."
-version = "2.0.0"
+version = "2.1.0"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 license = "MIT"

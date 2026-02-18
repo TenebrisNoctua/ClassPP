@@ -22,7 +22,7 @@ local LogErrorNonFatal = Logger.logErrorNonFatal
 local LogWarn = Logger.logWarn
 
 local classes = {} :: {[string]: internalClass}
-local classpp = {version = {major = 2, minor = 0, patch = 0, beta = false}, autoObjectDestruction = true} :: classPP
+local classpp = {version = {major = 2, minor = 1, patch = 0, beta = false}, autoObjectDestruction = false} :: classPP
 
 local accessSpecifiers: accessSpecifiers = {"Friend", "Internal", "Private", "Protected", "Public"}
 local overloadableOperators: overloadableOperators = {"operator_add", "operator_div", "operator_eq", "operator_idiv", "operator_mod", "operator_mul", "operator_pow", "operator_sub", "operator_unm"}
@@ -35,6 +35,7 @@ type overloadableOperators = Type.overloadableOperators
 
 export type classData<T> = Type.classData<T>
 export type class<T> = Type.class<T, T>
+export type object<T> = Type.object<T>
 
 type defaultClassData = Type.defaultClassData
 type objectData = Type.objectData
@@ -180,7 +181,7 @@ local function recursiveFindParentFunction(obj: objectData, method: (...any) -> 
 
 			if foundPublic and typeof(foundPublic) == "function" and class.classData.Public[methodName] == method then 
 				return foundPublic(obj, ...) 
-			elseif foundProtected and typeof(foundProtected) == "function" and (class.classData.Protected[methodName] == method or class.classData.Public[methodName] == method) then
+			elseif foundProtected and typeof(foundProtected) == "function" and (class.classData.Protected[methodName] == method or class.classData.Public[methodName] == method) and method ~= foundProtected then
 				return foundProtected(obj, ...)
 			else
 				return recursiveFindParentFunction(obj, method, inheritedClass, "function", methodName, ...)
@@ -469,9 +470,9 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 	local staticFunction = nil
 	local overloadedFunctions: {(...any) -> (...any?)} = {}
 	local class: internalClass = {
-		Inherits = setmetatable(inheritedClasses or {}, { __tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5); if f ~= createClassObject then LogError("attemptToModifyReadOnlyTable", false) end; rawset(t, i, v) end, __metatable = {} }),
-		Friends = setmetatable(newClassData.Friend or {}, { __tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5); if f ~= createClassObject then LogError("attemptToModifyReadOnlyTable", false) end; rawset(t, i, v) end, __metatable = {} }),
-		Statics = setmetatable({}, {__tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5); if f ~= staticFunction then LogError("attemptToModifyReadOnlyTable", false) end; rawset(t, i, v) end, __metatable = {} }),
+		Inherits = setmetatable(inheritedClasses or {}, { __tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5); if f ~= createClassObject then LogError("attemptToModifyReadOnlyTable", false) end; rawset(t, i, v); return end, __metatable = {} }),
+		Friends = setmetatable(newClassData.Friend or {}, { __tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5); if f ~= createClassObject then LogError("attemptToModifyReadOnlyTable", false) end; rawset(t, i, v); return end, __metatable = {} }),
+		Statics = setmetatable({}, {__tostring = function() return '{}' end, __newindex = function(t, i, v) local f = Util.getMethodContext(5); if f ~= staticFunction then LogError("attemptToModifyReadOnlyTable", false) end; rawset(t, i, v); return end, __metatable = {} }),
 		Name = className,
 		new = function() end,
 		overload = function() end,
@@ -646,7 +647,7 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 		local newObj = newproxy(true)
 		local methods = getmetatable(newObj)
 
-		function methods:__index(index): any
+		function methods:__index(): any
 			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, classes) then
 				LogError("classPropertyIsPrivate", true, {name})
 			end
@@ -654,7 +655,7 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 			return property
 		end
 
-		function methods:__newindex(index, value)
+		function methods:__newindex(index: any, value: any)
 			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, classes) then
 				LogError("classPropertyIsPrivate", true, {name})
 			end
@@ -667,7 +668,7 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 			if accessSpecifier == "Private" and not Util.inClassScope(class, false, true, classes) then
 				LogError("classPropertyIsPrivate", true, {name})
 			end
-
+			
 			if typeof(property) == "function" then 
 				return property(...) 
 			else

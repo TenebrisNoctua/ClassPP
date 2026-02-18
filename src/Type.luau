@@ -356,6 +356,15 @@ export type function convertToObjectData(t: type)
 	return nT
 end
 
+export type function object(t: type)
+	if not t:is("table") then error("First argument is not compatible.") end
+	
+	local classDataProperty = t:readproperty(types.singleton("classData"))
+	if not classDataProperty or not classDataProperty:is("table") then error("Given type is not a compatible class type.") end
+	
+	return convertToObjectData(classDataProperty)
+end
+
 --// Module Functions
 
 --[[

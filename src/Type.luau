@@ -8,10 +8,12 @@
 
 --// Variables
 
-local Logger = require('./Log/Logger')
-local LogError = Logger.logError
+const Logger = require('./Log/Logger')
+const LogError = Logger.logError
 
-local Type = {}
+-- Define references to the native type and typeof global functions.
+const nativeType = type
+const nativeTypeof = typeof
 
 --// Types and Type Functions
 
@@ -28,7 +30,7 @@ export type classPP<Utility, Type> = {
 	Util: Utility,
 	Type: Type,
 	class: (className: string) -> (ovloadFT) & (ovloadST),
-	getClass: (className: string) -> classShort<defaultClassData>,
+	getClass: (className: string) -> class<defaultClassData>,
 	abstract: <T>(arg: {T}, ...any) -> T,
 	final: <T>(arg: {T}, ...any) -> T,
 }
@@ -42,15 +44,19 @@ export type overloadableOperators = {
 	"operator_mod" | "operator_pow" | "operator_unm" | "operator_eq"
 }
 
-export type class<classData, nClassData> = setmetatable<{
+export type operatorMetamethodNames = { 
+	operator_add: "__add", operator_div: "__div", operator_eq: "__eq", operator_idiv: "__idiv", operator_mod: "__mod", 
+	operator_mul: "__mul", operator_pow: "__pow", operator_sub: "__sub", operator_unm: "__unm",
+	[string]: string
+}
+
+export type class<classData> = setmetatable<{
 	new: getConstructorType<classData, convertToObjectData<classData>>,
 	overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (...any?)}) -> (),
 	static: (accessSpecifier: string, name: string, property: any) -> (),
-	read classData: nClassData,
+	read classData: classData,
 	read Name: string
 }, {
-	__index: ({any}, any) -> (any),
-	__newindex: ({any}, any, any) -> (),
 	__type: string,
 	__classtype: string,
 	__abstract: boolean,
@@ -86,13 +92,11 @@ export type anyTable = {[any]: any}
 export type deepAnyTable = {[any]: anyTable}
 export type readOnlyTable = setmetatable<anyTable, {__newindex: (...any) -> any, __metatable: {}, __tostring: () -> any}>
 
-export type ovloadFT = <T>(arg1: T) -> classShort<classData<T>>
-export type ovloadST = <T1, T2>(arg1: T1, arg2: T2, ...any) -> <T>(classDataArg: T) -> classShort<combineClassData<T, T1, T2>>
+export type ovloadFT = <T>(arg1: T) -> class<classData<T>>
+export type ovloadST = <T1, T2>(arg1: T1, arg2: T2, ...any) -> <T>(classDataArg: T) -> class<combineClassData<T, T1, T2>>
 
 export type classData<T> = constructClassData<T>
 export type defaultClassData = classData<{Public: {}, Private: {}, Protected: {}, Friend: {[any]: any}, constructor: (...any) -> (), destructor: (any) -> ()}>
-
-type classShort<T> = class<T, T>
 
 type function isClass(t: type)
 	if not t:is("table") then return false end
@@ -365,13 +369,11 @@ export type function object(t: type)
 	return convertToObjectData(classDataProperty)
 end
 
---// Module Functions
+--// Local Functions
 
---[[
-	Returns the basic type of the provided object, with support for custom class types.
-]]
-function Type.type<T>(object: T): string
-	local objType = type(object)
+-- Returns the basic type of the provided object, with support for custom class types.
+local function type<T>(object: T): string
+	local objType = nativeType(object)
 
 	if not objType then LogError("typeofObjectNotFound", false) end
 	if objType ~= "table" and objType ~= "userdata" then return objType end
@@ -389,19 +391,17 @@ function Type.type<T>(object: T): string
 	return objType
 end
 
---[[
-	Returns the type of the provided object, with support for custom class types.
-]]
-function Type.typeof<T>(object: T): string
-	local objType = typeof(object)
+-- Returns the type of the provided object, with support for custom class types.
+local function typeof<T>(object: T): string
+	local objType = nativeTypeof(object)
 	if not objType then LogError("typeofObjectNotFound", false) end
 
-	if Type.type(object) == "Class" then
+	if type(object) == "Class" then
 		local metatable = getmetatable(object) :: setmetatable<anyTable, anyTable>
 		if not metatable["__classtype"] then return objType end 
 
 		return metatable["__classtype"]
-	elseif Type.type(object) == "Object" then
+	elseif type(object) == "Object" then
 		local _, rType = select(1, pcall(function() return (object :: anyTable)["__objtype"] end))
 		if rType then return rType end
 	end
@@ -409,4 +409,9 @@ function Type.typeof<T>(object: T): string
 	return objType
 end
 
-return Type
+--// Return Type
+
+return table.freeze({
+	type = type,
+	typeof = typeof
+})

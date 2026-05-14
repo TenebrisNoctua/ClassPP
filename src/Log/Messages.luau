@@ -5,7 +5,7 @@
 	Stores templates for logging messages.
 --]]
 
-return {
+return table.freeze({
 	attemptToModifyReadOnlyTable = "Cannot modify a read only table.",
 	attemptToCreateObjectFromAbstractClass = "Cannot create an object from an abstracted class.",
 	attemptToExtendAFinalClass = "Cannot create an inherited class from a final class.",
@@ -46,4 +46,4 @@ return {
 	typeofObjectNotFound = "The given object's type cannot be found.",
 	unhandledError = "An unhandled error occured in \"%s\": %s",
 	unknownError = "An unknown error has occured."
-}
+})

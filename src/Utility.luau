@@ -9,20 +9,54 @@
 --// Variables
 
 
-local Type = require('./Type')
+const Type = require('./Type')
 
-local type = Type.type
-local typeof = Type.typeof
-
-local Util = {}
+const type = Type.type
+const typeof = Type.typeof
 
 --// Types
 
 type internalClass = Type.internalClass
+type objectData = Type.objectData
+type defaultClassData = Type.defaultClassData
 
---// Module Functions
+--// Local Functions
 
-function Util.getMethodContext(level: number): ((any) -> (any), string)
+-- Returns the access specifier of an index.
+local function returnAccessSpecifier(index: string, objectData: defaultClassData | objectData): (string?, any?)
+	if objectData.Public then
+		local value = objectData.Public[index]
+		if value ~= nil then return "Public", value end
+	end
+
+	if objectData.Private then
+		local value = objectData.Private[index]
+		if value ~= nil then return "Private", value end
+	end
+
+	if objectData.Protected then
+		local value = objectData.Protected[index]
+		if value ~= nil then return "Protected", value end
+	end
+
+	if objectData.Internal then
+		local value = objectData.Internal[index]
+		if value ~= nil then return "Internal", value end
+	end
+	return nil
+end
+
+-- Finds the property that's been set to the given index. If given an access specifier string, it will try to find the property inside that access specifier.
+local function findPropertyFromIndex(classData: defaultClassData | objectData, index: string, accessSpecifier: string?): any?
+	local fAccessSpecifier = accessSpecifier or returnAccessSpecifier(index, classData)
+	if not fAccessSpecifier then return end
+
+	local attributesData = classData[fAccessSpecifier]
+	return attributesData[index]
+end
+
+-- Retrieves information about the current thread context.
+local function getMethodContext(level: number): ((any) -> (any), string)
 	local f: (any) -> (any)
 	local n: string
 
@@ -34,17 +68,18 @@ function Util.getMethodContext(level: number): ((any) -> (any), string)
 	return f, n
 end
 
-function Util.checkInheritance(class: internalClass, classOrMethod: any | () -> ()): boolean
-	for _, inherited in class.Inherits do
-		if inherited == classOrMethod or (inherited :: any)[classOrMethod] then
+-- Checks whether or not classOrMethod inherits from the class.
+local function checkInheritance(class: internalClass, classOrMethod: internalClass | (any) -> (any)): boolean
+	for _, inherited: internalClass in class.Inherits do
+		if inherited == classOrMethod or inherited[classOrMethod] then
 			return true
 		end
 	end
-
 	return false
 end
 
-function Util.checkFriendship(class: internalClass, methodName: string, method: (any) -> (any), classes: {[string]: internalClass}): boolean
+-- Checks if the method or class has been set as a friend of the target class.
+local function checkFriendship(class: internalClass, methodName: string, method: (any) -> (any), classes: {[string]: internalClass}): boolean
 	for _, friend in class.Friends do
 		if type(friend) == "Class" and friend[methodName] then
 			return true
@@ -62,15 +97,16 @@ function Util.checkFriendship(class: internalClass, methodName: string, method: 
 	return false
 end
 
-function Util.inClassScope(class: internalClass, includeInherited: boolean, includeFriend: boolean, classes: {[string]: internalClass}?, defaultLevel: number?): boolean
-	local level: number = defaultLevel or 6
-
+-- Checks if the current thread can access certain class properties.
+local function inClassScope(class: internalClass, objectData: objectData, includeInherited: boolean, includeFriend: boolean, classes: {[string]: internalClass}?, defaultLevel: number?): boolean
+	local level: number = defaultLevel or 5
+	
 	while true do
-		local method, methodName = Util.getMethodContext(level)
+		local method, methodName = getMethodContext(level)
 		if not method then return false end
 
-		if class[methodName] == method then return true end
-		if includeInherited and Util.checkInheritance(class, method) or includeFriend and classes and Util.checkFriendship(class, methodName, method, classes) then return true end
+		if findPropertyFromIndex(objectData, methodName) == method then return true end
+		if includeInherited and checkInheritance(class, method) or includeFriend and classes and checkFriendship(class, methodName, method, classes) then return true end
 		if method == typeof or methodName == "overloadHandler" and table.find(class.overloadlist, method) then return true end
 
 		level += 1
@@ -79,7 +115,8 @@ function Util.inClassScope(class: internalClass, includeInherited: boolean, incl
 	return false
 end
 
-function Util.binarySearch(array: {any}, value: any): any
+-- Does a binary search within the given array to find the value.
+local function binarySearch(array: {any}, value: any): any
 	local Low: number = 1
 	local High: number = #array
 
@@ -102,4 +139,14 @@ function Util.binarySearch(array: {any}, value: any): any
 	return
 end
 
-return Util
+--// Return Utility
+
+return table.freeze({
+	returnAccessSpecifier = returnAccessSpecifier,
+	findPropertyFromIndex = findPropertyFromIndex,
+	getMethodContext = getMethodContext,
+	checkInheritance = checkInheritance,
+	checkFriendship = checkFriendship,
+	inClassScope = inClassScope,
+	binarySearch = binarySearch
+})

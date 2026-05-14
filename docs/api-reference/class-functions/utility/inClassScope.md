@@ -5,14 +5,14 @@
 </h1>
 
 ```luau
-function Util.inClassScope(class: class, includeInherited: boolean, includeFriend: boolean, classes: {[string]: class}?, defaultLevel: number?): boolean
+function Util.inClassScopeinClassScope(class: internalClass, objectData: objectData, includeInherited: boolean, includeFriend: boolean, classes: {[string]: internalClass}?, defaultLevel: number?): boolean
 ```
 
 This function checks if the current thread is allowed to access a specific `class` property from a certain access specifier.
 
 ## Default syntax
 ```luau
-local isAllowed = Util.inClassScope(class, false, true, Classes) -- For the Private access specifier
+local isAllowed = Util.inClassScope(class, objectData, false, true, Classes) -- For the Private access specifier
 ```
 
 ## Parameters
@@ -23,6 +23,10 @@ local isAllowed = Util.inClassScope(class, false, true, Classes) -- For the Priv
                 <tr>
                     <td class="api-param-highlight">class: <a href="../../../data-types/class">class</a></td>
                     <td>The <code>class</code> that the check will be made from.</td>
+                </tr>
+                <tr>
+                    <td class="api-param-highlight">objectData: <a href="../../../types/classData">object</a></td>
+                    <td>The <code>objectData</code> table that the check will be made with. A <code>classData</code> table can also be used.</td>
                 </tr>
                 <tr>
                     <td class="api-param-highlight">includeInherited: <a href="https://create.roblox.com/docs/luau/booleans">boolean</a></td>

@@ -7,8 +7,8 @@
 
 --// Variables
 
-local MessageConstructor = require('./MessageConstructor')
-local Logger = {}
+const MessageConstructor = require('./MessageConstructor')
+const Logger = {}
 
 --/// Module Functions
 

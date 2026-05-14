@@ -7,10 +7,15 @@
 
 --// Variables
 
-local RunService = game:GetService("RunService")
+local canPrintLink = true
 
-local Messages = require('./Messages')
-local INFO_URL = "https://tenebrisnoctua.github.io/ClassPP/2.0/api-reference/errors#"
+-- Check whether or not we're on the Roblox runtime, and if we're in Studio.
+if game and game.GetService and game:GetService("RunService") then
+	canPrintLink = game:GetService("RunService"):IsStudio()
+end
+
+const Messages = require('./Messages')
+const Info_Url = "https://tenebrisnoctua.github.io/ClassPP/2.0/api-reference/errors#"
 
 --// Return Message Object Constructor
 
@@ -18,11 +23,11 @@ return function(messageId: string, includeTraceback: boolean, formatTable: {any}
 	local expandedMessage: string = (Messages :: any)[messageId]
 	if not expandedMessage then expandedMessage = Messages["unknownError"] messageId = "unknownError" end
 	
-	local formattedMessage: string = (string.format :: any)(expandedMessage, table.unpack(formatTable or {""}))
+	local formattedMessage: string = string.format(expandedMessage, table.unpack(formatTable or {""}))
 	local fullMessage: string = `\{Class++}: {formattedMessage} \{ID: {messageId}}`
 	
-	if RunService:IsStudio() then
-		fullMessage ..= `\nLearn more at: {INFO_URL}{messageId:lower()}`
+	if canPrintLink then
+		fullMessage ..= `\nLearn more at: {Info_Url}{messageId:lower()}`
 	end
 	
 	if includeTraceback then

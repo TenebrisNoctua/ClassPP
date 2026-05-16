@@ -9,7 +9,7 @@
 
 local canPrintLink = true
 
--- Check whether or not we're on the Roblox runtime, and if we're in Studio.
+-- Check whether or not we're on the Roblox runtime, and if we're in Roblox Studio.
 if game and game.GetService and game:GetService("RunService") then
 	canPrintLink = game:GetService("RunService"):IsStudio()
 end
@@ -19,7 +19,7 @@ const Info_Url = "https://tenebrisnoctua.github.io/ClassPP/2.0/api-reference/err
 
 --// Return Message Object Constructor
 
-return function(messageId: string, includeTraceback: boolean, formatTable: {any}?, ...): string
+return function(messageId: keyof<typeof(Messages)> | string, includeTraceback: boolean, formatTable: {any}?, ...): string
 	local expandedMessage: string = (Messages :: any)[messageId]
 	if not expandedMessage then expandedMessage = Messages["unknownError"] messageId = "unknownError" end
 	

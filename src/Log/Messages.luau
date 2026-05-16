@@ -6,7 +6,6 @@
 --]]
 
 return table.freeze({
-	attemptToModifyReadOnlyTable = "Cannot modify a read only table.",
 	attemptToCreateObjectFromAbstractClass = "Cannot create an object from an abstracted class.",
 	attemptToExtendAFinalClass = "Cannot create an inherited class from a final class.",
 	cannotCallFunctionError = "Cannot call function \"%s\" directly.",
@@ -23,10 +22,10 @@ return table.freeze({
 	classObjectLocked = "This class object has been locked.",
 	classPropertyIsPrivate = "Property \"%s\" is private in this class.",
 	classPropertyIsProtected = "Property \"%s\" is protected in this class.",
-	classPropertyIsInternal = "Property \"%s\" is internal in this class. You cannot access it.",
+	classPropertyIsInternal = "Property \"%s\" is internal in this class. It is inaccessible.",
 	classPropertyRedeclaration = "Cannot redeclare property \"%s\".",
 	classTypeMismatch = "The class type \"%s\" does not match with the intended class type \"%s\".",
-	expectedFunctionError = "Expected function, got: %s.",
+	expectedTypeError = "Expected %s, got: %s.",
 	extendsDeprecated = "Extends is now deprecated. Use the \"class\" function instead.",
 	invalidAccessSpecifierError = "Given value is not a valid access specifier.",
 	invalidAccessSpecifierInClassData = "Given classData value for the class \"%s\" contains invalid access specifier(s) or function(s).",
@@ -35,10 +34,9 @@ return table.freeze({
 	invalidDestructorCall = "Cannot call Destroy without an object argument. Try calling the function with the ':' operator.",
 	invalidInheritation = "Cannot call super in a multi-inherited class, or in a non-inherited class.",
 	invalidModifierArgument = "Given argument is not a class table.",
-	invalidPropertyDecleration = "Cannot create reserved property \"%s\".",
+	invalidPropertyDecleration = "Cannot define reserved property \"%s\".",
 	invalidSuperCall = "Cannot call super without an object argument. Try calling the function with the ':' operator.",
 	illegalModifierCombination = "Cannot create an illegal combination of modifiers: %s",
-	nonNativeOperatorCall = "Operator function %s cannot be called without its operator.",
 	overloadfunctionArgumentMismatch = "A function to handle the given number of arguments (%d) have not been provided for the overloaded function: \"%s\"",
 	overloadfunctionNameNotSet = "A function name has not been set for the overloaded function.",
 	overloadfunctionTableNotGiven = "A function table has not been given for the overloaded function.",

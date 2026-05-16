@@ -98,7 +98,7 @@ local function checkFriendship(class: internalClass, methodName: string, method:
 end
 
 -- Checks if the current thread can access certain class properties.
-local function inClassScope(class: internalClass, objectData: objectData, includeInherited: boolean, includeFriend: boolean, classes: {[string]: internalClass}?, defaultLevel: number?): boolean
+local function inClassScope(class: internalClass, objectData: objectData, overloadedFunctions: {(...any) -> (...any?)}, includeInherited: boolean, includeFriend: boolean, classes: {[string]: internalClass}?, defaultLevel: number?): boolean
 	local level: number = defaultLevel or 5
 	
 	while true do
@@ -107,7 +107,7 @@ local function inClassScope(class: internalClass, objectData: objectData, includ
 
 		if findPropertyFromIndex(objectData, methodName) == method then return true end
 		if includeInherited and checkInheritance(class, method) or includeFriend and classes and checkFriendship(class, methodName, method, classes) then return true end
-		if method == typeof or methodName == "overloadHandler" and table.find(class.overloadlist, method) then return true end
+		if method == typeof or methodName == "overloadHandler" and table.find(overloadedFunctions, method) then return true end
 
 		level += 1
 	end

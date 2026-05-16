@@ -9,7 +9,7 @@
 --// Variables
 
 const Logger = require('./Log/Logger')
-const LogError = Logger.logError
+const logError = Logger.logError
 
 -- Define references to the native type and typeof global functions.
 const nativeType = type
@@ -51,9 +51,9 @@ export type operatorMetamethodNames = {
 }
 
 export type class<classData> = setmetatable<{
-	new: getConstructorType<classData, convertToObjectData<classData>>,
-	overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (...any?)}) -> (),
-	static: (accessSpecifier: string, name: string, property: any) -> (),
+	read new: getConstructorType<classData, convertToObjectData<classData>>,
+	read overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (...any?)}) -> (),
+	read static: (accessSpecifier: string, name: string, property: any) -> (),
 	read classData: classData,
 	read Name: string
 }, {
@@ -67,11 +67,10 @@ export type internalClass = {
 	new: (...any) -> (),
 	overload: (accessSpecifier: string, name: string, functionTable: {(...any) -> (...any?)}) -> (),
 	static: (accessSpecifier: string, name: string, property: any) -> (),
-	Inherits: readOnlyTable,
-	Friends: readOnlyTable,
-	Statics: readOnlyTable,
 	classData: defaultClassData?,
-	Name: string,
+	read Inherits: {internalClass},
+	read Friends: {internalClass},
+	read Name: string,
 	[any]: any
 }
 
@@ -375,35 +374,24 @@ end
 local function type<T>(object: T): string
 	local objType = nativeType(object)
 
-	if not objType then LogError("typeofObjectNotFound", false) end
+	if not objType then logError("typeofObjectNotFound", false) end
 	if objType ~= "table" and objType ~= "userdata" then return objType end
 
-	local metatable = getmetatable(object) :: setmetatable<anyTable, anyTable>
-	if not metatable then return objType end
-
-	if metatable["__type"] then return metatable["__type"] end
-
-	if objType == "userdata" then 
-		local _, rType = select(1, pcall(function() return (object :: anyTable)["__type"] end))
-		if rType then return rType end
-	end 
-
-	return objType
+	local success: boolean, result: string = pcall(function() return (object :: anyTable)["__type"] end)
+	if not success or not result then return objType end
+	
+	return result
 end
 
 -- Returns the type of the provided object, with support for custom class types.
 local function typeof<T>(object: T): string
 	local objType = nativeTypeof(object)
-	if not objType then LogError("typeofObjectNotFound", false) end
+	if not objType then logError("typeofObjectNotFound", false) end
 
 	if type(object) == "Class" then
-		local metatable = getmetatable(object) :: setmetatable<anyTable, anyTable>
-		if not metatable["__classtype"] then return objType end 
-
-		return metatable["__classtype"]
+		return (object :: anyTable)["__classtype"]
 	elseif type(object) == "Object" then
-		local _, rType = select(1, pcall(function() return (object :: anyTable)["__objtype"] end))
-		if rType then return rType end
+		return (object :: anyTable)["__objtype"]
 	end
 
 	return objType

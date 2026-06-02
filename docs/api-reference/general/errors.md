@@ -9,16 +9,6 @@ You can use that ID to find the details about that error or message down below.
 
 ----
 
-## attemptToModifyReadOnlyTable
-
-```
-Cannot modify a read only table.
-```
-
-You've attempted modify a read-only table within Class++. This usually occurs when you try to modify the [`Inherits`](../../data-types/class/#inherits-class-read-only), [`Friends`](../../data-types/class/#friends-class-read-only) and [`Statics`](../../data-types/class/#statics-string-any-read-only) tables of a `class`.
-
-----
-
 ## attemptToCreateObjectFromAbstractClass
 
 ```
@@ -76,16 +66,6 @@ Class ... already exists.
 ```
 
 You've tried to create a `class` that already has been created with the same name. Consider changing the name of the new `class`.
-
-----
-
-## classClassDataInternal
-
-```
-The property classData of the class ... is Internal. It cannot be used.
-```
-
-You've attempted to access the `classData` property of a `class` directly. This property is meant to be used internally, and is not meant for external use. This property only shows up in the auto-complete to support type-checking in certain cases.
 
 ----
 
@@ -192,7 +172,7 @@ You've tried to access a protected member of an `object` outside of a class func
 ## classPropertyIsInternal
 
 ```
-Property ... is internal in this class. You cannot access it.
+Property ... is internal in this class. It is inaccessible.
 ```
 
 You've tried to access an internal member of an `object`. Internal members are not accessible.
@@ -209,23 +189,33 @@ You've tried to declare a property that has already been declared in another acc
 
 ----
 
-## expectedFunctionError
+## classTypeMismatch
 
 ```
-Expected function, got: ...
+The class type ... does not match with the intended class type ...
 ```
 
-The `functionsTable` that you provided to `class.overload` function had a value that wasn't a function.
+You've tried to call a reserved function (`:Destroy()`, `:super()`) of a class without the intended class type for that function. This error occurs because the reserved functions can only be used with objects that belong to the class they're created from. 
 
 ----
 
-## extendsDeprecated
+## expectedTypeError
 
 ```
-Extends is now deprecated. Use the "class" function instead.
+Expected ..., got: ...
 ```
 
-You've tried to use the now deprecated `extends` function for inheritance.<br>
+A function expected a certain type, but got something different instead. This may occur in cases where the data you provided is wrong or contains invalid values.
+
+----
+
+## extendsRemoved
+
+```
+Extends has been removed. Use the "class" function instead.
+```
+
+You've tried to use the now removed `extends` function for inheritance.<br>
 See the discussion [`#4`](https://github.com/TenebrisNoctua/ClassPP/discussions/4) for more info.
 
 ----
@@ -250,6 +240,26 @@ You've given a `classData` value that contains invalid access-specifiers or func
 
 ----
 
+## invalidClassNewIndex
+
+```
+Cannot set a new property for the class ... that is an invalid access specifier or a function.
+```
+
+You've tried to set a new property for a class that wasn't a valid access specifier or a function. If you wish to add new members, you must do so within an access specifier.
+
+----
+
+## invalidConstructor
+
+```
+The current function does not match with a valid constructor function in the class ..., or within its inherited classes.
+```
+
+This error occurs if `:super()` cannot find a matching constructor function within the class it's been called from, or within its inherited classes. Make sure to call `:super()` from the correct constructor function.
+
+----
+
 ## invalidDestructorCall
 
 ```
@@ -257,6 +267,16 @@ Cannot call Destroy without an object argument. Try calling the function with th
 ```
 
 You've tried to call the `Destroy()` without providing the `object` as its first argument. Calling it with a ':' like `:Destroy()`, passes the `object` argument automatically.
+
+----
+
+## invalidInheritation
+
+```
+Cannot call super in a multi-inherited class, or in a non-inherited class.
+```
+
+You've tried to call `:super()` within a multi-inherited class, or in a non-inherited class. `:super()` only works within classes that inherit only one class.
 
 ----
 
@@ -284,10 +304,10 @@ Some property names are reserved for certain functions that come by default for 
 ## invalidSuperCall
 
 ```
-Cannot call super in a multi-inherited class, or in a non-inherited class.
+Cannot call super without an object argument. Try calling the function with the ':' operator.
 ```
 
-You've tried to call the `super()` function from a `class` that either wasn't inheriting from another `class`, or it was inheriting from multiple `class`es. 
+You've tried to call `:super()` without providing an object argument. The first argument must always be the `object` that `:super()` is bound to.
 
 ----
 
@@ -301,13 +321,13 @@ You've tried to create an illegal combination of modifiers. Certain modifiers ha
 
 ----
 
-## nonNativeOperatorCall
+## nonProvidedGlobal
 
 ```
-Operator function ... cannot be called without its operator.
+Current runtime does not provide global ..., please ensure it exists.
 ```
 
-You've tried to call an operator function without its operator. Operator functions are meant to be called with their operators.
+The current runtime that Class++ is running on does not provide the requested global. Make sure that the global exists and provides the functionality that Class++ expects from it.
 
 ----
 

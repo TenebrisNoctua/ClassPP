@@ -80,7 +80,7 @@ end
 
 -- Checks if the method or class has been set as a friend of the target class.
 local function checkFriendship(class: internalClass, methodName: string, method: (any) -> (any), classes: {[string]: internalClass}): boolean
-	for _, friend in class.Friends do
+	for _, friend: any in class.Friends do
 		if type(friend) == "Class" and friend[methodName] then
 			return true
 		elseif typeof(friend) == "string" then
@@ -93,7 +93,6 @@ local function checkFriendship(class: internalClass, methodName: string, method:
 			return true
 		end
 	end
-
 	return false
 end
 
@@ -108,7 +107,8 @@ local function inClassScope(class: internalClass, objectData: objectData, overlo
 		if findPropertyFromIndex(objectData, methodName) == method then return true end
 		if includeInherited and checkInheritance(class, method) or includeFriend and classes and checkFriendship(class, methodName, method, classes) then return true end
 		if method == typeof or methodName == "overloadHandler" and table.find(overloadedFunctions, method) then return true end
-
+		if class[methodName] == method then return true end
+		
 		level += 1
 	end
 

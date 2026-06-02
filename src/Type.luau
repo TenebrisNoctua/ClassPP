@@ -69,7 +69,7 @@ export type internalClass = {
 	static: (accessSpecifier: string, name: string, property: any) -> (),
 	classData: defaultClassData?,
 	read Inherits: {internalClass},
-	read Friends: {internalClass},
+	read Friends: {internalClass | string | (...any) -> (any)},
 	read Name: string,
 	[any]: any
 }
@@ -80,9 +80,7 @@ export type objectData = {
 	Protected: anyTable,
 	Internal: {
 		__type: string?,
-		__locked: boolean?,
-		constructor: (any, ...any) -> ()?,
-		destructor: (any) -> ()?,
+		__locked: boolean?
 	},
 	[any]: any
 }

@@ -35,7 +35,7 @@ const returnAccessSpecifier = Util.returnAccessSpecifier
 const checkFriendship = Util.checkFriendship
 
 const classes = {} :: {[string]: internalClass}
-const classpp = {version = {major = 2, minor = 3, patch = 0, beta = false}, autoObjectDestruction = true} :: classPP
+const classpp = {version = {major = 2, minor = 3, patch = 1, beta = false}, autoObjectDestruction = true} :: classPP
 
 const accessSpecifiers: accessSpecifiers = {"Friend", "Internal", "Private", "Protected", "Public"}
 const overloadableOperators: overloadableOperators = {"operator_add", "operator_div", "operator_eq", "operator_idiv", "operator_mod", "operator_mul", "operator_pow", "operator_sub", "operator_unm"}
@@ -203,7 +203,7 @@ local function recursiveFindParentFunction(obj: objectData, method: (...any) -> 
 			local foundPublic: (...any) -> (any?) = inheritedClassData.Public[methodName]
 			local foundProtected: (...any) -> (any?) = inheritedClassData.Protected[methodName]
 
-			if foundPublic and nativeTypeof(foundPublic) == "function" and class.classData.Public[methodName] == method then 
+			if foundPublic and nativeTypeof(foundPublic) == "function" and class.classData.Public[methodName] == method and method ~= foundPublic then 
 				return foundPublic(obj, ...) 
 			elseif foundProtected and nativeTypeof(foundProtected) == "function" and (class.classData.Protected[methodName] == method or class.classData.Public[methodName] == method) and method ~= foundProtected then
 				return foundProtected(obj, ...)
@@ -310,7 +310,7 @@ local function setMetamethods(class: internalClass, objectData: objectData, meth
 		end
 
 		if property ~= nil then return property elseif index ~= "constructor" and index ~= "destructor" and index ~= "__tostring" then logError("classMemberNotFound", true, {index}) end		
-		return
+		return nil
 	end
 
 	function methods:__newindex(index: string, value: any)
@@ -459,7 +459,7 @@ local function createClassObject(newClassData: defaultClassData, className: stri
 		Friends = table.freeze(newClassData.Friend or {}),
 		Name = className,
 		extends = function()
-			logError("extendsDeprecated", true)
+			logError("extendsRemoved", true)
 		end
 	} :: any) :: internalClass
 		
